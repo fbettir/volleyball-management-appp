@@ -1,0 +1,34 @@
+<div style="display: flex; flex-direction: column; justify-content: space-between; min-height: 72vh; margin-top: 20px">
+    <div>
+      <div *ngFor="let post of posts; let i = index">
+        <mat-card
+          class="post-container"
+        >
+          <mat-card-header style="padding: 16px 16px">
+            <mat-card-title>
+              {{ post }}
+            </mat-card-title>
+            <mat-card-subtitle>{{ post }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+           
+            <div>{{ post }}</div>
+          </mat-card-content>
+          <!-- <mat-card-actions *ngIf="currentUser != null && post.type === 'TRAINING'" align="end">
+            <button class="button" mat-button (click)="addParticipant(post)">Jelentkezés</button>
+          </mat-card-actions> -->
+        </mat-card>
+        <div class="divider" style="background-color: white">
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+    <!-- <mat-paginator
+      style="margin: 0px auto"
+      [pageSize]="10"
+      [length]="posts?.total"
+      [pageIndex]="pageIndex"
+      (page)="getPage($event)"
+      aria-label="Select"
+    ></mat-paginator> -->
+  </div>
