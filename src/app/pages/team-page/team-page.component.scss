@@ -1,0 +1,33 @@
+h1 {
+  a {
+    color: var(--red);
+  }
+}
+
+mat-card {
+  padding: 100px;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 20px solid #000;
+  border-color: var(--red);
+  :hover {
+    outline: 1px solid var(--red);
+    box-shadow: 8px 8px 2px 1px rgba(0, 0, 240, 0.1);
+  }
+  mat-card-header {
+    font-size: 20px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  mat-card-content {
+    padding: 10px;
+  }
+  mat-card-footer {
+    padding: 10px;
+    margin-top: 20px;
+  }
+}

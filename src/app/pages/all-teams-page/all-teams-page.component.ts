@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Team } from 'src/app/models/team';
 
 @Component({
   selector: 'app-all-teams-page',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AllTeamsPageComponent {
 
+  teams: Team[] = [];
 }

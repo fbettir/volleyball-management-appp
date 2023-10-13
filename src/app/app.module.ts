@@ -32,6 +32,7 @@ import { TournamentPageComponent } from './pages/tournament-page/tournament-page
 import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.com
     MatSortModule,
     MatGridListModule,
     MatMenuModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

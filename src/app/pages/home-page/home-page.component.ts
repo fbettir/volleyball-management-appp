@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Post } from 'src/app/models/post';
-
-
 
 @Component({
   selector: 'app-home-page',
@@ -14,7 +11,6 @@ export class HomePageComponent implements OnInit{
 
   constructor(
     private http: HttpClient,
-    private snackBar: MatSnackBar,
   ) {}
 
   pageIndex: number = 0;

@@ -9,6 +9,6 @@ export interface User {
     email: string;
     post: Post;
     phone: number;
-    age: number;
+    birthday: Date;
     gender: Gender; 
 }

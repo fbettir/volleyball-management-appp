@@ -1,1 +1,43 @@
-<p>team-page works!</p>
+<mat-card>
+  <mat-card-header>Team A</mat-card-header>
+    <mat-card-content>{{description}}</mat-card-content>
+    <mat-card-content>{{description}}</mat-card-content>
+    <mat-card-content>{{description}}</mat-card-content>
+    <mat-card-footer>Team a description</mat-card-footer>
+  </mat-card>
+  <mat-card>
+    <mat-card-header> Team B</mat-card-header>
+    <mat-card-content>{{description}}</mat-card-content>
+    <mat-card-footer>Footer</mat-card-footer>
+  </mat-card>
+
+<table mat-table [dataSource]="players" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let player"> {{player.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let player"> {{player.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="post">
+    <th mat-header-cell *matHeaderCellDef> Post </th>
+    <td mat-cell *matCellDef="let player"> {{player.post}}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> birthday </th>
+        <td mat-cell *matCellDef="let player"> {{player.birthday}} </td>
+        </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
