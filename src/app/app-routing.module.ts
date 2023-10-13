@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: 'teams', component: AllTeamsPageComponent },
   { path: 'tournament/:tournamentId', component: TournamentPageComponent },
   { path: 'contact-us', component: ContactUsPageComponent },
-  { path: '**', redirectTo: "home"},
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -16,7 +16,6 @@
 //   z-index: 1;
 // }
 
-
 @mixin mat-toolbar-color($config-or-theme) {
   $config: mat-get-color-config($config-or-theme);
   $primary: map-get($config, primary);
@@ -59,11 +58,8 @@
   }
 }
 
-
-
 @mixin mat-toolbar-theme($theme-or-color-config) {
- 
-      @include mat-toolbar-color($color);
-      @include _mat-toolbar-density($density);
-      @include mat-toolbar-typography($typography);
+  @include mat-toolbar-color($color);
+  @include _mat-toolbar-density($density);
+  @include mat-toolbar-typography($typography);
 }

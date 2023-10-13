@@ -70,9 +70,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatGridListModule,
     MatMenuModule,
     DragDropModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

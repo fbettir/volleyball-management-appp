@@ -5,20 +5,15 @@ import { Post } from 'src/app/models/post';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit{
-
-  constructor(
-    private http: HttpClient,
-  ) {}
+export class HomePageComponent implements OnInit {
+  constructor(private http: HttpClient) {}
 
   pageIndex: number = 0;
   size: number = 10;
 
-  posts: Post[] = [ Post.Hitter]
- 
-  ngOnInit(): void {
-  }
-  
+  posts: Post[] = [Post.Hitter];
+
+  ngOnInit(): void {}
 }

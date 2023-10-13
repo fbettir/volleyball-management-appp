@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "lint": "prettier . -w"
   },
   "private": true,
   "dependencies": {
@@ -22,9 +23,6 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-    "@types/jest": "^29.5.5",
-    "jest": "^29.7.0",
-    "jest-preset-angular": "^13.1.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -36,7 +34,11 @@
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
     "sass": "^1.69.1",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.4",
+    "prettier": "3.0.3",
+    "@types/jest": "^29.5.5",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^13.1.2"
   },
   "jest": {
     "preset": "jest-preset-angular",
