@@ -13,7 +13,7 @@
 
   <mat-form-field>
     <mat-label for="email">Email</mat-label>
-    <input matInput id="email" formControlName="email" placeholder="Favorite food" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+    <input matInput id="email" formControlName="email" placeholder="Favorite food" required>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
@@ -32,18 +32,18 @@
   <mat-form-field  appearance="fill">
     <mat-label for="post">Post</mat-label>
     <mat-select id="post" formControlName="post" required="">
-      <mat-option value="Post.Hitter">Hitter</mat-option>
-      <mat-option value="Post.Receiver">Receiver</mat-option>
-      <mat-option value="Post.Setter">Setter</mat-option>
+      <mat-option value="Hitter">Hitter</mat-option>
+      <mat-option value="Receiver">Receiver</mat-option>
+      <mat-option value="Setter">Setter</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field  appearance="fill">
     <mat-label for="gender">Gender</mat-label>
     <mat-select id="gender" formControlName="gender" required="">
-      <mat-option value="Gender.Man">Man</mat-option>
-      <mat-option value="Gender.Woman">Woman</mat-option>
-      <mat-option value="Gender.Other">Other</mat-option>
+      <mat-option value="Man">Man</mat-option>
+      <mat-option value="Woman">Woman</mat-option>
+      <mat-option value="Other">Other</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -53,14 +53,14 @@
   </button>
 
 </form>
-
+<h1> {{players.length}} </h1>
 
 <div class="team-page-content">
   <div class="team-page-toolbar">
   <h2> Members: </h2>
 
   </div>
-  <table mat-table [dataSource]="players" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef>No.</th>

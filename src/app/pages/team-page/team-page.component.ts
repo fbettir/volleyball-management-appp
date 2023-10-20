@@ -4,6 +4,7 @@ import { Post } from 'src/app/models/post';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import { FormBuilder } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -64,42 +65,42 @@ export class TeamPageComponent {
       gender: Gender.Man,
     },
   ];
+  dataSource = new MatTableDataSource<User>([]);
 
   displayedColumns: string[] = ['position', 'name', 'post'];
+  teamname: string = 'Team A';
+  description: String =
+    'This team was created in 2016, they were champions in ....';
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.dataSource.data = this.players;
+  }
 
   addPlayerForm = this.formBuilder.group({
-    id: '',
     name: 'someone',
     role: Role.User,
     email: 'example@email.com',
     post: Post.Receiver,
     phone: 0,
     birthday: new Date(),
-    gender: Gender.Man,
+    gender: "",
   });
 
-  teamname: string = 'Team A';
- 
-  description: String =
-    'This team was created in 2016, they were champions in ....';
+  onSubmit(): void { 
+    const {name, role, email, post, phone, birthday, gender} = this.addPlayerForm.value;
+    const user: User = { 
+    id : Math.random().toString(36).substr(2),
+    name: name!,
+    role: role! as Role,
+    email: email!,
+    post: post!,
+    phone: phone!,
+    birthday: birthday!,
+    gender: gender! as Gender
+    };
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) {}
-
-  onSubmit(): void {
-    // let user: User { 
-    // Math.random().toString(36).substr(2),
-    // this.addPlayerForm.value.name?.toString(),
-    // this.addPlayerForm.value.role,
-    // this.addPlayerForm.value.email,
-    // this.addPlayerForm.value.post,
-    // this.addPlayerForm.value.phone,
-    // this.addPlayerForm.value.birthday,
-    // this.addPlayerForm.value.gender
-    // };
-
-    // this.players = this.players.push(user);
-    
+    this.dataSource.data = [...this.dataSource.data, user];
   }
 }
