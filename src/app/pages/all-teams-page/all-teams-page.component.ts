@@ -8,4 +8,9 @@ import { Team } from 'src/app/models/team';
 })
 export class AllTeamsPageComponent {
   teams: Team[] = [];
+
+  
+  description: String =
+    'This team was created in 2016, they were champions in ....';
 }
+

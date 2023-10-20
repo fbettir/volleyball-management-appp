@@ -16,50 +16,55 @@
 //   z-index: 1;
 // }
 
-@mixin mat-toolbar-color($config-or-theme) {
-  $config: mat-get-color-config($config-or-theme);
-  $primary: map-get($config, primary);
-  $accent: map-get($config, accent);
-  $warn: map-get($config, warn);
-  $background: map-get($config, background);
-  $foreground: map-get($config, foreground);
+// @mixin mat-toolbar-color($config-or-theme) {
+//   $config: mat-get-color-config($config-or-theme);
+//   $primary: map-get($config, primary);
+//   $accent: map-get($config, accent);
+//   $warn: map-get($config, warn);
+//   $background: var(--red);
+//   $foreground: map-get($config, foreground);
 
-  .mat-toolbar {
-    background: mat-color($background, app-bar);
-    color: mat-color($foreground, text);
+//   .mat-toolbar {
+//     background: mat-color($background, app-bar);
+//     color: mat-color($foreground, text);
 
-    &.mat-primary {
-      @include _mat-toolbar-color($primary);
-    }
+//     &.mat-primary {
+//       @include _mat-toolbar-color($primary);
+//     }
 
-    &.mat-accent {
-      @include _mat-toolbar-color($accent);
-    }
+//     &.mat-accent {
+//       @include _mat-toolbar-color($accent);
+//     }
 
-    &.mat-warn {
-      @include _mat-toolbar-color($warn);
-    }
+//     &.mat-warn {
+//       @include _mat-toolbar-color($warn);
+//     }
 
-    @include _mat-toolbar-form-field-overrides;
-  }
-}
+//     @include _mat-toolbar-form-field-overrides;
+//   }
+// }
 
-@mixin mat-toolbar-typography($config-or-theme) {
-  $config: mat-get-typography-config($config-or-theme);
-  .mat-toolbar,
-  .mat-toolbar h1,
-  .mat-toolbar h2,
-  .mat-toolbar h3,
-  .mat-toolbar h4,
-  .mat-toolbar h5,
-  .mat-toolbar h6 {
-    @include mat-typography-level-to-styles($config, title);
-    margin: 0;
-  }
-}
+// @mixin mat-toolbar-typography($config-or-theme) {
+//   $config: mat-get-typography-config($config-or-theme);
+//   .mat-toolbar,
+//   .mat-toolbar h1,
+//   .mat-toolbar h2,
+//   .mat-toolbar h3,
+//   .mat-toolbar h4,
+//   .mat-toolbar h5,
+//   .mat-toolbar h6 {
+//     @include mat-typography-level-to-styles($config, title);
+//     margin: 0;
+//   }
+// }
 
-@mixin mat-toolbar-theme($theme-or-color-config) {
-  @include mat-toolbar-color($color);
-  @include _mat-toolbar-density($density);
-  @include mat-toolbar-typography($typography);
+// @mixin mat-toolbar-theme($theme-or-color-config) {
+//   @include mat-toolbar-color($color);
+//   @include _mat-toolbar-density($density);
+//   @include mat-toolbar-typography($typography);
+// }
+
+mat-toolbar {
+  color: white;
+  background-color: var(--red);
 }

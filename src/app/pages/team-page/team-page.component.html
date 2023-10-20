@@ -1,41 +1,87 @@
-<mat-card>
-  <mat-card-header>Team A</mat-card-header>
-  <mat-card-content>{{ description }}</mat-card-content>
-  <mat-card-content>{{ description }}</mat-card-content>
-  <mat-card-content>{{ description }}</mat-card-content>
-  <mat-card-footer>Team a description</mat-card-footer>
-</mat-card>
-<mat-card>
-  <mat-card-header> Team B</mat-card-header>
-  <mat-card-content>{{ description }}</mat-card-content>
-  <mat-card-footer>Footer</mat-card-footer>
-</mat-card>
+<h1> Team: {{teamname}} 
+  <a> {{description}} </a>
+</h1>
+<mat-divider></mat-divider>
 
-<table mat-table [dataSource]="players" class="mat-elevation-z8">
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let player">{{ player.id }}</td>
-  </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let player">{{ player.name }}</td>
-  </ng-container>
+<div class="addPlayerForm">
+  <h2>Add member</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>name</mat-label>
+    <input id="name" matInput placeholder="Someone Someone">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>email</mat-label>
+    <input id="email" placeholder="example@email.com">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>post</mat-label>
+    <mat-select id="post">
+      <mat-option value="Hitter">Hitter</mat-option>
+      <mat-option value="Receiver">Receiver</mat-option>
+      <mat-option value="Setter">Setter</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="phone">phone</mat-label>
+    <input id="phone" matInput placeholder="+3610000000">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>birthday</mat-label>
+    <input type="date" matInput placeholder="email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>genrer</mat-label>
+    <mat-select>
+      <mat-option value="Hitter">man</mat-option>
+      <mat-option value="Receiver">Receiver</mat-option>
+      <mat-option value="Setter">Setter</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="post">
-    <th mat-header-cell *matHeaderCellDef>Post</th>
-    <td mat-cell *matCellDef="let player">{{ player.post }}</td>
-  </ng-container>
+</div>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="age">
-    <th mat-header-cell *matHeaderCellDef>birthday</th>
-    <td mat-cell *matCellDef="let player">{{ player.birthday }}</td>
-  </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+
+<div class="team-page-content">
+  <div class="team-page-toolbar">
+  <h2> Members: </h2>
+
+
+
+  <button mat-raised-button>
+    <mat-icon>add</mat-icon> 
+    Add member
+  </button>
+  </div>
+  <table mat-table [dataSource]="players" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let player">{{ player.id }}</td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let player">{{ player.name }}</td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="post">
+      <th mat-header-cell *matHeaderCellDef>Post</th>
+      <td mat-cell *matCellDef="let player">{{ player.post }}</td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef>birthday</th>
+      <td mat-cell *matCellDef="let player">{{ player.birthday }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  
+
+</div>
