@@ -37,6 +37,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EnumToDescriptionPipe } from './shared/enum-to-description.pipe';
+import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -53,6 +55,7 @@ import { EnumToDescriptionPipe } from './shared/enum-to-description.pipe';
     ContactUsPageComponent,
     AllTeamsPageComponent,
     EnumToDescriptionPipe,
+    UpdateDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { EnumToDescriptionPipe } from './shared/enum-to-description.pipe';
     MatListModule,
     MatInputModule,
     MatSelectModule,
+    MatDialogModule, 
     MatRadioModule,
     MatDatepickerModule,
     MatFormFieldModule,

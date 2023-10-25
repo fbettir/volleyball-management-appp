@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+
+.addPlayerForm {
+  display: flex;
+  flex-direction: column;
+  align-items:normal;
+  padding-left: 20px;
+  width: 500px;
+  padding-bottom: 30px;
+
+  .bday{
+    padding-bottom: 10px;
+  }
+}

@@ -9,9 +9,8 @@ import { Team } from 'src/app/models/team';
 import { ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/services/team.service';
 import { v4 as uuidv4 } from 'uuid';
-
-
-
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { UpdateDialogComponent } from 'src/app/components/update-dialog/update-dialog.component';
 @Component({
   selector: 'app-team-page',
   templateUrl: './team-page.component.html',
@@ -27,6 +26,7 @@ export class TeamPageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private teamService: TeamService,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit() {
@@ -42,9 +42,8 @@ export class TeamPageComponent implements OnInit {
     post: Post.Receiver,
     phone: 0,
     birthday: new Date(),
-    gender: '',
+    gender: Gender.Other,
   });
-
 
   onSubmit(): void { 
     const {name, role, email, post, phone, birthday, gender} = this.addPlayerForm.value;
@@ -66,7 +65,22 @@ export class TeamPageComponent implements OnInit {
     this.dataSource.data = [...this.dataSource.data];
   };
 
-  modifyUser(index: number){
+  modifyUser(index: number){}
 
+  data: User | undefined;
+
+  openDialog(index: number): void {
+    console.log(this.team?.members);
+    const dialogRef = this.dialog.open(UpdateDialogComponent, {
+      data: this.dataSource.data[index]
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.data = result;
+      this.dataSource.data.splice(index, 1, result);
+      this.dataSource.data = [...this.dataSource.data];
+    });
   }
+
+
 }
