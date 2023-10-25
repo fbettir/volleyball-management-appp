@@ -8,6 +8,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Team } from 'src/app/models/team';
 import { ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/services/team.service';
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 @Component({
@@ -43,18 +45,18 @@ export class TeamPageComponent implements OnInit {
     gender: '',
   });
 
-  onSubmit(): void {
-    const { name, role, email, post, phone, birthday, gender } =
-      this.addPlayerForm.value;
-    const user: User = {
-      id: Math.random().toString(36).substr(2),
-      name: name!,
-      role: role! as Role,
-      email: email!,
-      post: post!,
-      phone: phone!,
-      birthday: birthday!,
-      gender: gender! as Gender,
+
+  onSubmit(): void { 
+    const {name, role, email, post, phone, birthday, gender} = this.addPlayerForm.value;
+    const user: User = { 
+    id : uuidv4(),
+    name: name!,
+    role: role! as Role,
+    email: email!,
+    post: post!,
+    phone: phone!,
+    birthday: birthday!,
+    gender: gender! as Gender
     };
     this.dataSource.data = [...this.dataSource.data, user];
   }
