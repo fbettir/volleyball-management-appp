@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Gender } from 'src/app/models/gender';
 import { Post } from 'src/app/models/post';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import { FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { Team } from 'src/app/models/team';
+import { ActivatedRoute } from '@angular/router';
+import { TeamService } from 'src/app/services/team.service';
 
 
 @Component({
@@ -12,71 +15,26 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './team-page.component.html',
   styleUrls: ['./team-page.component.scss'],
 })
-export class TeamPageComponent {
-  players: User[] = [
-    {
-      id: '1',
-      name: 'Tom',
-      role: Role.User,
-      email: 'tom@mail.com',
-      post: Post.Libero,
-      phone: 12345678,
-      birthday: new Date(),
-      gender: Gender.Man,
-    },
-    {
-      id: '2',
-      name: 'Ana',
-      role: Role.User,
-      email: 'anaa@mail.com',
-      post: Post.Hitter,
-      phone: 12345678,
-      birthday: new Date(2000, 5, 22),
-      gender: Gender.Woman,
-    },
-    {
-      id: '3',
-      name: 'Charles',
-      role: Role.User,
-      email: 'charles123@mail.com',
-      post: Post.Receiver,
-      phone: 12345678,
-      birthday: new Date(),
-      gender: Gender.Man,
-    },
-    {
-      id: '4',
-      name: 'Kate',
-      role: Role.User,
-      email: 'Kate@mail.com',
-      post: Post.Libero,
-      phone: 12345678,
-      birthday: new Date(),
-      gender: Gender.Woman,
-    },
-    {
-      id: '5',
-      name: 'John',
-      role: Role.User,
-      email: 'John@mail.com',
-      post: Post.Receiver,
-      phone: 12345678,
-      birthday: new Date(),
-      gender: Gender.Man,
-    },
-  ];
+export class TeamPageComponent implements OnInit{
+
+  team?: Team = undefined;
+  teamId = 1;
   dataSource = new MatTableDataSource<User>([]);
 
   displayedColumns: string[] = ['position', 'name', 'post'];
-  teamname: string = 'Team A';
-  description: String =
-    'This team was created in 2016, they were champions in ....';
 
   constructor(
-    private formBuilder: FormBuilder
-  ) {
-    this.dataSource.data = this.players;
-  }
+    private formBuilder: FormBuilder,
+    private route : ActivatedRoute,
+    private teamService: TeamService
+  ) {  }
+
+  ngOnInit() {
+    this.teamId = parseInt(this.route.snapshot.params["teamId"], 10);
+    this.team = this.teamService.getTeamById(this.teamId);
+    this.dataSource.data = this.team?.members || [];
+
+}
 
   addPlayerForm = this.formBuilder.group({
     name: 'someone',

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'tournaments', component: AllTournamentsPageComponent },
   { path: 'profile', component: MemberPageComponent },
-  { path: 'team', component: TeamPageComponent },
+  { path: 'team/:teamId', component: TeamPageComponent },
   { path: 'teams', component: AllTeamsPageComponent },
   { path: 'tournament/:tournamentId', component: TournamentPageComponent },
   { path: 'contact-us', component: ContactUsPageComponent },

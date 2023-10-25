@@ -1,14 +1,13 @@
-<mat-card>
-  <mat-card-header>Team A</mat-card-header>
-  <mat-card-content>{{ description }}</mat-card-content>
-  <mat-card-content>{{ description }}</mat-card-content>
-  <mat-card-content>{{ description }}</mat-card-content>
-  <mat-card-footer>Team a description</mat-card-footer>
-</mat-card>
-<mat-card>
-  <mat-card-header> Team B</mat-card-header>
-  <mat-card-content>{{ description }}</mat-card-content>
-  <mat-card-footer>Footer</mat-card-footer>
+<mat-card *ngFor="let team of teams">
+  <mat-card-header>{{team.name}}</mat-card-header>
+  <mat-card-content>{{ team.description }}</mat-card-content>
+  <mat-card-content>{{ team.description }}</mat-card-content>
+  <mat-card-content>AAAAA</mat-card-content>
+  <mat-card-footer>{{team.description}}</mat-card-footer>
+  <button  mat-button routerLink="/team/{{team.id}}">
+    <mat-icon>people_outline</mat-icon>
+    <span>check: {{team.name}}</span>
+  </button>
 </mat-card>
 
 
