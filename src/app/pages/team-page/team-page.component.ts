@@ -15,26 +15,23 @@ import { TeamService } from 'src/app/services/team.service';
   templateUrl: './team-page.component.html',
   styleUrls: ['./team-page.component.scss'],
 })
-export class TeamPageComponent implements OnInit{
-
+export class TeamPageComponent implements OnInit {
   team?: Team = undefined;
   teamId = 1;
   dataSource = new MatTableDataSource<User>([]);
-
-  displayedColumns: string[] = ['position', 'name', 'post'];
+  displayedColumns: string[] = ['position', 'name', 'ticket', 'post', 'number', 'tools'];
 
   constructor(
     private formBuilder: FormBuilder,
-    private route : ActivatedRoute,
-    private teamService: TeamService
-  ) {  }
+    private route: ActivatedRoute,
+    private teamService: TeamService,
+  ) {}
 
   ngOnInit() {
-    this.teamId = parseInt(this.route.snapshot.params["teamId"], 10);
+    this.teamId = parseInt(this.route.snapshot.params['teamId'], 10);
     this.team = this.teamService.getTeamById(this.teamId);
     this.dataSource.data = this.team?.members || [];
-
-}
+  }
 
   addPlayerForm = this.formBuilder.group({
     name: 'someone',
@@ -43,22 +40,31 @@ export class TeamPageComponent implements OnInit{
     post: Post.Receiver,
     phone: 0,
     birthday: new Date(),
-    gender: "",
+    gender: '',
   });
 
-  onSubmit(): void { 
-    const {name, role, email, post, phone, birthday, gender} = this.addPlayerForm.value;
-    const user: User = { 
-    id : Math.random().toString(36).substr(2),
-    name: name!,
-    role: role! as Role,
-    email: email!,
-    post: post!,
-    phone: phone!,
-    birthday: birthday!,
-    gender: gender! as Gender
+  onSubmit(): void {
+    const { name, role, email, post, phone, birthday, gender } =
+      this.addPlayerForm.value;
+    const user: User = {
+      id: Math.random().toString(36).substr(2),
+      name: name!,
+      role: role! as Role,
+      email: email!,
+      post: post!,
+      phone: phone!,
+      birthday: birthday!,
+      gender: gender! as Gender,
     };
-
     this.dataSource.data = [...this.dataSource.data, user];
+  }
+
+  deleteUserFromTeam(index: number){
+    this.dataSource.data.splice(index, 1);
+    this.dataSource.data = [...this.dataSource.data];
+  };
+
+  modifyUser(index: number){
+
   }
 }

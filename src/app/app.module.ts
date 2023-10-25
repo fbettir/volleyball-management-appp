@@ -36,6 +36,7 @@ import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.
 import { FooterComponent } from './components/footer/footer.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EnumToDescriptionPipe } from './shared/enum-to-description.pipe';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     TournamentPageComponent,
     ContactUsPageComponent,
     AllTeamsPageComponent,
+    EnumToDescriptionPipe,
   ],
   imports: [
     BrowserModule,

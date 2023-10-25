@@ -5,6 +5,7 @@ import { Gender } from '../models/gender';
 import { Post } from '../models/post';
 import { Role } from '../models/role';
 import { User } from '../models/user';
+import { TicketPass } from '../models/ticket-pass';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,8 @@ export class TeamService {
       role: Role.User,
       email: 'tom@mail.com',
       post: Post.Libero,
+      number: 9,
+      ticket: TicketPass.Pass,
       phone: 12345678,
       birthday: new Date(),
       gender: Gender.Man,
@@ -33,6 +36,8 @@ export class TeamService {
       role: Role.User,
       email: 'anaa@mail.com',
       post: Post.Hitter,
+      number: 16,
+      ticket: TicketPass.StudentPass,
       phone: 12345678,
       birthday: new Date(2000, 5, 22),
       gender: Gender.Woman,
@@ -43,6 +48,8 @@ export class TeamService {
       role: Role.User,
       email: 'charles123@mail.com',
       post: Post.Receiver,
+      number: undefined,
+      ticket: TicketPass.Pass,
       phone: 12345678,
       birthday: new Date(),
       gender: Gender.Man,
@@ -52,7 +59,9 @@ export class TeamService {
       name: 'Kate',
       role: Role.User,
       email: 'Kate@mail.com',
-      post: Post.Libero,
+      post: Post.Libero,      
+      ticket: TicketPass.Ticket,
+      number: 2,
       phone: 12345678,
       birthday: new Date(),
       gender: Gender.Woman,
@@ -63,6 +72,8 @@ export class TeamService {
       role: Role.User,
       email: 'John@mail.com',
       post: Post.Receiver,
+      ticket: undefined,
+      number: 3,
       phone: 12345678,
       birthday: new Date(),
       gender: Gender.Man,
@@ -75,6 +86,8 @@ export class TeamService {
       role: Role.User,
       email: 'tom@mail.com',
       post: Post.Libero,
+      number: 12,
+      ticket: TicketPass.Pass,
       phone: 12345678,
       birthday: new Date(),
       gender: Gender.Man,
@@ -85,6 +98,8 @@ export class TeamService {
       role: Role.User,
       email: 'anaa@mail.com',
       post: Post.Hitter,
+      ticket: TicketPass.Pass,
+      number: undefined,
       phone: 12345678,
       birthday: new Date(2000, 5, 22),
       gender: Gender.Woman,
@@ -95,7 +110,9 @@ export class TeamService {
       role: Role.User,
       email: 'charles123@mail.com',
       post: Post.Receiver,
+      ticket: TicketPass.Pass,
       phone: 12345678,
+      number: 10,
       birthday: new Date(),
       gender: Gender.Man,
     }
@@ -107,6 +124,8 @@ export class TeamService {
       role: Role.User,
       email: 'tom@mail.com',
       post: Post.Libero,
+      ticket: TicketPass.Pass,
+      number: undefined,
       phone: 12345678,
       birthday: new Date(),
       gender: Gender.Man,
@@ -117,6 +136,8 @@ export class TeamService {
       role: Role.User,
       email: 'anaa@mail.com',
       post: Post.Hitter,
+      number: 11,
+      ticket: TicketPass.Pass,
       phone: 12345678,
       birthday: new Date(2000, 5, 22),
       gender: Gender.Man,
@@ -129,6 +150,8 @@ export class TeamService {
     role: Role.User,
     email: 'tom@mail.com',
     post: Post.Libero,
+    ticket: TicketPass.Pass,
+    number: 18,
     phone: 12345678,
     birthday: new Date(),
     gender: Gender.Man 
@@ -139,6 +162,8 @@ export class TeamService {
     role: Role.User,
     email: 'tom@mail.com',
     post: Post.Libero,
+    number: 4,
+    ticket: TicketPass.Pass,
     phone: 12345678,
     birthday: new Date(),
     gender: Gender.Man 
@@ -148,7 +173,9 @@ export class TeamService {
     name: 'Coach3',
     role: Role.User,
     email: 'tom@mail.com',
+    ticket: TicketPass.Pass,
     post: Post.Hitter,
+    number: 6,
     phone: 12345678,
     birthday: new Date(),
     gender: Gender.Man 
