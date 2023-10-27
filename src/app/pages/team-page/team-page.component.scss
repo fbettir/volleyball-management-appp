@@ -20,47 +20,62 @@ table {
   padding: 5px;
 }
 
-.team-page-content {
+.team-page-table {
   background-color: var(--white);
-  display: flex;
-  flex-direction: column;
+  width: 100%;
   table {
     background-color: var(--lightgold);
-    @include mat.elevation-transition();
-    @include mat.elevation(2);
-  
-    &:active {
-      @include mat.elevation(8);
+    th {
+      background-color: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 16px;
     }
+    tr:nth-child(even) {background: var(--lightgold)}
+    tr:nth-child(odd) {background: var(--white)}
   }
   button {
     margin-right: 5px;
   }
-  width: 50%;
   padding-bottom: 40px;
   padding-left: 30px;
   padding-right: 40px;
 }
 
 .addPlayerForm {
-  background-color: var(--white);
   display: flex;
   flex-direction: column;
   align-items:normal;
   padding-left: 20px;
-  width: 500px;
   padding-bottom: 30px;
-  
-  mat-form-field {
-    background-color: var(--lightgold);
-  }
+  padding-right: 30px;
 
   .bday{
     padding-bottom: 10px;
   }
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(0,0,0,.04);
+}
+
+  .mat-mdc-text-field-wrapper {
+    background-color: var(--gold);
+  }
+
+  input {
+    background-color: var(--lightgold);
+  }
+  button {
+    background-color: var(--gold);
+    color: var(--white);
+  }
+
+
 }
 
 .members {
+  background-color: var(--white);
   display: flex;
   flex-direction: row;
+  align-items:normal;
+  width: 100%;
 }
