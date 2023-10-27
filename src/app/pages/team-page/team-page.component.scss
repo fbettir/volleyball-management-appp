@@ -21,9 +21,11 @@ table {
 }
 
 .team-page-content {
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   table {
+    background-color: var(--lightgold);
     @include mat.elevation-transition();
     @include mat.elevation(2);
   
@@ -41,12 +43,17 @@ table {
 }
 
 .addPlayerForm {
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   align-items:normal;
   padding-left: 20px;
   width: 500px;
   padding-bottom: 30px;
+  
+  mat-form-field {
+    background-color: var(--lightgold);
+  }
 
   .bday{
     padding-bottom: 10px;
