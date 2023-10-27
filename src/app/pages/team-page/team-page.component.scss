@@ -1,92 +1,106 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
-h1 {
+.team-page-content {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  font-weight: 500;
-  background-color: var(--bgLightgold);
-  padding: 20px;
-  margin: 0px;
-  a {
-    color: var(--red);
-    font-size: medium;
-  }
-}
-
-
-h2 {
-  padding-left: 20px;
-  padding-top: 20px;
-}
-
-table {
-  padding: 5px;
-}
-
-.team-page-table {
-  background-color: var(--bgWhite);
-  width: 100%;
-  table {
+  h1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 500;
     background-color: var(--bgLightgold);
-    th {
-      background-color: var(--gold);
-      color: var(--white);
-      font-weight: 500;
-      font-size: 16px;
+    padding: 20px;
+    margin: 0px;
+    p {
+      color: var(--red);
+      font-size: small;
+      text-align: justify;
+      line-height: 18px;
     }
-    tr:nth-child(even) {background: var(--bgLightgold)}
-    tr:nth-child(odd) {background: var(--bgWhite)}
-  }
-  .delete {
-    background-color: var(--red);  
-  }
-  .edit {
-    background-color: var(--gold);
+    p:hover {
+      color: var(--black);
+    }
   }
 
-  button{
-    margin-right: 5px;
+  .picture {
+    img {
+      width: 100%;
+    }
   }
-  padding-bottom: 40px;
-  padding-left: 30px;
-  padding-right: 40px;
+  
+  h2 {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+  
+  table {
+    padding: 5px;
+  }
+  
+  .members {
+    background-color: var(--bgWhite);
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    width: 100%;
+  }
+
+  .team-page-table {
+    background-color: var(--bgWhite);
+    width: 100%;
+    table {
+      background-color: var(--bgLightgold);
+      th {
+        background-color: var(--gold);
+        color: var(--white);
+        font-weight: 500;
+        font-size: 16px;
+      }
+      tr:nth-child(even) {
+        background: var(--bgLightgold);
+      }
+      tr:nth-child(odd) {
+        background: var(--lighterGold);
+      }
+    }
+    .delete {
+      background-color: var(--red);
+    }
+    .edit {
+      background-color: var(--gold);
+    }
+  
+    button {
+      margin-right: 5px;
+    }
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 40px;
+  }
+  
+  .addPlayerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+  
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+      background-color: rgba(0, 255, 255, 0.5);
+    }
+  
+    .bday {
+      padding-bottom: 10px;
+    }
+  
+    button {
+      background-color: var(--gold);
+      color: var(--bgWhite);
+    }
+  }
+  
+
+  
 }
 
-.addPlayerForm {
-  display: flex;
-  flex-direction: column;
-  align-items:normal;
-  padding-left: 20px;
-  padding-bottom: 30px;
-  padding-right: 30px;
-
-  .bday{
-    padding-bottom: 10px;
-  }
-  .mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: rgba(0,0,0,.04);
-}
-
-  .mat-mdc-text-field-wrapper {
-    background-color: var(--gold);
-  }
-
-  input {
-    background-color: var(--bgLightgold);
-  }
-  button {
-    background-color: var(--gold);
-    color: var(--bgWhite);
-  }
-
-
-}
-
-.members {
-  background-color: var(--bgWhite);
-  display: flex;
-  flex-direction: row;
-  align-items:normal;
-  width: 100%;
-}

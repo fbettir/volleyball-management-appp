@@ -1,165 +1,169 @@
-<h1>
-  Team: {{ team?.name }}
-  <a> {{ team?.description }} </a>
-</h1>
-
-<div class="members">
-  <div class="team-page-table">
-    <h2>Members:</h2>
-    <table mat-table [dataSource]="dataSource">
+<div class="team-page-content">
+  <h1>
+    <!-- <img mat-card-image src="{{ team?.picture }}" /> -->
+    Team: {{ team?.name }}
+    <p>{{ team?.description }}</p>
+  </h1>
+  <div class="picture"><img mat-card-image src="{{ team?.picture }}" /></div>
+  <div class="members">
+    <div class="team-page-table">
+      <h2>Members:</h2>
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let player; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let player">{{ player.name }}</td>
+        </ng-container>
+        <ng-container matColumnDef="post">
+          <th mat-header-cell *matHeaderCellDef>Post</th>
+          <td mat-cell *matCellDef="let player">{{ player.post }}</td>
+        </ng-container>
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef>Number</th>
+          <td mat-cell *matCellDef="let player">{{ player.number }}</td>
+        </ng-container>
+        <ng-container matColumnDef="ticket">
+          <th mat-header-cell *matHeaderCellDef>Ticket/Pass</th>
+          <td mat-cell *matCellDef="let player">{{ player.ticket }}</td>
+        </ng-container>
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef>birthday</th>
+          <td mat-cell *matCellDef="let player">{{ player.birthday }}</td>
+        </ng-container>
+        <ng-container matColumnDef="tools">
+          <th mat-header-cell *matHeaderCellDef>Tools</th>
+          <td mat-cell *matCellDef="let player; let i = index">
+            <button mat-mini-fab class="delete" (click)="deleteUserFromTeam(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-mini-fab class="edit" (click)="openDialog(i)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <form
+      class="addPlayerForm"
+      [formGroup]="addPlayerForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <h2>Add member</h2>
+      <mat-form-field appearance="fill">
+        <mat-label for="name">Name</mat-label>
+        <input matInput id="name" formControlName="name" required />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="email">Email</mat-label>
+        <input
+          matInput
+          id="email"
+          formControlName="email"
+          placeholder="Favorite food"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="bday" appearance="fill">
+        <mat-label for="birthday">Birthday</mat-label>
+        <input
+          matInput
+          id="birthday"
+          formControlName="birthday"
+          [matDatepicker]="picker"
+          required
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label for="phone">Phone</mat-label>
+        <input
+          type="number"
+          id="phone"
+          formControlName="phone"
+          matInput
+          placeholder="+3610000000"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label for="number">Number</mat-label>
+        <input
+          type="number"
+          id="number"
+          formControlName="number"
+          matInput
+          placeholder="+3610000000"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label for="post">Post</mat-label>
+        <mat-select id="post" formControlName="post" required>
+          <mat-option value="Hitter">Hitter</mat-option>
+          <mat-option value="Receiver">Receiver</mat-option>
+          <mat-option value="Setter">Setter</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label for="ticket">Ticket</mat-label>
+        <mat-select id="ticket" formControlName="ticket" required>
+          <mat-option value="StudentTicket">Student Ticket</mat-option>
+          <mat-option value="Ticket">Ticket</mat-option>
+          <mat-option value="StudentPass">Student Pass</mat-option>
+          <mat-option value="Pass">Pass</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label for="gender">Gender</mat-label>
+        <mat-select id="gender" formControlName="gender" required>
+          <mat-option value="Man">Man</mat-option>
+          <mat-option value="Woman">Woman</mat-option>
+          <mat-option value="Other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button>
+        <mat-icon>add</mat-icon>
+        Add member
+      </button>
+    </form>
+  </div>
+  <mat-divider></mat-divider>
+  <div></div>
+  <div class="training-content">
+    <h2>Trainings:</h2>
+    <table mat-table [dataSource]="dataSourceTrainings" class="mat-elevation-z8">
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let player; let i = index">{{ i + 1 }}</td>
+        <td mat-cell *matCellDef="let training; let i = index">{{ i + 1 }}</td>
       </ng-container>
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let player">{{ player.name }}</td>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let training">{{ training.date }}</td>
       </ng-container>
-      <ng-container matColumnDef="post">
-        <th mat-header-cell *matHeaderCellDef>Post</th>
-        <td mat-cell *matCellDef="let player">{{ player.post }}</td>
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef>Location</th>
+        <td mat-cell *matCellDef="let training">{{ training.location }}</td>
       </ng-container>
-      <ng-container matColumnDef="number">
-        <th mat-header-cell *matHeaderCellDef>Number</th>
-        <td mat-cell *matCellDef="let player">{{ player.number }}</td>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let training">{{ training.description }}</td>
       </ng-container>
-      <ng-container matColumnDef="ticket">
-        <th mat-header-cell *matHeaderCellDef>Ticket/Pass</th>
-        <td mat-cell *matCellDef="let player">{{ player.ticket }}</td>
-      </ng-container>
-      <ng-container matColumnDef="age">
-        <th mat-header-cell *matHeaderCellDef>birthday</th>
-        <td mat-cell *matCellDef="let player">{{ player.birthday }}</td>
-      </ng-container>
-      <ng-container matColumnDef="tools">
-        <th mat-header-cell *matHeaderCellDef>Tools</th>
-        <td mat-cell *matCellDef="let player; let i = index">
-          <button mat-mini-fab class="delete" (click)="deleteUserFromTeam(i)">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button mat-mini-fab class="edit" (click)="openDialog(i)">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsTrainings"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsTrainings"></tr>
     </table>
   </div>
-  <form
-    class="addPlayerForm"
-    [formGroup]="addPlayerForm"
-    (ngSubmit)="onSubmit()"
-  >
-    <h2>Add member</h2>
-    <mat-form-field appearance="fill">
-      <mat-label for="name">Name</mat-label>
-      <input matInput id="name" formControlName="name" required />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label for="email">Email</mat-label>
-      <input
-        matInput
-        id="email"
-        formControlName="email"
-        placeholder="Favorite food"
-        required
-      />
-    </mat-form-field>
-    <mat-form-field class="bday" appearance="fill">
-      <mat-label for="birthday">Birthday</mat-label>
-      <input
-        matInput
-        id="birthday"
-        formControlName="birthday"
-        [matDatepicker]="picker"
-        required
-      />
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label for="phone">Phone</mat-label>
-      <input
-        type="number"
-        id="phone"
-        formControlName="phone"
-        matInput
-        placeholder="+3610000000"
-        required
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label for="number">Number</mat-label>
-      <input
-        type="number"
-        id="number"
-        formControlName="number"
-        matInput
-        placeholder="+3610000000"
-        required
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label for="post">Post</mat-label>
-      <mat-select id="post" formControlName="post" required>
-        <mat-option value="Hitter">Hitter</mat-option>
-        <mat-option value="Receiver">Receiver</mat-option>
-        <mat-option value="Setter">Setter</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label for="ticket">Ticket</mat-label>
-      <mat-select id="ticket" formControlName="ticket" required>
-        <mat-option value="StudentTicket">Student Ticket</mat-option>
-        <mat-option value="Ticket">Ticket</mat-option>
-        <mat-option value="StudentPass">Student Pass</mat-option>
-        <mat-option value="Pass">Pass</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label for="gender">Gender</mat-label>
-      <mat-select id="gender" formControlName="gender" required>
-        <mat-option value="Man">Man</mat-option>
-        <mat-option value="Woman">Woman</mat-option>
-        <mat-option value="Other">Other</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <button mat-raised-button>
-      <mat-icon>add</mat-icon>
-      Add member
-    </button>
-  </form>
-</div>
-<mat-divider></mat-divider>
-<div></div>
-<div class="training-content">
-  <h2>Trainings:</h2>
-  <table mat-table [dataSource]="dataSourceTrainings" class="mat-elevation-z8">
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let training; let i = index">{{ i + 1 }}</td>
-    </ng-container>
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef>Date</th>
-      <td mat-cell *matCellDef="let training">{{ training.date }}</td>
-    </ng-container>
-    <ng-container matColumnDef="location">
-      <th mat-header-cell *matHeaderCellDef>Location</th>
-      <td mat-cell *matCellDef="let training">{{ training.location }}</td>
-    </ng-container>
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef>Description</th>
-      <td mat-cell *matCellDef="let training">{{ training.description }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumnsTrainings"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumnsTrainings"></tr>
-  </table>
+  
 </div>

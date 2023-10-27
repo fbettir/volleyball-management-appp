@@ -5,6 +5,7 @@ export interface Team {
   id: number;
   coach: User;
   name: string;
+  picture?: string;
   description: string;
   members: User[];
   trainings: Training[];
