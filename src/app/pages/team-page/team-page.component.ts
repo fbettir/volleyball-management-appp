@@ -11,6 +11,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { v4 as uuidv4 } from 'uuid';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { UpdateDialogComponent } from 'src/app/components/update-dialog/update-dialog.component';
+import { Training } from 'src/app/models/training';
 @Component({
   selector: 'app-team-page',
   templateUrl: './team-page.component.html',
@@ -20,7 +21,9 @@ export class TeamPageComponent implements OnInit {
   team?: Team = undefined;
   teamId = 1;
   dataSource = new MatTableDataSource<User>([]);
+  dataSourceTrainings = new MatTableDataSource<Training>([]);
   displayedColumns: string[] = ['position', 'name', 'ticket', 'post', 'number', 'tools'];
+  displayedColumnsTrainings: string[] = ['position', 'date', 'location', 'description'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,6 +36,7 @@ export class TeamPageComponent implements OnInit {
     this.teamId = parseInt(this.route.snapshot.params['teamId'], 10);
     this.team = this.teamService.getTeamById(this.teamId);
     this.dataSource.data = this.team?.members || [];
+    this.dataSourceTrainings.data = this.team?.trainings || [];
   }
 
   addPlayerForm = this.formBuilder.group({
@@ -57,6 +61,7 @@ export class TeamPageComponent implements OnInit {
     birthday: birthday!,
     gender: gender! as Gender
     };
+    console.log(user);
     this.dataSource.data = [...this.dataSource.data, user];
   }
 
@@ -65,10 +70,6 @@ export class TeamPageComponent implements OnInit {
     this.dataSource.data = [...this.dataSource.data];
   };
 
-  modifyUser(index: number){}
-
-  data: User | undefined;
-
   openDialog(index: number): void {
     console.log(this.team?.members);
     const dialogRef = this.dialog.open(UpdateDialogComponent, {
@@ -76,11 +77,9 @@ export class TeamPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.data = result;
+      if(!result) this.dataSource.data = [...this.dataSource.data];
       this.dataSource.data.splice(index, 1, result);
       this.dataSource.data = [...this.dataSource.data];
     });
   }
-
-
 }

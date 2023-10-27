@@ -1,9 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Gender } from 'src/app/models/gender';
-import { Post } from 'src/app/models/post';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,10 +10,9 @@ import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-update-dialog',
   templateUrl: './update-dialog.component.html',
-  styleUrls: ['./update-dialog.component.scss']
+  styleUrls: ['./update-dialog.component.scss'],
 })
 export class UpdateDialogComponent {
-
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<UpdateDialogComponent>,
@@ -38,24 +36,22 @@ export class UpdateDialogComponent {
     this.dialogRef.close();
   }
 
-  onSubmit(): void { 
+  onSubmit(): void {
     console.log(this.dataSource);
     console.log(this.data);
-    const {name, role, email, post, phone, birthday, gender} = this.addPlayerForm.value;
-    const user: User = { 
-    id : uuidv4(),
-    name: name!,
-    role: role! as Role,
-    email: email!,
-    post: post!,
-    phone: phone!,
-    birthday: birthday!,
-    gender: gender! as Gender
+    const { name, role, email, post, phone, birthday, gender } =
+      this.addPlayerForm.value;
+    const user: User = {
+      id: uuidv4(),
+      name: name!,
+      role: role! as Role,
+      email: email!,
+      post: post!,
+      phone: phone!,
+      birthday: birthday!,
+      gender: gender! as Gender,
     };
     this.data = user;
     console.log(this.data);
-
-
   }
-
 }

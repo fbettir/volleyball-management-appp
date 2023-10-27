@@ -10,7 +10,7 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let player let i = index;"> {{i+1}}</td>
+        <td mat-cell *matCellDef="let player; let i = index">{{ i + 1 }}</td>
       </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -34,7 +34,7 @@
       </ng-container>
       <ng-container matColumnDef="tools">
         <th mat-header-cell *matHeaderCellDef>Tools</th>
-        <td mat-cell *matCellDef="let player, let i = index">
+        <td mat-cell *matCellDef="let player; let i = index">
           <button mat-mini-fab color="warn" (click)="deleteUserFromTeam(i)">
             <mat-icon>delete</mat-icon>
           </button>
@@ -54,7 +54,7 @@
       [formGroup]="addPlayerForm"
       (ngSubmit)="onSubmit()"
     >
-    <h2>Add member</h2>
+      <h2>Add member</h2>
 
       <mat-form-field appearance="fill">
         <mat-label for="name">Name</mat-label>
@@ -125,4 +125,30 @@
       </button>
     </form>
   </div>
+</div>
+<mat-divider></mat-divider>
+<div></div>
+<div class="team-page-content">
+  <h2>Trainings:</h2>
+  <table mat-table [dataSource]="dataSourceTrainings" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let training; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let training">{{ training.date }}</td>
+    </ng-container>
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef>Location</th>
+      <td mat-cell *matCellDef="let training">{{ training.location }}</td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let training">{{ training.description }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsTrainings"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsTrainings"></tr>
+  </table>
 </div>
