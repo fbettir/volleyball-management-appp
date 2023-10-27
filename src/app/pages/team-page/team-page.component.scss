@@ -4,16 +4,20 @@ h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 20px;
+  font-weight: 500;
+  background-color: var(--bgLightgold);
+  padding: 20px;
+  margin: 0px;
   a {
     color: var(--red);
     font-size: medium;
   }
 }
 
+
 h2 {
-  margin-left: 20px;
-  margin-top: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
 }
 
 table {
@@ -21,20 +25,27 @@ table {
 }
 
 .team-page-table {
-  background-color: var(--white);
+  background-color: var(--bgWhite);
   width: 100%;
   table {
-    background-color: var(--lightgold);
+    background-color: var(--bgLightgold);
     th {
       background-color: var(--gold);
       color: var(--white);
-      font-weight: 700;
+      font-weight: 500;
       font-size: 16px;
     }
-    tr:nth-child(even) {background: var(--lightgold)}
-    tr:nth-child(odd) {background: var(--white)}
+    tr:nth-child(even) {background: var(--bgLightgold)}
+    tr:nth-child(odd) {background: var(--bgWhite)}
   }
-  button {
+  .delete {
+    background-color: var(--red);  
+  }
+  .edit {
+    background-color: var(--gold);
+  }
+
+  button{
     margin-right: 5px;
   }
   padding-bottom: 40px;
@@ -62,18 +73,18 @@ table {
   }
 
   input {
-    background-color: var(--lightgold);
+    background-color: var(--bgLightgold);
   }
   button {
     background-color: var(--gold);
-    color: var(--white);
+    color: var(--bgWhite);
   }
 
 
 }
 
 .members {
-  background-color: var(--white);
+  background-color: var(--bgWhite);
   display: flex;
   flex-direction: row;
   align-items:normal;

@@ -25,6 +25,8 @@ export class UpdateDialogComponent {
     name: this.dataSource.data[0].name,
     role: this.dataSource.data[0].role,
     email: this.dataSource.data[0].email,
+    ticket: this.dataSource.data[0].ticket,
+    number: this.dataSource.data[0].number,
     post: this.dataSource.data[0].post,
     phone: this.dataSource.data[0].phone,
     birthday: this.dataSource.data[0].birthday,
@@ -39,13 +41,15 @@ export class UpdateDialogComponent {
   onSubmit(): void {
     console.log(this.dataSource);
     console.log(this.data);
-    const { name, role, email, post, phone, birthday, gender } =
+    const { name, role, email, post, phone, ticket, number, birthday, gender } =
       this.addPlayerForm.value;
     const user: User = {
       id: uuidv4(),
       name: name!,
       role: role! as Role,
       email: email!,
+      ticket: ticket!,
+      number: number!,
       post: post!,
       phone: phone!,
       birthday: birthday!,

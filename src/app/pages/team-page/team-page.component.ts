@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { UpdateDialogComponent } from 'src/app/components/update-dialog/update-dialog.component';
 import { Training } from 'src/app/models/training';
+import { TicketPass } from 'src/app/models/ticket-pass';
 @Component({
   selector: 'app-team-page',
   templateUrl: './team-page.component.html',
@@ -44,20 +45,24 @@ export class TeamPageComponent implements OnInit {
     role: Role.User,
     email: 'example@email.com',
     post: Post.Receiver,
+    ticket: TicketPass.Ticket,
     phone: 0,
+    number: 0,
     birthday: new Date(),
     gender: Gender.Other,
   });
 
   onSubmit(): void { 
-    const {name, role, email, post, phone, birthday, gender} = this.addPlayerForm.value;
+    const {name, role, email, post, phone, ticket, number, birthday, gender} = this.addPlayerForm.value;
     const user: User = { 
     id : uuidv4(),
     name: name!,
     role: role! as Role,
     email: email!,
     post: post!,
+    ticket: ticket!,
     phone: phone!,
+    number: number!,
     birthday: birthday!,
     gender: gender! as Gender
     };
