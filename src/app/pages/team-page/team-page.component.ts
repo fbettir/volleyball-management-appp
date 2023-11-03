@@ -13,6 +13,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
 import { UpdateDialogComponent } from 'src/app/components/update-dialog/update-dialog.component';
 import { Training } from 'src/app/models/training';
 import { TicketPass } from 'src/app/models/ticket-pass';
+import { TrainingsDialogComponent } from 'src/app/components/trainings-dialog/trainings-dialog.component';
 @Component({
   selector: 'app-team-page',
   templateUrl: './team-page.component.html',
@@ -24,7 +25,7 @@ export class TeamPageComponent implements OnInit {
   dataSource = new MatTableDataSource<User>([]);
   dataSourceTrainings = new MatTableDataSource<Training>([]);
   displayedColumns: string[] = ['position', 'name', 'ticket', 'post', 'number', 'tools'];
-  displayedColumnsTrainings: string[] = ['position', 'date', 'location', 'description'];
+  displayedColumnsTrainings: string[] = ['position', 'date', 'location', 'description', 'tools'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -66,7 +67,6 @@ export class TeamPageComponent implements OnInit {
     birthday: birthday!,
     gender: gender! as Gender
     };
-    console.log(user);
     this.dataSource.data = [...this.dataSource.data, user];
   }
 
@@ -75,16 +75,55 @@ export class TeamPageComponent implements OnInit {
     this.dataSource.data = [...this.dataSource.data];
   };
 
-  openDialog(index: number): void {
-    console.log(this.team?.members);
-    const dialogRef = this.dialog.open(UpdateDialogComponent, {
-      data: this.dataSource.data[index]
-    });
+  deleteTrainingFromTeam(index: number){
+    this.dataSourceTrainings.data.splice(index, 1);
+    this.dataSourceTrainings.data = [...this.dataSourceTrainings.data];
+  }
 
+  openDialog(index: number, whatToOpen: string): void {
+    var dialogRef = null;
+    if(whatToOpen == 'trainings'){
+      dialogRef = this.dialog.open(TrainingsDialogComponent, {
+        data: this.dataSourceTrainings.data[index]
+      });
+    } else {
+      dialogRef = this.dialog.open(UpdateDialogComponent, {
+        data: this.dataSource.data[index]
+      });
+    }
+    
     dialogRef.afterClosed().subscribe(result => {
       if(!result) this.dataSource.data = [...this.dataSource.data];
       this.dataSource.data.splice(index, 1, result);
       this.dataSource.data = [...this.dataSource.data];
     });
   }
+
+  
+  // openDialog(index: number): void {
+  //   console.log(this.team?.members);
+  //   const dialogRef = this.dialog.open(UpdateDialogComponent, {
+  //     data: this.dataSource.data[index]
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if(!result) this.dataSource.data = [...this.dataSource.data];
+  //     this.dataSource.data.splice(index, 1, result);
+  //     this.dataSource.data = [...this.dataSource.data];
+  //   });
+  // }
+
+  openDialogTraining(index: number): void {
+    console.log(this.team?.trainings);
+    const dialogRef = this.dialog.open(TrainingsDialogComponent, {
+      data: this.dataSourceTrainings.data[index]
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(!result) this.dataSourceTrainings.data = [...this.dataSourceTrainings.data];
+      this.dataSourceTrainings.data.splice(index, 1, result);
+      this.dataSourceTrainings.data = [...this.dataSourceTrainings.data];
+    });
+  }
+
 }

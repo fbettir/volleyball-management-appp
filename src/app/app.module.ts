@@ -39,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EnumToDescriptionPipe } from './shared/enum-to-description.pipe';
 import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TrainingsDialogComponent } from './components/trainings-dialog/trainings-dialog.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AllTeamsPageComponent,
     EnumToDescriptionPipe,
     UpdateDialogComponent,
+    TrainingsDialogComponent,
   ],
   imports: [
     BrowserModule,

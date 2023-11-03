@@ -39,8 +39,6 @@ export class UpdateDialogComponent {
   }
 
   onSubmit(): void {
-    console.log(this.dataSource);
-    console.log(this.data);
     const { name, role, email, post, phone, ticket, number, birthday, gender } =
       this.addPlayerForm.value;
     const user: User = {
@@ -56,6 +54,5 @@ export class UpdateDialogComponent {
       gender: gender! as Gender,
     };
     this.data = user;
-    console.log(this.data);
   }
 }

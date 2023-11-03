@@ -279,14 +279,14 @@ export class TeamService {
 
   trainings1: Training[] = [
     {
-    id: 1, 
+    id: '1', 
     participants: this.players1,
     location: "Somewhere",
     date: new Date(),
     description: "Team 1 training1"
     },  
     {
-      id: 2, 
+      id: '2', 
       participants: this.players1,
       location: "Somewhere2",
       date: new Date(),
@@ -295,14 +295,14 @@ export class TeamService {
   ]
   trainings2: Training[] = [
     {
-    id: 1, 
+    id: '1', 
     participants: this.players2,
     location: "Somewhere",
     date: new Date(),
     description: "Team 2 training1"
     },  
     {
-      id: 2, 
+      id: '2', 
       participants: this.players2,
       location: "Somewhere2",
       date: new Date(),
@@ -310,7 +310,7 @@ export class TeamService {
     }  
   ]
   trainings3: Training[] = [{
-    id: 1, 
+    id: '1', 
     participants: this.players3,
     location: "Somewhere",
     date: new Date(),

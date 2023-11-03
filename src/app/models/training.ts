@@ -1,7 +1,7 @@
 import { User } from './user';
 
 export interface Training {
-  id: number;
+  id: string;
   participants: User[];
   location: string;
   date: Date;
