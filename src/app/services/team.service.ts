@@ -6,6 +6,7 @@ import { Post } from '../models/post';
 import { Role } from '../models/role';
 import { User } from '../models/user';
 import { TicketPass } from '../models/ticket-pass';
+import { Tournament } from '../models/tournament';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ import { TicketPass } from '../models/ticket-pass';
 export class TeamService {
   getTeamById(teamId: number): Team {
     return this.teams.find(team => team.id === teamId)!;
+  }
+  getTournamentById(tournamentId: number): Tournament {
+    return this.tournaments.find(tournament => tournament.id === tournamentId)!;
   }
 
   constructor() { }
@@ -344,6 +348,45 @@ export class TeamService {
     picture : "./../assets/kepp.jpg",
     trainings: this.trainings3
   }
+
+  tournaments: Tournament[] = [
+    {
+      id : 1,
+      name: "Tournament September",
+      teams: [this.team1, this.team2],
+      date: new Date(),
+      location: "Road1",
+      description: "",
+      picture: "./../assets/kepp.jpg",
+    },
+    {
+      id : 2,
+      name: "Tournament October",
+      teams: [this.team1, this.team3],
+      date: new Date(),
+      location: "Road2",
+      description: "",
+      picture: "./../assets/kepp.jpg",
+    },
+    {
+      id : 3,
+      name: "Tournament November",
+      teams: [this.team1, this.team2, this.team3],
+      date: new Date(),
+      location: "Road3",
+      description: "",
+      picture: "./../assets/kepp.jpg",
+    },
+    {
+      id : 4,
+      name: "Tournament December",
+      teams: [this.team3],
+      date: new Date(),
+      location: "Road4",
+      description: "",
+      picture: "./../assets/kepp.jpg",
+    },
+  ]
 
   teams: Team[] = [this.team1, this.team2, this.team3];
   

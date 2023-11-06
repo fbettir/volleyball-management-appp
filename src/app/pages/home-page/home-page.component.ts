@@ -1,19 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/post';
+import { Tournament } from 'src/app/models/tournament';
+import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+export class HomePageComponent {
 
-  pageIndex: number = 0;
-  size: number = 10;
+  tournaments: Tournament[] = [];
+  constructor(teamService: TeamService) {
+    this.tournaments = teamService.tournaments;
+  }
 
-  posts: Post[] = [Post.Hitter];
-
-  ngOnInit(): void {}
 }
