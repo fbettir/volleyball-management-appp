@@ -35,10 +35,15 @@ export class TeamPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.teamId = parseInt(this.route.snapshot.params['teamId'], 10);
-    this.team = this.teamService.getTeamById(this.teamId);
-    this.dataSource.data = this.team?.members || [];
+    this.teamId = this.route.snapshot.params['teamId'];
+    this.dataSource.data = [];
+    this.dataSourceTrainings.data = [];
+
+    this.teamService.getTeamById(this.teamId).subscribe(team => {
+      this.team = team;
+      this.dataSource.data = this.team?.members || [];
     this.dataSourceTrainings.data = this.team?.trainings || [];
+    });
   }
 
   addPlayerForm = this.formBuilder.group({

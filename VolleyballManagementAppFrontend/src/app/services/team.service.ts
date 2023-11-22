@@ -7,19 +7,22 @@ import { Role } from '../models/role';
 import { User } from '../models/user';
 import { TicketPass } from '../models/ticket-pass';
 import { Tournament } from '../models/tournament';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
-  getTeamById(teamId: number): Team {
-    return this.teams.find(team => team.id === teamId)!;
+  getTeamById(teamId: number): Observable<Team> {
+    // return this.teams.find(team => team.id === teamId)!;
+    return this.httpClient.get<Team>(`https://localhost:44359/team/${teamId}`);
   }
   getTournamentById(tournamentId: number): Tournament {
     return this.tournaments.find(tournament => tournament.id === tournamentId)!;
   }
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   players1: User[] = [ 
     {
