@@ -18,6 +18,12 @@ export class TeamService {
     // return this.teams.find(team => team.id === teamId)!;
     return this.httpClient.get<Team>(`https://localhost:44359/team/${teamId}`);
   }
+
+  getAllTeams(): Observable<Team[]> {
+    // return this.teams.find(team => team.id === teamId)!;
+    return this.httpClient.get<Team[]>(`https://localhost:44359/team/all`);
+  }
+
   getTournamentById(tournamentId: number): Tournament {
     return this.tournaments.find(tournament => tournament.id === tournamentId)!;
   }
