@@ -11,7 +11,6 @@ namespace VolleyballManagementAppBackend.Entities
     public Guid Id { get; set; }
 
     [Required]
-    [ForeignKey(nameof(User))]
     public Guid UserId { get; set; }
     public DateTime Birthday { get; set; }
     public string Phone { get; set; }
