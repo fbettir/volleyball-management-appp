@@ -2,7 +2,7 @@ import { Training } from './training';
 import { User } from './user';
 
 export interface Team {
-  id: number;
+  id: string;
   coach: User;
   name: string;
   picture?: string;

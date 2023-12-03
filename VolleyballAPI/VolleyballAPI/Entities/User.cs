@@ -15,6 +15,5 @@ namespace VolleyballManagementAppBackend.Entities
 
     public virtual ICollection<Role> Roles { get; set; }  //lazy loading
 
-    //delete teamID from the tale in database
   }
 }

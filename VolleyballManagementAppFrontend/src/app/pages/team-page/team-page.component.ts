@@ -21,7 +21,7 @@ import { TrainingsDialogComponent } from 'src/app/components/trainings-dialog/tr
 })
 export class TeamPageComponent implements OnInit {
   team?: Team = undefined;
-  teamId = 1;
+  teamId : string = "";
   dataSource = new MatTableDataSource<User>([]);
   dataSourceTrainings = new MatTableDataSource<Training>([]);
   displayedColumns: string[] = ['position', 'name', 'ticket', 'post', 'number', 'tools'];

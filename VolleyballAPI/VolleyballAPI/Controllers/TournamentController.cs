@@ -8,59 +8,66 @@ using VolleyballManagementAppBackend.Services;
 
 namespace VolleyballAPI.Controllers
 {
-    [Route("tournament")]
+    [Route("tournaments")]
     [ApiVersion("1.0")]
     [ApiController]
     public class TournamentController : ControllerBase
     {
-        private readonly ITournamentService _tournamentService;
+        private readonly ITournamentService _tournamentsService;
 
         public TournamentController(ITournamentService tournamentService)
         {
-            _tournamentService = tournamentService;
+            _tournamentsService = tournamentService;
         }
 
         [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<TournamentDto>> Get(Guid id)
+        public async Task<ActionResult<TournamentDto>> GetTournamentById(Guid id)
         {
-            return await _tournamentService.GetTournamentAsync(id);
+            return await _tournamentsService.GetTournamentAsync(id);
         }
 
         [MapToApiVersion("1.0")]
-        [HttpGet("all")]
-        public async Task<ActionResult<IEnumerable<TournamentDto>>> Get()
+        [HttpGet()]
+        public async Task<ActionResult<IEnumerable<TournamentDto>>> GetAllTournaments()
         {
-            return (await _tournamentService.GetTournamentsAsync()).ToList();
+            return (await _tournamentsService.GetTournamentsAsync()).ToList();
         }
 
         [MapToApiVersion("1.0")]
-        [HttpPost("add")]
+        [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<TournamentDto>> Post([FromBody] TournamentDto tournament)
+        public async Task<ActionResult<TournamentDto>> CreateTournament([FromBody] TournamentDto tournament)
         {
-            var created = await _tournamentService.InsertTournamentAsync(tournament);
-            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
+            var created = await _tournamentsService.InsertTournamentAsync(tournament);
+            return CreatedAtAction(nameof(GetTournamentById), new { id = created.Id }, created);
         }
 
         [MapToApiVersion("1.0")]
-        [HttpPut("update/{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> Put(Guid id, [FromBody] TournamentDto value)
+        public async Task<ActionResult> UpdateTournament(Guid id, [FromBody] TournamentDto value)
         {
-            await _tournamentService.UpdateTournamentAsync(value, id);
+            await _tournamentsService.UpdateTournamentAsync(value, id);
             return NoContent();
         }
 
         [MapToApiVersion("1.0")]
-        [HttpDelete("{id}/delete")]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<ActionResult> DeleteTournament(Guid id)
         {
-            await _tournamentService.DeleteTournamentAsync(id);
+            await _tournamentsService.DeleteTournamentAsync(id);
             return NoContent();
         }
 
-
+        [MapToApiVersion("1.0")]
+        [HttpPost("{id}/teams")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult> RegisterTeam(Guid id, [FromBody] RegisterTeamDto team)
+        {
+            await _tournamentsService.RegisterTeamAsync(id, team.TeamId);
+            return NoContent();
+        }
     }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tournament } from 'src/app/models/tournament';
 import { TeamService } from 'src/app/services/team.service';
+import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,8 +11,10 @@ import { TeamService } from 'src/app/services/team.service';
 export class HomePageComponent {
 
   tournaments: Tournament[] = [];
-  constructor(teamService: TeamService) {
-    this.tournaments = teamService.tournaments;
+  constructor(tournamentService: TournamentService) {
+    tournamentService.getAllTournaments().subscribe(t => {
+      this.tournaments = t;
+    });
   }
 
 }

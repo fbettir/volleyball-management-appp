@@ -90,14 +90,14 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4a82d691-d00c-4237-b022-e56ad19ce334"),
-                            Birthday = new DateTime(2023, 11, 22, 13, 24, 57, 66, DateTimeKind.Local).AddTicks(4348),
+                            Id = new Guid("562050d2-c16c-4aa4-b416-b893b6650471"),
+                            Birthday = new DateTime(2023, 11, 27, 12, 1, 5, 701, DateTimeKind.Local).AddTicks(2939),
                             Gender = 0,
                             Phone = "",
                             PlayerNumber = 0,
                             Posts = "Libero,Hitter,Receiver",
                             TicketPass = 0,
-                            UserId = new Guid("0abf78b9-a84d-4827-8950-b65dc1fdcaf7")
+                            UserId = new Guid("adaeb173-cdb0-468c-81f1-1ed8dd6a45fe")
                         });
                 });
 
@@ -127,32 +127,47 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("84535fec-2d14-4ced-ab21-c2117f272367"),
+                            Id = new Guid("ef063a74-5423-4967-9e4c-8a422885f2bc"),
                             Description = "Description Team 1",
                             Name = "Team 1",
                             Picture = "pic1"
                         },
                         new
                         {
-                            Id = new Guid("65391f78-4359-43a7-bcab-3806517461ba"),
+                            Id = new Guid("232c7086-dae5-4d03-8b30-f11ebf738326"),
                             Description = "Description Team 2",
                             Name = "Team 2",
                             Picture = "pic2"
                         },
                         new
                         {
-                            Id = new Guid("735fa8ba-935a-4809-82cf-7c3f1d94a493"),
+                            Id = new Guid("99ac56c3-bd0b-4a57-baf0-40e8201840c9"),
                             Description = "Description Team 3",
                             Name = "Team 3",
                             Picture = "pic3"
                         },
                         new
                         {
-                            Id = new Guid("9e50c7bd-c9f6-475b-8aaa-1b5196bb078f"),
+                            Id = new Guid("25ff1a11-cd5a-430d-9e3b-a179cb18c8f8"),
                             Description = "Description Team 4",
                             Name = "Team 4",
                             Picture = "pic4"
                         });
+                });
+
+            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.TeamCoach", b =>
+                {
+                    b.Property<Guid>("TeamId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TeamId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TeamCoach");
                 });
 
             modelBuilder.Entity("VolleyballManagementAppBackend.Entities.TeamPlayer", b =>
@@ -172,8 +187,8 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            TeamId = new Guid("84535fec-2d14-4ced-ab21-c2117f272367"),
-                            PlayerId = new Guid("4a82d691-d00c-4237-b022-e56ad19ce334")
+                            TeamId = new Guid("ef063a74-5423-4967-9e4c-8a422885f2bc"),
+                            PlayerId = new Guid("562050d2-c16c-4aa4-b416-b893b6650471")
                         });
                 });
 
@@ -203,20 +218,15 @@ namespace VolleyballAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("TeamId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
 
                     b.ToTable("Tournaments");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6dd66133-9bf7-485a-b8b9-6203f80ae95e"),
-                            Date = new DateTime(2023, 11, 22, 13, 24, 57, 66, DateTimeKind.Local).AddTicks(4195),
+                            Id = new Guid("33356da5-aa7f-417e-90ff-a0819d96ec71"),
+                            Date = new DateTime(2023, 11, 27, 12, 1, 5, 701, DateTimeKind.Local).AddTicks(2665),
                             Description = "Description Team 1",
                             Location = "Location tournament 1",
                             Name = "Tournament 1",
@@ -224,8 +234,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a6a60656-24de-47ef-b0d8-7726814a3056"),
-                            Date = new DateTime(2023, 11, 22, 13, 24, 57, 66, DateTimeKind.Local).AddTicks(4242),
+                            Id = new Guid("46021cfa-1c20-4169-9dee-2a38cb719c61"),
+                            Date = new DateTime(2023, 11, 27, 12, 1, 5, 701, DateTimeKind.Local).AddTicks(2789),
                             Description = "Description Tournament 2",
                             Location = "Location tournament 2",
                             Name = "Tournament 2",
@@ -250,7 +260,7 @@ namespace VolleyballAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("TeamId")
+                    b.Property<Guid>("TeamId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -283,19 +293,14 @@ namespace VolleyballAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("TeamId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
 
                     b.ToTable("User");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0abf78b9-a84d-4827-8950-b65dc1fdcaf7"),
+                            Id = new Guid("adaeb173-cdb0-468c-81f1-1ed8dd6a45fe"),
                             Email = "user1@user.com",
                             Name = "Name 1",
                             Password = "pass1",
@@ -303,7 +308,7 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d2dcf26d-eda2-4ff2-905a-fddf9e1e1343"),
+                            Id = new Guid("a73ea236-5afd-4425-8345-e6f14755b1e3"),
                             Email = "user2@user.com",
                             Name = "Name 2",
                             Password = "pass2",
@@ -311,7 +316,7 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7698fb6c-c41a-472b-a088-68aecf275b9b"),
+                            Id = new Guid("1e79d4af-855e-49db-a0f4-48c82b1fe7c7"),
                             Email = "user3@user.com",
                             Name = "Name 3",
                             Password = "pass3",
@@ -319,7 +324,7 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f78a8aad-40e3-4da0-a89e-3cc1c10edf20"),
+                            Id = new Guid("0f944250-9f76-497d-9206-a87d8542814e"),
                             Email = "user4@user.com",
                             Name = "Name 4",
                             Password = "pass4",
@@ -327,7 +332,7 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fc8cf60e-a4e9-4c56-a577-1d2eff37244d"),
+                            Id = new Guid("ba97cc4f-d884-4d19-888e-de4b68a53624"),
                             Email = "user5@user.com",
                             Name = "Name 5",
                             Password = "pass5",
@@ -338,7 +343,7 @@ namespace VolleyballAPI.Migrations
             modelBuilder.Entity("VolleyballAPI.Entities.TournamentCompetitor", b =>
                 {
                     b.HasOne("VolleyballManagementAppBackend.Entities.Team", "Team")
-                        .WithMany()
+                        .WithMany("Tournaments")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -384,6 +389,25 @@ namespace VolleyballAPI.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.TeamCoach", b =>
+                {
+                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", "Team")
+                        .WithMany("Coaches")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballManagementAppBackend.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Team");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("VolleyballManagementAppBackend.Entities.TeamPlayer", b =>
                 {
                     b.HasOne("VolleyballManagementAppBackend.Entities.PlayerDetails", "Player")
@@ -403,25 +427,15 @@ namespace VolleyballAPI.Migrations
                     b.Navigation("Team");
                 });
 
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Tournament", b =>
-                {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", null)
-                        .WithMany("Tournaments")
-                        .HasForeignKey("TeamId");
-                });
-
             modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Training", b =>
                 {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", null)
+                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", "Team")
                         .WithMany("Trainings")
-                        .HasForeignKey("TeamId");
-                });
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.User", b =>
-                {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", null)
-                        .WithMany("Coaches")
-                        .HasForeignKey("TeamId");
+                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("VolleyballManagementAppBackend.Entities.PlayerDetails", b =>

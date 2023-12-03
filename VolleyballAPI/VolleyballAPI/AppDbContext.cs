@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VolleyballAPI.Entities;
 using VolleyballManagementAppBackend.Entities;
 
 namespace VolleyballManagementAppBackend
@@ -157,6 +158,7 @@ namespace VolleyballManagementAppBackend
 
         public DbSet<Team> Teams => Set<Team>();
         public DbSet<Tournament> Tournaments => Set<Tournament>();
+        public DbSet<TournamentCompetitor> TournamentCompetitors => Set<TournamentCompetitor>();
 
     }
 }

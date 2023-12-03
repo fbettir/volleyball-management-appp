@@ -1,7 +1,7 @@
 import { Team } from './team';
 
 export interface Tournament {
-  id: number;
+  id: string;
   name: string;
   teams: Team[];
   date: Date;

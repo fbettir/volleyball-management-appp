@@ -10,6 +10,8 @@ namespace VolleyballManagementAppBackend.Entities
     public string Location { get; set; }
     public DateTime Date { get; set; }
     public string Description { get; set; }
+    public Guid TeamId { get; set; }
+    public virtual Team Team { get; set; }
     public virtual ICollection<TrainingParticipant> Players { get; set; }
 
     }

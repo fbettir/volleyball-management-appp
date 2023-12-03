@@ -17,9 +17,9 @@ namespace VolleyballManagementAppBackend.Entities
     public string Description { get; set; }
 
     public virtual ICollection<TeamPlayer> Players { get; set; }  //lazy loading
-    public virtual ICollection<User> Coaches { get; set; }
+    public virtual ICollection<TeamCoach> Coaches { get; set; }
     public virtual ICollection<Training> Trainings { get; set; }
-    public virtual ICollection<Tournament> Tournaments { get; set; }  
+    public virtual ICollection<TournamentCompetitor> Tournaments { get; set; }  
 
     }
 }

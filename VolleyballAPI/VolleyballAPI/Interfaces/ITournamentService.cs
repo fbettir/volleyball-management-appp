@@ -10,5 +10,6 @@ namespace VolleyballAPI.Interfaces
         public Task<TournamentDto> InsertTournamentAsync(TournamentDto newTournament);
         public Task UpdateTournamentAsync(TournamentDto updatedTournament, Guid tournamentId);
         public Task DeleteTournamentAsync(Guid tournamentId);
+        public Task RegisterTeamAsync(Guid id, Guid teamId);
     }
 }

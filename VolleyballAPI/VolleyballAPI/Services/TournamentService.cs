@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore.Update.Internal;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using VolleyballAPI.Dtos;
+using VolleyballAPI.Entities;
 using VolleyballAPI.Interfaces;
 using VolleyballManagementAppBackend;
-using VolleyballManagementAppBackend.Dtos;
 using VolleyballManagementAppBackend.Entities;
 using VolleyballManagementAppBackend.Exceptions;
 
@@ -70,6 +69,22 @@ namespace VolleyballAPI.Services
                     throw new EntityNotFoundException("Tournament not found");
                 else
                     throw;
+            }
+        }
+
+        public async Task RegisterTeamAsync(Guid id, Guid teamId)
+        {
+            var teamExists = await _context.Teams.AnyAsync(t => t.Id == teamId);
+            var tournamentExists = await _context.Tournaments.AnyAsync(t => t.Id == id);
+            if ( teamExists && tournamentExists )
+            {
+                var tournamentCompetitor = new TournamentCompetitor()
+                {
+                    TournamentId = id,
+                    TeamId = teamId
+                };
+                _context.TournamentCompetitors.Add(tournamentCompetitor);
+                await _context.SaveChangesAsync();
             }
         }
     }

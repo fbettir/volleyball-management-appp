@@ -12,7 +12,9 @@ export class AllTeamsPageComponent {
   teams: Team[] = [];
 
   constructor(teamService: TeamService){
-    this.teams = teamService.teams;
+    teamService.getAllTeams().subscribe( t => {
+      this.teams = t;
+    });
   }
 }
 

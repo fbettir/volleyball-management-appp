@@ -1,7 +1,9 @@
+import { TreeDataNodeFlattener } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tournament } from 'src/app/models/tournament';
 import { TeamService } from 'src/app/services/team.service';
+import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({
   selector: 'app-tournament-page',
@@ -9,17 +11,19 @@ import { TeamService } from 'src/app/services/team.service';
   styleUrls: ['./tournament-page.component.scss'],
 })
 export class TournamentPageComponent {
-  tournamentId = 1;
+  tournamentId: string = "";
   tournament?: Tournament = undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private teamService: TeamService,
+    private tournamentService: TournamentService,
   ) {}
 
   ngOnInit() {
-    this.tournamentId = parseInt(this.route.snapshot.params['tournamentId'], 10);
-    this.tournament = this.teamService.getTournamentById(this.tournamentId);
+    this.tournamentId = this.route.snapshot.params['tournamentId'];
+    this.tournamentService.getTournamentById(this.tournamentId).subscribe(t => {
+      this.tournament = t;
+    });
   }
 }
  
