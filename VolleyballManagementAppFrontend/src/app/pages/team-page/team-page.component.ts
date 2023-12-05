@@ -27,6 +27,7 @@ export class TeamPageComponent implements OnInit {
   trainings: Training[] = [];
   dataSource = new MatTableDataSource<PlayerDetails>([]);
   dataSourceTrainings = new MatTableDataSource<Training>([]);
+
   displayedColumns: string[] = ['position', 'name', 'ticket', 'post', 'number', 'tools'];
   displayedColumnsTrainings: string[] = ['position', 'date', 'location', 'description', 'tools'];
 
@@ -44,20 +45,23 @@ export class TeamPageComponent implements OnInit {
 
     this.teamService.getTeamById(this.teamId).subscribe(team => {
       this.team = team;
+      if (team !== undefined) {
+        this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
+          this.members = teamPlayers;
+          this.dataSource.data = teamPlayers;
+        })
+      }
     //this.dataSourceTrainings.data = trainings; //TODO: new endpoint
     });
     
-    this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
-      this.members = teamPlayers;
-      this.dataSource.data = teamPlayers;
-    })
+
   }
 
   addPlayerForm = this.formBuilder.group({
     name: 'someone',
-    role: Role.User,
+    role: Role.BasicUser,
     email: 'example@email.com',
-    post: Post.Receiver,
+    posts: Post.Receiver,
     ticket: TicketPass.Ticket,
     phone: 0,
     number: 0,
@@ -65,21 +69,22 @@ export class TeamPageComponent implements OnInit {
     gender: Gender.Other,
   });
 
+
+
   onSubmit(): void { 
-    const {name, role, email, post, phone, ticket, number, birthday, gender} = this.addPlayerForm.value;
-    const user: User = { 
+    const {name, posts, phone, ticket, number, birthday, gender} = this.addPlayerForm.value;
+    const playerDetails: PlayerDetails = { 
     id : uuidv4(),
+    userId: "",
     name: name!,
-    role: role! as Role,
-    email: email!,
-    post: post!,
-    ticket: ticket!,
+    posts: [posts!],
+    ticketPass: ticket!,
     phone: phone!,
-    number: number!,
+    playerNumber: number!,
     birthday: birthday!,
     gender: gender! as Gender
     };
-    this.dataSource.data = [...this.dataSource.data, user];
+    this.dataSource.data = [...this.dataSource.data, playerDetails];
   }
 
   deleteUserFromTeam(index: number){
@@ -126,7 +131,6 @@ export class TeamPageComponent implements OnInit {
   // }
 
   openDialogTraining(index: number): void {
-    console.log(this.team?.trainings);
     const dialogRef = this.dialog.open(TrainingsDialogComponent, {
       data: this.dataSourceTrainings.data[index]
     });

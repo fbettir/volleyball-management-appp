@@ -1,6 +1,6 @@
 export enum Post {
-  Setter = "Setter",
   Hitter = "Hitter",
-  Receiver = "Receiver",
+  Setter = "Setter",
   Libero = "Libero",
+  Receiver = "Receiver",
 }

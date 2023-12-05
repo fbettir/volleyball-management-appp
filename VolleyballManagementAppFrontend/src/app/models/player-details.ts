@@ -5,8 +5,9 @@ import { User } from "./user";
 
 export interface PlayerDetails {
     id: string;
-    userId: User;
+    userId: string;
     birthday: Date;
+    name: string;
     phone: number;
     playerNumber: number;
     ticketPass?: TicketPass;

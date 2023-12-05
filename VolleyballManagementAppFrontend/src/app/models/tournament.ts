@@ -3,7 +3,6 @@ import { Team } from './team';
 export interface Tournament {
   id: string;
   name: string;
-  teams: Team[];
   date: Date;
   location: string;
   description: string;

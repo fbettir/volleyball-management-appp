@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Gender } from 'src/app/models/gender';
+import { PlayerDetails } from 'src/app/models/player-details';
+import { Post } from 'src/app/models/post';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,18 +18,18 @@ export class UpdateDialogComponent {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<UpdateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: User,
+    @Inject(MAT_DIALOG_DATA) public data: PlayerDetails,
   ) {}
 
-  dataSource = new MatTableDataSource<User>([this.data]);
+  dataSource = new MatTableDataSource<PlayerDetails>([this.data]);
+
+  posts: Post[] = this.dataSource.data[0].posts;
 
   addPlayerForm = this.formBuilder.group({
     name: this.dataSource.data[0].name,
-    role: this.dataSource.data[0].role,
-    email: this.dataSource.data[0].email,
-    ticket: this.dataSource.data[0].ticket,
-    number: this.dataSource.data[0].number,
-    post: this.dataSource.data[0].post,
+    ticket: this.dataSource.data[0].ticketPass,
+    number: this.dataSource.data[0].playerNumber,
+    posts: this.posts,
     phone: this.dataSource.data[0].phone,
     birthday: this.dataSource.data[0].birthday,
     gender: this.dataSource.data[0].gender,
@@ -39,20 +41,19 @@ export class UpdateDialogComponent {
   }
 
   onSubmit(): void {
-    const { name, role, email, post, phone, ticket, number, birthday, gender } =
+    const { name, posts, phone, ticket, number, birthday, gender } =
       this.addPlayerForm.value;
-    const user: User = {
+    const player: PlayerDetails = {
       id: uuidv4(),
       name: name!,
-      role: role! as Role,
-      email: email!,
-      ticket: ticket!,
-      number: number!,
-      post: post!,
+      userId: "",
+      ticketPass: ticket!,
+      playerNumber: number!,
+      posts: [posts!],
       phone: phone!,
       birthday: birthday!,
       gender: gender! as Gender,
     };
-    this.data = user;
+    this.data = player;
   }
 }

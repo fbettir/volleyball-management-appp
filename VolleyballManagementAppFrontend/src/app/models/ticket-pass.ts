@@ -1,6 +1,6 @@
 export enum TicketPass {
-  StudentTicket = "Student ticket",
   Ticket = "Ticket",
-  StudentPass = "Student pass",
+  StudentTicket = "Student ticket",
   Pass = "Pass",
+  StudentPass = "Student pass",
 }
