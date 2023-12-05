@@ -1,4 +1,5 @@
-﻿using VolleyballManagementAppBackend.Dtos;
+﻿using VolleyballAPI.Dtos;
+using VolleyballManagementAppBackend.Dtos;
 
 namespace VolleyballManagementAppBackend.Interfaces
 {
@@ -10,5 +11,7 @@ namespace VolleyballManagementAppBackend.Interfaces
         public Task UpdateTeamAsync(TeamDto updatedTeam, Guid teamId);
         public Task DeleteTeamAsync(Guid teamId);
         public Task DeleteTeamsAsync();
+        public Task<IEnumerable<TeamPlayerDto>> GetTeamPlayersAsync(Guid teamId);
+        
     }
 }

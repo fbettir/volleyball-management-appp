@@ -1,4 +1,6 @@
-﻿namespace VolleyballManagementAppBackend.Dtos
+﻿using VolleyballManagementAppBackend.Entities;
+
+namespace VolleyballManagementAppBackend.Dtos
 {
     public class TeamDto
     {

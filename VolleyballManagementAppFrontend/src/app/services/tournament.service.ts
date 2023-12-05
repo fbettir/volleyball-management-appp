@@ -8,7 +8,7 @@ import { BasePortalOutlet } from '@angular/cdk/portal';
   providedIn: 'root'
 })
 export class TournamentService {
-  private baseURL: string = 'https://localhost:44359/tournament';
+  private baseURL: string = 'https://localhost:44359/tournaments';
   constructor(private httpClient: HttpClient) { }
 
   getTournamentById(tournamentId: string): Observable<Tournament> {

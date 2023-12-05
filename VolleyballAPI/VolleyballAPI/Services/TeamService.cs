@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using VolleyballAPI.Dtos;
+using VolleyballAPI.Entities;
 using VolleyballManagementAppBackend.Dtos;
 using VolleyballManagementAppBackend.Entities;
 using VolleyballManagementAppBackend.Exceptions;
@@ -97,6 +99,28 @@ namespace VolleyballManagementAppBackend.Services
                         throw;
                 }
             }
+        }
+
+        public async Task<IEnumerable<TeamPlayerDto>> GetTeamPlayersAsync(Guid teamId)
+        {
+            var teamExists = await _context.Teams.AnyAsync(t => t.Id == teamId);
+            if (teamExists)
+            {
+                var allTEamPlayers = await _context.TeamPlayers
+                    .ProjectTo<TeamPlayerDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+                var selectedTeamPlayers = new List<TeamPlayerDto>();
+                foreach (var teamPlayer in allTEamPlayers)
+                {
+                    if (teamPlayer.TeamId == teamId)
+                    {
+                        selectedTeamPlayers.Add(teamPlayer);
+                    }
+                }
+                return selectedTeamPlayers;
+            }
+            else
+                throw new EntityNotFoundException("Team not found.");
         }
     }
 }

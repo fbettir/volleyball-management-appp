@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VolleyballAPI.Dtos;
 using VolleyballManagementAppBackend.Dtos;
 using VolleyballManagementAppBackend.Interfaces;
 
@@ -55,6 +56,13 @@ namespace VolleyballManagementAppBackend.Controllers
         {
             await _teamsService.DeleteTeamAsync(id);
             return NoContent();
+        }
+
+        [MapToApiVersion("1.0")]
+        [HttpGet("{id}/players")]
+        public async Task<ActionResult<IEnumerable<TeamPlayerDto>>> GetPlayers(Guid id)
+        {
+            return (await _teamsService.GetTeamPlayersAsync(id)).ToList();
         }
     }
 }

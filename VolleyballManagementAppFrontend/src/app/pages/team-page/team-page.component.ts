@@ -44,6 +44,10 @@ export class TeamPageComponent implements OnInit {
       this.dataSource.data = this.team?.members || [];
     this.dataSourceTrainings.data = this.team?.trainings || [];
     });
+
+    this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
+      this.team?.members = teamPlayers
+    })
   }
 
   addPlayerForm = this.formBuilder.group({
