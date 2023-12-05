@@ -3,6 +3,7 @@ using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
 using VolleyballManagementAppBackend.Dtos;
 using VolleyballManagementAppBackend.Entities;
+using VolleyballManagementAppBackend.Exceptions;
 using VolleyballManagementAppBackend.Interfaces;
 using VolleyballManagementAppBackend.Services;
 
@@ -24,7 +25,16 @@ namespace VolleyballAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TournamentDto>> GetTournamentById(Guid id)
         {
-            return await _tournamentsService.GetTournamentAsync(id);
+            try
+            {
+                var tournament = await _tournamentsService.GetTournamentAsync(id);
+                return Ok(tournament);
+            }
+            catch (EntityNotFoundException ex) 
+            {
+                return NotFound(ex.Message);
+            }
+
         }
 
         [MapToApiVersion("1.0")]

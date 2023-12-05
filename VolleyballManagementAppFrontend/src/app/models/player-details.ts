@@ -1,10 +1,11 @@
 import { Gender } from "./gender";
 import { Post } from "./post";
 import { TicketPass } from "./ticket-pass";
+import { User } from "./user";
 
-export interface User {
+export interface PlayerDetails {
     id: string;
-    userId: string;
+    userId: User;
     birthday: Date;
     phone: number;
     playerNumber: number;

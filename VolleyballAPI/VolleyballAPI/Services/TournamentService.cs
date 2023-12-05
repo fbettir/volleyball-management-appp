@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using System;
 using VolleyballAPI.Dtos;
@@ -36,9 +37,7 @@ namespace VolleyballAPI.Services
             {
                 throw new EntityNotFoundException("Tournament not found.");
             }
-            var tDto = new TournamentDto();
-            var efTournament = _mapper.Map(tDto, tournament);
-            return tDto;
+            return _mapper.Map<TournamentDto>(tournament);
         }
 
 

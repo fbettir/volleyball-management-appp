@@ -11,7 +11,7 @@ namespace VolleyballManagementAppBackend.Interfaces
         public Task UpdateTeamAsync(TeamDto updatedTeam, Guid teamId);
         public Task DeleteTeamAsync(Guid teamId);
         public Task DeleteTeamsAsync();
-        public Task<IEnumerable<TeamPlayerDto>> GetTeamPlayersAsync(Guid teamId);
+        public Task<IEnumerable<PlayerDetailsDto>> GetTeamPlayersAsync(Guid teamId);
         
     }
 }

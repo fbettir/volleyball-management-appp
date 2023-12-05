@@ -14,6 +14,7 @@ import { UpdateDialogComponent } from 'src/app/components/update-dialog/update-d
 import { Training } from 'src/app/models/training';
 import { TicketPass } from 'src/app/models/ticket-pass';
 import { TrainingsDialogComponent } from 'src/app/components/trainings-dialog/trainings-dialog.component';
+import { PlayerDetails } from 'src/app/models/player-details';
 @Component({
   selector: 'app-team-page',
   templateUrl: './team-page.component.html',
@@ -22,7 +23,9 @@ import { TrainingsDialogComponent } from 'src/app/components/trainings-dialog/tr
 export class TeamPageComponent implements OnInit {
   team?: Team = undefined;
   teamId : string = "";
-  dataSource = new MatTableDataSource<User>([]);
+  members: PlayerDetails[] = [];
+  trainings: Training[] = [];
+  dataSource = new MatTableDataSource<PlayerDetails>([]);
   dataSourceTrainings = new MatTableDataSource<Training>([]);
   displayedColumns: string[] = ['position', 'name', 'ticket', 'post', 'number', 'tools'];
   displayedColumnsTrainings: string[] = ['position', 'date', 'location', 'description', 'tools'];
@@ -41,12 +44,12 @@ export class TeamPageComponent implements OnInit {
 
     this.teamService.getTeamById(this.teamId).subscribe(team => {
       this.team = team;
-      this.dataSource.data = this.team?.members || [];
-    this.dataSourceTrainings.data = this.team?.trainings || [];
+    //this.dataSourceTrainings.data = trainings; //TODO: new endpoint
     });
-
+    
     this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
-      this.team?.members = teamPlayers
+      this.members = teamPlayers;
+      this.dataSource.data = teamPlayers;
     })
   }
 

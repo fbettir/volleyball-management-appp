@@ -8,8 +8,7 @@ namespace VolleyballAPI
     {
         public Profile() 
         {
-            CreateMap<TournamentDto, Tournament>()
-                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+            CreateMap<TournamentDto, Tournament>();
             CreateMap<Tournament, TournamentDto>();
   
             CreateMap<TeamDto, Team>()
@@ -19,6 +18,10 @@ namespace VolleyballAPI
             CreateMap<TeamPlayerDto, TeamPlayer>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
             CreateMap<TeamPlayer, TeamPlayerDto>();
+
+            CreateMap<PlayerDetailsDto, PlayerDetails>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+            CreateMap<PlayerDetails, PlayerDetailsDto>();
         }
     }
 }

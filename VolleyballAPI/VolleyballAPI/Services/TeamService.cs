@@ -101,26 +101,19 @@ namespace VolleyballManagementAppBackend.Services
             }
         }
 
-        public async Task<IEnumerable<TeamPlayerDto>> GetTeamPlayersAsync(Guid teamId)
+        public async Task<IEnumerable<PlayerDetailsDto>> GetTeamPlayersAsync(Guid teamId)
         {
             var teamExists = await _context.Teams.AnyAsync(t => t.Id == teamId);
-            if (teamExists)
-            {
-                var allTEamPlayers = await _context.TeamPlayers
-                    .ProjectTo<TeamPlayerDto>(_mapper.ConfigurationProvider)
-                    .ToListAsync();
-                var selectedTeamPlayers = new List<TeamPlayerDto>();
-                foreach (var teamPlayer in allTEamPlayers)
-                {
-                    if (teamPlayer.TeamId == teamId)
-                    {
-                        selectedTeamPlayers.Add(teamPlayer);
-                    }
-                }
-                return selectedTeamPlayers;
-            }
-            else
+            if (!teamExists)
                 throw new EntityNotFoundException("Team not found.");
+            else
+            {
+                var teamPlayers = from player in _context.TeamPlayers
+                                  where player.TeamId == teamId
+                                  select _mapper.Map<PlayerDetailsDto>(player.Player);
+
+                return teamPlayers;
+            }
         }
     }
 }

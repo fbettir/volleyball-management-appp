@@ -60,7 +60,7 @@ namespace VolleyballManagementAppBackend.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet("{id}/players")]
-        public async Task<ActionResult<IEnumerable<TeamPlayerDto>>> GetPlayers(Guid id)
+        public async Task<ActionResult<IEnumerable<PlayerDetailsDto>>> GetPlayers(Guid id)
         {
             return (await _teamsService.GetTeamPlayersAsync(id)).ToList();
         }
