@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
 using VolleyballManagementAppBackend.Dtos;
@@ -41,7 +42,15 @@ namespace VolleyballAPI.Controllers
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<TournamentDto>>> GetAllTournaments()
         {
-            return (await _tournamentsService.GetTournamentsAsync()).ToList();
+            try
+            {
+                var tournamentsList = (await _tournamentsService.GetTournamentsAsync()).ToList();
+                return Ok(tournamentsList);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
@@ -49,8 +58,15 @@ namespace VolleyballAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<TournamentDto>> CreateTournament([FromBody] TournamentDto tournament)
         {
-            var created = await _tournamentsService.InsertTournamentAsync(tournament);
-            return CreatedAtAction(nameof(GetTournamentById), new { id = created.Id }, created);
+            try
+            {
+                var created = await _tournamentsService.InsertTournamentAsync(tournament);
+                return CreatedAtAction(nameof(GetTournamentById), new { id = created.Id }, created);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
@@ -58,8 +74,15 @@ namespace VolleyballAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult> UpdateTournament(Guid id, [FromBody] TournamentDto value)
         {
-            await _tournamentsService.UpdateTournamentAsync(value, id);
-            return NoContent();
+            try
+            {
+                await _tournamentsService.UpdateTournamentAsync(value, id);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
@@ -67,8 +90,15 @@ namespace VolleyballAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult> DeleteTournament(Guid id)
         {
-            await _tournamentsService.DeleteTournamentAsync(id);
-            return NoContent();
+            try
+            {
+                await _tournamentsService.DeleteTournamentAsync(id); 
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
@@ -76,8 +106,15 @@ namespace VolleyballAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult> RegisterTeam(Guid id, [FromBody] RegisterTeamDto team)
         {
-            await _tournamentsService.RegisterTeamAsync(id, team.TeamId);
-            return NoContent();
+            try
+            {
+                await _tournamentsService.RegisterTeamAsync(id, team.TeamId);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
 }

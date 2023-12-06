@@ -64,6 +64,7 @@ namespace VolleyballManagementAppBackend.Services
                     throw;
             }
         }
+
         public async Task DeleteTeamAsync(Guid teamId)
         {
             _context.Teams.Remove(new Team() { Id = teamId });
@@ -81,7 +82,6 @@ namespace VolleyballManagementAppBackend.Services
         }
         public async Task DeleteTeamsAsync()
         {
-
             Team[] teams = _context.Teams.ToArray();
             foreach (var t in teams)
             {
@@ -115,5 +115,28 @@ namespace VolleyballManagementAppBackend.Services
                 return teamPlayers;
             }
         }
+
+        //public async Task<PlayerDetails> InsertTeamPlayersAsync(TeamDto newTeam)
+        //{
+        //    var efTeam = _mapper.Map<Team>(newTeam);
+        //    _context.Teams.Add(efTeam);
+        //    await _context.SaveChangesAsync();
+        //    return await GetTeamAsync(efTeam.Id);
+        //}
+
+        //public async Task<IEnumerable<TrainingDto>> GetTrainingsAsync(Guid teamId)
+        //{
+        //    var teamExists = await _context.Teams.AnyAsync(t => t.Id == teamId);
+        //    if (!teamExists)
+        //        throw new EntityNotFoundException("Team not found.");
+        //    else
+        //    {
+        //        var teamPlayers = from player in _context.TeamPlayers
+        //                          where player.TeamId == teamId
+        //                          select _mapper.Map<PlayerDetailsDto>(player.Player);
+
+        //        return teamPlayers;
+        //    }
+        //}
     }
 }

@@ -27,11 +27,6 @@ namespace VolleyballAPI.Services
 
         public async Task<TournamentDto> GetTournamentAsync(Guid tournamentId)
         {
-            //return await _context.Tournaments
-            //    .ProjectTo<TournamentDto>(_mapper.ConfigurationProvider)
-            //    .SingleOrDefaultAsync(r => r.Id == tournamentId)
-            //    ?? throw new EntityNotFoundException("Tournament not found");
-
             var tournament = _context.Tournaments.FirstOrDefault(t => t.Id == tournamentId);
             if (tournament == null)
             {
@@ -43,7 +38,6 @@ namespace VolleyballAPI.Services
 
         public async Task<IEnumerable<TournamentDto>> GetTournamentsAsync()
         {
-            //return from t in _context.Tournaments select _mapper.Map<TournamentDto>(t);
             var tournaments = await _context.Tournaments
                 .ProjectTo<TournamentDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();

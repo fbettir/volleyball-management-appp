@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using VolleyballAPI.Dtos;
 using VolleyballManagementAppBackend.Dtos;
+using VolleyballManagementAppBackend.Entities;
+using VolleyballManagementAppBackend.Exceptions;
 using VolleyballManagementAppBackend.Interfaces;
 
 namespace VolleyballManagementAppBackend.Controllers
@@ -21,14 +24,30 @@ namespace VolleyballManagementAppBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TeamDto>> Get(Guid id)
         {
-            return await _teamsService.GetTeamAsync(id);
+            try
+            {
+                var team =  await _teamsService.GetTeamAsync(id);
+                return Ok(team);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<TeamDto>>> Get()
         {
-            return (await _teamsService.GetTeamsAsync()).ToList();
+            try
+            {
+                var teamsList = (await _teamsService.GetTeamsAsync()).ToList();
+                return Ok(teamsList);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
@@ -36,8 +55,15 @@ namespace VolleyballManagementAppBackend.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<TeamDto>> Post([FromBody] TeamDto team)
         {
-            var created = await _teamsService.InsertTeamAsync(team);
-            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
+            try
+            {
+                var created = await _teamsService.InsertTeamAsync(team);
+                return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
@@ -45,8 +71,15 @@ namespace VolleyballManagementAppBackend.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult> Put(Guid id, [FromBody] TeamDto value)
         {
-            await _teamsService.UpdateTeamAsync(value, id);
-            return NoContent();
+            try
+            {
+                await _teamsService.UpdateTeamAsync(value, id);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
@@ -54,15 +87,30 @@ namespace VolleyballManagementAppBackend.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult> Delete(Guid id)
         {
-            await _teamsService.DeleteTeamAsync(id);
-            return NoContent();
+            try
+            {
+                await _teamsService.DeleteTeamAsync(id);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [MapToApiVersion("1.0")]
         [HttpGet("{id}/players")]
         public async Task<ActionResult<IEnumerable<PlayerDetailsDto>>> GetPlayers(Guid id)
         {
-            return (await _teamsService.GetTeamPlayersAsync(id)).ToList();
+            try
+            {
+                var teamPlayers = (await _teamsService.GetTeamPlayersAsync(id)).ToList();
+                return Ok(teamPlayers);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
 }

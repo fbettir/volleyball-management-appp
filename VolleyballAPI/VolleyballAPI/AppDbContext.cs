@@ -55,6 +55,16 @@ namespace VolleyballManagementAppBackend
             var tournamentId1 = Guid.NewGuid();
             var tournamentId2 = Guid.NewGuid();
             var tournamentId3 = Guid.NewGuid();
+            var trainingId1 = Guid.NewGuid();
+            var trainingId2 = Guid.NewGuid();
+            var trainingId3 = Guid.NewGuid();
+            var trainingId4 = Guid.NewGuid();
+            var trainingId5 = Guid.NewGuid();
+            var trainingId6 = Guid.NewGuid();
+            var trainingId7 = Guid.NewGuid();
+            var trainingId8 = Guid.NewGuid();
+            var trainingId9 = Guid.NewGuid();
+            var trainingId01 = Guid.NewGuid();
                  
             modelBuilder.Entity<Team>().HasData(
                 new Team
@@ -105,6 +115,15 @@ namespace VolleyballManagementAppBackend
                     Location = "Location tournament 2",
                     Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg",
                     Description = "Description Tournament 2"
+                },
+                new Tournament
+                {
+                    Id = tournamentId3,
+                    Name = "Tournament 3",
+                    Date = DateTime.Now,
+                    Location = "Location tournament 3",
+                    Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg",
+                    Description = "Description Tournament 3"
                 }
             );
 
@@ -307,7 +326,158 @@ namespace VolleyballManagementAppBackend
                     TeamId = teamId2,
                 }
             );
+            modelBuilder.Entity<Training>().HasData(
+                new Training
+                {
+                    Id = trainingId1,
+                    Location = "Training court 1",
+                    Date = DateTime.Now,
+                    Description = "Training1",
+                    TeamId = teamId1
+                },
+                new Training
+                {
+                    Id = trainingId2,
+                    Location = "Training court 2",
+                    Date = DateTime.Now,
+                    Description = "Training2",
+                    TeamId = teamId1
+                },
+                new Training
+                {
+                    Id = trainingId3,
+                    Location = "Training court 3",
+                    Date = DateTime.Now,
+                    Description = "Training1",
+                    TeamId = teamId2
+                },
+                new Training
+                {
+                    Id = trainingId4,
+                    Location = "Training court 4",
+                    Date = DateTime.Now,
+                    Description = "Training4",
+                    TeamId = teamId3
+                },
+                new Training
+                {
+                    Id = trainingId5,
+                    Location = "Training court 5",
+                    Date = DateTime.Now,
+                    Description = "Training5",
+                    TeamId = teamId3
+                },
+                new Training
+                {
+                    Id = trainingId6,
+                    Location = "Training court 6",
+                    Date = DateTime.Now,
+                    Description = "Training6",
+                    TeamId = teamId2
+                },
+                new Training
+                {
+                    Id = trainingId7,
+                    Location = "Training court 7",
+                    Date = DateTime.Now,
+                    Description = "Training7",
+                    TeamId = teamId3
+                },
+                new Training
+                {
+                    Id = trainingId8,
+                    Location = "Training court 8",
+                    Date = DateTime.Now,
+                    Description = "Training8",
+                    TeamId = teamId2
+                },
+                new Training
+                {
+                    Id = trainingId9,
+                    Location = "Training court 9",
+                    Date = DateTime.Now,
+                    Description = "Training9",
+                    TeamId = teamId4
+                },
+                new Training
+                {
+                    Id = trainingId01,
+                    Location = "Training court 10",
+                    Date = DateTime.Now,
+                    Description = "Training10",
+                    TeamId = teamId4
+                }
+            );
+            modelBuilder.Entity<TrainingParticipant>().HasData(
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId1,
+                    PlayerDetailsId = playerId1,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId1,
+                    PlayerDetailsId = playerId2,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId1,
+                    PlayerDetailsId = playerId3,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId2,
+                    PlayerDetailsId = playerId4,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId2,
+                    PlayerDetailsId = playerId5,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId3,
+                    PlayerDetailsId = playerId6,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId3,
+                    PlayerDetailsId = playerId7,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId4,
+                    PlayerDetailsId = playerId8,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId5,
+                    PlayerDetailsId = playerId9,
+                },
+                new TrainingParticipant
+                {
+                    TrainingId = trainingId5,
+                    PlayerDetailsId = playerId01,
+                }
+            );
 
+            modelBuilder.Entity<TournamentCompetitor>().HasData(
+                new TournamentCompetitor
+                {
+                    TournamentId = tournamentId1,
+                    TeamId = teamId1,
+                },
+                new TournamentCompetitor
+                {
+                    TournamentId = tournamentId2,
+                    TeamId = teamId2,
+                },
+                new TournamentCompetitor
+                {
+                    TournamentId = tournamentId3,
+                    TeamId = teamId3,
+                }
+            );
         }
 
         public DbSet<Team> Teams => Set<Team>();
