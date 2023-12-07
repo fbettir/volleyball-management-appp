@@ -96,6 +96,20 @@ namespace VolleyballAPI.Services
             else
                 throw new EntityNotFoundException("Tournament or team not found.");
         }
+
+        public async Task<IEnumerable<TeamDto>> GetTeamsAsync(Guid tournamentId)
+        {
+            var tournamentExists = await _context.Tournaments.AnyAsync(t => t.Id == tournamentId);
+            if (!tournamentExists)
+                throw new EntityNotFoundException("Tournament not found.");
+            else
+            {
+                var teams = from team in _context.TournamentCompetitors
+                            where team.TournamentId == tournamentId
+                            select _mapper.Map<TeamDto>(team.Team);
+                return teams;
+            }
+        }
     }
 }
 

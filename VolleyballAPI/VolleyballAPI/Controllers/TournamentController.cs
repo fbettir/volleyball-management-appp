@@ -116,5 +116,21 @@ namespace VolleyballAPI.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [MapToApiVersion("1.0")]
+        [HttpGet("{id}/teams")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult<IEnumerable<TeamDto>>> GetTeams(Guid id)
+        {
+            try
+            {
+                var teams = await _tournamentsService.GetTeamsAsync(id);
+                return Ok(teams);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

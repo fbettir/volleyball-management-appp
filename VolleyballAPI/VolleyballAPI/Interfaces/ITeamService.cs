@@ -10,8 +10,9 @@ namespace VolleyballManagementAppBackend.Interfaces
         public Task<TeamDto> InsertTeamAsync(TeamDto newTeam);
         public Task UpdateTeamAsync(TeamDto updatedTeam, Guid teamId);
         public Task DeleteTeamAsync(Guid teamId);
-        public Task DeleteTeamsAsync();
         public Task<IEnumerable<PlayerDetailsDto>> GetTeamPlayersAsync(Guid teamId);
-        
+        public Task RegisterTeamPlayerAsync(Guid teamId, PlayerDetailsDto playerDetailsDto);
+        public Task<IEnumerable<TrainingDto>> GetTrainingsAsync(Guid teamId);
+
     }
 }

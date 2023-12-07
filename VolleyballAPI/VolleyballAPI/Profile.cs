@@ -22,6 +22,14 @@ namespace VolleyballAPI
             CreateMap<PlayerDetailsDto, PlayerDetails>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
             CreateMap<PlayerDetails, PlayerDetailsDto>();
+
+            CreateMap<TrainingDto, Training>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+            CreateMap<Training, TrainingDto>();
+
+            CreateMap<UserDto, User>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+            CreateMap<User, UserDto>();
         }
     }
 }

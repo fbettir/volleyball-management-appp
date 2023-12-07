@@ -14,6 +14,8 @@ builder.Services.AddDbContext<AppDbContext>(
 );
 builder.Services.AddScoped<ITournamentService, TournamentService>();
 builder.Services.AddScoped<ITeamService, TeamService>();
+builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

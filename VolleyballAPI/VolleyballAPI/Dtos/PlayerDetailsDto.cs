@@ -6,7 +6,7 @@ namespace VolleyballAPI.Dtos
     public class PlayerDetailsDto
     {
         public Guid Id { get; set; }
-        public Guid UserId { get; set; }
+        public Nullable<Guid> UserId { get; set; } = default(Nullable<Guid>);
         public DateTime Birthday { get; set; }
         public string Phone { get; set; }
         public int PlayerNumber { get; set; }

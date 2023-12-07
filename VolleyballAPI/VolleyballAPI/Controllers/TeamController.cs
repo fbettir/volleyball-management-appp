@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using VolleyballAPI.Dtos;
 using VolleyballManagementAppBackend.Dtos;
-using VolleyballManagementAppBackend.Entities;
 using VolleyballManagementAppBackend.Exceptions;
 using VolleyballManagementAppBackend.Interfaces;
 
@@ -112,5 +110,38 @@ namespace VolleyballManagementAppBackend.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [MapToApiVersion("1.0")]
+        [HttpPost("{id}/players")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult> RegisterTeamPlayer(Guid id, [FromBody] PlayerDetailsDto playerDetailsDto)
+        {
+            try
+            {
+                await _teamsService.RegisterTeamPlayerAsync(id, playerDetailsDto);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+
+        [MapToApiVersion("1.0")]
+        [HttpGet("{id}/trainings")]
+        public async Task<ActionResult<IEnumerable<TrainingDto>>> GetTrainingsAsync(Guid id)
+        {
+            try
+            {
+                var trainings = (await _teamsService.GetTrainingsAsync(id)).ToList();
+                return Ok(trainings);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
     }
 }
