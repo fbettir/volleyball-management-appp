@@ -40,6 +40,10 @@ import { EnumToDescriptionPipe } from './shared/enum-to-description.pipe';
 import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TrainingsDialogComponent } from './components/trainings-dialog/trainings-dialog.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { AddTeamComponent } from './components/add-team/add-team.component';
+import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
+import { AddPlayerDetailsComponent } from './components/add-player-details/add-player-details.component';
 
 
 @NgModule({
@@ -58,6 +62,10 @@ import { TrainingsDialogComponent } from './components/trainings-dialog/training
     EnumToDescriptionPipe,
     UpdateDialogComponent,
     TrainingsDialogComponent,
+    AdminPageComponent,
+    AddTeamComponent,
+    AddTournamentComponent,
+    AddPlayerDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -58,12 +58,11 @@ export class TeamPageComponent implements OnInit {
   }
 
   addPlayerForm = this.formBuilder.group({
-    name: 'someone',
     role: Role.BasicUser,
     email: 'example@email.com',
     posts: Post.Receiver,
     ticket: TicketPass.Ticket,
-    phone: 0,
+    phone: "0",
     number: 0,
     birthday: new Date(),
     gender: Gender.Other,
@@ -72,11 +71,10 @@ export class TeamPageComponent implements OnInit {
 
 
   onSubmit(): void { 
-    const {name, posts, phone, ticket, number, birthday, gender} = this.addPlayerForm.value;
+    const { posts, phone, ticket, number, birthday, gender} = this.addPlayerForm.value;
     const playerDetails: PlayerDetails = { 
     id : uuidv4(),
     userId: "",
-    name: name!,
     posts: [posts!],
     ticketPass: ticket!,
     phone: phone!,

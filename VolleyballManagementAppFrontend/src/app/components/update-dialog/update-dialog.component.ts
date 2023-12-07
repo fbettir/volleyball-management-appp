@@ -26,7 +26,6 @@ export class UpdateDialogComponent {
   posts: Post[] = this.dataSource.data[0].posts;
 
   addPlayerForm = this.formBuilder.group({
-    name: this.dataSource.data[0].name,
     ticket: this.dataSource.data[0].ticketPass,
     number: this.dataSource.data[0].playerNumber,
     posts: this.posts,
@@ -41,11 +40,10 @@ export class UpdateDialogComponent {
   }
 
   onSubmit(): void {
-    const { name, posts, phone, ticket, number, birthday, gender } =
+    const {  posts, phone, ticket, number, birthday, gender } =
       this.addPlayerForm.value;
     const player: PlayerDetails = {
       id: uuidv4(),
-      name: name!,
       userId: "",
       ticketPass: ticket!,
       playerNumber: number!,

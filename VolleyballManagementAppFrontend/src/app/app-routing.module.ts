@@ -7,6 +7,7 @@ import { TeamPageComponent } from './pages/team-page/team-page.component';
 import { TournamentPageComponent } from './pages/tournament-page/tournament-page.component';
 import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'teams', component: AllTeamsPageComponent },
   { path: 'tournament/:tournamentId', component: TournamentPageComponent },
   { path: 'contact-us', component: ContactUsPageComponent },
+  { path: 'admin', component: AdminPageComponent },
   { path: '**', redirectTo: 'home' },
 ];
 
