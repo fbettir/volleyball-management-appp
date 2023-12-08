@@ -23,7 +23,9 @@ export class TournamentService {
   }
 
   insertTournament(tournament: Tournament): void {
-    this.httpClient.post(this.baseURL, tournament);
+    this.httpClient.post(this.baseURL, tournament).subscribe(
+      console.log
+    );
   }
 
   deleteTournamentById(tournamentId: string): void {

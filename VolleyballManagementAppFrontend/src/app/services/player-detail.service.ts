@@ -20,7 +20,11 @@ export class PlayerDetailService {
   }
 
   insertPlayer(player: PlayerDetails): void {
-    this.httpClient.post(this.baseURL, player);
+    this.httpClient.post(this.baseURL, player).subscribe(
+      s => {
+        console.log(s);
+      }
+    );
   }
 
   deletePlayerById(playerId: string): void {

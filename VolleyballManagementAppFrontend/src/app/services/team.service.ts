@@ -25,7 +25,9 @@ export class TeamService {
   }
 
   insertTeam(team: Team): void {
-    this.httpClient.post(this.baseURL, team);
+    this.httpClient.post(this.baseURL, team).subscribe(t => {
+      console.log(t);
+    });
   }
 
   deleteTeamById(teamId: string): void {

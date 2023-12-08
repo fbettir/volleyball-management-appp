@@ -36,6 +36,6 @@ export class AddTournamentComponent {
       picture: picture!,
     };
 
-    //this.tournamentService.insertTournament(tournament);
+    this.tournamentService.insertTournament(tournament as Tournament);
   }
 }

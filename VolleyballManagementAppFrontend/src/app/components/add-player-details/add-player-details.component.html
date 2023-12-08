@@ -4,10 +4,11 @@ class="addPlayerForm"
 (ngSubmit)="onSubmit()"
 >
 <h1>Add Player Details</h1>
+<div>{{users.length}}</div>
 <mat-form-field appearance="fill">
     <mat-label for="user">User</mat-label>
     <mat-select id="user" formControlName="user" required>
-      <mat-option value="user">User1</mat-option>
+      <mat-option *ngFor="let user of users" value="{{user.id}}">{{user.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 <mat-form-field class="bday" appearance="fill">
@@ -29,7 +30,7 @@ class="addPlayerForm"
 <mat-form-field appearance="fill">
   <mat-label for="phone">Phone</mat-label>
   <input
-    type="number"
+    type="text"
     id="phone"
     formControlName="phone"
     matInput
@@ -49,29 +50,29 @@ class="addPlayerForm"
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label for="post">Post</mat-label>
-  <mat-select id="post" formControlName="post" required multiple>
-    <mat-option value="Hitter">Hitter</mat-option>
-    <mat-option value="Receiver">Receiver</mat-option>
-    <mat-option value="Setter">Setter</mat-option>
+  <mat-select id="post" formControlName="posts" required multiple>
+    <mat-option value=0>Hitter</mat-option>
+    <mat-option value=1>Receiver</mat-option>
+    <mat-option value=2>Setter</mat-option>
   </mat-select>
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label for="ticket">Ticket Pass</mat-label>
   <mat-select id="ticket" formControlName="ticket" required>
-    <mat-option value="StudentTicket">Student Ticket</mat-option>
-    <mat-option value="Ticket">Ticket</mat-option>
-    <mat-option value="StudentPass">Student Pass</mat-option>
-    <mat-option value="Pass">Pass</mat-option>
+    <mat-option value=0>Student Ticket</mat-option>
+    <mat-option value=1>Ticket</mat-option>
+    <mat-option value=2>Student Pass</mat-option>
+    <mat-option value=3>Pass</mat-option>
   </mat-select>
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label for="gender">Gender</mat-label>
   <mat-select id="gender" formControlName="gender" required>
-    <mat-option value="Man">Man</mat-option>
-    <mat-option value="Woman">Woman</mat-option>
-    <mat-option value="Other">Other</mat-option>
+    <mat-option value=0>Man</mat-option>
+    <mat-option value=1>Woman</mat-option>
+    <mat-option value=2>Other</mat-option>
   </mat-select>
-</mat-form-field>
+</mat-form-field> 
 <button mat-raised-button>
   <mat-icon>add</mat-icon>
   Add member
