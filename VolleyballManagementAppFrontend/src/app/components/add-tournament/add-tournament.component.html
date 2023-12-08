@@ -1,1 +1,74 @@
-<p>add-tournament works!</p>
+<form
+class="addTournamentForm"
+[formGroup]="addTournamentForm"
+(ngSubmit)="onSubmit()"
+>
+<h1>Add Tournament</h1>
+<mat-form-field appearance="fill">
+  <mat-label for="name">Name</mat-label>
+  <input
+    type="string"
+    id="name"
+    formControlName="name"
+    matInput
+    placeholder="Name Name"
+    required
+  />
+</mat-form-field>
+<mat-form-field class="bday" appearance="fill">
+    <mat-label for="date">Date</mat-label>
+    <input
+      matInput
+      id="date"
+      formControlName="date"
+      [matDatepicker]="picker"
+      required
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+<mat-form-field appearance="fill">
+    <mat-label for="location">Location</mat-label>
+    <input
+      type="string"
+      id="location"
+      formControlName="location"
+      matInput
+      placeholder="location"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="description">Description</mat-label>
+    <input
+      type="string"
+      id="description"
+      formControlName="description"
+      matInput
+      placeholder="description"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="picture">Picture</mat-label>
+    <input
+      type="string"
+      id="picture"
+      formControlName="picture"
+      matInput
+      placeholder="picture url"
+      required
+    />
+  </mat-form-field>
+      
+
+<button mat-raised-button>
+  <mat-icon>add</mat-icon>
+  Add tournament
+</button>
+</form>

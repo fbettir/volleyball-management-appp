@@ -12,16 +12,25 @@ export class TournamentService {
   constructor(private httpClient: HttpClient) { }
 
   getTournamentById(tournamentId: string): Observable<Tournament> {
-    // return this.Tournaments.find(Tournament => Tournament.id === TournamentId)!;
     return this.httpClient.get<Tournament>(`${this.baseURL}/${tournamentId}`);
   }
 
-  getAllTournaments(): Observable<Tournament[]> {
-    // return this.Tournaments.find(Tournament => Tournament.id === TournamentId)!;
-    return this.httpClient.get<Tournament[]>(this.baseURL);
+  getAllTournaments(): Observable<Tournament[]> {    return this.httpClient.get<Tournament[]>(this.baseURL);
   }
 
   registerTeamToTournament(tournamentId: string, teamId: string) : Observable<void>{
     return this.httpClient.post<void>(`${this.baseURL}/${tournamentId}/teams`,{teamId});
+  }
+
+  insertTournament(tournament: Tournament): void {
+    this.httpClient.post(this.baseURL, tournament);
+  }
+
+  deleteTournamentById(tournamentId: string): void {
+    this.httpClient.delete(`${this.baseURL}/${tournamentId}`);
+  }
+
+  modifyTournamentById(tournament: Tournament): void{
+    this.httpClient.put(`${this.baseURL}/${tournament.id}`, tournament);
   }
 }

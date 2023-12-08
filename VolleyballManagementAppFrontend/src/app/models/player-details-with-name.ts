@@ -2,9 +2,9 @@ import { Gender } from "./gender";
 import { Post } from "./post";
 import { TicketPass } from "./ticket-pass";
 
-export interface PlayerDetails {
+export interface PlayerDetailsWithName {
     id: string;
-    userId: string;
+    name: string;
     birthday: Date;
     phone: string;
     playerNumber: number;

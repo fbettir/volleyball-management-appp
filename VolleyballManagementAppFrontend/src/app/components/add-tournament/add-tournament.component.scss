@@ -1,0 +1,17 @@
+.addTournamentForm {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+
+    .bday {
+      padding-bottom: 10px;
+    }
+
+    button {
+      background-color: var(--gold);
+      color: var(--bgWhite);
+    }
+  }

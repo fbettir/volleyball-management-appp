@@ -1,1 +1,48 @@
-<p>add-team works!</p>
+<form class="addUserForm" [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+  <h1>Add Team</h1>
+  <mat-form-field appearance="fill">
+    <mat-label for="name">Name</mat-label>
+    <input
+      type="string"
+      id="name"
+      formControlName="name"
+      matInput
+      placeholder="Name Name"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="picture">Picture</mat-label>
+    <input
+      type="string"
+      id="picture"
+      formControlName="picture"
+      matInput
+      placeholder="picture url"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="description">description</mat-label>
+    <input
+      type="string"
+      id="description"
+      formControlName="description"
+      matInput
+      placeholder="description"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="roles">Roles</mat-label>
+    <mat-select id="roles" formControlName="roles" required multiple>
+      <mat-option value="Administrator">Administrator</mat-option>
+      <mat-option value="BasicUser">BasicUser</mat-option>
+      <mat-option value="Coach">Coach</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button>
+    <mat-icon>add</mat-icon>
+    Add user
+  </button>
+</form>
