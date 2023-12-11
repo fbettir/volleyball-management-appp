@@ -1,0 +1,38 @@
+@use '@angular/material' as mat;
+
+// .dialog {
+//   background-color: var(--bgWhite);
+// }
+
+.addPlayerForm {
+  display: flex;
+  flex-direction: column;
+  align-items:normal;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  padding-right: 30px;
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(0, 255, 255, .5);
+  }
+
+  .bday{
+    padding-bottom: 10px;
+  }
+
+  button {
+    background-color: var(--gold);
+    color: var(--bgWhite);
+  }  
+}
+
+
+  .noButton {
+    background-color: var(--red);
+    color: var(--bgWhite);
+  }
+  .okButton {
+    background-color: var(--gold);
+    color: var(--bgWhite);
+
+}
