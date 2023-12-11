@@ -45,6 +45,7 @@ import { AddTeamComponent } from './components/add-team/add-team.component';
 import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
 import { AddPlayerDetailsComponent } from './components/add-player-details/add-player-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { MultipleListEnumToDescriptionPipe } from './shared/multiple-list-enum-to-description.pipe';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     AddTournamentComponent,
     AddPlayerDetailsComponent,
     AddUserComponent,
+    MultipleListEnumToDescriptionPipe,
   ],
   imports: [
     BrowserModule,

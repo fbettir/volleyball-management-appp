@@ -52,7 +52,7 @@ export class AddPlayerDetailsComponent implements OnInit  {
     phone: phone!,
     playerNumber: number!,
     posts: (posts! as string[]).map(p => parseInt(p, 10)) as any,
-    ticketPass: parseInt(ticket!, 10) as any,
+    ticketPass: ticket!,
     gender: parseInt(gender!, 10) as any,
     };
     this.playerService.insertPlayer(playerDetails as PlayerDetails);

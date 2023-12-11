@@ -13,7 +13,8 @@ import { PlayerDetails } from 'src/app/models/player-details';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { PlayerDetailsWithName } from 'src/app/models/player-details-with-name';
-import { TicketPass } from 'src/app/shared/enum-to-description.pipe';
+import { TicketPass } from 'src/app/models/ticket-pass';
+
 @Component({
   selector: 'app-team-page',
   templateUrl: './team-page.component.html',
@@ -32,6 +33,9 @@ export class TeamPageComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'number', 'ticket', 'post',  'tools'];
   displayedColumnsTrainings: string[] = ['position', 'date', 'location', 'description', 'tools'];
 
+  TicketPass = TicketPass;
+  Gender = Gender;
+  Post = Post;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,13 +65,12 @@ export class TeamPageComponent implements OnInit {
                 birthday: m.birthday,
                 phone: m.phone,
                 playerNumber: m.playerNumber,
-                ticketPass: m.ticketPass as TicketPass,
+                ticketPass: m.ticketPass,
                 gender: m.gender as Gender,
                 posts: m.posts as Post[],                  
               }
               this.membersWithName.push(player);
               this.dataSourcePlayers.data = this.membersWithName;
-              console.log(this.dataSourcePlayers.data);
             })
           });
           }
