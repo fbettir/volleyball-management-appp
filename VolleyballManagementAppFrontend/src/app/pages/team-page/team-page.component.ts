@@ -1,22 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
-// import { Gender } from 'src/app/models/gender';
-// import { Post } from 'src/app/models/post';
-// import { Role } from 'src/app/models/role';
-// import { FormBuilder } from '@angular/forms';
+import { Gender } from 'src/app/models/gender';
+import { Post } from 'src/app/models/post';
 import { MatTableDataSource } from '@angular/material/table';
 import { Team } from 'src/app/models/team';
 import { ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/services/team.service';
-// import { v4 as uuidv4 } from 'uuid';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { UpdateDialogComponent } from 'src/app/components/update-dialog/update-dialog.component';
 import { Training } from 'src/app/models/training';
-import { TicketPass } from 'src/app/models/ticket-pass';
 import { TrainingsDialogComponent } from 'src/app/components/trainings-dialog/trainings-dialog.component';
 import { PlayerDetails } from 'src/app/models/player-details';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { PlayerDetailsWithName } from 'src/app/models/player-details-with-name';
+import { TicketPass } from 'src/app/shared/enum-to-description.pipe';
 @Component({
   selector: 'app-team-page',
   templateUrl: './team-page.component.html',
@@ -32,14 +29,14 @@ export class TeamPageComponent implements OnInit {
   dataSourcePlayers = new MatTableDataSource<PlayerDetailsWithName>([]);
   dataSourceTrainings = new MatTableDataSource<Training>([]);
 
-  displayedColumns: string[] = ['position', 'name', 'ticket', 'post', 'number', 'tools'];
+  displayedColumns: string[] = ['position', 'name', 'number', 'ticket', 'post',  'tools'];
   displayedColumnsTrainings: string[] = ['position', 'date', 'location', 'description', 'tools'];
 
+
   constructor(
-    // private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private teamService: TeamService,
-    private userService: UserService,
+    private userService: UserService, 
     private dialog: MatDialog,
   ) {}
 
@@ -51,67 +48,37 @@ export class TeamPageComponent implements OnInit {
     this.teamService.getTeamById(this.teamId).subscribe(team => {
       this.team = team;
       if (team !== undefined) {
-        console.log(team);
         this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
           this.members = teamPlayers;          
-
-          console.log(this.members);
+          // this.dataSourcePlayers.data = this.members;
           if(this.members !== undefined){
           this.members.forEach( m => {
             this.userService.getUserById(m.userId).subscribe( user => {
               this.users.push(user);
-            })
-            if(this.users !== undefined){
-              this.members.forEach( m => {
-                const player: PlayerDetailsWithName = {
-                  id: m.id,
-                  name: "",
-                  birthday: m.birthday,
-                  phone: m.phone,
-                  playerNumber: m.playerNumber,
-                  ticketPass: m.ticketPass,
-                  gender: m.gender,
-                  posts: m.posts,                  
-                }
-                this.membersWithName.push(player);
-              });
-              console.log(this.membersWithName);
+              const player: PlayerDetailsWithName = {
+                id: m.id,
+                name: user.name,
+                birthday: m.birthday,
+                phone: m.phone,
+                playerNumber: m.playerNumber,
+                ticketPass: m.ticketPass as TicketPass,
+                gender: m.gender as Gender,
+                posts: m.posts as Post[],                  
+              }
+              this.membersWithName.push(player);
               this.dataSourcePlayers.data = this.membersWithName;
-            }
+              console.log(this.dataSourcePlayers.data);
+            })
           });
           }
         })
       }
+
     //this.dataSourceTrainings.data = trainings; //TODO: new endpoint from teamService
     });
     
 
   }
-
-  // addPlayerForm = this.formBuilder.group({
-  //   userId: "",
-  //   birthday: new Date(),
-  //   phone: "0",
-  //   playerNumber: 0,
-  //   posts: Post.Receiver,
-  //   ticket: TicketPass.Ticket,
-  //   gender: Gender.Other,
-  // });
-
-  // onSubmit(): void { 
-  //   const { posts, phone, ticket, playerNumber, birthday, gender} = this.addPlayerForm.value;
-  //   const playerDetails: PlayerDetails = { 
-  //   id : uuidv4(),
-  //   userId: "",
-  //   posts: [posts!],
-  //   ticketPass: ticket!,
-  //   phone: phone!,
-  //   playerNumber: playerNumber!,
-  //   birthday: birthday!,
-  //   gender: gender! as Gender
-  //   };
-  //   this.dataSourcePlayers.data = [...this.dataSourcePlayers.data, playerDetails];
-  // }
 
   deleteUserFromTeam(index: number){
     this.dataSourcePlayers.data.splice(index, 1);
@@ -142,19 +109,6 @@ export class TeamPageComponent implements OnInit {
     });
   }
 
-  
-  // openDialog(index: number): void {
-  //   console.log(this.team?.members);
-  //   const dialogRef = this.dialog.open(UpdateDialogComponent, {
-  //     data: this.dataSource.data[index]
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if(!result) this.dataSource.data = [...this.dataSource.data];
-  //     this.dataSource.data.splice(index, 1, result);
-  //     this.dataSource.data = [...this.dataSource.data];
-  //   });
-  // }
 
   openDialogTraining(index: number): void {
     const dialogRef = this.dialog.open(TrainingsDialogComponent, {

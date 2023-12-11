@@ -1,13 +1,20 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+export enum TicketPass {
+  Ticket = "Ticket",
+  StudentTicket = "StudentTicket",
+  Pass = "Pass",
+  StudentPass = "StudentPass",
+}
+
 @Pipe({
-  name: 'enumToDescription'
+  name: 'enumIntToDescription'
 })
-export class EnumToDescriptionPipe implements PipeTransform {
+export class EnumIntToDescriptionPipe implements PipeTransform {
 
     // enum object on which you want this pipe to work
-    transform(value: number, e: any): any {
-      return Object.values(e)[value];
+    transform(value: TicketPass,): any{
+      return TicketPass[value];
   }
 
 }

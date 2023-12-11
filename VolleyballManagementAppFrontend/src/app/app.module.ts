@@ -36,7 +36,7 @@ import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.
 import { FooterComponent } from './components/footer/footer.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EnumToDescriptionPipe } from './shared/enum-to-description.pipe';
+import { EnumIntToDescriptionPipe } from './shared/enum-to-description.pipe';
 import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TrainingsDialogComponent } from './components/trainings-dialog/trainings-dialog.component';
@@ -44,6 +44,7 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AddTeamComponent } from './components/add-team/add-team.component';
 import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
 import { AddPlayerDetailsComponent } from './components/add-player-details/add-player-details.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 
 @NgModule({
@@ -59,13 +60,14 @@ import { AddPlayerDetailsComponent } from './components/add-player-details/add-p
     TournamentPageComponent,
     ContactUsPageComponent,
     AllTeamsPageComponent,
-    EnumToDescriptionPipe,
+    EnumIntToDescriptionPipe,
     UpdateDialogComponent,
     TrainingsDialogComponent,
     AdminPageComponent,
     AddTeamComponent,
     AddTournamentComponent,
     AddPlayerDetailsComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,

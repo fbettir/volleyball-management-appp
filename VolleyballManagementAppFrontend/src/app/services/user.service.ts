@@ -21,7 +21,9 @@ export class UserService {
   }
 
   insertUser(user: User): void {
-    this.httpClient.post(this.baseURL, user);
+    this.httpClient.post(this.baseURL, user).subscribe(t => {
+      console.log(t);
+    });
   }
 
   deleteUserById(userId: string): void {

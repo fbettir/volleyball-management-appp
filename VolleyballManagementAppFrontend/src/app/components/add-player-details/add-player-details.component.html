@@ -3,8 +3,8 @@ class="addPlayerForm"
 [formGroup]="addPlayerForm"
 (ngSubmit)="onSubmit()"
 >
+<br>
 <h1>Add Player Details</h1>
-<div>{{users.length}}</div>
 <mat-form-field appearance="fill">
     <mat-label for="user">User</mat-label>
     <mat-select id="user" formControlName="user" required>
@@ -52,17 +52,18 @@ class="addPlayerForm"
   <mat-label for="post">Post</mat-label>
   <mat-select id="post" formControlName="posts" required multiple>
     <mat-option value=0>Hitter</mat-option>
-    <mat-option value=1>Receiver</mat-option>
-    <mat-option value=2>Setter</mat-option>
+    <mat-option value=1>Setter</mat-option>
+    <mat-option value=2>Libero</mat-option>
+    <mat-option value=3>Receiver</mat-option>
   </mat-select>
 </mat-form-field>
 <mat-form-field appearance="fill">
   <mat-label for="ticket">Ticket Pass</mat-label>
   <mat-select id="ticket" formControlName="ticket" required>
-    <mat-option value=0>Student Ticket</mat-option>
-    <mat-option value=1>Ticket</mat-option>
-    <mat-option value=2>Student Pass</mat-option>
-    <mat-option value=3>Pass</mat-option>
+    <mat-option value=0>Ticket</mat-option>
+    <mat-option value=1>Student Ticket</mat-option>
+    <mat-option value=2>Pass</mat-option>
+    <mat-option value=3>Student Pass</mat-option>
   </mat-select>
 </mat-form-field>
 <mat-form-field appearance="fill">

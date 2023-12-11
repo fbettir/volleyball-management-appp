@@ -1,8 +1,8 @@
-import { EnumToDescriptionPipe } from './enum-to-description.pipe';
+import { EnumIntToDescriptionPipe } from './enum-to-description.pipe';
 
 describe('EnumToDescriptionPipe', () => {
   it('create an instance', () => {
-    const pipe = new EnumToDescriptionPipe();
+    const pipe = new EnumIntToDescriptionPipe();
     expect(pipe).toBeTruthy();
   });
 });
