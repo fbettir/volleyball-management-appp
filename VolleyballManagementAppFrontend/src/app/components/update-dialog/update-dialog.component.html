@@ -1,5 +1,5 @@
 <div class="dialog">
-  <h1 mat-dialog-title>Update member {{ data.id }}</h1>
+  <h1 mat-dialog-title>Update member {{ data.name }}</h1>
   <div mat-dialog-content>
     <form
       class="addPlayerForm"
@@ -29,7 +29,7 @@
       <mat-form-field appearance="fill">
         <mat-label for="phone">Phone</mat-label>
         <input
-          type="number"
+          type="text"
           id="phone"
           formControlName="phone"
           matInput
@@ -40,7 +40,7 @@
       <mat-form-field appearance="fill">
         <mat-label for="playerNumber">Number</mat-label>
         <input
-          type="number"
+          type="text"
           id="playerNumber"
           formControlName="playerNumber"
           matInput
@@ -50,28 +50,28 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label for="posts">Posts</mat-label>
-        <mat-select id="posts" formControlName="posts" required="" multiple>
-          <mat-option value="Hitter">Hitter</mat-option>
-          <mat-option value="Receiver">Receiver</mat-option>
-          <mat-option value="Setter">Setter</mat-option>
-          <mat-option value="Libero">Libero</mat-option>
+        <mat-select id="posts" [(value)]="posts" formControlName="posts" required="" multiple>
+          <mat-option value="0">Hitter</mat-option>
+          <mat-option value="1">Setter</mat-option>
+          <mat-option value="2">Libero</mat-option>
+          <mat-option value="3">Receiver</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label for="ticketPass">Ticket/Pass</mat-label>
         <mat-select id="ticketPass" formControlName="ticketPass" required>
-          <mat-option value="StudentTicket">Student Ticket</mat-option>
-          <mat-option value="Ticket">Ticket</mat-option>
-          <mat-option value="StudentPass">Student Pass</mat-option>
-          <mat-option value="Pass">Pass</mat-option>
+          <mat-option value="0">Ticket</mat-option>
+          <mat-option value="1">Student Ticket</mat-option>
+          <mat-option value="2">Pass</mat-option>
+          <mat-option value="3">Student Pass</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label for="gender">Gender</mat-label>
         <mat-select id="gender" formControlName="gender" required="">
-          <mat-option value="Man">Man</mat-option>
-          <mat-option value="Woman">Woman</mat-option>
-          <mat-option value="Other">Other</mat-option>
+          <mat-option value=0>Man</mat-option>
+          <mat-option value=1>Woman</mat-option>
+          <mat-option value=2>Other</mat-option>
         </mat-select>
       </mat-form-field>
 
