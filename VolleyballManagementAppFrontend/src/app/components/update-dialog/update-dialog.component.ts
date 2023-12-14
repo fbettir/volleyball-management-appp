@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Gender } from 'src/app/models/gender';
 import { PlayerDetails } from 'src/app/models/player-details';
+import { PlayerDetailsWithName } from 'src/app/models/player-details-with-name';
 import { Post } from 'src/app/models/post';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
@@ -18,17 +19,18 @@ export class UpdateDialogComponent {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<UpdateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: PlayerDetails,
+    @Inject(MAT_DIALOG_DATA) public data: PlayerDetailsWithName,
   ) {}
 
-  dataSource = new MatTableDataSource<PlayerDetails>([this.data]);
+  dataSource = new MatTableDataSource<PlayerDetailsWithName>([this.data]);
 
   posts: Post[] = this.dataSource.data[0].posts;
 
   addPlayerForm = this.formBuilder.group({
-    ticket: this.dataSource.data[0].ticketPass,
-    number: this.dataSource.data[0].playerNumber,
+    ticketPass: this.dataSource.data[0].ticketPass,
+    playerNumber: this.dataSource.data[0].playerNumber,
     posts: this.posts,
+    name: this.dataSource.data[0].name,
     phone: this.dataSource.data[0].phone,
     birthday: this.dataSource.data[0].birthday,
     gender: this.dataSource.data[0].gender,
@@ -40,13 +42,13 @@ export class UpdateDialogComponent {
   }
 
   onSubmit(): void {
-    const {  posts, phone, ticket, number, birthday, gender } =
+    const {  posts, name, phone, ticketPass, playerNumber, birthday, gender } =
       this.addPlayerForm.value;
-    const player: PlayerDetails = {
+    const player: PlayerDetailsWithName = {
       id: uuidv4(),
-      userId: "",
-      ticketPass: ticket!,
-      playerNumber: number!,
+      name: name!,
+      ticketPass: ticketPass!,
+      playerNumber: playerNumber!,
       posts: [posts!],
       phone: phone!,
       birthday: birthday!,

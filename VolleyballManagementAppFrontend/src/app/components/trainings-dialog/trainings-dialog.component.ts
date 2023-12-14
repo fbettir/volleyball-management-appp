@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Gender } from 'src/app/models/gender';
+import { PlayerDetails } from 'src/app/models/player-details';
+import { PlayerDetailsWithName } from 'src/app/models/player-details-with-name';
 import { Role } from 'src/app/models/role';
 import { Training } from 'src/app/models/training';
 import { User } from 'src/app/models/user';
@@ -22,7 +24,7 @@ export class TrainingsDialogComponent {
   
   dataSource = new MatTableDataSource<Training>([this.data]);
 
-  participants: User[] = this.dataSource.data[0].participants;
+  participants: PlayerDetailsWithName[] = this.dataSource.data[0].participants;
 
   addTrainingForm = this.formBuilder.group({
     participants: this.participants,

@@ -55,7 +55,16 @@ export class TeamPageComponent implements OnInit {
         this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
           this.members = teamPlayers;          
           this.teamService.getTeamTrainingsByTeamId(this.teamId).subscribe(trainings =>{
-            this.trainings = trainings;
+            trainings.forEach( t => {
+              const training: Training = {
+                id: t.id,
+                participants: this.membersWithName,
+                location: t.location,
+                date: t.date,
+                description: t.description
+              }
+              this.trainings.push(training);
+            })
             console.log(this.trainings);
             this.dataSourceTrainings.data = this.trainings;
           })

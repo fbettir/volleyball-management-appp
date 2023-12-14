@@ -1,8 +1,8 @@
-import { User } from './user';
+import { PlayerDetailsWithName } from './player-details-with-name';
 
 export interface Training {
   id: string;
-  participants: User[];
+  participants: PlayerDetailsWithName[];
   location: string;
   date: Date;
   description: string;
