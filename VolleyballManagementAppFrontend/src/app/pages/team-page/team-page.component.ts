@@ -65,7 +65,6 @@ export class TeamPageComponent implements OnInit {
               }
               this.trainings.push(training);
             })
-            console.log(this.trainings);
             this.dataSourceTrainings.data = this.trainings;
           })
           if(this.members !== undefined){
