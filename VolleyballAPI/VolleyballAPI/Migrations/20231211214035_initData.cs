@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VolleyballAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitData : Migration
+    public partial class initData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -204,10 +204,10 @@ namespace VolleyballAPI.Migrations
                 columns: new[] { "Id", "Description", "Name", "Picture" },
                 values: new object[,]
                 {
-                    { new Guid("079a0da8-655d-4efe-bd34-69da68dde141"), "Description Team 1", "Team 1", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_095029_opeter.jpg" },
-                    { new Guid("1a25a6e6-4088-4ce2-b9a0-d7fcb302109c"), "Description Team 4", "Team 4", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" },
-                    { new Guid("4a026287-1915-4b42-b347-6d55e8393fe0"), "Description Team 3", "Team 3", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_114305_adam.jpg" },
-                    { new Guid("cbde14f0-47c2-4f54-8c55-93cfce61fbec"), "Description Team 2", "Team 2", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" }
+                    { new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e"), "Description Team 3", "Team 3", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_114305_adam.jpg" },
+                    { new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39"), "Description Team 2", "Team 2", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" },
+                    { new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0"), "Description Team 1", "Team 1", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_095029_opeter.jpg" },
+                    { new Guid("df9aa13e-2818-4d18-b15e-8d903a0220e8"), "Description Team 4", "Team 4", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -215,9 +215,9 @@ namespace VolleyballAPI.Migrations
                 columns: new[] { "Id", "Date", "Description", "Location", "Name", "Picture" },
                 values: new object[,]
                 {
-                    { new Guid("015b6668-118e-4bdf-8031-b00f73186967"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1099), "Description Team 1", "Location tournament 1", "Tournament 1", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" },
-                    { new Guid("86b07c3e-15da-4bcd-a627-083a72e706dc"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1141), "Description Tournament 3", "Location tournament 3", "Tournament 3", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" },
-                    { new Guid("b94b8ad5-4b73-4340-9379-bb4dc652aeee"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1138), "Description Tournament 2", "Location tournament 2", "Tournament 2", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" }
+                    { new Guid("3cad46e7-e901-4d6a-aa85-58bb13f4338e"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2308), "Description Tournament 3", "Location tournament 3", "Tournament 3", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" },
+                    { new Guid("a2764122-1831-4c8b-835b-b63717d3deb6"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2261), "Description Team 1", "Location tournament 1", "Tournament 1", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" },
+                    { new Guid("fa74e37d-fb20-468a-ba1a-5a040ca8afd9"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2305), "Description Tournament 2", "Location tournament 2", "Tournament 2", "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -225,16 +225,16 @@ namespace VolleyballAPI.Migrations
                 columns: new[] { "Id", "Email", "Name", "Password", "Roles" },
                 values: new object[,]
                 {
-                    { new Guid("00295d78-bf44-43d3-9786-17f43d279525"), "user5@user.com", "Name 5", "pass5", "Coach" },
-                    { new Guid("05ae69cd-786c-4977-8607-716cf57b808b"), "user3@user.com", "Name 3", "pass3", "BasicUser" },
-                    { new Guid("129106c7-8141-4b63-ba22-875034a91a0a"), "user1@user.com", "Name 1", "pass1", "Coach,BasicUser" },
-                    { new Guid("3161794f-a4e2-401f-8e7f-936dc014bafe"), "user6@user.com", "Name 6", "pass6", "BasicUser" },
-                    { new Guid("3df074c1-a41f-4047-937b-e953d12300ca"), "user7@user.com", "Name 7", "pass7", "Coach" },
-                    { new Guid("4a406306-4799-486e-a0e5-5b97d88e2f54"), "user8@user.com", "Name 8", "pass8", "Administrator,BasicUser" },
-                    { new Guid("86c293e5-d5d3-4f7a-9857-d39092aedf8f"), "user9@user.com", "Name 9", "pass9", "BasicUser" },
-                    { new Guid("91e18d87-401c-46d0-a24a-cc345f7d5530"), "user4@user.com", "Name 4", "pass4", "BasicUser" },
-                    { new Guid("96454bdb-6590-4579-a6e5-30c36159d11b"), "user2@user.com", "Name 2", "pass2", "Administrator,BasicUser" },
-                    { new Guid("d58b1964-bf94-4db6-8ef9-30bd91a76be8"), "user10@user.com", "Name 10", "pass10", "BasicUser" }
+                    { new Guid("02441339-97aa-49b0-9ae6-04ea07573451"), "user2@user.com", "Name 2", "pass2", "Administrator,BasicUser" },
+                    { new Guid("0480f9a0-2946-471d-811c-be3e90e8b333"), "user8@user.com", "Name 8", "pass8", "Administrator,BasicUser" },
+                    { new Guid("4be5fa8f-cf32-445d-95e5-b3dad4e501c2"), "user6@user.com", "Name 6", "pass6", "BasicUser" },
+                    { new Guid("539dfaf7-81d2-425f-869f-d4b4afbe13e1"), "user5@user.com", "Name 5", "pass5", "Coach" },
+                    { new Guid("733c187c-3554-4b56-904c-aa35d5d17588"), "user4@user.com", "Name 4", "pass4", "BasicUser" },
+                    { new Guid("a43d8788-5c29-4f4c-85e0-590d54be197c"), "user10@user.com", "Name 10", "pass10", "BasicUser" },
+                    { new Guid("b9cc6f90-c98b-445b-82fb-ccbda9d4beb6"), "user9@user.com", "Name 9", "pass9", "BasicUser" },
+                    { new Guid("c2c3c86b-da9e-4d19-b45f-a4cee5bf7736"), "user7@user.com", "Name 7", "pass7", "Coach" },
+                    { new Guid("cdc0a936-3687-4799-8991-00bf5c64bd3e"), "user1@user.com", "Name 1", "pass1", "Coach,BasicUser" },
+                    { new Guid("ea89d17a-92fc-491a-971b-b0cc9b995539"), "user3@user.com", "Name 3", "pass3", "BasicUser" }
                 });
 
             migrationBuilder.InsertData(
@@ -242,16 +242,16 @@ namespace VolleyballAPI.Migrations
                 columns: new[] { "Id", "Birthday", "Gender", "Phone", "PlayerNumber", "Posts", "TicketPass", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("10d1a798-33b8-4d39-8fcc-dccec93b1f66"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1241), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("00295d78-bf44-43d3-9786-17f43d279525") },
-                    { new Guid("17ed9499-f0c2-4280-9b32-dd2faadb82d2"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1238), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("91e18d87-401c-46d0-a24a-cc345f7d5530") },
-                    { new Guid("6324393f-a649-4337-9d4f-bf2346155656"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1235), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("05ae69cd-786c-4977-8607-716cf57b808b") },
-                    { new Guid("73086c94-627e-4ddf-8f9f-b1cd759fb510"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1247), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("3df074c1-a41f-4047-937b-e953d12300ca") },
-                    { new Guid("735cbd52-39d7-4453-8dfe-194eaa00c351"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1256), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("d58b1964-bf94-4db6-8ef9-30bd91a76be8") },
-                    { new Guid("760d027a-311c-4d24-86d9-f82d3bed8bb2"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1224), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("129106c7-8141-4b63-ba22-875034a91a0a") },
-                    { new Guid("9f131d6d-f476-4b2e-a735-bd03487f164e"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1253), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("86c293e5-d5d3-4f7a-9857-d39092aedf8f") },
-                    { new Guid("bc6809d9-58f1-4c32-908d-c9e151587cad"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1232), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("96454bdb-6590-4579-a6e5-30c36159d11b") },
-                    { new Guid("c43e9bd8-fc58-443d-a013-d49447452f9d"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1244), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("3161794f-a4e2-401f-8e7f-936dc014bafe") },
-                    { new Guid("ede1a65a-8137-49f1-b58e-82819086db1d"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1250), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("4a406306-4799-486e-a0e5-5b97d88e2f54") }
+                    { new Guid("16df8456-3386-4833-8296-ebff0c1cd1a8"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2388), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("a43d8788-5c29-4f4c-85e0-590d54be197c") },
+                    { new Guid("2105dd07-dfb6-49df-8c2e-cfbb1aeccaa5"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2374), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("539dfaf7-81d2-425f-869f-d4b4afbe13e1") },
+                    { new Guid("4ce50b70-c4c5-4037-b519-59df4afdd96b"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2379), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("c2c3c86b-da9e-4d19-b45f-a4cee5bf7736") },
+                    { new Guid("a8869498-a428-4446-ad95-a810744bd035"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2358), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("cdc0a936-3687-4799-8991-00bf5c64bd3e") },
+                    { new Guid("b5b938d3-9491-49b7-93fa-20ee5a09f31b"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2385), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("b9cc6f90-c98b-445b-82fb-ccbda9d4beb6") },
+                    { new Guid("b76d79d7-80c0-4baa-bad8-8c8c0f929c90"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2382), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("0480f9a0-2946-471d-811c-be3e90e8b333") },
+                    { new Guid("bd24906d-9c5f-485c-9d68-785708af1e49"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2365), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("02441339-97aa-49b0-9ae6-04ea07573451") },
+                    { new Guid("d503c33c-56c7-4a56-b6a9-908f8386515e"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2368), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("ea89d17a-92fc-491a-971b-b0cc9b995539") },
+                    { new Guid("ee50ae98-2644-494f-a00c-ad500b60a1f3"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2376), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("4be5fa8f-cf32-445d-95e5-b3dad4e501c2") },
+                    { new Guid("f450060b-2a10-4aa4-bc2c-e11fab94a2df"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2371), 0, "", 0, "Libero,Hitter,Receiver", 0, new Guid("733c187c-3554-4b56-904c-aa35d5d17588") }
                 });
 
             migrationBuilder.InsertData(
@@ -259,16 +259,9 @@ namespace VolleyballAPI.Migrations
                 columns: new[] { "TeamId", "TournamentId" },
                 values: new object[,]
                 {
-                    { new Guid("079a0da8-655d-4efe-bd34-69da68dde141"), new Guid("015b6668-118e-4bdf-8031-b00f73186967") },
-                    { new Guid("4a026287-1915-4b42-b347-6d55e8393fe0"), new Guid("015b6668-118e-4bdf-8031-b00f73186967") },
-                    { new Guid("cbde14f0-47c2-4f54-8c55-93cfce61fbec"), new Guid("015b6668-118e-4bdf-8031-b00f73186967") },
-                    { new Guid("079a0da8-655d-4efe-bd34-69da68dde141"), new Guid("86b07c3e-15da-4bcd-a627-083a72e706dc") },
-                    { new Guid("1a25a6e6-4088-4ce2-b9a0-d7fcb302109c"), new Guid("86b07c3e-15da-4bcd-a627-083a72e706dc") },
-                    { new Guid("cbde14f0-47c2-4f54-8c55-93cfce61fbec"), new Guid("86b07c3e-15da-4bcd-a627-083a72e706dc") },
-                    { new Guid("079a0da8-655d-4efe-bd34-69da68dde141"), new Guid("b94b8ad5-4b73-4340-9379-bb4dc652aeee") },
-                    { new Guid("1a25a6e6-4088-4ce2-b9a0-d7fcb302109c"), new Guid("b94b8ad5-4b73-4340-9379-bb4dc652aeee") },
-                    { new Guid("4a026287-1915-4b42-b347-6d55e8393fe0"), new Guid("b94b8ad5-4b73-4340-9379-bb4dc652aeee") },
-                    { new Guid("cbde14f0-47c2-4f54-8c55-93cfce61fbec"), new Guid("b94b8ad5-4b73-4340-9379-bb4dc652aeee") }
+                    { new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e"), new Guid("3cad46e7-e901-4d6a-aa85-58bb13f4338e") },
+                    { new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0"), new Guid("a2764122-1831-4c8b-835b-b63717d3deb6") },
+                    { new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39"), new Guid("fa74e37d-fb20-468a-ba1a-5a040ca8afd9") }
                 });
 
             migrationBuilder.InsertData(
@@ -276,16 +269,16 @@ namespace VolleyballAPI.Migrations
                 columns: new[] { "Id", "Date", "Description", "Location", "TeamId" },
                 values: new object[,]
                 {
-                    { new Guid("24f57709-7b7c-492b-8583-1784678b0191"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1309), "Training8", "Training court 8", new Guid("cbde14f0-47c2-4f54-8c55-93cfce61fbec") },
-                    { new Guid("372ed2a9-1f57-44c9-a352-366d1e77e2bd"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1304), "Training6", "Training court 6", new Guid("cbde14f0-47c2-4f54-8c55-93cfce61fbec") },
-                    { new Guid("3eb31451-abc9-4641-9004-6ac8515d16be"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1311), "Training9", "Training court 9", new Guid("1a25a6e6-4088-4ce2-b9a0-d7fcb302109c") },
-                    { new Guid("425fd650-7d3d-4be8-86a9-b8a7a63da9a8"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1295), "Training2", "Training court 2", new Guid("079a0da8-655d-4efe-bd34-69da68dde141") },
-                    { new Guid("45cccf20-a236-4ceb-b267-c7824f6482f3"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1300), "Training4", "Training court 4", new Guid("4a026287-1915-4b42-b347-6d55e8393fe0") },
-                    { new Guid("46770b38-0a30-4048-9b87-d05d484c9de1"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1306), "Training7", "Training court 7", new Guid("4a026287-1915-4b42-b347-6d55e8393fe0") },
-                    { new Guid("773bbf26-feca-4cbc-96ef-c3e01f7cd52e"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1298), "Training1", "Training court 3", new Guid("cbde14f0-47c2-4f54-8c55-93cfce61fbec") },
-                    { new Guid("bec0866c-1afa-4f8f-9410-9871f4ab7a48"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1302), "Training5", "Training court 5", new Guid("4a026287-1915-4b42-b347-6d55e8393fe0") },
-                    { new Guid("bf520b5c-eda2-41aa-baa1-5f18e4561d74"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1292), "Training1", "Training court 1", new Guid("079a0da8-655d-4efe-bd34-69da68dde141") },
-                    { new Guid("e0254e3e-6847-47e4-9285-354a20ba8f7a"), new DateTime(2023, 12, 6, 14, 37, 46, 49, DateTimeKind.Local).AddTicks(1313), "Training10", "Training court 10", new Guid("1a25a6e6-4088-4ce2-b9a0-d7fcb302109c") }
+                    { new Guid("009ca0f7-49ad-42ba-828a-77b76f3e005b"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2470), "Training8", "Training court 8", new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39") },
+                    { new Guid("65e1a184-4d2d-4c62-bdfc-a92e29b76fe0"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2472), "Training9", "Training court 9", new Guid("df9aa13e-2818-4d18-b15e-8d903a0220e8") },
+                    { new Guid("7107045c-ca72-4c9c-83f2-675dd631b271"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2462), "Training4", "Training court 4", new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e") },
+                    { new Guid("97cb3b48-fbc6-4a2d-a829-e3606a651331"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2468), "Training7", "Training court 7", new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e") },
+                    { new Guid("a02eec8f-c563-47a6-a804-a68da4bf014f"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2475), "Training10", "Training court 10", new Guid("df9aa13e-2818-4d18-b15e-8d903a0220e8") },
+                    { new Guid("a6e4f1a5-0865-42c3-9e8d-6a556d89b1d9"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2455), "Training1", "Training court 1", new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0") },
+                    { new Guid("b0f7ca61-7594-4e68-a95b-96d27e48f8d3"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2458), "Training2", "Training court 2", new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0") },
+                    { new Guid("bfbeceae-dc69-456d-9e81-742de3889606"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2460), "Training1", "Training court 3", new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39") },
+                    { new Guid("cadac11d-da6c-4687-b587-49fa2458a7d2"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2464), "Training5", "Training court 5", new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e") },
+                    { new Guid("eeba3b02-48da-46bb-bd40-f382890ee942"), new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2466), "Training6", "Training court 6", new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39") }
                 });
 
             migrationBuilder.InsertData(
@@ -293,12 +286,12 @@ namespace VolleyballAPI.Migrations
                 columns: new[] { "PlayerId", "TeamId" },
                 values: new object[,]
                 {
-                    { new Guid("10d1a798-33b8-4d39-8fcc-dccec93b1f66"), new Guid("079a0da8-655d-4efe-bd34-69da68dde141") },
-                    { new Guid("17ed9499-f0c2-4280-9b32-dd2faadb82d2"), new Guid("079a0da8-655d-4efe-bd34-69da68dde141") },
-                    { new Guid("6324393f-a649-4337-9d4f-bf2346155656"), new Guid("079a0da8-655d-4efe-bd34-69da68dde141") },
-                    { new Guid("760d027a-311c-4d24-86d9-f82d3bed8bb2"), new Guid("079a0da8-655d-4efe-bd34-69da68dde141") },
-                    { new Guid("bc6809d9-58f1-4c32-908d-c9e151587cad"), new Guid("079a0da8-655d-4efe-bd34-69da68dde141") },
-                    { new Guid("c43e9bd8-fc58-443d-a013-d49447452f9d"), new Guid("cbde14f0-47c2-4f54-8c55-93cfce61fbec") }
+                    { new Guid("ee50ae98-2644-494f-a00c-ad500b60a1f3"), new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39") },
+                    { new Guid("2105dd07-dfb6-49df-8c2e-cfbb1aeccaa5"), new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0") },
+                    { new Guid("a8869498-a428-4446-ad95-a810744bd035"), new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0") },
+                    { new Guid("bd24906d-9c5f-485c-9d68-785708af1e49"), new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0") },
+                    { new Guid("d503c33c-56c7-4a56-b6a9-908f8386515e"), new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0") },
+                    { new Guid("f450060b-2a10-4aa4-bc2c-e11fab94a2df"), new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0") }
                 });
 
             migrationBuilder.InsertData(
@@ -306,16 +299,16 @@ namespace VolleyballAPI.Migrations
                 columns: new[] { "PlayerDetailsId", "TrainingId" },
                 values: new object[,]
                 {
-                    { new Guid("10d1a798-33b8-4d39-8fcc-dccec93b1f66"), new Guid("425fd650-7d3d-4be8-86a9-b8a7a63da9a8") },
-                    { new Guid("17ed9499-f0c2-4280-9b32-dd2faadb82d2"), new Guid("425fd650-7d3d-4be8-86a9-b8a7a63da9a8") },
-                    { new Guid("6324393f-a649-4337-9d4f-bf2346155656"), new Guid("bf520b5c-eda2-41aa-baa1-5f18e4561d74") },
-                    { new Guid("73086c94-627e-4ddf-8f9f-b1cd759fb510"), new Guid("773bbf26-feca-4cbc-96ef-c3e01f7cd52e") },
-                    { new Guid("735cbd52-39d7-4453-8dfe-194eaa00c351"), new Guid("bec0866c-1afa-4f8f-9410-9871f4ab7a48") },
-                    { new Guid("760d027a-311c-4d24-86d9-f82d3bed8bb2"), new Guid("bf520b5c-eda2-41aa-baa1-5f18e4561d74") },
-                    { new Guid("9f131d6d-f476-4b2e-a735-bd03487f164e"), new Guid("bec0866c-1afa-4f8f-9410-9871f4ab7a48") },
-                    { new Guid("bc6809d9-58f1-4c32-908d-c9e151587cad"), new Guid("bf520b5c-eda2-41aa-baa1-5f18e4561d74") },
-                    { new Guid("c43e9bd8-fc58-443d-a013-d49447452f9d"), new Guid("773bbf26-feca-4cbc-96ef-c3e01f7cd52e") },
-                    { new Guid("ede1a65a-8137-49f1-b58e-82819086db1d"), new Guid("45cccf20-a236-4ceb-b267-c7824f6482f3") }
+                    { new Guid("16df8456-3386-4833-8296-ebff0c1cd1a8"), new Guid("cadac11d-da6c-4687-b587-49fa2458a7d2") },
+                    { new Guid("2105dd07-dfb6-49df-8c2e-cfbb1aeccaa5"), new Guid("b0f7ca61-7594-4e68-a95b-96d27e48f8d3") },
+                    { new Guid("4ce50b70-c4c5-4037-b519-59df4afdd96b"), new Guid("bfbeceae-dc69-456d-9e81-742de3889606") },
+                    { new Guid("a8869498-a428-4446-ad95-a810744bd035"), new Guid("a6e4f1a5-0865-42c3-9e8d-6a556d89b1d9") },
+                    { new Guid("b5b938d3-9491-49b7-93fa-20ee5a09f31b"), new Guid("cadac11d-da6c-4687-b587-49fa2458a7d2") },
+                    { new Guid("b76d79d7-80c0-4baa-bad8-8c8c0f929c90"), new Guid("7107045c-ca72-4c9c-83f2-675dd631b271") },
+                    { new Guid("bd24906d-9c5f-485c-9d68-785708af1e49"), new Guid("a6e4f1a5-0865-42c3-9e8d-6a556d89b1d9") },
+                    { new Guid("d503c33c-56c7-4a56-b6a9-908f8386515e"), new Guid("a6e4f1a5-0865-42c3-9e8d-6a556d89b1d9") },
+                    { new Guid("ee50ae98-2644-494f-a00c-ad500b60a1f3"), new Guid("bfbeceae-dc69-456d-9e81-742de3889606") },
+                    { new Guid("f450060b-2a10-4aa4-bc2c-e11fab94a2df"), new Guid("b0f7ca61-7594-4e68-a95b-96d27e48f8d3") }
                 });
 
             migrationBuilder.CreateIndex(

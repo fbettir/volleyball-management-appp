@@ -131,7 +131,7 @@ namespace VolleyballManagementAppBackend
                 new User
                 {
                     Id = userId1,
-                    Name = "Name 1",
+                    Name = "Jancs",
                     Password = "pass1",
                     Email = "user1@user.com",
                     Roles = new List<Role> { Role.Coach, Role.BasicUser }
@@ -140,7 +140,7 @@ namespace VolleyballManagementAppBackend
                 new User
                 {
                     Id = userId2,
-                    Name = "Name 2",
+                    Name = "Aranka",
                     Password = "pass2",
                     Email = "user2@user.com",
                     Roles = new List<Role> { Role.Administrator, Role.BasicUser }
@@ -148,7 +148,7 @@ namespace VolleyballManagementAppBackend
                 new User
                 {
                     Id = userId3,
-                    Name = "Name 3",
+                    Name = "Dani",
                     Password = "pass3",
                     Email = "user3@user.com",
                     Roles = new List<Role> { Role.BasicUser }
@@ -156,7 +156,7 @@ namespace VolleyballManagementAppBackend
                 new User
                 {
                     Id = userId4,
-                    Name = "Name 4",
+                    Name = "Kristóf",
                     Password = "pass4",
                     Email = "user4@user.com",
                     Roles = new List<Role> { Role.BasicUser }
@@ -164,7 +164,7 @@ namespace VolleyballManagementAppBackend
                 new User
                 {
                     Id = userId5,
-                    Name = "Name 5",
+                    Name = "Lajos",
                     Password = "pass5",
                     Email = "user5@user.com",
                     Roles = new List<Role>{ Role.Coach }
@@ -172,7 +172,7 @@ namespace VolleyballManagementAppBackend
                 new User
                 {
                     Id = userId6,
-                    Name = "Name 6",
+                    Name = "Péter",
                     Password = "pass6",
                     Email = "user6@user.com",
                     Roles = new List<Role> { Role.BasicUser }
@@ -180,7 +180,7 @@ namespace VolleyballManagementAppBackend
                 new User
                 {
                     Id = userId7,
-                    Name = "Name 7",
+                    Name = "Felícia",
                     Password = "pass7",
                     Email = "user7@user.com",
                     Roles = new List<Role> { Role.Coach }
@@ -218,7 +218,8 @@ namespace VolleyballManagementAppBackend
                     UserId = userId1,
                     Birthday = DateTime.Now,
                     Phone = "",
-                    Posts = new List<Post> { Post.Libero , Post.Hitter, Post.Receiver },
+                    PlayerNumber = 3,
+                    Posts = new List<Post> { Post.Libero , Post.Receiver },
                 },
                 new PlayerDetails
                 {
@@ -226,7 +227,8 @@ namespace VolleyballManagementAppBackend
                     UserId = userId2,
                     Birthday = DateTime.Now,
                     Phone = "",
-                    Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
+                    PlayerNumber = 9,
+                    Posts = new List<Post> {  Post.Receiver },
                 },
                 new PlayerDetails
                 {
@@ -234,7 +236,8 @@ namespace VolleyballManagementAppBackend
                     UserId = userId3,
                     Birthday = DateTime.Now,
                     Phone = "",
-                    Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
+                    PlayerNumber = 12,
+                    Posts = new List<Post> { Post.Setter },
                 },
                 new PlayerDetails
                 {
@@ -242,7 +245,8 @@ namespace VolleyballManagementAppBackend
                     UserId = userId4,
                     Birthday = DateTime.Now,
                     Phone = "",
-                    Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
+                    PlayerNumber = 5,
+                    Posts = new List<Post> { Post.Receiver },
                 },
                 new PlayerDetails
                 {
@@ -250,7 +254,8 @@ namespace VolleyballManagementAppBackend
                     UserId = userId5,
                     Birthday = DateTime.Now,
                     Phone = "",
-                    Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
+                    PlayerNumber = 6,
+                    Posts = new List<Post> { Post.Libero },
                 },
                 new PlayerDetails
                 {
@@ -258,7 +263,8 @@ namespace VolleyballManagementAppBackend
                     UserId = userId6,
                     Birthday = DateTime.Now,
                     Phone = "",
-                    Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
+                    PlayerNumber = 7,
+                    Posts = new List<Post> { Post.Libero,  },
                 },
                 new PlayerDetails
                 {
@@ -266,7 +272,8 @@ namespace VolleyballManagementAppBackend
                     UserId = userId7,
                     Birthday = DateTime.Now,
                     Phone = "",
-                    Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
+                    PlayerNumber = 13,
+                    Posts = new List<Post> { Post.Libero, Post.Hitter,  },
                 },
                 new PlayerDetails
                 {
@@ -274,7 +281,8 @@ namespace VolleyballManagementAppBackend
                     UserId = userId8,
                     Birthday = DateTime.Now,
                     Phone = "",
-                    Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
+                    PlayerNumber = 2,
+                    Posts = new List<Post> { Post.Hitter, Post.Receiver },
                 },
                 new PlayerDetails
                 {
@@ -282,6 +290,7 @@ namespace VolleyballManagementAppBackend
                     UserId = userId9,
                     Birthday = DateTime.Now,
                     Phone = "",
+                    PlayerNumber = 69,
                     Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
                 },
                 new PlayerDetails
@@ -290,6 +299,7 @@ namespace VolleyballManagementAppBackend
                     UserId = userId01,
                     Birthday = DateTime.Now,
                     Phone = "",
+                    PlayerNumber = 17,
                     Posts = new List<Post> { Post.Libero, Post.Hitter, Post.Receiver },
                 }
             );

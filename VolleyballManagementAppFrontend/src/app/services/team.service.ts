@@ -3,6 +3,7 @@ import { Team } from '../models/team';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PlayerDetails } from '../models/player-details';
+import { Training } from '../models/training';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class TeamService {
     this.httpClient.post(this.baseURL, team).subscribe(t => {
       console.log(t);
     });
+  }
+
+  getTeamTrainingsByTeamId(trainingId: string) {
+    return this.httpClient.get<Training[]>(`${this.baseURL}/${trainingId}/trainings`);
   }
 
   deleteTeamById(teamId: string): void {

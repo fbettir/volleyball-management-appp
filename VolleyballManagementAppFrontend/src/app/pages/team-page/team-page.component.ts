@@ -54,7 +54,11 @@ export class TeamPageComponent implements OnInit {
       if (team !== undefined) {
         this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
           this.members = teamPlayers;          
-          // this.dataSourcePlayers.data = this.members;
+          this.teamService.getTeamTrainingsByTeamId(this.teamId).subscribe(trainings =>{
+            this.trainings = trainings;
+            console.log(this.trainings);
+            this.dataSourceTrainings.data = this.trainings;
+          })
           if(this.members !== undefined){
           this.members.forEach( m => {
             this.userService.getUserById(m.userId).subscribe( user => {
