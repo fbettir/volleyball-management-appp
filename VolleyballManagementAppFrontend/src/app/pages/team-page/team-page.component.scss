@@ -65,6 +65,8 @@
     background-color: var(--bgWhite);
     width: 100%;
     max-width: 1500px;
+    display: flex;
+    flex-direction: column;
     table {
       background-color: var(--bgLightgold);
       th {
@@ -85,6 +87,11 @@
     }
     .edit {
       background-color: var(--gold);
+    }
+
+    .add-button {
+      width: 50%;
+      padding-top: 10px;
     }
 
     button {
