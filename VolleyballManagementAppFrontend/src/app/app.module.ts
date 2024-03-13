@@ -46,6 +46,10 @@ import { AddTournamentComponent } from './components/add-tournament/add-tourname
 import { AddPlayerDetailsComponent } from './components/add-player-details/add-player-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { MultipleListEnumToDescriptionPipe } from './shared/multiple-list-enum-to-description.pipe';
+import { AuthModule } from '@auth0/auth0-angular';
+import { LogoutComponent } from './auth/logout/logout.component';
+import { LoginComponent } from './auth/login/login.component';
+import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -70,6 +74,9 @@ import { MultipleListEnumToDescriptionPipe } from './shared/multiple-list-enum-t
     AddPlayerDetailsComponent,
     AddUserComponent,
     MultipleListEnumToDescriptionPipe,
+    LogoutComponent,
+    LoginComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,6 +106,13 @@ import { MultipleListEnumToDescriptionPipe } from './shared/multiple-list-enum-t
     MatMenuModule,
     DragDropModule,
     HttpClientModule,
+    AuthModule.forRoot({
+      domain: 'muerapp.eu.auth0.com',
+      clientId: 'JmRWqtpQAxhMB6nMwHXx6njMH4Ij8HLg',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
