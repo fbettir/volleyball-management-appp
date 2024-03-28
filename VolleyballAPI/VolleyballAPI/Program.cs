@@ -1,11 +1,18 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using VolleyballAPI.Interfaces;
+using VolleyballAPI.Scopes;
 using VolleyballAPI.Services;
 using VolleyballManagementAppBackend;
 using VolleyballManagementAppBackend.Interfaces;
 using VolleyballManagementAppBackend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -18,29 +25,46 @@ builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:4200");
+                      });
+});
 
+builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
+//Auth0
+var domain = $"https://{builder.Configuration["Auth0:Domain"]}/";
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(options =>
+{
+    options.Authority = domain;
+    options.Audience = builder.Configuration["Auth0:Audience"];
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        NameClaimType = ClaimTypes.NameIdentifier
+    };
+});
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("read:messages", policy => policy.Requirements.Add(new
+    HasScopeRequirement("read:messages", domain)));
+});
+
+builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
 builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
-app.MapGet("/username", (HttpContext ctx) =>
-{
-    var authCookie = ctx.Request.Headers.Cookie.FirstOrDefault(x => x.StartsWith("auth"));
-    var payload = authCookie.Split("=").Last();
-    var parts = payload.Split(":");
-    var key = parts[0];
-    var value = parts[1];
-    return value;
-});
+app.UseRouting();
+app.UseCors(MyAllowSpecificOrigins);
 
-app.MapGet("/login", (HttpContext ctx) =>
-{
-    ctx.Response.Headers["set-cookie"] = "auth=usr:betti";
-    return "ok";
-});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -51,12 +75,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
-app.UseCors(o =>
-                o.AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowAnyOrigin());
 
 app.MapControllers();
 

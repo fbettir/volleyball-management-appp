@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
@@ -40,6 +41,7 @@ namespace VolleyballAPI.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult<IEnumerable<TournamentDto>>> GetAllTournaments()
         {
             try

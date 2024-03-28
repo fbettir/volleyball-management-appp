@@ -35,7 +35,7 @@ import { TournamentPageComponent } from './pages/tournament-page/tournament-page
 import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { EnumIntToDescriptionPipe } from './shared/enum-to-description.pipe';
 import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -46,7 +46,7 @@ import { AddTournamentComponent } from './components/add-tournament/add-tourname
 import { AddPlayerDetailsComponent } from './components/add-player-details/add-player-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { MultipleListEnumToDescriptionPipe } from './shared/multiple-list-enum-to-description.pipe';
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthModule, authHttpInterceptorFn } from '@auth0/auth0-angular';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
@@ -110,11 +110,26 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
       domain: 'muerapp.eu.auth0.com',
       clientId: 'JmRWqtpQAxhMB6nMwHXx6njMH4Ij8HLg',
       authorizationParams: {
+        audience: 'https://muerapp.eu.auth0.com/api/v2/',
+        scope: 'openid profile email read:messages', 
         redirect_uri: window.location.origin
-      }
+      },
+      httpInterceptor: {
+        allowedList: [
+          {
+            uri: 'https://muerapp.eu.auth0.com/api/v2/users',
+            tokenOptions: {
+              authorizationParams: {
+                audience: 'https://muerapp.eu.auth0.com/api/v2/',
+                scope: 'read:users',
+              }
+            },
+          },
+        ],
+      },
     }),
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptors([authHttpInterceptorFn]))],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
