@@ -129,7 +129,6 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
       },
     }),
   ],
-  providers: [provideHttpClient(withInterceptors([authHttpInterceptorFn]))],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
