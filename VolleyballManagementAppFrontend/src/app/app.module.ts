@@ -149,28 +149,28 @@ export function jwtOptionsFactory() {
         useFactory: jwtOptionsFactory
       }
     }),
-    AuthModule.forRoot({
-      domain: 'muerapp.eu.auth0.com',
-      clientId: 'JmRWqtpQAxhMB6nMwHXx6njMH4Ij8HLg',
-      authorizationParams: {
-        redirect_uri: window.location.origin,
-        audience: 'https://muerapp.eu.auth0.com/api/v2/',
-        scope: 'read:current_user'
-      },
-      httpInterceptor: {
-        allowedList: [
-          {
-            uri: 'https://muerapp.eu.auth0.com/api/v2/*',
-            tokenOptions: {
-              authorizationParams: {
-                audience: 'https://muerapp.eu.auth0.com/api/v2/',
-                scope: 'read:current_user'
-              }
-            }
-          }
-        ]
-      }
-    })
+    // AuthModule.forRoot({
+    //   domain: 'muerapp.eu.auth0.com',
+    //   clientId: 'JmRWqtpQAxhMB6nMwHXx6njMH4Ij8HLg',
+    //   authorizationParams: {
+    //     redirect_uri: window.location.origin,
+    //     audience: 'https://muerapp.eu.auth0.com/api/v2/',
+    //     scope: 'read:current_user'
+    //   },
+    //   httpInterceptor: {
+    //     allowedList: [
+    //       {
+    //         uri: 'https://muerapp.eu.auth0.com/api/v2/*',
+    //         tokenOptions: {
+    //           authorizationParams: {
+    //             audience: 'https://muerapp.eu.auth0.com/api/v2/',
+    //             scope: 'read:current_user'
+    //           }
+    //         }
+    //       }
+    //     ]
+    //   }
+    // })
   ],
   providers: [    
     // provideHttpClient(withInterceptors([authHttpInterceptorFn])),
