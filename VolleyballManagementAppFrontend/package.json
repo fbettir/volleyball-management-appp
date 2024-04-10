@@ -13,16 +13,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.2.12",
+    "@angular/animations": "^17.3.3",
     "@angular/cdk": "^15.2.9",
-    "@angular/common": "^16.2.12",
-    "@angular/compiler": "^16.2.12",
-    "@angular/core": "^16.2.12",
-    "@angular/forms": "^16.2.12",
+    "@angular/common": "^17.3.3",
+    "@angular/compiler": "^17.3.3",
+    "@angular/core": "^17.3.3",
+    "@angular/forms": "^17.3.3",
     "@angular/material": "^15.2.9",
-    "@angular/platform-browser": "^16.2.12",
-    "@angular/platform-browser-dynamic": "^16.2.12",
-    "@angular/router": "^16.2.12",
+    "@angular/platform-browser": "^17.3.3",
+    "@angular/platform-browser-dynamic": "^17.3.3",
+    "@angular/router": "^17.3.3",
     "@auth0/angular-jwt": "^5.2.0",
     "@auth0/auth0-angular": "^2.2.3",
     "@material/dialog": "^15.0.0-canary.684e33d25.0",
@@ -34,12 +34,12 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "uuid": "^9.0.1",
-    "zone.js": "~0.13.3"
+    "zone.js": "~0.14.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.5",
     "@angular/cli": "~15.2.5",
-    "@angular/compiler-cli": "^16.2.12",
+    "@angular/compiler-cli": "^17.3.3",
     "@types/jest": "^29.5.5",
     "@types/uuid": "^9.0.6",
     "gulp": "^4.0.2",
@@ -48,7 +48,7 @@
     "jest-preset-angular": "^13.1.2",
     "prettier": "3.0.3",
     "sass": "^1.69.1",
-    "typescript": "~4.9.4"
+    "typescript": "~5.4.4"
   },
   "jest": {
     "preset": "jest-preset-angular",
