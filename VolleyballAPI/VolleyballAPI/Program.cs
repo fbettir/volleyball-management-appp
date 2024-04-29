@@ -48,15 +48,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 {
     options.Authority = domain;
     options.Audience = builder.Configuration["Auth0:Audience"];
+    options.ClaimsIssuer = builder.Configuration["Auth0:Domain"];
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        NameClaimType = ClaimTypes.NameIdentifier
-    };
+        NameClaimType = ClaimTypes.NameIdentifier,
+};
 });
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("read:messages", policy => policy.Requirements.Add(new
     HasScopeRequirement("read:messages", domain)));
+
+    options.AddPolicy("read:roles", policy => policy.Requirements.Add(new
+    HasScopeRequirement("read:roles", domain)));
 });
 
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();

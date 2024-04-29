@@ -9,14 +9,7 @@
   </div> -->
 
   <ul *ngIf="auth.user$ | async as user">
-    <li>{{ user.name }}</li>
-    <li>{{ user.email }}</li>
+    <li>{{ user }}</li>
+    <li>{{ user.nickname }}</li>
   </ul>
-  
-  <div *ngIf="metadata"><pre>{{ metadata | json }}</pre></div>
 
-  <div *ngIf="authenticated">
-    Üdvözöllek, {{ user.name }}!
-  </div>
-
-  <div *ngIf="token">{{ token }}</div>

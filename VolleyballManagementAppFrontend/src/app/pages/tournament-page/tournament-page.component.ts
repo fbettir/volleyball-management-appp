@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Tournament } from 'src/app/models/tournament';
 import { TeamService } from 'src/app/services/team.service';
 import { TournamentService } from 'src/app/services/tournament.service';
+import { AuthHttpInterceptor, AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-tournament-page',

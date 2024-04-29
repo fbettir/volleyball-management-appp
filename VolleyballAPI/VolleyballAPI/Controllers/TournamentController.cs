@@ -41,7 +41,7 @@ namespace VolleyballAPI.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public async Task<ActionResult<IEnumerable<TournamentDto>>> GetAllTournaments()
         {
             try

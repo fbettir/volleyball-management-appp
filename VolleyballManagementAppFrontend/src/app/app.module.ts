@@ -35,7 +35,7 @@ import { TournamentPageComponent } from './pages/tournament-page/tournament-page
 import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
-import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { EnumIntToDescriptionPipe } from './shared/enum-to-description.pipe';
 import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -50,30 +50,7 @@ import { AuthModule, authHttpInterceptorFn } from '@auth0/auth0-angular';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
-import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
-import { provideAuth0 } from '@auth0/auth0-angular';
-import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
-
-export function jwtOptionsFactory() {
-  return {
-    allowedList: [
-      {
-        // Match any request that starts 'https://{yourDomain}/api/v2/' (note the asterisk)
-        uri: 'https://muerapp.eu.auth0.com/api/v2/*',
-        tokenOptions: {
-          authorizationParams: {
-            // The attached token should target this audience
-            audience: 'https://muerapp.eu.auth0.com/api/v2/',
-
-            // The attached token should have these scopes
-            scope: 'read:current_user'
-          }
-        }
-      }
-    ]
-  };
-}
 
 @NgModule({
   declarations: [
@@ -129,53 +106,29 @@ export function jwtOptionsFactory() {
     MatMenuModule,
     DragDropModule,
     HttpClientModule,
-    // AuthModule.forRoot({
-    //   domain: 'muerapp.eu.auth0.com',
-    //   clientId: 'JmRWqtpQAxhMB6nMwHXx6njMH4Ij8HLg',
-    
-    //   authorizationParams: {
-    //     redirect_uri: window.location.origin,
-        
-    //     // Request this audience at user authentication time
-    //     audience: 'https://muerapp.eu.auth0.com/api/v2/',
-    
-    //     // Request this scope at user authentication time
-    //     scope: 'read:current_user',
-    //   },
-    // }),
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory
-      }
+    AuthModule.forRoot({
+      domain: 'muerapp.eu.auth0.com',
+      clientId: 'JmRWqtpQAxhMB6nMwHXx6njMH4Ij8HLg',
+      authorizationParams: {
+        audience: 'https://muerapp.eu.auth0.com/api/v2/',
+        scope: 'openid profile email read:messages', 
+        redirect_uri: window.location.origin
+      },
+      // httpInterceptor: {
+      //   allowedList: [
+      //     {
+      //       uri: 'https://muerapp.eu.auth0.com/api/v2/users',
+      //       tokenOptions: {
+      //         authorizationParams: {
+      //           audience: 'https://muerapp.eu.auth0.com/api/v2/',
+      //           scope: 'read:users',
+      //         }
+      //       },
+      //     },
+      //   ],
+      // },
     }),
-    // AuthModule.forRoot({
-    //   domain: 'muerapp.eu.auth0.com',
-    //   clientId: 'JmRWqtpQAxhMB6nMwHXx6njMH4Ij8HLg',
-    //   authorizationParams: {
-    //     redirect_uri: window.location.origin,
-    //     audience: 'https://muerapp.eu.auth0.com/api/v2/',
-    //     scope: 'read:current_user'
-    //   },
-    //   httpInterceptor: {
-    //     allowedList: [
-    //       {
-    //         uri: 'https://muerapp.eu.auth0.com/api/v2/*',
-    //         tokenOptions: {
-    //           authorizationParams: {
-    //             audience: 'https://muerapp.eu.auth0.com/api/v2/',
-    //             scope: 'read:current_user'
-    //           }
-    //         }
-    //       }
-    //     ]
-    //   }
-    // })
   ],
-  providers: [    
-    // provideHttpClient(withInterceptors([authHttpInterceptorFn])),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
-],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
