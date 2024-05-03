@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
 using VolleyballManagementAppBackend.Dtos;
@@ -11,7 +10,7 @@ using VolleyballManagementAppBackend.Services;
 
 namespace VolleyballAPI.Controllers
 {
-    [Route("tournaments")]
+    [Route("api/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
     public class TournamentController : ControllerBase

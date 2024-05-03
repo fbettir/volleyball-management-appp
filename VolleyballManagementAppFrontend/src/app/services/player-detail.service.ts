@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PlayerDetailService {
-  private baseURL: string = 'https://localhost:44359/players';
+  private baseURL: string = 'api/players';
 
   constructor(private httpClient: HttpClient) { }
 

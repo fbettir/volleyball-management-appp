@@ -8,7 +8,7 @@ using VolleyballManagementAppBackend.Services;
 
 namespace VolleyballAPI.Controllers
 {
-    [Route("users")]
+    [Route("api/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
     public class UserController: ControllerBase

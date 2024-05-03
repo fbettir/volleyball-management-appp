@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>5477da9a-2c18-4f68-857f-8aea690a5ef4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,9 +26,9 @@
 	</PackageReference>
 	  
 	 <!-- Web dependencies -->
-    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+  <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
 	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  <PackageReference Include="Yarp.ReverseProxy" Version="2.1.0" />  
 </ItemGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@ using VolleyballManagementAppBackend.Exceptions;
 
 namespace VolleyballAPI.Controllers
 {
-    [Route("players")]
+    [Route("api/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
     public class PlayerController : ControllerBase
