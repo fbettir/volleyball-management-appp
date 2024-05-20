@@ -8,17 +8,61 @@ import { TournamentPageComponent } from './pages/tournament-page/tournament-page
 import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { RoleGuard } from './role.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent },
-  { path: 'tournaments', component: AllTournamentsPageComponent },
-  { path: 'profile', component: MemberPageComponent },
-  { path: 'team/:teamId', component: TeamPageComponent },
-  { path: 'teams', component: AllTeamsPageComponent },
-  { path: 'tournament/:tournamentId', component: TournamentPageComponent },
-  { path: 'contact-us', component: ContactUsPageComponent },
-  { path: 'admin', component: AdminPageComponent },
-  { path: '**', redirectTo: 'home' },
+  { 
+    path: 'home', 
+    component: HomePageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  { 
+    path: 'tournaments', 
+    component: AllTournamentsPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  { 
+    path: 'profile', 
+    component: MemberPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  { 
+    path: 'team/:teamId', 
+    component: TeamPageComponent ,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  { 
+    path: 'teams', 
+    component: AllTeamsPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']} 
+  },
+  { 
+    path: 'tournament/:tournamentId', 
+    component: TournamentPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']} 
+  },
+  { 
+    path: 'contact-us', 
+    component: ContactUsPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  { 
+    path: 'admin', 
+    component: AdminPageComponent ,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['admin']}
+  },
+  { 
+    path: '**', 
+    redirectTo: 'home' 
+  },
 ];
 
 @NgModule({

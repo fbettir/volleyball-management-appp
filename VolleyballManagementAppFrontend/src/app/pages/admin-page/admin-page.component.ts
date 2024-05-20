@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JwtDecoderService } from 'src/app/services/jwt-decoder.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent {
-
+  constructor(public auth: JwtDecoderService) {}
 }
