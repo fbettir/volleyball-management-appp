@@ -25,6 +25,10 @@ builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
+builder.Services.AddReverseProxy()
+    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+
+/*
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
@@ -36,7 +40,7 @@ builder.Services.AddCors(options =>
                             .AllowCredentials();
                       });
 });
-
+*/
 builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -52,15 +56,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     options.TokenValidationParameters = new TokenValidationParameters
     {
         NameClaimType = ClaimTypes.NameIdentifier,
-};
+    };
 });
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("read:messages", policy => policy.Requirements.Add(new
-    HasScopeRequirement("read:messages", domain)));
+    //options.AddPolicy("read:messages", policy => policy.Requirements.Add(new
+    //HasScopeRequirement("read:messages", domain)));
 
-    options.AddPolicy("read:roles", policy => policy.Requirements.Add(new
-    HasScopeRequirement("read:roles", domain)));
+    //options.AddPolicy("read:roles", policy => policy.Requirements.Add(new
+    //HasScopeRequirement("read:roles", domain)));
 });
 
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
@@ -68,9 +72,9 @@ builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+app.MapReverseProxy();
 app.UseRouting();
-app.UseCors(MyAllowSpecificOrigins);
+//app.UseCors(MyAllowSpecificOrigins);
 
 
 // Configure the HTTP request pipeline.
@@ -80,7 +84,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();

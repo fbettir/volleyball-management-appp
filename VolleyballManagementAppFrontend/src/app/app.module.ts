@@ -35,7 +35,7 @@ import { TournamentPageComponent } from './pages/tournament-page/tournament-page
 import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
-import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS , provideHttpClient, withInterceptors } from '@angular/common/http';
 import { EnumIntToDescriptionPipe } from './shared/enum-to-description.pipe';
 import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -50,7 +50,7 @@ import { AuthModule, authHttpInterceptorFn } from '@auth0/auth0-angular';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
-
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -114,20 +114,19 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
         scope: 'openid profile email read:messages', 
         redirect_uri: window.location.origin
       },
-      // httpInterceptor: {
-      //   allowedList: [
-      //     {
-      //       uri: 'https://muerapp.eu.auth0.com/api/v2/users',
-      //       tokenOptions: {
-      //         authorizationParams: {
-      //           audience: 'https://muerapp.eu.auth0.com/api/v2/',
-      //           scope: 'read:users',
-      //         }
-      //       },
-      //     },
-      //   ],
-      // },
+      httpInterceptor: {
+        allowedList: [
+          // Attach access tokens to any calls to '/api' (exact match)
+          '/api',
+
+          // Attach access tokens to any calls that start with '/api/'
+          'api/*'
+        ],
+      },
     }),
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

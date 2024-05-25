@@ -9,7 +9,7 @@ import { Training } from '../models/training';
   providedIn: 'root'
 })
 export class TeamService {
-  private baseURL: string = 'https://localhost:44359/teams';
+  private baseURL: string = 'api/Team';
 
   constructor(private httpClient: HttpClient) { }
 

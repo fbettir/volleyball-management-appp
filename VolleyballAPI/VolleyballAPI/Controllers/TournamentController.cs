@@ -1,17 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
 using VolleyballManagementAppBackend.Dtos;
-using VolleyballManagementAppBackend.Entities;
 using VolleyballManagementAppBackend.Exceptions;
-using VolleyballManagementAppBackend.Interfaces;
-using VolleyballManagementAppBackend.Services;
 
 namespace VolleyballAPI.Controllers
 {
-    [Route("tournaments")]
+    [Route("api/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
     public class TournamentController : ControllerBase
@@ -41,7 +37,7 @@ namespace VolleyballAPI.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
-        //[Authorize(Roles = "admin")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TournamentDto>>> GetAllTournaments()
         {
             try

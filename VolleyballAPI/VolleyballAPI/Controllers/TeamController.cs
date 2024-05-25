@@ -6,7 +6,7 @@ using VolleyballManagementAppBackend.Interfaces;
 
 namespace VolleyballManagementAppBackend.Controllers
 {
-    [Route("teams")]
+    [Route("api/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
     public class TeamController : ControllerBase

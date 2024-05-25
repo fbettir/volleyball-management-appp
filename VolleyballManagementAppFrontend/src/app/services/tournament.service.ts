@@ -8,14 +8,15 @@ import { BasePortalOutlet } from '@angular/cdk/portal';
   providedIn: 'root'
 })
 export class TournamentService {
-  private baseURL: string = 'https://localhost:44359/tournaments';
+  private baseURL: string = 'api/Tournament';
   constructor(private httpClient: HttpClient) { }
 
   getTournamentById(tournamentId: string): Observable<Tournament> {
     return this.httpClient.get<Tournament>(`${this.baseURL}/${tournamentId}`);
   }
 
-  getAllTournaments(): Observable<Tournament[]> {    return this.httpClient.get<Tournament[]>(this.baseURL);
+  getAllTournaments(): Observable<Tournament[]> { 
+    return this.httpClient.get<Tournament[]>(this.baseURL);
   }
 
   registerTeamToTournament(tournamentId: string, teamId: string) : Observable<void>{
