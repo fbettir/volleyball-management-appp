@@ -63,9 +63,13 @@ Use-cases:
         - feedback for training
         - can request to join a team
         - respond to training
+        - can create team for tournament
+        - can join tournament team 
 - Coach:
     - can add team member
     - can add trainings
+    - nice-to-have: 
+        - can invite team to training
 - Administrator:
     - can create new team
     - can create new tournament
