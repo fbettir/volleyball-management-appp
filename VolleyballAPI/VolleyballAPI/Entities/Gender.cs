@@ -1,6 +1,9 @@
-namespace VolleyballManagementAppBackend.Entities
+using System.Text.Json.Serialization;
+
+namespace VolleyballAPI.Entities
 {
-  public enum Gender
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum Gender
   {
     Man = 0,
     Woman = 1,

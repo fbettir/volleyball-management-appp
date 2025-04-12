@@ -3,9 +3,8 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
-using VolleyballManagementAppBackend;
-using VolleyballManagementAppBackend.Entities;
-using VolleyballManagementAppBackend.Exceptions;
+using VolleyballAPI.Entities;
+using VolleyballAPI.Exceptions;
 
 
 namespace VolleyballAPI.Services
@@ -21,32 +20,40 @@ namespace VolleyballAPI.Services
             _context = context;
         }
 
-        public async Task<UserDto> GetUserAsync(Guid userId)
+        public async Task<UserDetailsDto> GetUserDetailsAsync(Guid userId)
         {
             return await _context.Users
-                .ProjectTo<UserDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<UserDetailsDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync(r => r.Id == userId)
+                ?? throw new EntityNotFoundException("User not found");
+        }
+        
+        public async Task<UserHeaderDto> GetUserHeaderAsync(Guid userId)
+        {
+            return await _context.Users
+                .ProjectTo<UserHeaderDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync(r => r.Id == userId)
                 ?? throw new EntityNotFoundException("User not found");
         }
 
-        public async Task<IEnumerable<UserDto>> GetUsersAsync()
+        public async Task<IEnumerable<UserDetailsDto>> GetUsersAsync()
         {
             var users = await _context.Users
-                .ProjectTo<UserDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<UserDetailsDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
 
             return users;
         }
 
-        public async Task<UserDto> InsertUserAsync(UserDto newUser)
+        public async Task<UserHeaderDto> InsertUserAsync(UserHeaderDto newUser)
         {
             var efUser = _mapper.Map<User>(newUser);
             _context.Users.Add(efUser);
             await _context.SaveChangesAsync();
-            return await GetUserAsync(efUser.Id);
+            return await GetUserHeaderAsync(efUser.Id);
         }
 
-        public async Task UpdateUserAsync(UserDto updatedUser, Guid userId)
+        public async Task UpdateUserAsync(UserDetailsDto updatedUser, Guid userId)
         {
             var efUser = _mapper.Map<User>(updatedUser);
             efUser.Id = userId;

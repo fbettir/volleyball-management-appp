@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VolleyballManagementAppBackend;
+using VolleyballAPI;
 
 #nullable disable
 
@@ -17,10 +17,1149 @@ namespace VolleyballAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("VolleyballAPI.Entities.FavouriteTeam", b =>
+                {
+                    b.Property<Guid>("TeamId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TeamId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavouriteTeams");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.FavouriteTournament", b =>
+                {
+                    b.Property<Guid>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TournamentId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavouriteTournaments");
+
+                    b.HasData(
+                        new
+                        {
+                            TournamentId = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033"),
+                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.FavouriteTraining", b =>
+                {
+                    b.Property<Guid>("TrainingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TrainingId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavouriteTrainings");
+
+                    b.HasData(
+                        new
+                        {
+                            TrainingId = new Guid("21eb950f-7f6f-44c5-aab0-4033c8404e06"),
+                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.Location", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            Address = "Location Addr 1",
+                            Name = "Location1"
+                        },
+                        new
+                        {
+                            Id = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
+                            Address = "Location Addr 2",
+                            Name = "Location2"
+                        },
+                        new
+                        {
+                            Id = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            Address = "Location Addr 3",
+                            Name = "Location3"
+                        },
+                        new
+                        {
+                            Id = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            Address = "Location Addr 4",
+                            Name = "Location4"
+                        },
+                        new
+                        {
+                            Id = new Guid("e520731c-c5a2-4016-a5af-90a2b5175091"),
+                            Address = "Location Addr 5",
+                            Name = "Location5"
+                        },
+                        new
+                        {
+                            Id = new Guid("45429076-7d5b-4e61-a9f0-252122a9bdf9"),
+                            Address = "Location Addr 6",
+                            Name = "Location6"
+                        },
+                        new
+                        {
+                            Id = new Guid("f2aca153-19d8-4a19-bc79-5f2ea7a002df"),
+                            Address = "Location Addr 7",
+                            Name = "Location7"
+                        },
+                        new
+                        {
+                            Id = new Guid("026827c9-455b-41e1-9c49-47ee9b94fbe4"),
+                            Address = "Location Addr 8",
+                            Name = "Location8"
+                        },
+                        new
+                        {
+                            Id = new Guid("f526a593-f96d-4483-aaa6-efd22363898d"),
+                            Address = "Location Addr 9",
+                            Name = "Location9"
+                        },
+                        new
+                        {
+                            Id = new Guid("97bf836d-b00d-48ce-99fd-3fe15c16590a"),
+                            Address = "Location Addr 10",
+                            Name = "Location10"
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.Match", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RefereeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("RefereeId");
+
+                    b.HasIndex("TournamentId");
+
+                    b.ToTable("Matches");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e8a7660e-0ffd-4de1-bbdb-27b77e6ec9e8"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8376),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            StartTime = new DateTime(2024, 4, 3, 13, 55, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("b459bf29-84c5-4cef-8095-7f2eec19bd89"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8415),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            StartTime = new DateTime(2024, 4, 3, 14, 15, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("b0819c98-4299-409d-9040-a39164fc482c"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8418),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            StartTime = new DateTime(2024, 4, 3, 14, 40, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("c2d7841f-8566-42d8-b426-77040e21f477"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8421),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            StartTime = new DateTime(2024, 4, 3, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("f74428f4-e959-4729-901e-76ce190ee510"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8423),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            StartTime = new DateTime(2024, 4, 3, 15, 25, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("42d4cd9b-983b-4425-8043-3f2dfa9ffc36"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8426),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            StartTime = new DateTime(2024, 4, 3, 15, 50, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("c2d51539-e23d-4860-b935-937fdc9c99ae"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8428),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            StartTime = new DateTime(2024, 4, 3, 16, 15, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("298ebacf-3ef8-4e3a-a15f-d49f02916ad0"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8431),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            StartTime = new DateTime(2024, 4, 3, 16, 40, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("02e30203-2aaa-4901-a951-c1b1484e2417"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8433),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            StartTime = new DateTime(2024, 4, 3, 17, 5, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("23688b2a-9e10-4b44-98c5-a3d52c0850d2"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8436),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            StartTime = new DateTime(2024, 4, 3, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("8c1dc2c5-a2ee-432a-bb59-5ac750b6b996"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8439),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            StartTime = new DateTime(2024, 4, 3, 17, 55, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("c50d63b4-398e-496f-a60e-e9859e9a54c5"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8441),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            StartTime = new DateTime(2024, 4, 3, 18, 20, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("302aea8b-910d-4ea3-877b-a4f0b2d87ae1"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8444),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            StartTime = new DateTime(2024, 4, 3, 18, 45, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("f6d7916f-1674-4dbc-8177-4183a1b27545"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8446),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            StartTime = new DateTime(2024, 4, 3, 19, 10, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("792b671b-71b7-4efa-ad0f-8bef0e81bbfc"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8449),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            StartTime = new DateTime(2024, 4, 3, 13, 55, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("827a3c49-db6a-4500-b235-f3ea6cbe2c9f"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8451),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            StartTime = new DateTime(2024, 4, 3, 14, 15, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("8b317c1c-e855-4657-bd2d-299052ef658e"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8454),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            StartTime = new DateTime(2024, 4, 3, 14, 40, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("7bdd24a6-f282-42e3-91a9-9457fb542c0f"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8456),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            StartTime = new DateTime(2024, 4, 3, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("fb6eb16c-1b0a-41b3-bfd8-f1a8b8f204fe"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8459),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            StartTime = new DateTime(2024, 4, 3, 15, 25, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("f7bf5b28-6cfd-473c-ada0-35ffef1d189c"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8462),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            StartTime = new DateTime(2024, 4, 3, 15, 50, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("f9dbde9a-d578-47dc-b1f2-b4d7e66c484e"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8465),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            StartTime = new DateTime(2024, 4, 3, 16, 15, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("4e93b254-6014-414f-82a8-ef3b9df8036e"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8467),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            StartTime = new DateTime(2024, 4, 3, 16, 40, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("ca3f7acf-f221-4d5f-845e-485243da9e8e"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8470),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            StartTime = new DateTime(2024, 4, 3, 17, 5, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("0cfa28be-7215-4681-a6e4-ae6278806760"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8472),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            StartTime = new DateTime(2024, 4, 3, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("2fd55261-70c8-48b4-a83c-33624348cb7f"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8475),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            StartTime = new DateTime(2024, 4, 3, 17, 55, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("e184b843-d09c-42c1-971a-dc327874a993"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8478),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            StartTime = new DateTime(2024, 4, 3, 18, 20, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("96146330-381c-4de0-84f0-90021558bb4d"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8480),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            StartTime = new DateTime(2024, 4, 3, 18, 45, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("6fcc7d85-bf86-426c-92f7-a7689a1dd3da"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8483),
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            RefereeId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            StartTime = new DateTime(2024, 4, 3, 19, 10, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                        },
+                        new
+                        {
+                            Id = new Guid("2d85f559-f6cb-4131-9e25-0f74dabc6f82"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8485),
+                            LocationId = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
+                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            StartTime = new DateTime(2024, 4, 3, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033")
+                        },
+                        new
+                        {
+                            Id = new Guid("4f44a42f-a458-45ab-a4df-8cc86e177dee"),
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8488),
+                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            StartTime = new DateTime(2024, 4, 3, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            TournamentId = new Guid("e71df8fa-c3c7-4e54-afb9-b45bc89aaa83")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.MatchTeam", b =>
+                {
+                    b.Property<Guid>("MatchId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TeamId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("MatchId", "TeamId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("MatchTeams");
+
+                    b.HasData(
+                        new
+                        {
+                            MatchId = new Guid("e8a7660e-0ffd-4de1-bbdb-27b77e6ec9e8"),
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("e8a7660e-0ffd-4de1-bbdb-27b77e6ec9e8"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("b459bf29-84c5-4cef-8095-7f2eec19bd89"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("b459bf29-84c5-4cef-8095-7f2eec19bd89"),
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("b0819c98-4299-409d-9040-a39164fc482c"),
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("b0819c98-4299-409d-9040-a39164fc482c"),
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("c2d7841f-8566-42d8-b426-77040e21f477"),
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("c2d7841f-8566-42d8-b426-77040e21f477"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("f74428f4-e959-4729-901e-76ce190ee510"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("f74428f4-e959-4729-901e-76ce190ee510"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("42d4cd9b-983b-4425-8043-3f2dfa9ffc36"),
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("42d4cd9b-983b-4425-8043-3f2dfa9ffc36"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("c2d51539-e23d-4860-b935-937fdc9c99ae"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("c2d51539-e23d-4860-b935-937fdc9c99ae"),
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("298ebacf-3ef8-4e3a-a15f-d49f02916ad0"),
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("298ebacf-3ef8-4e3a-a15f-d49f02916ad0"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("02e30203-2aaa-4901-a951-c1b1484e2417"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("02e30203-2aaa-4901-a951-c1b1484e2417"),
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("23688b2a-9e10-4b44-98c5-a3d52c0850d2"),
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("23688b2a-9e10-4b44-98c5-a3d52c0850d2"),
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("8c1dc2c5-a2ee-432a-bb59-5ac750b6b996"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("8c1dc2c5-a2ee-432a-bb59-5ac750b6b996"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("c50d63b4-398e-496f-a60e-e9859e9a54c5"),
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("c50d63b4-398e-496f-a60e-e9859e9a54c5"),
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("302aea8b-910d-4ea3-877b-a4f0b2d87ae1"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("302aea8b-910d-4ea3-877b-a4f0b2d87ae1"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("f6d7916f-1674-4dbc-8177-4183a1b27545"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("f6d7916f-1674-4dbc-8177-4183a1b27545"),
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("792b671b-71b7-4efa-ad0f-8bef0e81bbfc"),
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("792b671b-71b7-4efa-ad0f-8bef0e81bbfc"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("827a3c49-db6a-4500-b235-f3ea6cbe2c9f"),
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("827a3c49-db6a-4500-b235-f3ea6cbe2c9f"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("8b317c1c-e855-4657-bd2d-299052ef658e"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("8b317c1c-e855-4657-bd2d-299052ef658e"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("7bdd24a6-f282-42e3-91a9-9457fb542c0f"),
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("7bdd24a6-f282-42e3-91a9-9457fb542c0f"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("fb6eb16c-1b0a-41b3-bfd8-f1a8b8f204fe"),
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("fb6eb16c-1b0a-41b3-bfd8-f1a8b8f204fe"),
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("f7bf5b28-6cfd-473c-ada0-35ffef1d189c"),
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("f7bf5b28-6cfd-473c-ada0-35ffef1d189c"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("f9dbde9a-d578-47dc-b1f2-b4d7e66c484e"),
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("f9dbde9a-d578-47dc-b1f2-b4d7e66c484e"),
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("4e93b254-6014-414f-82a8-ef3b9df8036e"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("4e93b254-6014-414f-82a8-ef3b9df8036e"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("ca3f7acf-f221-4d5f-845e-485243da9e8e"),
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("ca3f7acf-f221-4d5f-845e-485243da9e8e"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("0cfa28be-7215-4681-a6e4-ae6278806760"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("0cfa28be-7215-4681-a6e4-ae6278806760"),
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("2fd55261-70c8-48b4-a83c-33624348cb7f"),
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("2fd55261-70c8-48b4-a83c-33624348cb7f"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("e184b843-d09c-42c1-971a-dc327874a993"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("e184b843-d09c-42c1-971a-dc327874a993"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("96146330-381c-4de0-84f0-90021558bb4d"),
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("96146330-381c-4de0-84f0-90021558bb4d"),
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("6fcc7d85-bf86-426c-92f7-a7689a1dd3da"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("6fcc7d85-bf86-426c-92f7-a7689a1dd3da"),
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("2d85f559-f6cb-4131-9e25-0f74dabc6f82"),
+                            TeamId = new Guid("3deb03e7-89b0-448e-a5dd-f571a3bf7700")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("2d85f559-f6cb-4131-9e25-0f74dabc6f82"),
+                            TeamId = new Guid("1ea3d5a1-3741-488d-bd01-64ebf9c5b856")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("4f44a42f-a458-45ab-a4df-8cc86e177dee"),
+                            TeamId = new Guid("338d2ca5-9406-419a-97fc-523df4c221ba")
+                        },
+                        new
+                        {
+                            MatchId = new Guid("4f44a42f-a458-45ab-a4df-8cc86e177dee"),
+                            TeamId = new Guid("2b9a6169-9fa4-47c8-b5dd-facc82a9c498")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.Team", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Teams");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            Description = "Description Team 1",
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            Name = "Team 1",
+                            OwnerId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                        },
+                        new
+                        {
+                            Id = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            Description = "Description Team 2",
+                            LocationId = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
+                            Name = "Team 2",
+                            OwnerId = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11")
+                        },
+                        new
+                        {
+                            Id = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            Description = "Description Team 3",
+                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            Name = "Team 3",
+                            OwnerId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                        },
+                        new
+                        {
+                            Id = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            Description = "Description Team 4",
+                            LocationId = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            Name = "Team 4",
+                            OwnerId = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383")
+                        },
+                        new
+                        {
+                            Id = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            Description = "Description Team 5",
+                            LocationId = new Guid("e520731c-c5a2-4016-a5af-90a2b5175091"),
+                            Name = "Team 5",
+                            OwnerId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                        },
+                        new
+                        {
+                            Id = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            Description = "Description Team 6",
+                            LocationId = new Guid("45429076-7d5b-4e61-a9f0-252122a9bdf9"),
+                            Name = "Team 6",
+                            OwnerId = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea")
+                        },
+                        new
+                        {
+                            Id = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            Description = "Description Team 7",
+                            LocationId = new Guid("f2aca153-19d8-4a19-bc79-5f2ea7a002df"),
+                            Name = "Team 7",
+                            OwnerId = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968")
+                        },
+                        new
+                        {
+                            Id = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            Description = "Description Team 8",
+                            LocationId = new Guid("026827c9-455b-41e1-9c49-47ee9b94fbe4"),
+                            Name = "Team 8",
+                            OwnerId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5")
+                        },
+                        new
+                        {
+                            Id = new Guid("3deb03e7-89b0-448e-a5dd-f571a3bf7700"),
+                            Description = "Description Team 9",
+                            LocationId = new Guid("f526a593-f96d-4483-aaa6-efd22363898d"),
+                            Name = "Team 9",
+                            OwnerId = new Guid("c53689c4-6e14-49fc-bae3-763809134015")
+                        },
+                        new
+                        {
+                            Id = new Guid("1ea3d5a1-3741-488d-bd01-64ebf9c5b856"),
+                            Description = "Description Team 10",
+                            LocationId = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            Name = "Team 10",
+                            OwnerId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                        },
+                        new
+                        {
+                            Id = new Guid("338d2ca5-9406-419a-97fc-523df4c221ba"),
+                            Description = "Description Team 11",
+                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            Name = "Team 11",
+                            OwnerId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                        },
+                        new
+                        {
+                            Id = new Guid("2b9a6169-9fa4-47c8-b5dd-facc82a9c498"),
+                            Description = "Description Team 12",
+                            LocationId = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            Name = "Team 12",
+                            OwnerId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.TeamCoach", b =>
+                {
+                    b.Property<Guid>("TeamId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TeamId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TeamCoaches");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            UserId = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            UserId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            UserId = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            UserId = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            UserId = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            UserId = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            UserId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            UserId = new Guid("c53689c4-6e14-49fc-bae3-763809134015")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("3deb03e7-89b0-448e-a5dd-f571a3bf7700"),
+                            UserId = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("1ea3d5a1-3741-488d-bd01-64ebf9c5b856"),
+                            UserId = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("338d2ca5-9406-419a-97fc-523df4c221ba"),
+                            UserId = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("2b9a6169-9fa4-47c8-b5dd-facc82a9c498"),
+                            UserId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.TeamPlayer", b =>
+                {
+                    b.Property<Guid>("TeamId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TeamId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TeamPlayers");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            UserId = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            UserId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            UserId = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            UserId = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            UserId = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            UserId = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            UserId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            UserId = new Guid("c53689c4-6e14-49fc-bae3-763809134015")
+                        },
+                        new
+                        {
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            UserId = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.Tournament", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Categories")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EntryDeadline")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Organizer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PriceType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RegistrationPolicy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeamPolicy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.ToTable("Tournaments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            Categories = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8733),
+                            Description = "Description Tournament 1",
+                            EntryDeadline = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8737),
+                            LocationId = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
+                            Name = "Tournament 1",
+                            Organizer = "Organizer 1",
+                            PriceType = 16,
+                            RegistrationPolicy = "Registration Policy 1",
+                            TeamPolicy = "Team Policy 1"
+                        },
+                        new
+                        {
+                            Id = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033"),
+                            Categories = 4,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8740),
+                            Description = "Description Tournament 2",
+                            EntryDeadline = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8741),
+                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            Name = "Tournament 2",
+                            Organizer = "Organizer 2",
+                            PriceType = 16,
+                            RegistrationPolicy = "Registration Policy 2",
+                            TeamPolicy = "Team Policy 2"
+                        },
+                        new
+                        {
+                            Id = new Guid("e71df8fa-c3c7-4e54-afb9-b45bc89aaa83"),
+                            Categories = 1,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8744),
+                            Description = "Description Tournament 3",
+                            EntryDeadline = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8746),
+                            LocationId = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            Name = "Tournament 3",
+                            Organizer = "Organizer 3",
+                            PriceType = 16,
+                            RegistrationPolicy = "Registration Policy 3",
+                            TeamPolicy = "Team Policy 3"
+                        });
+                });
 
             modelBuilder.Entity("VolleyballAPI.Entities.TournamentCompetitor", b =>
                 {
@@ -39,357 +1178,74 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            TournamentId = new Guid("a2764122-1831-4c8b-835b-b63717d3deb6"),
-                            TeamId = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0")
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
                         },
                         new
                         {
-                            TournamentId = new Guid("fa74e37d-fb20-468a-ba1a-5a040ca8afd9"),
-                            TeamId = new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39")
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
                         },
                         new
                         {
-                            TournamentId = new Guid("3cad46e7-e901-4d6a-aa85-58bb13f4338e"),
-                            TeamId = new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e")
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033"),
+                            TeamId = new Guid("3deb03e7-89b0-448e-a5dd-f571a3bf7700")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033"),
+                            TeamId = new Guid("1ea3d5a1-3741-488d-bd01-64ebf9c5b856")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("e71df8fa-c3c7-4e54-afb9-b45bc89aaa83"),
+                            TeamId = new Guid("338d2ca5-9406-419a-97fc-523df4c221ba")
+                        },
+                        new
+                        {
+                            TournamentId = new Guid("e71df8fa-c3c7-4e54-afb9-b45bc89aaa83"),
+                            TeamId = new Guid("2b9a6169-9fa4-47c8-b5dd-facc82a9c498")
                         });
                 });
 
-            modelBuilder.Entity("VolleyballAPI.Entities.TrainingParticipant", b =>
-                {
-                    b.Property<Guid>("PlayerDetailsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TrainingId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("PlayerDetailsId", "TrainingId");
-
-                    b.HasIndex("TrainingId");
-
-                    b.ToTable("TrainingParticipants");
-
-                    b.HasData(
-                        new
-                        {
-                            PlayerDetailsId = new Guid("a8869498-a428-4446-ad95-a810744bd035"),
-                            TrainingId = new Guid("a6e4f1a5-0865-42c3-9e8d-6a556d89b1d9")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("bd24906d-9c5f-485c-9d68-785708af1e49"),
-                            TrainingId = new Guid("a6e4f1a5-0865-42c3-9e8d-6a556d89b1d9")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("d503c33c-56c7-4a56-b6a9-908f8386515e"),
-                            TrainingId = new Guid("a6e4f1a5-0865-42c3-9e8d-6a556d89b1d9")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("f450060b-2a10-4aa4-bc2c-e11fab94a2df"),
-                            TrainingId = new Guid("b0f7ca61-7594-4e68-a95b-96d27e48f8d3")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("2105dd07-dfb6-49df-8c2e-cfbb1aeccaa5"),
-                            TrainingId = new Guid("b0f7ca61-7594-4e68-a95b-96d27e48f8d3")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("ee50ae98-2644-494f-a00c-ad500b60a1f3"),
-                            TrainingId = new Guid("bfbeceae-dc69-456d-9e81-742de3889606")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("4ce50b70-c4c5-4037-b519-59df4afdd96b"),
-                            TrainingId = new Guid("bfbeceae-dc69-456d-9e81-742de3889606")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("b76d79d7-80c0-4baa-bad8-8c8c0f929c90"),
-                            TrainingId = new Guid("7107045c-ca72-4c9c-83f2-675dd631b271")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("b5b938d3-9491-49b7-93fa-20ee5a09f31b"),
-                            TrainingId = new Guid("cadac11d-da6c-4687-b587-49fa2458a7d2")
-                        },
-                        new
-                        {
-                            PlayerDetailsId = new Guid("16df8456-3386-4833-8296-ebff0c1cd1a8"),
-                            TrainingId = new Guid("cadac11d-da6c-4687-b587-49fa2458a7d2")
-                        });
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.PlayerDetails", b =>
+            modelBuilder.Entity("VolleyballAPI.Entities.Training", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Birthday")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Gender")
+                    b.Property<int>("AcceptableTickets")
                         .HasColumnType("int");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PlayerNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Posts")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TicketPass")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PlayerDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("a8869498-a428-4446-ad95-a810744bd035"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2358),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("cdc0a936-3687-4799-8991-00bf5c64bd3e")
-                        },
-                        new
-                        {
-                            Id = new Guid("bd24906d-9c5f-485c-9d68-785708af1e49"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2365),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("02441339-97aa-49b0-9ae6-04ea07573451")
-                        },
-                        new
-                        {
-                            Id = new Guid("d503c33c-56c7-4a56-b6a9-908f8386515e"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2368),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("ea89d17a-92fc-491a-971b-b0cc9b995539")
-                        },
-                        new
-                        {
-                            Id = new Guid("f450060b-2a10-4aa4-bc2c-e11fab94a2df"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2371),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("733c187c-3554-4b56-904c-aa35d5d17588")
-                        },
-                        new
-                        {
-                            Id = new Guid("2105dd07-dfb6-49df-8c2e-cfbb1aeccaa5"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2374),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("539dfaf7-81d2-425f-869f-d4b4afbe13e1")
-                        },
-                        new
-                        {
-                            Id = new Guid("ee50ae98-2644-494f-a00c-ad500b60a1f3"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2376),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("4be5fa8f-cf32-445d-95e5-b3dad4e501c2")
-                        },
-                        new
-                        {
-                            Id = new Guid("4ce50b70-c4c5-4037-b519-59df4afdd96b"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2379),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("c2c3c86b-da9e-4d19-b45f-a4cee5bf7736")
-                        },
-                        new
-                        {
-                            Id = new Guid("b76d79d7-80c0-4baa-bad8-8c8c0f929c90"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2382),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("0480f9a0-2946-471d-811c-be3e90e8b333")
-                        },
-                        new
-                        {
-                            Id = new Guid("b5b938d3-9491-49b7-93fa-20ee5a09f31b"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2385),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("b9cc6f90-c98b-445b-82fb-ccbda9d4beb6")
-                        },
-                        new
-                        {
-                            Id = new Guid("16df8456-3386-4833-8296-ebff0c1cd1a8"),
-                            Birthday = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2388),
-                            Gender = 0,
-                            Phone = "",
-                            PlayerNumber = 0,
-                            Posts = "Libero,Hitter,Receiver",
-                            TicketPass = 0,
-                            UserId = new Guid("a43d8788-5c29-4f4c-85e0-590d54be197c")
-                        });
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Team", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Picture")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Teams");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0"),
-                            Description = "Description Team 1",
-                            Name = "Team 1",
-                            Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_095029_opeter.jpg"
-                        },
-                        new
-                        {
-                            Id = new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39"),
-                            Description = "Description Team 2",
-                            Name = "Team 2",
-                            Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg"
-                        },
-                        new
-                        {
-                            Id = new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e"),
-                            Description = "Description Team 3",
-                            Name = "Team 3",
-                            Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_114305_adam.jpg"
-                        },
-                        new
-                        {
-                            Id = new Guid("df9aa13e-2818-4d18-b15e-8d903a0220e8"),
-                            Description = "Description Team 4",
-                            Name = "Team 4",
-                            Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg"
-                        });
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.TeamCoach", b =>
-                {
-                    b.Property<Guid>("TeamId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("TeamId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("TeamCoach");
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.TeamPlayer", b =>
-                {
-                    b.Property<Guid>("TeamId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PlayerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("TeamId", "PlayerId");
-
-                    b.HasIndex("PlayerId");
-
-                    b.ToTable("TeamPlayers");
-
-                    b.HasData(
-                        new
-                        {
-                            TeamId = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0"),
-                            PlayerId = new Guid("a8869498-a428-4446-ad95-a810744bd035")
-                        },
-                        new
-                        {
-                            TeamId = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0"),
-                            PlayerId = new Guid("bd24906d-9c5f-485c-9d68-785708af1e49")
-                        },
-                        new
-                        {
-                            TeamId = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0"),
-                            PlayerId = new Guid("d503c33c-56c7-4a56-b6a9-908f8386515e")
-                        },
-                        new
-                        {
-                            TeamId = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0"),
-                            PlayerId = new Guid("f450060b-2a10-4aa4-bc2c-e11fab94a2df")
-                        },
-                        new
-                        {
-                            TeamId = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0"),
-                            PlayerId = new Guid("2105dd07-dfb6-49df-8c2e-cfbb1aeccaa5")
-                        },
-                        new
-                        {
-                            TeamId = new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39"),
-                            PlayerId = new Guid("ee50ae98-2644-494f-a00c-ad500b60a1f3")
-                        });
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Tournament", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -398,74 +1254,15 @@ namespace VolleyballAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Picture")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tournaments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("a2764122-1831-4c8b-835b-b63717d3deb6"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2261),
-                            Description = "Description Team 1",
-                            Location = "Location tournament 1",
-                            Name = "Tournament 1",
-                            Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg"
-                        },
-                        new
-                        {
-                            Id = new Guid("fa74e37d-fb20-468a-ba1a-5a040ca8afd9"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2305),
-                            Description = "Description Tournament 2",
-                            Location = "Location tournament 2",
-                            Name = "Tournament 2",
-                            Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg"
-                        },
-                        new
-                        {
-                            Id = new Guid("3cad46e7-e901-4d6a-aa85-58bb13f4338e"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2308),
-                            Description = "Description Tournament 3",
-                            Location = "Location tournament 3",
-                            Name = "Tournament 3",
-                            Picture = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_100756_opeter.jpg"
-                        });
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Training", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("LocationId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("TeamId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
 
                     b.HasIndex("TeamId");
 
@@ -474,95 +1271,178 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a6e4f1a5-0865-42c3-9e8d-6a556d89b1d9"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2455),
+                            Id = new Guid("21eb950f-7f6f-44c5-aab0-4033c8404e06"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8795),
                             Description = "Training1",
-                            Location = "Training court 1",
-                            TeamId = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0")
+                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
                         },
                         new
                         {
-                            Id = new Guid("b0f7ca61-7594-4e68-a95b-96d27e48f8d3"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2458),
+                            Id = new Guid("87b596b3-07f7-4b41-af6c-4d6fe2a2130d"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8798),
                             Description = "Training2",
-                            Location = "Training court 2",
-                            TeamId = new Guid("74faaddc-c386-4fc2-a0b4-9dae1981dec0")
+                            LocationId = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
+                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
                         },
                         new
                         {
-                            Id = new Guid("bfbeceae-dc69-456d-9e81-742de3889606"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2460),
-                            Description = "Training1",
-                            Location = "Training court 3",
-                            TeamId = new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39")
+                            Id = new Guid("d0c0e488-2b11-4b6a-98ec-dcda0d5da3ce"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8801),
+                            Description = "Training3",
+                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
                         },
                         new
                         {
-                            Id = new Guid("7107045c-ca72-4c9c-83f2-675dd631b271"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2462),
+                            Id = new Guid("28777504-68ae-4cb9-ba58-8ea366a12023"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8803),
                             Description = "Training4",
-                            Location = "Training court 4",
-                            TeamId = new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e")
+                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
                         },
                         new
                         {
-                            Id = new Guid("cadac11d-da6c-4687-b587-49fa2458a7d2"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2464),
+                            Id = new Guid("3997e2dc-5c2e-470f-86cc-725d0c920ec8"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8805),
                             Description = "Training5",
-                            Location = "Training court 5",
-                            TeamId = new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e")
+                            LocationId = new Guid("e520731c-c5a2-4016-a5af-90a2b5175091"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
                         },
                         new
                         {
-                            Id = new Guid("eeba3b02-48da-46bb-bd40-f382890ee942"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2466),
+                            Id = new Guid("090e1e3d-acab-4a8a-94b9-40ae7da1a25c"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8807),
                             Description = "Training6",
-                            Location = "Training court 6",
-                            TeamId = new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39")
+                            LocationId = new Guid("45429076-7d5b-4e61-a9f0-252122a9bdf9"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
                         },
                         new
                         {
-                            Id = new Guid("97cb3b48-fbc6-4a2d-a829-e3606a651331"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2468),
+                            Id = new Guid("6ef6a777-f45e-4295-ba6c-f8001c029c46"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8810),
                             Description = "Training7",
-                            Location = "Training court 7",
-                            TeamId = new Guid("2ea2d390-72c2-4081-a706-a54d73e99f9e")
+                            LocationId = new Guid("f2aca153-19d8-4a19-bc79-5f2ea7a002df"),
+                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
                         },
                         new
                         {
-                            Id = new Guid("009ca0f7-49ad-42ba-828a-77b76f3e005b"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2470),
+                            Id = new Guid("fa0de668-80db-4c3a-a25c-4998a04f6838"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8812),
                             Description = "Training8",
-                            Location = "Training court 8",
-                            TeamId = new Guid("63c8f8eb-1067-489e-ad14-52777ffbda39")
+                            LocationId = new Guid("026827c9-455b-41e1-9c49-47ee9b94fbe4"),
+                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
                         },
                         new
                         {
-                            Id = new Guid("65e1a184-4d2d-4c62-bdfc-a92e29b76fe0"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2472),
+                            Id = new Guid("31062b1b-9d40-4fca-8b41-1251ed96f89d"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8814),
                             Description = "Training9",
-                            Location = "Training court 9",
-                            TeamId = new Guid("df9aa13e-2818-4d18-b15e-8d903a0220e8")
+                            LocationId = new Guid("f526a593-f96d-4483-aaa6-efd22363898d"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
                         },
                         new
                         {
-                            Id = new Guid("a02eec8f-c563-47a6-a804-a68da4bf014f"),
-                            Date = new DateTime(2023, 12, 11, 22, 40, 35, 186, DateTimeKind.Local).AddTicks(2475),
+                            Id = new Guid("0ad874a5-8143-42e8-8978-fbd0282bef18"),
+                            AcceptableTickets = 5,
+                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8816),
                             Description = "Training10",
-                            Location = "Training court 10",
-                            TeamId = new Guid("df9aa13e-2818-4d18-b15e-8d903a0220e8")
+                            LocationId = new Guid("97bf836d-b00d-48ce-99fd-3fe15c16590a"),
+                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
                         });
                 });
 
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.User", b =>
+            modelBuilder.Entity("VolleyballAPI.Entities.TrainingParticipant", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TrainingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "TrainingId");
+
+                    b.HasIndex("TrainingId");
+
+                    b.ToTable("TrainingParticipants");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c"),
+                            TrainingId = new Guid("21eb950f-7f6f-44c5-aab0-4033c8404e06")
+                        },
+                        new
+                        {
+                            UserId = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11"),
+                            TrainingId = new Guid("87b596b3-07f7-4b41-af6c-4d6fe2a2130d")
+                        },
+                        new
+                        {
+                            UserId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2"),
+                            TrainingId = new Guid("d0c0e488-2b11-4b6a-98ec-dcda0d5da3ce")
+                        },
+                        new
+                        {
+                            UserId = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383"),
+                            TrainingId = new Guid("28777504-68ae-4cb9-ba58-8ea366a12023")
+                        },
+                        new
+                        {
+                            UserId = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878"),
+                            TrainingId = new Guid("3997e2dc-5c2e-470f-86cc-725d0c920ec8")
+                        },
+                        new
+                        {
+                            UserId = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea"),
+                            TrainingId = new Guid("090e1e3d-acab-4a8a-94b9-40ae7da1a25c")
+                        },
+                        new
+                        {
+                            UserId = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968"),
+                            TrainingId = new Guid("6ef6a777-f45e-4295-ba6c-f8001c029c46")
+                        },
+                        new
+                        {
+                            UserId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5"),
+                            TrainingId = new Guid("fa0de668-80db-4c3a-a25c-4998a04f6838")
+                        },
+                        new
+                        {
+                            UserId = new Guid("c53689c4-6e14-49fc-bae3-763809134015"),
+                            TrainingId = new Guid("31062b1b-9d40-4fca-8b41-1251ed96f89d")
+                        },
+                        new
+                        {
+                            UserId = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c"),
+                            TrainingId = new Guid("0ad874a5-8143-42e8-8978-fbd0282bef18")
+                        });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -573,9 +1453,21 @@ namespace VolleyballAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Roles")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlayerNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Posts")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PriceType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Roles")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -584,98 +1476,327 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cdc0a936-3687-4799-8991-00bf5c64bd3e"),
+                            Id = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8896),
                             Email = "user1@user.com",
-                            Name = "Name 1",
+                            Gender = 0,
+                            Name = "Jancsi",
                             Password = "pass1",
-                            Roles = "Coach,BasicUser"
+                            Phone = "34214124",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 2,
+                            Roles = 3
                         },
                         new
                         {
-                            Id = new Guid("02441339-97aa-49b0-9ae6-04ea07573451"),
+                            Id = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8900),
                             Email = "user2@user.com",
-                            Name = "Name 2",
+                            Gender = 1,
+                            Name = "Aranka",
                             Password = "pass2",
-                            Roles = "Administrator,BasicUser"
+                            Phone = "965463",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 1,
+                            Roles = 5
                         },
                         new
                         {
-                            Id = new Guid("ea89d17a-92fc-491a-971b-b0cc9b995539"),
+                            Id = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8903),
                             Email = "user3@user.com",
-                            Name = "Name 3",
+                            Gender = 0,
+                            Name = "Dani",
                             Password = "pass3",
-                            Roles = "BasicUser"
+                            Phone = "123555",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 1,
+                            Roles = 4
                         },
                         new
                         {
-                            Id = new Guid("733c187c-3554-4b56-904c-aa35d5d17588"),
+                            Id = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8905),
                             Email = "user4@user.com",
-                            Name = "Name 4",
+                            Gender = 0,
+                            Name = "Kristóf",
                             Password = "pass4",
-                            Roles = "BasicUser"
+                            Phone = "83568",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 1,
+                            Roles = 4
                         },
                         new
                         {
-                            Id = new Guid("539dfaf7-81d2-425f-869f-d4b4afbe13e1"),
+                            Id = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8908),
                             Email = "user5@user.com",
-                            Name = "Name 5",
+                            Gender = 0,
+                            Name = "Lajos",
                             Password = "pass5",
-                            Roles = "Coach"
+                            Phone = "54337",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 4,
+                            Roles = 2
                         },
                         new
                         {
-                            Id = new Guid("4be5fa8f-cf32-445d-95e5-b3dad4e501c2"),
+                            Id = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8911),
                             Email = "user6@user.com",
-                            Name = "Name 6",
+                            Gender = 0,
+                            Name = "Péter",
                             Password = "pass6",
-                            Roles = "BasicUser"
+                            Phone = "4221",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 1,
+                            Roles = 4
                         },
                         new
                         {
-                            Id = new Guid("c2c3c86b-da9e-4d19-b45f-a4cee5bf7736"),
+                            Id = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8914),
                             Email = "user7@user.com",
-                            Name = "Name 7",
+                            Gender = 1,
+                            Name = "Felícia",
                             Password = "pass7",
-                            Roles = "Coach"
+                            Phone = "32134",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 1,
+                            Roles = 2
                         },
                         new
                         {
-                            Id = new Guid("0480f9a0-2946-471d-811c-be3e90e8b333"),
+                            Id = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8916),
                             Email = "user8@user.com",
+                            Gender = 0,
                             Name = "Name 8",
                             Password = "pass8",
-                            Roles = "Administrator,BasicUser"
+                            Phone = "893935",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 1,
+                            Roles = 5
                         },
                         new
                         {
-                            Id = new Guid("b9cc6f90-c98b-445b-82fb-ccbda9d4beb6"),
+                            Id = new Guid("c53689c4-6e14-49fc-bae3-763809134015"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8919),
                             Email = "user9@user.com",
+                            Gender = 0,
                             Name = "Name 9",
                             Password = "pass9",
-                            Roles = "BasicUser"
+                            Phone = "2716717",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 1,
+                            Roles = 4
                         },
                         new
                         {
-                            Id = new Guid("a43d8788-5c29-4f4c-85e0-590d54be197c"),
+                            Id = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c"),
+                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8922),
                             Email = "user10@user.com",
+                            Gender = 0,
                             Name = "Name 10",
                             Password = "pass10",
-                            Roles = "BasicUser"
+                            Phone = "13556",
+                            PlayerNumber = 3,
+                            Posts = 20,
+                            PriceType = 1,
+                            Roles = 4
                         });
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.FavouriteTeam", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Team", "Team")
+                        .WithMany("UserHasAsFavourite")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.User", "User")
+                        .WithMany("FavouriteTeams")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Team");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.FavouriteTournament", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Tournament", "Tournament")
+                        .WithMany("UserHasAsFavourite")
+                        .HasForeignKey("TournamentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.User", "User")
+                        .WithMany("FavouriteTournaments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tournament");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.FavouriteTraining", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Training", "Training")
+                        .WithMany("UserHasAsFavourite")
+                        .HasForeignKey("TrainingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.User", "User")
+                        .WithMany("FavouriteTrainings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Training");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.Match", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.Team", "Referee")
+                        .WithMany()
+                        .HasForeignKey("RefereeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.Tournament", "Tournament")
+                        .WithMany("Matches")
+                        .HasForeignKey("TournamentId");
+
+                    b.Navigation("Location");
+
+                    b.Navigation("Referee");
+
+                    b.Navigation("Tournament");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.MatchTeam", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Match", "Match")
+                        .WithMany("Teams")
+                        .HasForeignKey("MatchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.Team", "Team")
+                        .WithMany("Matches")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Match");
+
+                    b.Navigation("Team");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.Team", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.User", "Owner")
+                        .WithMany("OwnedTeams")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.TeamCoach", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Team", "Team")
+                        .WithMany("Coaches")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.User", "User")
+                        .WithMany("CoachedTeams")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Team");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.TeamPlayer", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Team", "Team")
+                        .WithMany("Players")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VolleyballAPI.Entities.User", "User")
+                        .WithMany("JoinedTeams")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Team");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.Tournament", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("VolleyballAPI.Entities.TournamentCompetitor", b =>
                 {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", "Team")
+                    b.HasOne("VolleyballAPI.Entities.Team", "Team")
                         .WithMany("Tournaments")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Tournament", "Tournament")
+                    b.HasOne("VolleyballAPI.Entities.Tournament", "Tournament")
                         .WithMany("Teams")
                         .HasForeignKey("TournamentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Team");
@@ -683,109 +1804,95 @@ namespace VolleyballAPI.Migrations
                     b.Navigation("Tournament");
                 });
 
-            modelBuilder.Entity("VolleyballAPI.Entities.TrainingParticipant", b =>
+            modelBuilder.Entity("VolleyballAPI.Entities.Training", b =>
                 {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.PlayerDetails", "PlayerDetails")
+                    b.HasOne("VolleyballAPI.Entities.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("PlayerDetailsId")
+                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Training", "Training")
+                    b.HasOne("VolleyballAPI.Entities.Team", "Team")
+                        .WithMany("Trainings")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+
+                    b.Navigation("Team");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.TrainingParticipant", b =>
+                {
+                    b.HasOne("VolleyballAPI.Entities.Training", "Training")
                         .WithMany("Players")
                         .HasForeignKey("TrainingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("PlayerDetails");
+                    b.HasOne("VolleyballAPI.Entities.User", "User")
+                        .WithMany("Trainings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Training");
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.PlayerDetails", b =>
-                {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.TeamCoach", b =>
-                {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", "Team")
-                        .WithMany("Coaches")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VolleyballManagementAppBackend.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Team");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.TeamPlayer", b =>
-                {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.PlayerDetails", "Player")
-                        .WithMany("Teams")
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", "Team")
-                        .WithMany("Players")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Player");
-
-                    b.Navigation("Team");
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Training", b =>
-                {
-                    b.HasOne("VolleyballManagementAppBackend.Entities.Team", "Team")
-                        .WithMany("Trainings")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Team");
-                });
-
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.PlayerDetails", b =>
+            modelBuilder.Entity("VolleyballAPI.Entities.Match", b =>
                 {
                     b.Navigation("Teams");
                 });
 
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Team", b =>
+            modelBuilder.Entity("VolleyballAPI.Entities.Team", b =>
                 {
                     b.Navigation("Coaches");
+
+                    b.Navigation("Matches");
 
                     b.Navigation("Players");
 
                     b.Navigation("Tournaments");
 
                     b.Navigation("Trainings");
+
+                    b.Navigation("UserHasAsFavourite");
                 });
 
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Tournament", b =>
+            modelBuilder.Entity("VolleyballAPI.Entities.Tournament", b =>
                 {
+                    b.Navigation("Matches");
+
                     b.Navigation("Teams");
+
+                    b.Navigation("UserHasAsFavourite");
                 });
 
-            modelBuilder.Entity("VolleyballManagementAppBackend.Entities.Training", b =>
+            modelBuilder.Entity("VolleyballAPI.Entities.Training", b =>
                 {
                     b.Navigation("Players");
+
+                    b.Navigation("UserHasAsFavourite");
+                });
+
+            modelBuilder.Entity("VolleyballAPI.Entities.User", b =>
+                {
+                    b.Navigation("CoachedTeams");
+
+                    b.Navigation("FavouriteTeams");
+
+                    b.Navigation("FavouriteTournaments");
+
+                    b.Navigation("FavouriteTrainings");
+
+                    b.Navigation("JoinedTeams");
+
+                    b.Navigation("OwnedTeams");
+
+                    b.Navigation("Trainings");
                 });
 #pragma warning restore 612, 618
         }

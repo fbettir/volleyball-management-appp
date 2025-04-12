@@ -1,17 +1,16 @@
 ﻿using VolleyballAPI.Dtos;
-using VolleyballManagementAppBackend.Dtos;
 
 namespace VolleyballAPI.Interfaces
 {
     public interface ITournamentService
     {
-        public Task<TournamentDto> GetTournamentAsync(Guid tournamentId);
-        public Task<IEnumerable<TournamentDto>> GetTournamentsAsync();
-        public Task<TournamentDto> InsertTournamentAsync(TournamentDto newTournament);
-        public Task UpdateTournamentAsync(TournamentDto updatedTournament, Guid tournamentId);
+        public Task<TournamentDetailsDto> GetTournamentAsync(Guid tournamentId);
+        public Task<IEnumerable<TournamentDetailsDto>> GetTournamentsAsync();
+        public Task<TournamentDetailsDto> InsertTournamentAsync(TournamentDetailsDto newTournament);
+        public Task UpdateTournamentAsync(TournamentDetailsDto updatedTournament, Guid tournamentId);
         public Task DeleteTournamentAsync(Guid tournamentId);
         public Task RegisterTeamAsync(Guid id, Guid teamId);
-        public Task<IEnumerable<TeamDto>> GetTeamsAsync(Guid tournamentId);
+        public Task<IEnumerable<TeamDetailsDto>> GetTeamsAsync(Guid tournamentId);
 
     }
 }

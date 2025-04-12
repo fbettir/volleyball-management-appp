@@ -1,28 +1,64 @@
-<mat-toolbar>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/home">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button>
-    <button mat-menu-item routerLink="/teams">
-      <mat-icon>people_outline</mat-icon>
-      <span>Teams</span>
-    </button>
-  </mat-menu>
-  <span>MAFC Volleyball</span>
-  <button mat-icon-button routerLink="/home">
-    <mat-icon>home</mat-icon>
-  </button>
-  <button mat-icon-button routerLink="/teams">
-    <mat-icon>people_outline</mat-icon>
-  </button>
-  <span class="example-spacer"></span>
+<mat-toolbar
+  class="bg-white shadow-sm border-b border-[var(--primary)] px-6 py-4 flex justify-between items-center"
+>
+  <!-- Logo -->
+  <span class="text-xl font-bold text-[var(--primary)] whitespace-nowrap">
+    MUER
+  </span>
 
-  <app-logout></app-logout>
-  <button mat-icon-button routerLink="/profile">
-    <mat-icon>person</mat-icon>
-  </button>
+  <nav class="hidden md:flex space-x-6 font-medium text-[var(--text-dark)] relative">
+    <a
+      routerLink="/home"
+      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="relative pb-2 hover:text-[var(--primary)] transition"
+    >
+      Home
+    </a>
+  
+    <a
+      routerLink="/teams"
+      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+      class="relative pb-2 hover:text-[var(--primary)] transition"
+    >
+      Teams
+    </a>
+  
+    <a
+      routerLink="/events"
+      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+      class="relative pb-2 hover:text-[var(--primary)] transition"
+    >
+      Events
+    </a>
+  
+    <a
+      routerLink="/trainings"
+      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+      class="relative pb-2 hover:text-[var(--primary)] transition"
+    >
+      Trainings
+    </a>
+  </nav>
+  
+
+  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <!-- Logout Button -->
+    <button
+      (click)="auth.logout({ logoutParams: { returnTo: document.location.origin + '/home' } })"
+      class="bg-white text-[var(--primary)] px-3 py-1.5 text-sm rounded-full border border-[var(--primary)] shadow-lg m-2 hover:bg-[var(--primary)] hover:text-white transition"
+    >
+      Logout
+    </button>
+  </ng-container>
+  
+  <ng-template #loggedOut>
+    <!-- Login Button -->
+    <button
+      (click)="auth.loginWithRedirect()"
+      class="bg-[var(--primary)] text-white px-3 py-1.5 text-sm rounded-full shadow-md hover:bg-[var(--text-dark)] transition"
+    >
+      Login
+    </button>
+  </ng-template>
 </mat-toolbar>

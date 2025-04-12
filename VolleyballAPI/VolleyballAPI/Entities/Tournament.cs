@@ -1,22 +1,28 @@
 using System.ComponentModel.DataAnnotations;
-using VolleyballAPI.Entities;
 
-namespace VolleyballManagementAppBackend.Entities
+namespace VolleyballAPI.Entities
 {
   public class Tournament
   {
     [Required]
     [Key]
     public Guid Id { get; set; }
-    
+    public Guid LocationId { get; set; }
     [Required]
     [MaxLength(100), MinLength(5)]
     public string Name { get; set; }
     public DateTime Date { get; set; }
-    public string Location { get; set; }
+    public DateTime EntryDeadline { get; set; }
+    public string Organizer { get; set; }
+    public string RegistrationPolicy { get; set; }
+    public string TeamPolicy { get; set; }
     public string Description { get; set; }
-    public string Picture { get; set; }
-    public virtual ICollection<TournamentCompetitor> Teams { get; set; }  //lazy loading
+    public Level Categories { get; set; }
+    public PriceType PriceType { get; set; }
 
+    public virtual Location Location { get; set; }
+    public virtual ICollection<TournamentCompetitor> Teams { get; set; }
+    public virtual ICollection<Match> Matches { get; set; }
+    public virtual ICollection<FavouriteTournament> UserHasAsFavourite { get; set; }
     }
 }

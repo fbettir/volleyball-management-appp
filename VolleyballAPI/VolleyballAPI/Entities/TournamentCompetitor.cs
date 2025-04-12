@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using VolleyballManagementAppBackend.Entities;
 
 namespace VolleyballAPI.Entities
 {

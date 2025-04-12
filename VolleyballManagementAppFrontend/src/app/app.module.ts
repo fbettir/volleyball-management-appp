@@ -112,14 +112,11 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
       authorizationParams: {
         audience: 'https://muerapp.eu.auth0.com/api/v2/',
         scope: 'openid profile email read:messages', 
-        redirect_uri: window.location.origin
+        redirect_uri: 'https://localhost:44359/app/home'
       },
       httpInterceptor: {
         allowedList: [
-          // Attach access tokens to any calls to '/api' (exact match)
           '/api',
-
-          // Attach access tokens to any calls that start with '/api/'
           'api/*'
         ],
       },

@@ -9,7 +9,7 @@ import { Training } from '../models/training';
   providedIn: 'root'
 })
 export class TeamService {
-  private baseURL: string = 'api/Team';
+  private baseURL: string = 'https://localhost:44359/api/Team';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class TeamService {
     return this.httpClient.get<Team>(`${this.baseURL}/${teamId}`);
   }
 
-  getAllTeams(): Observable<Team[]> {
+  getAllTeams(): Observable<Team[]> { 
     return this.httpClient.get<Team[]>(this.baseURL);
   }
 

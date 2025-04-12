@@ -1,30 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VolleyballAPI.Dtos;
+using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
-using VolleyballManagementAppBackend.Exceptions;
+using VolleyballAPI.Services;
 
 namespace VolleyballAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
-    public class PlayerController : ControllerBase
+    public class TrainingController : ControllerBase
     {
-        private readonly IPlayerService _playerService;
+        private readonly ITrainingService _trainingService;
 
-        public PlayerController(IPlayerService playerService)
+        public TrainingController(ITrainingService trainingService)
         {
-            _playerService = playerService;
+            _trainingService = trainingService;
         }
 
         [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<PlayerDetailsDto>> Get(Guid id)
+        public async Task<ActionResult<TrainingDetailsDto>> Get(Guid id)
         {
             try
             {
-                var player = await _playerService.GetPlayerAsync(id);
-                return Ok(player);
+                var training = await _trainingService.GetTrainingAsync(id);
+                return Ok(training);
             }
             catch (EntityNotFoundException ex)
             {
@@ -34,12 +35,12 @@ namespace VolleyballAPI.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<PlayerDetailsDto>>> Get()
+        public async Task<ActionResult<IEnumerable<TrainingDetailsDto>>> Get()
         {
             try
             {
-                var playersList = (await _playerService.GetPlayersAsync()).ToList();
-                return Ok(playersList);
+                var trainingsList = (await _trainingService.GetTrainingsAsync()).ToList();
+                return Ok(trainingsList);
             }
             catch (EntityNotFoundException ex)
             {
@@ -50,11 +51,11 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<PlayerDetailsDto>> Post([FromBody] PlayerDetailsDto player)
+        public async Task<ActionResult<TrainingDetailsDto>> Post([FromBody] TrainingDetailsDto training)
         {
             try
             {
-                var created = await _playerService.InsertPlayerAsync(player);
+                var created = await _trainingService.InsertTrainingAsync(training);
                 return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
             }
             catch (EntityNotFoundException ex)
@@ -66,11 +67,11 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> Put(Guid id, [FromBody] PlayerDetailsDto value)
+        public async Task<ActionResult> Put(Guid id, [FromBody] TrainingDetailsDto value)
         {
             try
             {
-                await _playerService.UpdatePlayerAsync(value, id);
+                await _trainingService.UpdateTrainingAsync(value, id);
                 return Ok();
             }
             catch (EntityNotFoundException ex)
@@ -86,7 +87,7 @@ namespace VolleyballAPI.Controllers
         {
             try
             {
-                await _playerService.DeletePlayerAsync(id);
+                await _trainingService.DeleteTrainingAsync(id);
                 return Ok();
             }
             catch (EntityNotFoundException ex)
@@ -94,6 +95,5 @@ namespace VolleyballAPI.Controllers
                 return NotFound(ex.Message);
             }
         }
-
     }
 }

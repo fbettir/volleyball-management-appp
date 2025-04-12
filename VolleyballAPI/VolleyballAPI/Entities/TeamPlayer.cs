@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace VolleyballManagementAppBackend.Entities
+namespace VolleyballAPI.Entities
 {
-    [PrimaryKey(nameof(TeamId), nameof(PlayerId))]
+    [PrimaryKey(nameof(TeamId), nameof(UserId))]
     public class TeamPlayer
     {
         public Guid TeamId { get; set; }
-        public Guid PlayerId { get; set; }
+        public Guid UserId { get; set; }
 
         public virtual Team Team { get; set; }
-        public virtual PlayerDetails Player { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
-using VolleyballManagementAppBackend.Dtos;
-using VolleyballManagementAppBackend.Exceptions;
+using VolleyballAPI.Exceptions;
 
 namespace VolleyballAPI.Controllers
 {
@@ -21,7 +19,7 @@ namespace VolleyballAPI.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<TournamentDto>> GetTournamentById(Guid id)
+        public async Task<ActionResult<TournamentDetailsDto>> GetTournamentById(Guid id)
         {
             try
             {
@@ -37,8 +35,8 @@ namespace VolleyballAPI.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
-        [Authorize]
-        public async Task<ActionResult<IEnumerable<TournamentDto>>> GetAllTournaments()
+        //[Authorize]
+        public async Task<ActionResult<IEnumerable<TournamentDetailsDto>>> GetAllTournaments()
         {
             try
             {
@@ -54,7 +52,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<TournamentDto>> CreateTournament([FromBody] TournamentDto tournament)
+        public async Task<ActionResult<TournamentDetailsDto>> CreateTournament([FromBody] TournamentDetailsDto tournament)
         {
             try
             {
@@ -70,7 +68,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> UpdateTournament(Guid id, [FromBody] TournamentDto value)
+        public async Task<ActionResult> UpdateTournament(Guid id, [FromBody] TournamentDetailsDto value)
         {
             try
             {
@@ -118,7 +116,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpGet("{id}/teams")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<IEnumerable<TeamDto>>> GetTeams(Guid id)
+        public async Task<ActionResult<IEnumerable<TeamDetailsDto>>> GetTeams(Guid id)
         {
             try
             {

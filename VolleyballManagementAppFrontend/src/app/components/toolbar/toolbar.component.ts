@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
+
 import { map, shareReplay } from 'rxjs/operators';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { LogoutComponent } from 'src/app/auth/logout/logout.component';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -22,5 +20,7 @@ export class ToolbarComponent {
       shareReplay(),
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, @Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
+
+  
 }

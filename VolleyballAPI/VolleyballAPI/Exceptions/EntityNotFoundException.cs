@@ -1,4 +1,4 @@
-﻿namespace VolleyballManagementAppBackend.Exceptions
+﻿namespace VolleyballAPI.Exceptions
 {
     public class EntityNotFoundException : Exception
     {

@@ -1,18 +1,17 @@
 ﻿using VolleyballAPI.Dtos;
-using VolleyballManagementAppBackend.Dtos;
 
-namespace VolleyballManagementAppBackend.Interfaces
+namespace VolleyballAPI.Interfaces
 {
     public interface ITeamService
     {
-        public Task<TeamDto> GetTeamAsync(Guid teamId);
-        public Task<IEnumerable<TeamDto>> GetTeamsAsync();
-        public Task<TeamDto> InsertTeamAsync(TeamDto newTeam);
-        public Task UpdateTeamAsync(TeamDto updatedTeam, Guid teamId);
+        public Task<TeamDetailsDto> GetTeamAsync(Guid teamId);
+        public Task<IEnumerable<TeamDetailsDto>> GetTeamsAsync();
+        public Task<TeamDetailsDto> InsertTeamAsync(TeamDetailsDto newTeam);
+        public Task UpdateTeamAsync(TeamDetailsDto updatedTeam, Guid teamId);
         public Task DeleteTeamAsync(Guid teamId);
-        public Task<IEnumerable<PlayerDetailsDto>> GetTeamPlayersAsync(Guid teamId);
-        public Task RegisterTeamPlayerAsync(Guid teamId, PlayerDetailsDto playerDetailsDto);
-        public Task<IEnumerable<TrainingDto>> GetTrainingsAsync(Guid teamId);
+        public Task<IEnumerable<UserDetailsDto>> GetTeamPlayersAsync(Guid teamId);
+        public Task RegisterTeamPlayerAsync(Guid teamId, UserDetailsDto playerDetailsDto);
+        public Task<IEnumerable<TrainingDetailsDto>> GetTrainingsAsync(Guid teamId);
 
     }
 }

@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VolleyballAPI.Dtos;
-using VolleyballManagementAppBackend.Dtos;
-using VolleyballManagementAppBackend.Exceptions;
-using VolleyballManagementAppBackend.Interfaces;
+using VolleyballAPI.Exceptions;
+using VolleyballAPI.Interfaces;
 
-namespace VolleyballManagementAppBackend.Controllers
+namespace VolleyballAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiVersion("1.0")]
@@ -20,7 +19,7 @@ namespace VolleyballManagementAppBackend.Controllers
         
         [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<TeamDto>> Get(Guid id)
+        public async Task<ActionResult<TeamDetailsDto>> Get(Guid id)
         {
             try
             {
@@ -35,7 +34,8 @@ namespace VolleyballManagementAppBackend.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<TeamDto>>> Get()
+        //[Authorize]
+        public async Task<ActionResult<IEnumerable<TeamDetailsDto>>> Get()
         {
             try
             {
@@ -51,7 +51,7 @@ namespace VolleyballManagementAppBackend.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<TeamDto>> Post([FromBody] TeamDto team)
+        public async Task<ActionResult<TeamDetailsDto>> Post([FromBody] TeamDetailsDto team)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace VolleyballManagementAppBackend.Controllers
         [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> Put(Guid id, [FromBody] TeamDto value)
+        public async Task<ActionResult> Put(Guid id, [FromBody] TeamDetailsDto value)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace VolleyballManagementAppBackend.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet("{id}/players")]
-        public async Task<ActionResult<IEnumerable<PlayerDetailsDto>>> GetPlayers(Guid id)
+        public async Task<ActionResult<IEnumerable<UserDetailsDto>>> GetPlayers(Guid id)
         {
             try
             {
@@ -114,7 +114,7 @@ namespace VolleyballManagementAppBackend.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost("{id}/players")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult> RegisterTeamPlayer(Guid id, [FromBody] PlayerDetailsDto playerDetailsDto)
+        public async Task<ActionResult> RegisterTeamPlayer(Guid id, [FromBody] UserDetailsDto playerDetailsDto)
         {
             try
             {
@@ -130,7 +130,7 @@ namespace VolleyballManagementAppBackend.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet("{id}/trainings")]
-        public async Task<ActionResult<IEnumerable<TrainingDto>>> GetTrainingsAsync(Guid id)
+        public async Task<ActionResult<IEnumerable<TrainingDetailsDto>>> GetTrainingsAsync(Guid id)
         {
             try
             {

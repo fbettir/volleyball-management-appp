@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace VolleyballManagementAppBackend.Entities
+namespace VolleyballAPI.Entities
 {
     [PrimaryKey(nameof(TeamId), nameof(UserId))]
     public class TeamCoach

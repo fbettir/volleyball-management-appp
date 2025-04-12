@@ -2,7 +2,6 @@
 {
     public class RegisterPlayerDto
     {
-        public Guid PlayerId { get; set; }
-
+        public Guid UserId { get; set; }
     }
 }

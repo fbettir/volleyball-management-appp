@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
-using System;
 using VolleyballAPI.Dtos;
 using VolleyballAPI.Entities;
 using VolleyballAPI.Interfaces;
-using VolleyballManagementAppBackend;
-using VolleyballManagementAppBackend.Dtos;
-using VolleyballManagementAppBackend.Entities;
-using VolleyballManagementAppBackend.Exceptions;
+using VolleyballAPI.Exceptions;
 
 namespace VolleyballAPI.Services
 {
@@ -25,26 +20,24 @@ namespace VolleyballAPI.Services
         }
 
 
-        public async Task<TournamentDto> GetTournamentAsync(Guid tournamentId)
+        public async Task<TournamentDetailsDto> GetTournamentAsync(Guid tournamentId)
         {
-            var tournament = _context.Tournaments.FirstOrDefault(t => t.Id == tournamentId);
-            if (tournament == null)
-            {
-                throw new EntityNotFoundException("Tournament not found.");
-            }
-            return _mapper.Map<TournamentDto>(tournament);
+            return await _context.Tournaments
+                .ProjectTo<TournamentDetailsDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync(t => t.Id == tournamentId)
+                ?? throw new EntityNotFoundException("Tournament not found");
         }
 
 
-        public async Task<IEnumerable<TournamentDto>> GetTournamentsAsync()
+        public async Task<IEnumerable<TournamentDetailsDto>> GetTournamentsAsync()
         {
             var tournaments = await _context.Tournaments
-                .ProjectTo<TournamentDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<TournamentDetailsDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
             return tournaments;
         }
 
-        public async Task<TournamentDto> InsertTournamentAsync(TournamentDto newTournament)
+        public async Task<TournamentDetailsDto> InsertTournamentAsync(TournamentDetailsDto newTournament)
         {
             var efTournament = _mapper.Map<Tournament>(newTournament);
             _context.Tournaments.Add(efTournament);
@@ -52,7 +45,7 @@ namespace VolleyballAPI.Services
             return await GetTournamentAsync(efTournament.Id);
         }
 
-        public async Task UpdateTournamentAsync(TournamentDto updatedTournament, Guid tournamentId)
+        public async Task UpdateTournamentAsync(TournamentDetailsDto updatedTournament, Guid tournamentId)
         {
             var tournament = _context.Tournaments.FirstOrDefault(t => t.Id == tournamentId);
             if(tournament == null)
@@ -97,7 +90,7 @@ namespace VolleyballAPI.Services
                 throw new EntityNotFoundException("Tournament or team not found.");
         }
 
-        public async Task<IEnumerable<TeamDto>> GetTeamsAsync(Guid tournamentId)
+        public async Task<IEnumerable<TeamDetailsDto>> GetTeamsAsync(Guid tournamentId)
         {
             var tournamentExists = await _context.Tournaments.AnyAsync(t => t.Id == tournamentId);
             if (!tournamentExists)
@@ -106,7 +99,7 @@ namespace VolleyballAPI.Services
             {
                 var teams = from team in _context.TournamentCompetitors
                             where team.TournamentId == tournamentId
-                            select _mapper.Map<TeamDto>(team.Team);
+                            select _mapper.Map<TeamDetailsDto>(team.Team);
                 return teams;
             }
         }

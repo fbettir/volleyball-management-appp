@@ -1,9 +1,14 @@
-namespace VolleyballManagementAppBackend.Entities
+using System.Text.Json.Serialization;
+
+namespace VolleyballAPI.Entities
 {
+  [Flags]
+  [JsonConverter(typeof(JsonStringEnumConverter))]  
   public enum Role
   {
-    Administrator = 0,
-    Coach = 1,
-    BasicUser = 2
+    Administrator = 1,
+    Coach = 2,
+    BasicUser = 4,
+    Referee = 8
   }
 }

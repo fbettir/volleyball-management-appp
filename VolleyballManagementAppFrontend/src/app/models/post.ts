@@ -1,6 +1,7 @@
 export enum Post {
-  Hitter = 0,
-  Setter = 1,
-  Libero = 2,
-  Receiver = 3,
+  OutsideHitter = 1,
+  Setter = 2,
+  Libero = 4,
+  OppositeHitter = 8,
+  MiddleBlocker = 16
 }

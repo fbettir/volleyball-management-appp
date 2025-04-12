@@ -1,12 +1,65 @@
-<div class="footer-wrapper">
-  <div class="footer-container">
-    <div class="footer-link-wrapper">
-      <p class="footer-link" routerLink="/galery">Galery</p>
-      <p class="footer-link" routerLink="/rules">Policy</p>
-      <p class="footer-link" routerLink="/contact-us">Contact</p>
-      <p class="footer-link" routerLink="/terms-and-conditions">
-        Terms and conditions
-      </p>
+<footer class="bg-[var(--primary)] text-white py-10 px-4 text-sm font-sans">
+  <div class="max-w-4xl mx-auto flex flex-col items-center space-y-6">
+    <!-- Social Icons -->
+    <div class="flex space-x-6 text-4xl">
+      <a
+        href="https://www.instagram.com/muegyetemi.roplabda"
+        target="_blank"
+        aria-label="Instagram"
+        class="hover:text transition"
+      >
+        <span
+          class="material-icons text-white hover:scale-110 transition-transform duration-200"
+        > alternate_email
+        </span>
+      </a>
+      <a
+        href="https://www.facebook.com/muegyetmi.roplabda"
+        target="_blank"
+        aria-label="Facebook"
+        class="hover:text transition "
+      >
+        <span class="material-icons text-white hover:scale-110 transition-transform duration-200">facebook</span>
+      </a>
+      <a
+        href="mailto:contact@volleyball.com"
+        aria-label="Email"
+        class="hover:text transition"
+      >
+        <span class="material-icons text-white hover:scale-110 transition-transform duration-200">mail</span>
+      </a>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav
+      class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-lg font-semibold tracking-wide"
+    >
+      <a routerLink="/teams" class="hover:text-[var(--bg-beige)] transition"
+        >Teams</a
+      >
+      <span>·</span>
+      <a routerLink="/events" class="hover:text-[var(--bg-beige)] transition"
+        >Events</a
+      >
+      <span>·</span>
+      <a routerLink="/trainings" class="hover:text-[var(--bg-beige)] transition"
+        >Trainings</a
+      >
+      <span>·</span>
+      <a routerLink="/gallery" class="hover:text-[var(--bg-beige)] transition"
+        >Gallery</a
+      >
+      <span>·</span>
+      <a routerLink="/about" class="hover:text-[var(--bg-beige)] transition"
+        >About Us</a
+      >
+    </nav>
+
+    <!-- Legal Links -->
+    <div class="flex flex-wrap justify-center gap-x-4 text-base text-white/80">
+      <a routerLink="/terms" class="hover:text-[var(--gold)] transition">Terms of Use</a>
+      <span>·</span>
+      <a routerLink="/privacy" class="hover:text-[var(--gold)] transition">Privacy Policy</a>
     </div>
   </div>
-</div>
+</footer>

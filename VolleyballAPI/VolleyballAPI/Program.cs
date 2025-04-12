@@ -2,17 +2,20 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Security.Claims;
+using VolleyballAPI;
 using VolleyballAPI.Interfaces;
 using VolleyballAPI.Scopes;
 using VolleyballAPI.Services;
-using VolleyballManagementAppBackend;
-using VolleyballManagementAppBackend.Interfaces;
-using VolleyballManagementAppBackend.Services;
+using Yarp.ReverseProxy.Model;
 
 var builder = WebApplication.CreateBuilder(args);
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
+ bool IsProxiedRequest(HttpContext context)
+{
+    return context.GetEndpoint()?.Metadata.GetMetadata<RouteModel>() != null;
+}
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -22,27 +25,14 @@ builder.Services.AddDbContext<AppDbContext>(
 );
 builder.Services.AddScoped<ITournamentService, TournamentService>();
 builder.Services.AddScoped<ITeamService, TeamService>();
-builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITrainingService, TrainingService>();
+builder.Services.AddScoped<IMatchService, MatchService>();
 
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
-/*
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("http://localhost:4200")
-                            .AllowAnyHeader()
-                            .AllowAnyMethod()
-                            .AllowCredentials();
-                      });
-});
-*/
 builder.Services.AddControllersWithViews();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
 //Auth0
@@ -58,41 +48,32 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         NameClaimType = ClaimTypes.NameIdentifier,
     };
 });
-builder.Services.AddAuthorization(options =>
-{
-    //options.AddPolicy("read:messages", policy => policy.Requirements.Add(new
-    //HasScopeRequirement("read:messages", domain)));
-
-    //options.AddPolicy("read:roles", policy => policy.Requirements.Add(new
-    //HasScopeRequirement("read:roles", domain)));
-});
+builder.Services.AddAuthorization();
 
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "MUER API", Version = "v1" });
+});
 
 var app = builder.Build();
-app.MapReverseProxy();
+
 app.UseRouting();
-//app.UseCors(MyAllowSpecificOrigins);
 
+app.MapReverseProxy();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "MUER API V1");
+    });
 }
-
-//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
-
 
 app.MapControllers();
 

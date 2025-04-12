@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
-using VolleyballManagementAppBackend.Dtos;
-using VolleyballManagementAppBackend.Exceptions;
-using VolleyballManagementAppBackend.Interfaces;
-using VolleyballManagementAppBackend.Services;
+using VolleyballAPI.Exceptions;
 
 namespace VolleyballAPI.Controllers
 {
@@ -21,11 +18,11 @@ namespace VolleyballAPI.Controllers
         }
         [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserDto>> Get(Guid id)
+        public async Task<ActionResult<UserDetailsDto>> Get(Guid id)
         {
             try
             {
-                var user = await _userService.GetUserAsync(id);
+                var user = await _userService.GetUserDetailsAsync(id);
                 return Ok(user);
             }
             catch (EntityNotFoundException ex)
@@ -36,7 +33,7 @@ namespace VolleyballAPI.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<UserDto>>> Get()
+        public async Task<ActionResult<IEnumerable<UserDetailsDto>>> Get()
         {
             try
             {
@@ -52,7 +49,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<UserDto>> Post([FromBody] UserDto user)
+        public async Task<ActionResult<UserHeaderDto>> Post([FromBody] UserHeaderDto user)
         {
             try
             {
@@ -68,7 +65,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> Put(Guid id, [FromBody] UserDto value)
+        public async Task<ActionResult> Put(Guid id, [FromBody] UserDetailsDto value)
         {
             try
             {
