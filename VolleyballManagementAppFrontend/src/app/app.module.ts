@@ -51,6 +51,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { TeamSearchBarComponent } from './shared/team-search-bar/team-search-bar.component';
 
 @NgModule({
   declarations: [
@@ -58,13 +59,11 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
     ToolbarComponent,
     TableComponent,
     FooterComponent,
-    HomePageComponent,
     TeamPageComponent,
     MemberPageComponent,
     AllTournamentsPageComponent,
     TournamentPageComponent,
     ContactUsPageComponent,
-    AllTeamsPageComponent,
     EnumIntToDescriptionPipe,
     UpdateDialogComponent,
     TrainingsDialogComponent,
@@ -76,8 +75,8 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
     MultipleListEnumToDescriptionPipe,
     LogoutComponent,
     LoginComponent,
-    UserProfileComponent,
-  ],
+    UserProfileComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
