@@ -6,40 +6,40 @@
     MUER
   </span>
 
-  <nav class="hidden md:flex space-x-6 font-medium text-[var(--text-dark)] relative">
+  <nav class="hidden md:flex space-x-6 text-[var(--text-dark)] relative">
     <a
-      routerLink="/home"
-      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="relative pb-2 hover:text-[var(--primary)] transition"
-    >
-      Home
-    </a>
+    routerLink="/home"
+    routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+  >
+    Home
+  </a>
   
-    <a
-      routerLink="/teams"
-      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-      class="relative pb-2 hover:text-[var(--primary)] transition"
-    >
-      Teams
-    </a>
+  <a
+    routerLink="/teams"
+    routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+  >
+    Teams
+  </a>
   
-    <a
-      routerLink="/events"
-      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-      class="relative pb-2 hover:text-[var(--primary)] transition"
-    >
-      Events
-    </a>
+  <a
+    routerLink="/events"
+    routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+  >
+    Events
+  </a>
   
-    <a
-      routerLink="/trainings"
-      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-      class="relative pb-2 hover:text-[var(--primary)] transition"
-    >
-      Trainings
-    </a>
-  </nav>
+  <a
+    routerLink="/trainings"
+    routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+  >
+    Trainings
+  </a>
+    </nav>
   
 
   <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
