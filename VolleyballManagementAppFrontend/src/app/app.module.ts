@@ -16,9 +16,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
@@ -27,15 +27,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TeamPageComponent } from './pages/team-page/team-page.component';
-import { MemberPageComponent } from './pages/profile-page/member-page.component';
-import { AllTournamentsPageComponent } from './pages/all-tournaments-page/all-tournaments-page.component';
-import { TournamentPageComponent } from './pages/tournament-page/tournament-page.component';
-import { ContactUsPageComponent } from './pages/contact-us-page/contact-us-page.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AllTeamsPageComponent } from './pages/all-teams-page/all-teams-page.component';
-import { HttpClientModule, HTTP_INTERCEPTORS , provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EnumIntToDescriptionPipe } from './shared/enum-to-description.pipe';
 import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -46,28 +40,34 @@ import { AddTournamentComponent } from './components/add-tournament/add-tourname
 import { AddPlayerDetailsComponent } from './components/add-player-details/add-player-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { MultipleListEnumToDescriptionPipe } from './shared/multiple-list-enum-to-description.pipe';
-import { AuthModule, authHttpInterceptorFn } from '@auth0/auth0-angular';
+import { AuthModule } from '@auth0/auth0-angular';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
-import { TeamSearchBarComponent } from './shared/team-search-bar/team-search-bar.component';
-
+import { TeamsPageComponent } from './pages/teams-page/teams-page.component';
+import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
+import { EventPageComponent } from './pages/event-page/event-page.component';
+import { EventsPageComponent } from './pages/events-page/events-page.component';
+import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     TableComponent,
     FooterComponent,
+    AboutUsPageComponent,
+    AdminPageComponent,
+    EventPageComponent,
+    EventsPageComponent,
+    GalleryPageComponent,
+    ProfilePageComponent,
     TeamPageComponent,
-    MemberPageComponent,
-    AllTournamentsPageComponent,
-    TournamentPageComponent,
-    ContactUsPageComponent,
+    TeamsPageComponent,
     EnumIntToDescriptionPipe,
     UpdateDialogComponent,
     TrainingsDialogComponent,
-    AdminPageComponent,
     AddTeamComponent,
     AddTournamentComponent,
     AddPlayerDetailsComponent,
