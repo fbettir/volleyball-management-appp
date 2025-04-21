@@ -6,15 +6,56 @@ import { TeamPageComponent } from './pages/team-page/team-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { RoleGuard } from './role.guard';
 import { TeamsPageComponent } from './pages/teams-page/teams-page.component';
+import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
+import { EventPageComponent } from './pages/event-page/event-page.component';
+import { EventsPageComponent } from './pages/events-page/events-page.component';
+import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
+import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
+import { TrainingsPageComponent } from './pages/trainings-page/trainings-page.component';
 
 const routes: Routes = [
+  { 
+    path: 'about-us', 
+    component: AboutUsPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  { 
+    path: 'admin', 
+    component: AdminPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['admin']}
+  },
+  { 
+    path: 'event/:eventId', 
+    component: EventPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  { 
+    path: 'events', 
+    component: EventsPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  { 
+    path: 'gallery', 
+    component: GalleryPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
   { 
     path: 'home', 
     component: HomePageComponent,
     canActivate: [RoleGuard],
     data: { expectedRoles: ['basic_user']}
   },
-
+  { 
+    path: 'privacy-policy', 
+    component: PrivacyPolicyPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
   { 
     path: 'profile', 
     component: ProfilePageComponent,
@@ -23,21 +64,27 @@ const routes: Routes = [
   },
   { 
     path: 'team/:teamId', 
-    component: TeamsPageComponent ,
+    component: TeamPageComponent ,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+  {
+    path: 'teams', 
+    component: TeamsPageComponent,
     canActivate: [RoleGuard],
     data: { expectedRoles: ['basic_user']}
   },
   { 
-    path: 'teams', 
-    component: TeamPageComponent,
+    path: 'training/:trainingId', 
+    component: TrainingsPageComponent ,
     canActivate: [RoleGuard],
-    data: { expectedRoles: ['basic_user']} 
+    data: { expectedRoles: ['basic_user']}
   },
-  { 
-    path: 'admin', 
-    component: AdminPageComponent ,
+  {
+    path: 'trainings', 
+    component: TrainingsPageComponent,
     canActivate: [RoleGuard],
-    data: { expectedRoles: ['admin']}
+    data: { expectedRoles: ['basic_user']}
   },
   { 
     path: '**', 

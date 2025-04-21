@@ -45,7 +45,6 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
-import { TeamsPageComponent } from './pages/teams-page/teams-page.component';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 import { EventPageComponent } from './pages/event-page/event-page.component';
 import { EventsPageComponent } from './pages/events-page/events-page.component';
@@ -64,7 +63,6 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     GalleryPageComponent,
     ProfilePageComponent,
     TeamPageComponent,
-    TeamsPageComponent,
     EnumIntToDescriptionPipe,
     UpdateDialogComponent,
     TrainingsDialogComponent,
