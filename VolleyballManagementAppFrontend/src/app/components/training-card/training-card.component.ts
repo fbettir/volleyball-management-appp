@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { Training } from 'src/app/models/training';
 
 @Component({
   selector: 'app-training-card',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule, RouterModule],
   templateUrl: './training-card.component.html',
   styleUrl: './training-card.component.scss'
 })
 export class TrainingCardComponent {
+  @Input() training!: Training;
 
+  get day(): string {
+    return new Date(this.training.date).getDate().toString().padStart(2, '0');
+  }
+
+  get month(): string {
+    return new Date(this.training.date).toLocaleString('default', { month: 'short' }).toUpperCase();
+  }
 }

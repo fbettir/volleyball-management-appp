@@ -44,56 +44,59 @@ export class TeamPageComponent implements OnInit {
     private dialog: MatDialog,
   ) {}
 
-  ngOnInit() {
-    this.teamId = this.route.snapshot.params['teamId'];
-    this.dataSourcePlayers.data = [];
-    this.dataSourceTrainings.data = [];
+  ngOnInit(): void {
+    
+  }
+  // ngOnInit() {
+  //   this.teamId = this.route.snapshot.params['teamId'];
+  //   this.dataSourcePlayers.data = [];
+  //   this.dataSourceTrainings.data = [];
 
-    this.teamService.getTeamById(this.teamId).subscribe(team => {
-      this.team = team;
-      if (team !== undefined) {
-        this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
-          this.members = teamPlayers;          
-          this.teamService.getTeamTrainingsByTeamId(this.teamId).subscribe(trainings =>{
-            trainings.forEach( t => {
-              const training: Training = {
-                id: t.id,
-                participants: this.membersWithName,
-                location: t.location,
-                date: t.date,
-                description: t.description
-              }
-              this.trainings.push(training);
-            })
-            this.dataSourceTrainings.data = this.trainings;
-          })
-          if(this.members !== undefined){
-          this.members.forEach( m => {
-            this.userService.getUserById(m.userId).subscribe( user => {
-              this.users.push(user);
-              const player: PlayerDetailsWithName = {
-                id: m.id,
-                name: user.name,
-                birthday: m.birthday,
-                phone: m.phone,
-                playerNumber: m.playerNumber,
-                ticketPass: m.ticketPass,
-                gender: m.gender as Gender,
-                posts: m.posts as Post[],                  
-              }
-              this.membersWithName.push(player);
-              this.dataSourcePlayers.data = this.membersWithName;
-            })
-          });
-          }
-        })
-      }
+  //   this.teamService.getTeamById(this.teamId).subscribe(team => {
+  //     this.team = team;
+  //     if (team !== undefined) {
+  //       this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
+  //         this.members = teamPlayers;          
+  //         this.teamService.getTeamTrainingsByTeamId(this.teamId).subscribe(trainings =>{
+  //           trainings.forEach( t => {
+  //             const training: Training = {
+  //               id: t.id,
+  //               participants: this.membersWithName,
+  //               location: t.location,
+  //               date: t.date,
+  //               description: t.description
+  //             }
+  //             this.trainings.push(training);
+  //           })
+  //           this.dataSourceTrainings.data = this.trainings;
+  //         })
+  //         if(this.members !== undefined){
+  //         this.members.forEach( m => {
+  //           this.userService.getUserById(m.userId).subscribe( user => {
+  //             this.users.push(user);
+  //             const player: PlayerDetailsWithName = {
+  //               id: m.id,
+  //               name: user.name,
+  //               birthday: m.birthday,
+  //               phone: m.phone,
+  //               playerNumber: m.playerNumber,
+  //               ticketPass: m.ticketPass,
+  //               gender: m.gender as Gender,
+  //               posts: m.posts as Post[],                  
+  //             }
+  //             this.membersWithName.push(player);
+  //             this.dataSourcePlayers.data = this.membersWithName;
+  //           })
+  //         });
+  //         }
+  //       })
+  //     }
 
-    //this.dataSourceTrainings.data = trainings; //TODO: new endpoint from teamService
-    });
+  //   //this.dataSourceTrainings.data = trainings; //TODO: new endpoint from teamService
+  //   });
     
 
-  }
+  // }
 
   deleteUserFromTeam(index: number){
     this.dataSourcePlayers.data.splice(index, 1);

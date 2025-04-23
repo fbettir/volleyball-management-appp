@@ -4,24 +4,30 @@
     alt="Teams background"
     class="w-full h-full object-cover"
   />
-  <!-- Overlay with content aligned bottom-left -->
-  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end px-6 pb-8">
-    <div class="text-left">
-      <h1 class="text-4xl md:text-5xl text-white font-bold mb-4">
+
+  <div
+    class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-end pb-8"
+  >
+    <div class="w-full max-w-screen-xl text-start mx-auto px-48 ">
+      <h1 class="text-4xl md:text-6xl text-white font-bold mb-6">
         Come play volleyball!
       </h1>
-      <app-team-search-bar></app-team-search-bar>
+      <div class="w-full flex justify-center">
+        <div class="w-full max-w-screen-xl">
+          <app-team-search-bar class="w-full"></app-team-search-bar>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-  <!-- Team Cards Grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-    <app-team-card *ngFor="let t of teams" [team]="t"></app-team-card>
-  </div>
-
-  <!-- Tournament Cards Grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-    <app-event-card *ngFor="let t of tournaments" [tournament]="t"></app-event-card>
+<div class="max-w-screen-xl mx-auto px-6 py-6">
+  <div
+    class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+  >
+    <app-team-card
+      *ngFor="let t of teams"
+      [team]="t"
+      class="w-[260px]"
+    ></app-team-card>
   </div>
 </div>

@@ -14,3 +14,4 @@ export class EventCardComponent {
   @Input() tournament!: Tournament;
 
 }
+ 

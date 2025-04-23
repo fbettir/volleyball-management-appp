@@ -2,10 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Gender } from 'src/app/models/gender';
-import { PlayerDetails } from 'src/app/models/player-details';
-import { PlayerDetailsWithName } from 'src/app/models/player-details-with-name';
-import { Role } from 'src/app/models/role';
 import { Training } from 'src/app/models/training';
 import { User } from 'src/app/models/user';
 import { v4 as uuidv4 } from 'uuid';
@@ -24,10 +20,10 @@ export class TrainingsDialogComponent {
   
   dataSource = new MatTableDataSource<Training>([this.data]);
 
-  participants: PlayerDetailsWithName[] = this.dataSource.data[0].participants;
+  players: User[] = this.dataSource.data[0].players;
 
   addTrainingForm = this.formBuilder.group({
-    participants: this.participants,
+    players: this.players,
     location: this.dataSource.data[0].location,
     date: this.dataSource.data[0].date,
     description: this.dataSource.data[0].description,
@@ -38,16 +34,16 @@ export class TrainingsDialogComponent {
     this.dialogRef.close();
   }
 
-  onSubmit(): void {
-    const { participants, location, date, description } =
-      this.addTrainingForm.value;
-    const training: Training = {
-      id: uuidv4(),
-      participants: [participants!],
-      location: location!,
-      date: date!,
-      description: description!,
-    };
-    this.data = training;
-  }
+  // onSubmit(): void {
+  //   const { players, location, date, description } =
+  //     this.addTrainingForm.value;
+  //   const training: Training = {
+  //     id: uuidv4(),
+  //     players: [players!],
+  //     location: location!,
+  //     date: date!,
+  //     description: description!,
+  //   };
+  //   this.data = training;
+  // }
 }

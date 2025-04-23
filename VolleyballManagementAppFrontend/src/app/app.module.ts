@@ -59,7 +59,6 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     AboutUsPageComponent,
     AdminPageComponent,
     EventPageComponent,
-    EventsPageComponent,
     GalleryPageComponent,
     ProfilePageComponent,
     TeamPageComponent,

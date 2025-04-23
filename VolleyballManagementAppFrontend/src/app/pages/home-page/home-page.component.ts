@@ -6,7 +6,7 @@ import { Team } from 'src/app/models/team';
 import { Tournament } from 'src/app/models/tournament';
 import { TeamService } from 'src/app/services/team.service';
 import { TournamentService } from 'src/app/services/tournament.service';
-import { TeamSearchBarComponent } from 'src/app/shared/team-search-bar/team-search-bar.component';
+import { TeamSearchBarComponent } from 'src/app/components/team-search-bar/team-search-bar.component';
 
 @Component({
   selector: 'app-home-page',
@@ -17,8 +17,8 @@ import { TeamSearchBarComponent } from 'src/app/shared/team-search-bar/team-sear
 })
 export class HomePageComponent {
   teams: Team[] = [];
-
   tournaments: Tournament[] = [];
+
   constructor(tournamentService: TournamentService, teamService: TeamService) {
     tournamentService.getAllTournaments().subscribe(t => {
       this.tournaments = t;
@@ -27,6 +27,4 @@ export class HomePageComponent {
       this.teams = t;
     });
   }
-
-
 }
