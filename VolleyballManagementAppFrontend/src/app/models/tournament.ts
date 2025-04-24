@@ -6,6 +6,6 @@ export interface Tournament {
   date: Date;
   location: string;
   description: string;
-  picture?: string;
+  pictureLink: string;
 }
  

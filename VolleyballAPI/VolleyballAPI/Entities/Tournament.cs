@@ -17,8 +17,10 @@ namespace VolleyballAPI.Entities
     public string RegistrationPolicy { get; set; }
     public string TeamPolicy { get; set; }
     public string Description { get; set; }
+    public string PictureLink { get; set; }
     public Level Categories { get; set; }
     public PriceType PriceType { get; set; }
+
 
     public virtual Location Location { get; set; }
     public virtual ICollection<TournamentCompetitor> Teams { get; set; }

@@ -14,11 +14,18 @@ import { TeamSearchBarComponent } from 'src/app/components/team-search-bar/team-
 })
 export class TeamsPageComponent {
   teams: Team[] = [];
+  filteredTeams: Team[] = [];
 
   constructor(teamService: TeamService) {
     teamService.getAllTeams().subscribe((t) => {
       console.log('Loaded teams:', t);
       this.teams = t;
     });
+  }
+
+  onSearchChanged(searchText: string) {
+    this.filteredTeams = this.teams.filter(team =>
+      team.name.toLowerCase().includes(searchText)
+    );
   }
 }

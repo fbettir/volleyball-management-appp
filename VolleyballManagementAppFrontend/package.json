@@ -26,6 +26,7 @@
     "@auth0/angular-jwt": "^5.2.0",
     "@auth0/auth0-angular": "^2.2.3",
     "@material/dialog": "^15.0.0-canary.684e33d25.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "angular-jwt": "^0.1.11",
     "cors": "^2.8.5",
     "ng-bootstrap": "^1.6.3",

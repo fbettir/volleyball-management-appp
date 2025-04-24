@@ -20,7 +20,15 @@ export class ToolbarComponent {
       shareReplay(),
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, @Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
+  constructor(private breakpointObserver: BreakpointObserver, @Inject(DOCUMENT) public document: Document, public auth: AuthService) {
 
-  
+  }
+
+  logout(): void {
+    this.auth.logout({
+      logoutParams: {
+        returnTo: 'https://localhost:44359/app/home'
+      }
+    });
+  }
 }

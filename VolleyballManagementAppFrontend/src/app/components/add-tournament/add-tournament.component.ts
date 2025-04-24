@@ -33,7 +33,7 @@ export class AddTournamentComponent {
       date: date!,
       location: location!,
       description: description!,
-      picture: picture!,
+      pictureLink: picture!,
     };
 
     this.tournamentService.insertTournament(tournament as Tournament);

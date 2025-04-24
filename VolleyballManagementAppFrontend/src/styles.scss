@@ -2,34 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global styles */
 html, body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* Custom color variables (design-based) */
 :root {
-  --primary: #7D1A1A;              /* Deep red (footer, buttons) */
+  --primary: #7D1A1A;        
   --text-primary: #000000;
   --text-secondary: #7D1A1A;
-  --gold: #BD973A;                 /* Accent / hover */
-  --bg-beige: #F3E5C6;             /* Background and card color */
-  --text-dark: #444C45;            /* Dark gray for contrast text */
-  --white: #ffffff;                /* Plain white */
+  --gold: #BD973A;             
+  --bg-beige: #F3E5C6;          
+  --text-dark: #444C45;      
+  --white: #ffffff;     
 }
 
-/* Optional: utility overrides if needed */
 button {
   font-weight: 500;
-  border-radius: 0.375rem; /* rounded-md */
+  border-radius: 0.375rem; 
 }
 
 body {
   height: 100%;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: white; // Set base to white
+  background-color: white; 
 }
 

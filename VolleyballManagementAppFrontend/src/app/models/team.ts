@@ -1,6 +1,6 @@
 export interface Team {
   id: string;
   name: string;
-  picture?: string;
+  pictureLink: string;
   description: string;
 }

@@ -13,5 +13,8 @@ import { RouterModule } from '@angular/router';
 export class EventCardComponent {
   @Input() tournament!: Tournament;
 
+  imageFallback(event: Event) {
+    (event.target as HTMLImageElement).src = 'assets/default-team.jpg';
+  }
 }
  

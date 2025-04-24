@@ -34,7 +34,7 @@ export class AddTeamComponent{
     const { name, description, picture} = this.addTeamForm.value;
     const team: Partial<Team> = { 
       name: name!,
-      picture: picture!,
+      pictureLink: picture!,
       description: description!,
     };
     this.teamService.insertTeam(team as Team);

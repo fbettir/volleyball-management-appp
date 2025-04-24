@@ -2,6 +2,7 @@ import { PlayerDetailsWithName } from './player-details-with-name';
 import { PriceType } from './priceType';
 import { Team } from './team';
 import { User } from './user';
+import { Location } from './location';
 
 export interface Training {
   id: string;
@@ -10,6 +11,7 @@ export interface Training {
   location: Location;
   date: Date;
   description: string;
-  Team: Team;
+  team: Team;
   priceType: PriceType;
+  pictureLink: string;
 }

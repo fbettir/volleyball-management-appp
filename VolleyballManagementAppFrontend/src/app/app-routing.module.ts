@@ -12,6 +12,7 @@ import { EventsPageComponent } from './pages/events-page/events-page.component';
 import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
 import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 import { TrainingsPageComponent } from './pages/trainings-page/trainings-page.component';
+import { TrainingPageComponent } from './pages/training-page/training-page.component';
 
 const routes: Routes = [
   { 
@@ -76,7 +77,7 @@ const routes: Routes = [
   },
   { 
     path: 'training/:trainingId', 
-    component: TrainingsPageComponent ,
+    component: TrainingPageComponent ,
     canActivate: [RoleGuard],
     data: { expectedRoles: ['basic_user']}
   },

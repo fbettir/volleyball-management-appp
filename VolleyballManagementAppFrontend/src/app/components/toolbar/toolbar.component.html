@@ -8,50 +8,49 @@
 
   <nav class="hidden md:flex space-x-6 text-[var(--text-dark)] relative">
     <a
-    routerLink="/home"
-    routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-    [routerLinkActiveOptions]="{ exact: true }"
-    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
-  >
-    Home
-  </a>
-  
-  <a
-    routerLink="/teams"
-    routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
-  >
-    Teams
-  </a>
-  
-  <a
-    routerLink="/events"
-    routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
-  >
-    Events
-  </a>
-  
-  <a
-    routerLink="/trainings"
-    routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
-  >
-    Trainings
-  </a>
-    </nav>
-  
+      routerLink="/home"
+      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+    >
+      Home
+    </a>
+
+    <a
+      routerLink="/teams"
+      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+      class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+    >
+      Teams
+    </a>
+
+    <a
+      routerLink="/events"
+      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+      class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+    >
+      Events
+    </a>
+
+    <a
+      routerLink="/trainings"
+      routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
+      class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+    >
+      Trainings
+    </a>
+  </nav>
 
   <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
     <!-- Logout Button -->
     <button
-      (click)="auth.logout({ logoutParams: { returnTo: document.location.origin + '/home' } })"
+      (click)="logout()"
       class="bg-white text-[var(--primary)] px-3 py-1.5 text-sm rounded-full border border-[var(--primary)] shadow-lg m-2 hover:bg-[var(--primary)] hover:text-white transition"
     >
       Logout
     </button>
   </ng-container>
-  
+
   <ng-template #loggedOut>
     <!-- Login Button -->
     <button

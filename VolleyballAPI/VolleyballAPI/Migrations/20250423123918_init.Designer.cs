@@ -12,8 +12,8 @@ using VolleyballAPI;
 namespace VolleyballAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250403082838_Init")]
-    partial class Init
+    [Migration("20250423123918_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,8 +42,8 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
-                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
+                            UserId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a")
                         });
                 });
 
@@ -64,8 +64,8 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            TournamentId = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033"),
-                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                            TournamentId = new Guid("6c30be59-a513-459e-ac57-89a2fcccbe20"),
+                            UserId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a")
                         });
                 });
 
@@ -86,8 +86,8 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            TrainingId = new Guid("21eb950f-7f6f-44c5-aab0-4033c8404e06"),
-                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                            TrainingId = new Guid("051060df-f83b-4017-acf1-4ed53fdef8b1"),
+                            UserId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a")
                         });
                 });
 
@@ -113,61 +113,61 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            Id = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
                             Address = "Location Addr 1",
                             Name = "Location1"
                         },
                         new
                         {
-                            Id = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
+                            Id = new Guid("93c67519-3e07-4626-917e-a83480c02efc"),
                             Address = "Location Addr 2",
                             Name = "Location2"
                         },
                         new
                         {
-                            Id = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            Id = new Guid("ddf42da6-05cd-447b-88be-928ba48088c2"),
                             Address = "Location Addr 3",
                             Name = "Location3"
                         },
                         new
                         {
-                            Id = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            Id = new Guid("87ce73fb-ca09-40c0-968f-ea7d5faf6050"),
                             Address = "Location Addr 4",
                             Name = "Location4"
                         },
                         new
                         {
-                            Id = new Guid("e520731c-c5a2-4016-a5af-90a2b5175091"),
+                            Id = new Guid("97596a29-02f5-4379-a530-e507ef6eb5e6"),
                             Address = "Location Addr 5",
                             Name = "Location5"
                         },
                         new
                         {
-                            Id = new Guid("45429076-7d5b-4e61-a9f0-252122a9bdf9"),
+                            Id = new Guid("c7fed090-f154-4aa1-9208-ef6e5d709cba"),
                             Address = "Location Addr 6",
                             Name = "Location6"
                         },
                         new
                         {
-                            Id = new Guid("f2aca153-19d8-4a19-bc79-5f2ea7a002df"),
+                            Id = new Guid("49168dad-443c-45c7-ab54-d8765437ae41"),
                             Address = "Location Addr 7",
                             Name = "Location7"
                         },
                         new
                         {
-                            Id = new Guid("026827c9-455b-41e1-9c49-47ee9b94fbe4"),
+                            Id = new Guid("a41ea1cb-f961-4a79-a280-610ba5c4a440"),
                             Address = "Location Addr 8",
                             Name = "Location8"
                         },
                         new
                         {
-                            Id = new Guid("f526a593-f96d-4483-aaa6-efd22363898d"),
+                            Id = new Guid("ecfc39e0-f5e1-4231-8cbc-a3ff7e97833d"),
                             Address = "Location Addr 9",
                             Name = "Location9"
                         },
                         new
                         {
-                            Id = new Guid("97bf836d-b00d-48ce-99fd-3fe15c16590a"),
+                            Id = new Guid("34613a5f-77ba-4f88-af95-83a16a11a847"),
                             Address = "Location Addr 10",
                             Name = "Location10"
                         });
@@ -207,273 +207,273 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e8a7660e-0ffd-4de1-bbdb-27b77e6ec9e8"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8376),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            Id = new Guid("25d9e577-cba3-4fc1-afd8-3a4eecadc48b"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(759),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70"),
                             StartTime = new DateTime(2024, 4, 3, 13, 55, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("b459bf29-84c5-4cef-8095-7f2eec19bd89"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8415),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            Id = new Guid("46dcea78-3ba1-40ae-b217-bfdc6fee9f95"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(807),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40"),
                             StartTime = new DateTime(2024, 4, 3, 14, 15, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("b0819c98-4299-409d-9040-a39164fc482c"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8418),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            Id = new Guid("91435969-2be3-4763-9e51-0eef7b727cab"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(810),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3"),
                             StartTime = new DateTime(2024, 4, 3, 14, 40, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("c2d7841f-8566-42d8-b426-77040e21f477"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8421),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            Id = new Guid("474f7182-7594-4c08-899c-258e9b39d7e0"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(812),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
                             StartTime = new DateTime(2024, 4, 3, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("f74428f4-e959-4729-901e-76ce190ee510"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8423),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            Id = new Guid("0de04e0b-500f-485e-a8fa-130d2a74351f"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(815),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b"),
                             StartTime = new DateTime(2024, 4, 3, 15, 25, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("42d4cd9b-983b-4425-8043-3f2dfa9ffc36"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8426),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            Id = new Guid("a3ef2cad-8830-451b-808c-70cf444a9fbe"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(817),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3"),
                             StartTime = new DateTime(2024, 4, 3, 15, 50, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("c2d51539-e23d-4860-b935-937fdc9c99ae"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8428),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            Id = new Guid("1dcac372-7624-4745-8d26-b47df7f0a002"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(820),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3"),
                             StartTime = new DateTime(2024, 4, 3, 16, 15, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("298ebacf-3ef8-4e3a-a15f-d49f02916ad0"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8431),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            Id = new Guid("b09ef59a-c69a-4d3e-b903-447298362848"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(822),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70"),
                             StartTime = new DateTime(2024, 4, 3, 16, 40, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("02e30203-2aaa-4901-a951-c1b1484e2417"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8433),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            Id = new Guid("d39423dd-1c36-4334-864b-8b07a7c81827"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(825),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3"),
                             StartTime = new DateTime(2024, 4, 3, 17, 5, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("23688b2a-9e10-4b44-98c5-a3d52c0850d2"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8436),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            Id = new Guid("d6d5d336-7dd3-494e-b3b2-c2a2e2801e28"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(829),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf"),
                             StartTime = new DateTime(2024, 4, 3, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("8c1dc2c5-a2ee-432a-bb59-5ac750b6b996"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8439),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            Id = new Guid("05580d17-b0b2-4c0c-b11f-1ece166d548c"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(834),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70"),
                             StartTime = new DateTime(2024, 4, 3, 17, 55, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("c50d63b4-398e-496f-a60e-e9859e9a54c5"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8441),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            Id = new Guid("db529179-9248-46ad-b2ab-45dff0292ce0"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(839),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d"),
                             StartTime = new DateTime(2024, 4, 3, 18, 20, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("302aea8b-910d-4ea3-877b-a4f0b2d87ae1"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8444),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            Id = new Guid("579addba-0604-4a34-a0a6-857cfb86e169"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(843),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40"),
                             StartTime = new DateTime(2024, 4, 3, 18, 45, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("f6d7916f-1674-4dbc-8177-4183a1b27545"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8446),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            Id = new Guid("d1030b00-61d8-4b97-8250-6c968774231d"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(845),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf"),
                             StartTime = new DateTime(2024, 4, 3, 19, 10, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("792b671b-71b7-4efa-ad0f-8bef0e81bbfc"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8449),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            Id = new Guid("4500f53c-359a-432d-a16f-af749b53a9ba"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(848),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3"),
                             StartTime = new DateTime(2024, 4, 3, 13, 55, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("827a3c49-db6a-4500-b235-f3ea6cbe2c9f"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8451),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            Id = new Guid("6a5a536d-0b98-4d55-9210-5f99d54eaa82"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(850),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b"),
                             StartTime = new DateTime(2024, 4, 3, 14, 15, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("8b317c1c-e855-4657-bd2d-299052ef658e"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8454),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            Id = new Guid("a0c2a8d8-16d3-402a-b3f5-f4cbbe09b417"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(853),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d"),
                             StartTime = new DateTime(2024, 4, 3, 14, 40, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("7bdd24a6-f282-42e3-91a9-9457fb542c0f"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8456),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            Id = new Guid("5ebfebf8-ad5b-40d3-a43c-878f240861fc"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(855),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40"),
                             StartTime = new DateTime(2024, 4, 3, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("fb6eb16c-1b0a-41b3-bfd8-f1a8b8f204fe"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8459),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            Id = new Guid("fe19c9dd-b593-48a1-a5ea-d90f62510ce0"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(858),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3"),
                             StartTime = new DateTime(2024, 4, 3, 15, 25, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("f7bf5b28-6cfd-473c-ada0-35ffef1d189c"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8462),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            Id = new Guid("d2304a8c-da07-46cf-9efa-46f4e42225d5"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(860),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
                             StartTime = new DateTime(2024, 4, 3, 15, 50, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("f9dbde9a-d578-47dc-b1f2-b4d7e66c484e"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8465),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            Id = new Guid("001d73aa-3905-4351-b7d7-076b725af59d"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(863),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b"),
                             StartTime = new DateTime(2024, 4, 3, 16, 15, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("4e93b254-6014-414f-82a8-ef3b9df8036e"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8467),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            Id = new Guid("9e82cf89-c385-411f-bae9-ba1cda7a617e"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(865),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf"),
                             StartTime = new DateTime(2024, 4, 3, 16, 40, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("ca3f7acf-f221-4d5f-845e-485243da9e8e"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8470),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            Id = new Guid("d06f934d-00bf-421c-b5b9-f6da228b3944"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(901),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3"),
                             StartTime = new DateTime(2024, 4, 3, 17, 5, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("0cfa28be-7215-4681-a6e4-ae6278806760"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8472),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            Id = new Guid("86e8af62-6706-4f23-80e9-80af55a1ef15"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(904),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d"),
                             StartTime = new DateTime(2024, 4, 3, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("2fd55261-70c8-48b4-a83c-33624348cb7f"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8475),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            Id = new Guid("c2aaafa2-f543-49ac-9deb-3e3a5240d660"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(907),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40"),
                             StartTime = new DateTime(2024, 4, 3, 17, 55, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("e184b843-d09c-42c1-971a-dc327874a993"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8478),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            Id = new Guid("3746feab-72e9-4bf7-a18e-d8f8408192ca"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(909),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70"),
                             StartTime = new DateTime(2024, 4, 3, 18, 20, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("96146330-381c-4de0-84f0-90021558bb4d"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8480),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            Id = new Guid("e7b5b905-cdb2-45c7-b61b-077f52ad83fa"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(912),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
                             StartTime = new DateTime(2024, 4, 3, 18, 45, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("6fcc7d85-bf86-426c-92f7-a7689a1dd3da"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8483),
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            RefereeId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            Id = new Guid("c6514e40-2889-4d20-8ade-8a85363eb778"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(914),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            RefereeId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b"),
                             StartTime = new DateTime(2024, 4, 3, 19, 10, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389")
                         },
                         new
                         {
-                            Id = new Guid("2d85f559-f6cb-4131-9e25-0f74dabc6f82"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8485),
-                            LocationId = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
-                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            Id = new Guid("02376867-f1e7-498c-b1a9-8a473d2482a5"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(917),
+                            LocationId = new Guid("93c67519-3e07-4626-917e-a83480c02efc"),
+                            RefereeId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
                             StartTime = new DateTime(2024, 4, 3, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033")
+                            TournamentId = new Guid("6c30be59-a513-459e-ac57-89a2fcccbe20")
                         },
                         new
                         {
-                            Id = new Guid("4f44a42f-a458-45ab-a4df-8cc86e177dee"),
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8488),
-                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
-                            RefereeId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            Id = new Guid("3e8e9424-213e-4774-a810-3a95fdebe29b"),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(919),
+                            LocationId = new Guid("ddf42da6-05cd-447b-88be-928ba48088c2"),
+                            RefereeId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
                             StartTime = new DateTime(2024, 4, 3, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            TournamentId = new Guid("e71df8fa-c3c7-4e54-afb9-b45bc89aaa83")
+                            TournamentId = new Guid("8a1cc25a-e8c7-470e-aed2-e20c13e5a78a")
                         });
                 });
 
@@ -494,303 +494,303 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            MatchId = new Guid("e8a7660e-0ffd-4de1-bbdb-27b77e6ec9e8"),
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                            MatchId = new Guid("25d9e577-cba3-4fc1-afd8-3a4eecadc48b"),
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d")
                         },
                         new
                         {
-                            MatchId = new Guid("e8a7660e-0ffd-4de1-bbdb-27b77e6ec9e8"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            MatchId = new Guid("25d9e577-cba3-4fc1-afd8-3a4eecadc48b"),
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            MatchId = new Guid("b459bf29-84c5-4cef-8095-7f2eec19bd89"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            MatchId = new Guid("46dcea78-3ba1-40ae-b217-bfdc6fee9f95"),
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            MatchId = new Guid("b459bf29-84c5-4cef-8095-7f2eec19bd89"),
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                            MatchId = new Guid("46dcea78-3ba1-40ae-b217-bfdc6fee9f95"),
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3")
                         },
                         new
                         {
-                            MatchId = new Guid("b0819c98-4299-409d-9040-a39164fc482c"),
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                            MatchId = new Guid("91435969-2be3-4763-9e51-0eef7b727cab"),
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70")
                         },
                         new
                         {
-                            MatchId = new Guid("b0819c98-4299-409d-9040-a39164fc482c"),
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                            MatchId = new Guid("91435969-2be3-4763-9e51-0eef7b727cab"),
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40")
                         },
                         new
                         {
-                            MatchId = new Guid("c2d7841f-8566-42d8-b426-77040e21f477"),
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                            MatchId = new Guid("474f7182-7594-4c08-899c-258e9b39d7e0"),
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70")
                         },
                         new
                         {
-                            MatchId = new Guid("c2d7841f-8566-42d8-b426-77040e21f477"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            MatchId = new Guid("474f7182-7594-4c08-899c-258e9b39d7e0"),
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            MatchId = new Guid("f74428f4-e959-4729-901e-76ce190ee510"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            MatchId = new Guid("0de04e0b-500f-485e-a8fa-130d2a74351f"),
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            MatchId = new Guid("f74428f4-e959-4729-901e-76ce190ee510"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            MatchId = new Guid("0de04e0b-500f-485e-a8fa-130d2a74351f"),
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            MatchId = new Guid("42d4cd9b-983b-4425-8043-3f2dfa9ffc36"),
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                            MatchId = new Guid("a3ef2cad-8830-451b-808c-70cf444a9fbe"),
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70")
                         },
                         new
                         {
-                            MatchId = new Guid("42d4cd9b-983b-4425-8043-3f2dfa9ffc36"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            MatchId = new Guid("a3ef2cad-8830-451b-808c-70cf444a9fbe"),
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            MatchId = new Guid("c2d51539-e23d-4860-b935-937fdc9c99ae"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            MatchId = new Guid("1dcac372-7624-4745-8d26-b47df7f0a002"),
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            MatchId = new Guid("c2d51539-e23d-4860-b935-937fdc9c99ae"),
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                            MatchId = new Guid("1dcac372-7624-4745-8d26-b47df7f0a002"),
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70")
                         },
                         new
                         {
-                            MatchId = new Guid("298ebacf-3ef8-4e3a-a15f-d49f02916ad0"),
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                            MatchId = new Guid("b09ef59a-c69a-4d3e-b903-447298362848"),
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3")
                         },
                         new
                         {
-                            MatchId = new Guid("298ebacf-3ef8-4e3a-a15f-d49f02916ad0"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            MatchId = new Guid("b09ef59a-c69a-4d3e-b903-447298362848"),
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            MatchId = new Guid("02e30203-2aaa-4901-a951-c1b1484e2417"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            MatchId = new Guid("d39423dd-1c36-4334-864b-8b07a7c81827"),
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            MatchId = new Guid("02e30203-2aaa-4901-a951-c1b1484e2417"),
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                            MatchId = new Guid("d39423dd-1c36-4334-864b-8b07a7c81827"),
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40")
                         },
                         new
                         {
-                            MatchId = new Guid("23688b2a-9e10-4b44-98c5-a3d52c0850d2"),
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                            MatchId = new Guid("d6d5d336-7dd3-494e-b3b2-c2a2e2801e28"),
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3")
                         },
                         new
                         {
-                            MatchId = new Guid("23688b2a-9e10-4b44-98c5-a3d52c0850d2"),
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                            MatchId = new Guid("d6d5d336-7dd3-494e-b3b2-c2a2e2801e28"),
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70")
                         },
                         new
                         {
-                            MatchId = new Guid("8c1dc2c5-a2ee-432a-bb59-5ac750b6b996"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            MatchId = new Guid("05580d17-b0b2-4c0c-b11f-1ece166d548c"),
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            MatchId = new Guid("8c1dc2c5-a2ee-432a-bb59-5ac750b6b996"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            MatchId = new Guid("05580d17-b0b2-4c0c-b11f-1ece166d548c"),
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            MatchId = new Guid("c50d63b4-398e-496f-a60e-e9859e9a54c5"),
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                            MatchId = new Guid("db529179-9248-46ad-b2ab-45dff0292ce0"),
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40")
                         },
                         new
                         {
-                            MatchId = new Guid("c50d63b4-398e-496f-a60e-e9859e9a54c5"),
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                            MatchId = new Guid("db529179-9248-46ad-b2ab-45dff0292ce0"),
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3")
                         },
                         new
                         {
-                            MatchId = new Guid("302aea8b-910d-4ea3-877b-a4f0b2d87ae1"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            MatchId = new Guid("579addba-0604-4a34-a0a6-857cfb86e169"),
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            MatchId = new Guid("302aea8b-910d-4ea3-877b-a4f0b2d87ae1"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            MatchId = new Guid("579addba-0604-4a34-a0a6-857cfb86e169"),
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            MatchId = new Guid("f6d7916f-1674-4dbc-8177-4183a1b27545"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            MatchId = new Guid("d1030b00-61d8-4b97-8250-6c968774231d"),
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            MatchId = new Guid("f6d7916f-1674-4dbc-8177-4183a1b27545"),
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                            MatchId = new Guid("d1030b00-61d8-4b97-8250-6c968774231d"),
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3")
                         },
                         new
                         {
-                            MatchId = new Guid("792b671b-71b7-4efa-ad0f-8bef0e81bbfc"),
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                            MatchId = new Guid("4500f53c-359a-432d-a16f-af749b53a9ba"),
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3")
                         },
                         new
                         {
-                            MatchId = new Guid("792b671b-71b7-4efa-ad0f-8bef0e81bbfc"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            MatchId = new Guid("4500f53c-359a-432d-a16f-af749b53a9ba"),
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            MatchId = new Guid("827a3c49-db6a-4500-b235-f3ea6cbe2c9f"),
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                            MatchId = new Guid("6a5a536d-0b98-4d55-9210-5f99d54eaa82"),
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d")
                         },
                         new
                         {
-                            MatchId = new Guid("827a3c49-db6a-4500-b235-f3ea6cbe2c9f"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            MatchId = new Guid("6a5a536d-0b98-4d55-9210-5f99d54eaa82"),
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            MatchId = new Guid("8b317c1c-e855-4657-bd2d-299052ef658e"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            MatchId = new Guid("a0c2a8d8-16d3-402a-b3f5-f4cbbe09b417"),
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            MatchId = new Guid("8b317c1c-e855-4657-bd2d-299052ef658e"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            MatchId = new Guid("a0c2a8d8-16d3-402a-b3f5-f4cbbe09b417"),
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            MatchId = new Guid("7bdd24a6-f282-42e3-91a9-9457fb542c0f"),
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                            MatchId = new Guid("5ebfebf8-ad5b-40d3-a43c-878f240861fc"),
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40")
                         },
                         new
                         {
-                            MatchId = new Guid("7bdd24a6-f282-42e3-91a9-9457fb542c0f"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            MatchId = new Guid("5ebfebf8-ad5b-40d3-a43c-878f240861fc"),
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            MatchId = new Guid("fb6eb16c-1b0a-41b3-bfd8-f1a8b8f204fe"),
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                            MatchId = new Guid("fe19c9dd-b593-48a1-a5ea-d90f62510ce0"),
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3")
                         },
                         new
                         {
-                            MatchId = new Guid("fb6eb16c-1b0a-41b3-bfd8-f1a8b8f204fe"),
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                            MatchId = new Guid("fe19c9dd-b593-48a1-a5ea-d90f62510ce0"),
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d")
                         },
                         new
                         {
-                            MatchId = new Guid("f7bf5b28-6cfd-473c-ada0-35ffef1d189c"),
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                            MatchId = new Guid("d2304a8c-da07-46cf-9efa-46f4e42225d5"),
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40")
                         },
                         new
                         {
-                            MatchId = new Guid("f7bf5b28-6cfd-473c-ada0-35ffef1d189c"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            MatchId = new Guid("d2304a8c-da07-46cf-9efa-46f4e42225d5"),
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            MatchId = new Guid("f9dbde9a-d578-47dc-b1f2-b4d7e66c484e"),
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                            MatchId = new Guid("001d73aa-3905-4351-b7d7-076b725af59d"),
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d")
                         },
                         new
                         {
-                            MatchId = new Guid("f9dbde9a-d578-47dc-b1f2-b4d7e66c484e"),
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                            MatchId = new Guid("001d73aa-3905-4351-b7d7-076b725af59d"),
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40")
                         },
                         new
                         {
-                            MatchId = new Guid("4e93b254-6014-414f-82a8-ef3b9df8036e"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            MatchId = new Guid("9e82cf89-c385-411f-bae9-ba1cda7a617e"),
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            MatchId = new Guid("4e93b254-6014-414f-82a8-ef3b9df8036e"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            MatchId = new Guid("9e82cf89-c385-411f-bae9-ba1cda7a617e"),
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            MatchId = new Guid("ca3f7acf-f221-4d5f-845e-485243da9e8e"),
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                            MatchId = new Guid("d06f934d-00bf-421c-b5b9-f6da228b3944"),
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d")
                         },
                         new
                         {
-                            MatchId = new Guid("ca3f7acf-f221-4d5f-845e-485243da9e8e"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            MatchId = new Guid("d06f934d-00bf-421c-b5b9-f6da228b3944"),
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            MatchId = new Guid("0cfa28be-7215-4681-a6e4-ae6278806760"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            MatchId = new Guid("86e8af62-6706-4f23-80e9-80af55a1ef15"),
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            MatchId = new Guid("0cfa28be-7215-4681-a6e4-ae6278806760"),
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                            MatchId = new Guid("86e8af62-6706-4f23-80e9-80af55a1ef15"),
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40")
                         },
                         new
                         {
-                            MatchId = new Guid("2fd55261-70c8-48b4-a83c-33624348cb7f"),
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                            MatchId = new Guid("c2aaafa2-f543-49ac-9deb-3e3a5240d660"),
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d")
                         },
                         new
                         {
-                            MatchId = new Guid("2fd55261-70c8-48b4-a83c-33624348cb7f"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            MatchId = new Guid("c2aaafa2-f543-49ac-9deb-3e3a5240d660"),
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            MatchId = new Guid("e184b843-d09c-42c1-971a-dc327874a993"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            MatchId = new Guid("3746feab-72e9-4bf7-a18e-d8f8408192ca"),
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            MatchId = new Guid("e184b843-d09c-42c1-971a-dc327874a993"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            MatchId = new Guid("3746feab-72e9-4bf7-a18e-d8f8408192ca"),
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            MatchId = new Guid("96146330-381c-4de0-84f0-90021558bb4d"),
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                            MatchId = new Guid("e7b5b905-cdb2-45c7-b61b-077f52ad83fa"),
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d")
                         },
                         new
                         {
-                            MatchId = new Guid("96146330-381c-4de0-84f0-90021558bb4d"),
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                            MatchId = new Guid("e7b5b905-cdb2-45c7-b61b-077f52ad83fa"),
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70")
                         },
                         new
                         {
-                            MatchId = new Guid("6fcc7d85-bf86-426c-92f7-a7689a1dd3da"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            MatchId = new Guid("c6514e40-2889-4d20-8ade-8a85363eb778"),
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            MatchId = new Guid("6fcc7d85-bf86-426c-92f7-a7689a1dd3da"),
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                            MatchId = new Guid("c6514e40-2889-4d20-8ade-8a85363eb778"),
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70")
                         },
                         new
                         {
-                            MatchId = new Guid("2d85f559-f6cb-4131-9e25-0f74dabc6f82"),
-                            TeamId = new Guid("3deb03e7-89b0-448e-a5dd-f571a3bf7700")
+                            MatchId = new Guid("02376867-f1e7-498c-b1a9-8a473d2482a5"),
+                            TeamId = new Guid("516c8d4d-98d2-449b-9bd6-01a4f0657c78")
                         },
                         new
                         {
-                            MatchId = new Guid("2d85f559-f6cb-4131-9e25-0f74dabc6f82"),
-                            TeamId = new Guid("1ea3d5a1-3741-488d-bd01-64ebf9c5b856")
+                            MatchId = new Guid("02376867-f1e7-498c-b1a9-8a473d2482a5"),
+                            TeamId = new Guid("61c633b7-dee3-4798-a5c5-c664c53f6bee")
                         },
                         new
                         {
-                            MatchId = new Guid("4f44a42f-a458-45ab-a4df-8cc86e177dee"),
-                            TeamId = new Guid("338d2ca5-9406-419a-97fc-523df4c221ba")
+                            MatchId = new Guid("3e8e9424-213e-4774-a810-3a95fdebe29b"),
+                            TeamId = new Guid("bee42231-e07c-42a1-b4c0-9656aee53412")
                         },
                         new
                         {
-                            MatchId = new Guid("4f44a42f-a458-45ab-a4df-8cc86e177dee"),
-                            TeamId = new Guid("2b9a6169-9fa4-47c8-b5dd-facc82a9c498")
+                            MatchId = new Guid("3e8e9424-213e-4774-a810-3a95fdebe29b"),
+                            TeamId = new Guid("45fbb4a3-2a39-48a7-844a-6b98c4f984ba")
                         });
                 });
 
@@ -815,6 +815,10 @@ namespace VolleyballAPI.Migrations
                     b.Property<Guid>("OwnerId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("PictureLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LocationId");
@@ -826,99 +830,111 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
+                            Id = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
                             Description = "Description Team 1",
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
                             Name = "Team 1",
-                            OwnerId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                            OwnerId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_101126_adrian.jpg"
                         },
                         new
                         {
-                            Id = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
+                            Id = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3"),
                             Description = "Description Team 2",
-                            LocationId = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
+                            LocationId = new Guid("93c67519-3e07-4626-917e-a83480c02efc"),
                             Name = "Team 2",
-                            OwnerId = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11")
+                            OwnerId = new Guid("0977f359-4c9a-4a97-b5e5-e483fdcfec6f"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_210101_kendras.jpg"
                         },
                         new
                         {
-                            Id = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
+                            Id = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf"),
                             Description = "Description Team 3",
-                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            LocationId = new Guid("ddf42da6-05cd-447b-88be-928ba48088c2"),
                             Name = "Team 3",
-                            OwnerId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                            OwnerId = new Guid("3da7facd-ed9c-4b3c-9cc0-ca25a0676ce9"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_111756_adrian.jpg"
                         },
                         new
                         {
-                            Id = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
+                            Id = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b"),
                             Description = "Description Team 4",
-                            LocationId = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            LocationId = new Guid("87ce73fb-ca09-40c0-968f-ea7d5faf6050"),
                             Name = "Team 4",
-                            OwnerId = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383")
+                            OwnerId = new Guid("a93ba3f8-52ec-4968-91ee-5590c716a63b"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_104600_adrian.jpg"
                         },
                         new
                         {
-                            Id = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
+                            Id = new Guid("64e095fb-e61a-404b-898d-316b42043b4d"),
                             Description = "Description Team 5",
-                            LocationId = new Guid("e520731c-c5a2-4016-a5af-90a2b5175091"),
+                            LocationId = new Guid("97596a29-02f5-4379-a530-e507ef6eb5e6"),
                             Name = "Team 5",
-                            OwnerId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                            OwnerId = new Guid("3da7facd-ed9c-4b3c-9cc0-ca25a0676ce9"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_104618_david.jpg"
                         },
                         new
                         {
-                            Id = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
+                            Id = new Guid("48aadb04-57be-46ff-9a37-14b891236c70"),
                             Description = "Description Team 6",
-                            LocationId = new Guid("45429076-7d5b-4e61-a9f0-252122a9bdf9"),
+                            LocationId = new Guid("c7fed090-f154-4aa1-9208-ef6e5d709cba"),
                             Name = "Team 6",
-                            OwnerId = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea")
+                            OwnerId = new Guid("5c08b0d7-7ada-4e74-9a0b-40a6beeecb87"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_104459_david.jpg"
                         },
                         new
                         {
-                            Id = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
+                            Id = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40"),
                             Description = "Description Team 7",
-                            LocationId = new Guid("f2aca153-19d8-4a19-bc79-5f2ea7a002df"),
+                            LocationId = new Guid("49168dad-443c-45c7-ab54-d8765437ae41"),
                             Name = "Team 7",
-                            OwnerId = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968")
+                            OwnerId = new Guid("1893a9d1-a4d4-4a63-96bf-fdbe599ac893"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_111742_david.jpg"
                         },
                         new
                         {
-                            Id = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
+                            Id = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3"),
                             Description = "Description Team 8",
-                            LocationId = new Guid("026827c9-455b-41e1-9c49-47ee9b94fbe4"),
+                            LocationId = new Guid("a41ea1cb-f961-4a79-a280-610ba5c4a440"),
                             Name = "Team 8",
-                            OwnerId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5")
+                            OwnerId = new Guid("c8484dfc-1488-4eb9-8390-2aaacf72646c"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_190545_opeter.jpg"
                         },
                         new
                         {
-                            Id = new Guid("3deb03e7-89b0-448e-a5dd-f571a3bf7700"),
+                            Id = new Guid("516c8d4d-98d2-449b-9bd6-01a4f0657c78"),
                             Description = "Description Team 9",
-                            LocationId = new Guid("f526a593-f96d-4483-aaa6-efd22363898d"),
+                            LocationId = new Guid("ecfc39e0-f5e1-4231-8cbc-a3ff7e97833d"),
                             Name = "Team 9",
-                            OwnerId = new Guid("c53689c4-6e14-49fc-bae3-763809134015")
+                            OwnerId = new Guid("dd5030eb-95d5-4a13-b0be-f159d2b09277"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_190507_opeter.jpg"
                         },
                         new
                         {
-                            Id = new Guid("1ea3d5a1-3741-488d-bd01-64ebf9c5b856"),
+                            Id = new Guid("61c633b7-dee3-4798-a5c5-c664c53f6bee"),
                             Description = "Description Team 10",
-                            LocationId = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            LocationId = new Guid("87ce73fb-ca09-40c0-968f-ea7d5faf6050"),
                             Name = "Team 10",
-                            OwnerId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                            OwnerId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_165442_opeter.jpg"
                         },
                         new
                         {
-                            Id = new Guid("338d2ca5-9406-419a-97fc-523df4c221ba"),
+                            Id = new Guid("bee42231-e07c-42a1-b4c0-9656aee53412"),
                             Description = "Description Team 11",
-                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            LocationId = new Guid("ddf42da6-05cd-447b-88be-928ba48088c2"),
                             Name = "Team 11",
-                            OwnerId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                            OwnerId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2023/20231014_muegyetemi_roplabda/2048/20231014_134530_opeter.jpg"
                         },
                         new
                         {
-                            Id = new Guid("2b9a6169-9fa4-47c8-b5dd-facc82a9c498"),
+                            Id = new Guid("45fbb4a3-2a39-48a7-844a-6b98c4f984ba"),
                             Description = "Description Team 12",
-                            LocationId = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            LocationId = new Guid("87ce73fb-ca09-40c0-968f-ea7d5faf6050"),
                             Name = "Team 12",
-                            OwnerId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                            OwnerId = new Guid("3da7facd-ed9c-4b3c-9cc0-ca25a0676ce9"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2023/20231014_muegyetemi_roplabda/2048/20231014_203137_opeter.jpg"
                         });
                 });
 
@@ -939,68 +955,68 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
-                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
+                            UserId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a")
                         },
                         new
                         {
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
-                            UserId = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11")
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
+                            UserId = new Guid("0977f359-4c9a-4a97-b5e5-e483fdcfec6f")
                         },
                         new
                         {
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
-                            UserId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3"),
+                            UserId = new Guid("3da7facd-ed9c-4b3c-9cc0-ca25a0676ce9")
                         },
                         new
                         {
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
-                            UserId = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383")
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf"),
+                            UserId = new Guid("a93ba3f8-52ec-4968-91ee-5590c716a63b")
                         },
                         new
                         {
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
-                            UserId = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878")
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b"),
+                            UserId = new Guid("1f02cf69-07f6-46fe-aa62-fd8def0d72b5")
                         },
                         new
                         {
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284"),
-                            UserId = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea")
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d"),
+                            UserId = new Guid("5c08b0d7-7ada-4e74-9a0b-40a6beeecb87")
                         },
                         new
                         {
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc"),
-                            UserId = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968")
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70"),
+                            UserId = new Guid("1893a9d1-a4d4-4a63-96bf-fdbe599ac893")
                         },
                         new
                         {
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9"),
-                            UserId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5")
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40"),
+                            UserId = new Guid("c8484dfc-1488-4eb9-8390-2aaacf72646c")
                         },
                         new
                         {
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac"),
-                            UserId = new Guid("c53689c4-6e14-49fc-bae3-763809134015")
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3"),
+                            UserId = new Guid("dd5030eb-95d5-4a13-b0be-f159d2b09277")
                         },
                         new
                         {
-                            TeamId = new Guid("3deb03e7-89b0-448e-a5dd-f571a3bf7700"),
-                            UserId = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c")
+                            TeamId = new Guid("516c8d4d-98d2-449b-9bd6-01a4f0657c78"),
+                            UserId = new Guid("12c050a0-c322-4b74-803e-3471ea335e4e")
                         },
                         new
                         {
-                            TeamId = new Guid("1ea3d5a1-3741-488d-bd01-64ebf9c5b856"),
-                            UserId = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c")
+                            TeamId = new Guid("61c633b7-dee3-4798-a5c5-c664c53f6bee"),
+                            UserId = new Guid("12c050a0-c322-4b74-803e-3471ea335e4e")
                         },
                         new
                         {
-                            TeamId = new Guid("338d2ca5-9406-419a-97fc-523df4c221ba"),
-                            UserId = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878")
+                            TeamId = new Guid("bee42231-e07c-42a1-b4c0-9656aee53412"),
+                            UserId = new Guid("1f02cf69-07f6-46fe-aa62-fd8def0d72b5")
                         },
                         new
                         {
-                            TeamId = new Guid("2b9a6169-9fa4-47c8-b5dd-facc82a9c498"),
-                            UserId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5")
+                            TeamId = new Guid("45fbb4a3-2a39-48a7-844a-6b98c4f984ba"),
+                            UserId = new Guid("c8484dfc-1488-4eb9-8390-2aaacf72646c")
                         });
                 });
 
@@ -1021,53 +1037,53 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
-                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c")
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
+                            UserId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a")
                         },
                         new
                         {
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
-                            UserId = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11")
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3"),
+                            UserId = new Guid("0977f359-4c9a-4a97-b5e5-e483fdcfec6f")
                         },
                         new
                         {
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
-                            UserId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2")
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
+                            UserId = new Guid("3da7facd-ed9c-4b3c-9cc0-ca25a0676ce9")
                         },
                         new
                         {
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f"),
-                            UserId = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383")
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3"),
+                            UserId = new Guid("a93ba3f8-52ec-4968-91ee-5590c716a63b")
                         },
                         new
                         {
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989"),
-                            UserId = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878")
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e"),
+                            UserId = new Guid("1f02cf69-07f6-46fe-aa62-fd8def0d72b5")
                         },
                         new
                         {
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
-                            UserId = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea")
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf"),
+                            UserId = new Guid("5c08b0d7-7ada-4e74-9a0b-40a6beeecb87")
                         },
                         new
                         {
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
-                            UserId = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968")
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf"),
+                            UserId = new Guid("1893a9d1-a4d4-4a63-96bf-fdbe599ac893")
                         },
                         new
                         {
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a"),
-                            UserId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5")
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf"),
+                            UserId = new Guid("c8484dfc-1488-4eb9-8390-2aaacf72646c")
                         },
                         new
                         {
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
-                            UserId = new Guid("c53689c4-6e14-49fc-bae3-763809134015")
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b"),
+                            UserId = new Guid("dd5030eb-95d5-4a13-b0be-f159d2b09277")
                         },
                         new
                         {
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d"),
-                            UserId = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c")
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b"),
+                            UserId = new Guid("12c050a0-c322-4b74-803e-3471ea335e4e")
                         });
                 });
 
@@ -1102,6 +1118,10 @@ namespace VolleyballAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PictureLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PriceType")
                         .HasColumnType("int");
 
@@ -1122,42 +1142,45 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
+                            Id = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
                             Categories = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8733),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1128),
                             Description = "Description Tournament 1",
-                            EntryDeadline = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8737),
-                            LocationId = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
+                            EntryDeadline = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1131),
+                            LocationId = new Guid("93c67519-3e07-4626-917e-a83480c02efc"),
                             Name = "Tournament 1",
                             Organizer = "Organizer 1",
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_211740_barczy.jpg",
                             PriceType = 16,
                             RegistrationPolicy = "Registration Policy 1",
                             TeamPolicy = "Team Policy 1"
                         },
                         new
                         {
-                            Id = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033"),
+                            Id = new Guid("6c30be59-a513-459e-ac57-89a2fcccbe20"),
                             Categories = 4,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8740),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1134),
                             Description = "Description Tournament 2",
-                            EntryDeadline = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8741),
-                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
+                            EntryDeadline = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1136),
+                            LocationId = new Guid("ddf42da6-05cd-447b-88be-928ba48088c2"),
                             Name = "Tournament 2",
                             Organizer = "Organizer 2",
+                            PictureLink = "https://spot.sch.bme.hu/photos/2024/20241123_muegyetemi_roplabdatorna_november/2048/20241123_142046_kendras.jpg",
                             PriceType = 16,
                             RegistrationPolicy = "Registration Policy 2",
                             TeamPolicy = "Team Policy 2"
                         },
                         new
                         {
-                            Id = new Guid("e71df8fa-c3c7-4e54-afb9-b45bc89aaa83"),
+                            Id = new Guid("8a1cc25a-e8c7-470e-aed2-e20c13e5a78a"),
                             Categories = 1,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8744),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1138),
                             Description = "Description Tournament 3",
-                            EntryDeadline = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8746),
-                            LocationId = new Guid("38a33e6f-5bef-4f94-8315-3c43e479956e"),
+                            EntryDeadline = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1140),
+                            LocationId = new Guid("87ce73fb-ca09-40c0-968f-ea7d5faf6050"),
                             Name = "Tournament 3",
                             Organizer = "Organizer 3",
+                            PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_145814_kendras.jpg",
                             PriceType = 16,
                             RegistrationPolicy = "Registration Policy 3",
                             TeamPolicy = "Team Policy 3"
@@ -1181,63 +1204,63 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
-                            TeamId = new Guid("e5f835f4-e651-41a3-9076-fd40a6d0f284")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
+                            TeamId = new Guid("64e095fb-e61a-404b-898d-316b42043b4d")
                         },
                         new
                         {
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
-                            TeamId = new Guid("05ef517d-6936-48c7-a8eb-f3893611fbbc")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
+                            TeamId = new Guid("48aadb04-57be-46ff-9a37-14b891236c70")
                         },
                         new
                         {
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
-                            TeamId = new Guid("e4c7401a-d05c-4bdd-9531-75530422a8c9")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
+                            TeamId = new Guid("66cb507b-bc94-4993-b0ad-4bfd7f4b2d40")
                         },
                         new
                         {
-                            TournamentId = new Guid("66259d31-92cb-41d7-970e-3adf2a688b0e"),
-                            TeamId = new Guid("77eb1c32-5b8f-4af7-bc8b-e63bfc3192ac")
+                            TournamentId = new Guid("289ea6bd-bf44-4821-a2c0-b3e796e14389"),
+                            TeamId = new Guid("6afef8af-3050-4ce0-8d1f-e925387057f3")
                         },
                         new
                         {
-                            TournamentId = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033"),
-                            TeamId = new Guid("3deb03e7-89b0-448e-a5dd-f571a3bf7700")
+                            TournamentId = new Guid("6c30be59-a513-459e-ac57-89a2fcccbe20"),
+                            TeamId = new Guid("516c8d4d-98d2-449b-9bd6-01a4f0657c78")
                         },
                         new
                         {
-                            TournamentId = new Guid("9d27e154-666f-43f9-9bf6-eebbeab3d033"),
-                            TeamId = new Guid("1ea3d5a1-3741-488d-bd01-64ebf9c5b856")
+                            TournamentId = new Guid("6c30be59-a513-459e-ac57-89a2fcccbe20"),
+                            TeamId = new Guid("61c633b7-dee3-4798-a5c5-c664c53f6bee")
                         },
                         new
                         {
-                            TournamentId = new Guid("e71df8fa-c3c7-4e54-afb9-b45bc89aaa83"),
-                            TeamId = new Guid("338d2ca5-9406-419a-97fc-523df4c221ba")
+                            TournamentId = new Guid("8a1cc25a-e8c7-470e-aed2-e20c13e5a78a"),
+                            TeamId = new Guid("bee42231-e07c-42a1-b4c0-9656aee53412")
                         },
                         new
                         {
-                            TournamentId = new Guid("e71df8fa-c3c7-4e54-afb9-b45bc89aaa83"),
-                            TeamId = new Guid("2b9a6169-9fa4-47c8-b5dd-facc82a9c498")
+                            TournamentId = new Guid("8a1cc25a-e8c7-470e-aed2-e20c13e5a78a"),
+                            TeamId = new Guid("45fbb4a3-2a39-48a7-844a-6b98c4f984ba")
                         });
                 });
 
@@ -1260,6 +1283,10 @@ namespace VolleyballAPI.Migrations
                     b.Property<Guid>("LocationId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("PictureLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("TeamId")
                         .HasColumnType("uniqueidentifier");
 
@@ -1274,93 +1301,103 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("21eb950f-7f6f-44c5-aab0-4033c8404e06"),
+                            Id = new Guid("051060df-f83b-4017-acf1-4ed53fdef8b1"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8795),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1188),
                             Description = "Training1",
-                            LocationId = new Guid("de0248b6-478a-4a38-a439-3406e05db0ad"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            LocationId = new Guid("1541127a-87bd-42ec-a056-6717ab509c4a"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_152608_kendras.jpg",
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            Id = new Guid("87b596b3-07f7-4b41-af6c-4d6fe2a2130d"),
+                            Id = new Guid("9983e125-1253-4e99-8380-133e5e98fe70"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8798),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1192),
                             Description = "Training2",
-                            LocationId = new Guid("2397ecf9-b477-44bd-81b2-430a03ff8c0e"),
-                            TeamId = new Guid("4ef0537f-1c2d-4693-b3de-d35a9e602989")
+                            LocationId = new Guid("93c67519-3e07-4626-917e-a83480c02efc"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_182542_kendras.jpg",
+                            TeamId = new Guid("5e906d5b-b95f-4cb4-be42-d73c8d9dd65e")
                         },
                         new
                         {
-                            Id = new Guid("d0c0e488-2b11-4b6a-98ec-dcda0d5da3ce"),
+                            Id = new Guid("209fc838-d2ae-4915-8079-679df310ab88"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8801),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1194),
                             Description = "Training3",
-                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            LocationId = new Guid("ddf42da6-05cd-447b-88be-928ba48088c2"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_192702_kendras.jpg",
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            Id = new Guid("28777504-68ae-4cb9-ba58-8ea366a12023"),
+                            Id = new Guid("1dec75bf-a403-4c19-8dea-8234f4b1ddf4"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8803),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1196),
                             Description = "Training4",
-                            LocationId = new Guid("3b6c1d4c-f00e-4881-9a8f-607ccdc5bbff"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            LocationId = new Guid("ddf42da6-05cd-447b-88be-928ba48088c2"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_114846_adrian.jpg",
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            Id = new Guid("3997e2dc-5c2e-470f-86cc-725d0c920ec8"),
+                            Id = new Guid("2874c054-099a-42c0-b0a0-1c9808b27dd5"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8805),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1199),
                             Description = "Training5",
-                            LocationId = new Guid("e520731c-c5a2-4016-a5af-90a2b5175091"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            LocationId = new Guid("97596a29-02f5-4379-a530-e507ef6eb5e6"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_121150_adrian.jpg",
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            Id = new Guid("090e1e3d-acab-4a8a-94b9-40ae7da1a25c"),
+                            Id = new Guid("6fd3f09d-db56-425f-a936-4e15b1aa36e6"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8807),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1201),
                             Description = "Training6",
-                            LocationId = new Guid("45429076-7d5b-4e61-a9f0-252122a9bdf9"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            LocationId = new Guid("c7fed090-f154-4aa1-9208-ef6e5d709cba"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_130940_adrian.jpg",
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            Id = new Guid("6ef6a777-f45e-4295-ba6c-f8001c029c46"),
+                            Id = new Guid("2a1b4810-52c7-4b14-bf7c-d529781e482e"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8810),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1203),
                             Description = "Training7",
-                            LocationId = new Guid("f2aca153-19d8-4a19-bc79-5f2ea7a002df"),
-                            TeamId = new Guid("b9c68cac-dbe7-4a99-8aab-e078c677671a")
+                            LocationId = new Guid("49168dad-443c-45c7-ab54-d8765437ae41"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_162113_adrian.jpg",
+                            TeamId = new Guid("2b06f33b-d58f-4441-bb9d-672884afabaf")
                         },
                         new
                         {
-                            Id = new Guid("fa0de668-80db-4c3a-a25c-4998a04f6838"),
+                            Id = new Guid("ffbaa7e4-7c31-494a-9086-bbdcc78f707d"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8812),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1206),
                             Description = "Training8",
-                            LocationId = new Guid("026827c9-455b-41e1-9c49-47ee9b94fbe4"),
-                            TeamId = new Guid("98c17d74-c56e-4169-a67d-f1103679c92f")
+                            LocationId = new Guid("a41ea1cb-f961-4a79-a280-610ba5c4a440"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_182355_gery.jpg",
+                            TeamId = new Guid("05bdadca-e86d-4ac8-adf0-a2c55ce9afc3")
                         },
                         new
                         {
-                            Id = new Guid("31062b1b-9d40-4fca-8b41-1251ed96f89d"),
+                            Id = new Guid("725366b2-781c-4cd3-b38b-be7c5beb8ddd"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8814),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1208),
                             Description = "Training9",
-                            LocationId = new Guid("f526a593-f96d-4483-aaa6-efd22363898d"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            LocationId = new Guid("ecfc39e0-f5e1-4231-8cbc-a3ff7e97833d"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_215753_gyongyi.jpg",
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         },
                         new
                         {
-                            Id = new Guid("0ad874a5-8143-42e8-8978-fbd0282bef18"),
+                            Id = new Guid("dd1b2e5f-0122-4171-885c-1a0c9bb9d1a2"),
                             AcceptableTickets = 5,
-                            Date = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8816),
+                            Date = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1210),
                             Description = "Training10",
-                            LocationId = new Guid("97bf836d-b00d-48ce-99fd-3fe15c16590a"),
-                            TeamId = new Guid("8587f984-6df3-49a7-ae08-6fdf6ee54d9d")
+                            LocationId = new Guid("34613a5f-77ba-4f88-af95-83a16a11a847"),
+                            PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_183319_kendras.jpg",
+                            TeamId = new Guid("8af48c6c-45bc-4214-9dae-628bd6c59d7b")
                         });
                 });
 
@@ -1381,53 +1418,53 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c"),
-                            TrainingId = new Guid("21eb950f-7f6f-44c5-aab0-4033c8404e06")
+                            UserId = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a"),
+                            TrainingId = new Guid("051060df-f83b-4017-acf1-4ed53fdef8b1")
                         },
                         new
                         {
-                            UserId = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11"),
-                            TrainingId = new Guid("87b596b3-07f7-4b41-af6c-4d6fe2a2130d")
+                            UserId = new Guid("0977f359-4c9a-4a97-b5e5-e483fdcfec6f"),
+                            TrainingId = new Guid("9983e125-1253-4e99-8380-133e5e98fe70")
                         },
                         new
                         {
-                            UserId = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2"),
-                            TrainingId = new Guid("d0c0e488-2b11-4b6a-98ec-dcda0d5da3ce")
+                            UserId = new Guid("3da7facd-ed9c-4b3c-9cc0-ca25a0676ce9"),
+                            TrainingId = new Guid("209fc838-d2ae-4915-8079-679df310ab88")
                         },
                         new
                         {
-                            UserId = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383"),
-                            TrainingId = new Guid("28777504-68ae-4cb9-ba58-8ea366a12023")
+                            UserId = new Guid("a93ba3f8-52ec-4968-91ee-5590c716a63b"),
+                            TrainingId = new Guid("1dec75bf-a403-4c19-8dea-8234f4b1ddf4")
                         },
                         new
                         {
-                            UserId = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878"),
-                            TrainingId = new Guid("3997e2dc-5c2e-470f-86cc-725d0c920ec8")
+                            UserId = new Guid("1f02cf69-07f6-46fe-aa62-fd8def0d72b5"),
+                            TrainingId = new Guid("2874c054-099a-42c0-b0a0-1c9808b27dd5")
                         },
                         new
                         {
-                            UserId = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea"),
-                            TrainingId = new Guid("090e1e3d-acab-4a8a-94b9-40ae7da1a25c")
+                            UserId = new Guid("5c08b0d7-7ada-4e74-9a0b-40a6beeecb87"),
+                            TrainingId = new Guid("6fd3f09d-db56-425f-a936-4e15b1aa36e6")
                         },
                         new
                         {
-                            UserId = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968"),
-                            TrainingId = new Guid("6ef6a777-f45e-4295-ba6c-f8001c029c46")
+                            UserId = new Guid("1893a9d1-a4d4-4a63-96bf-fdbe599ac893"),
+                            TrainingId = new Guid("2a1b4810-52c7-4b14-bf7c-d529781e482e")
                         },
                         new
                         {
-                            UserId = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5"),
-                            TrainingId = new Guid("fa0de668-80db-4c3a-a25c-4998a04f6838")
+                            UserId = new Guid("c8484dfc-1488-4eb9-8390-2aaacf72646c"),
+                            TrainingId = new Guid("ffbaa7e4-7c31-494a-9086-bbdcc78f707d")
                         },
                         new
                         {
-                            UserId = new Guid("c53689c4-6e14-49fc-bae3-763809134015"),
-                            TrainingId = new Guid("31062b1b-9d40-4fca-8b41-1251ed96f89d")
+                            UserId = new Guid("dd5030eb-95d5-4a13-b0be-f159d2b09277"),
+                            TrainingId = new Guid("725366b2-781c-4cd3-b38b-be7c5beb8ddd")
                         },
                         new
                         {
-                            UserId = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c"),
-                            TrainingId = new Guid("0ad874a5-8143-42e8-8978-fbd0282bef18")
+                            UserId = new Guid("12c050a0-c322-4b74-803e-3471ea335e4e"),
+                            TrainingId = new Guid("dd1b2e5f-0122-4171-885c-1a0c9bb9d1a2")
                         });
                 });
 
@@ -1479,8 +1516,8 @@ namespace VolleyballAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("121fed86-9e75-4120-803c-6de5db37ad0c"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8896),
+                            Id = new Guid("6e012db5-3875-4db7-a6bb-ef511da54b3a"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1288),
                             Email = "user1@user.com",
                             Gender = 0,
                             Name = "Jancsi",
@@ -1493,8 +1530,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("535cb10a-dffe-4193-8164-ddc255ddfd11"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8900),
+                            Id = new Guid("0977f359-4c9a-4a97-b5e5-e483fdcfec6f"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1293),
                             Email = "user2@user.com",
                             Gender = 1,
                             Name = "Aranka",
@@ -1507,8 +1544,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d735490e-7a63-4eeb-a542-624822f95cc2"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8903),
+                            Id = new Guid("3da7facd-ed9c-4b3c-9cc0-ca25a0676ce9"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1296),
                             Email = "user3@user.com",
                             Gender = 0,
                             Name = "Dani",
@@ -1521,8 +1558,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0dc5b29b-62f8-4bca-9967-b74477911383"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8905),
+                            Id = new Guid("a93ba3f8-52ec-4968-91ee-5590c716a63b"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1298),
                             Email = "user4@user.com",
                             Gender = 0,
                             Name = "Kristóf",
@@ -1535,8 +1572,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3ccc86b5-abc6-4bd6-be56-f0b65ca52878"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8908),
+                            Id = new Guid("1f02cf69-07f6-46fe-aa62-fd8def0d72b5"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1301),
                             Email = "user5@user.com",
                             Gender = 0,
                             Name = "Lajos",
@@ -1549,8 +1586,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c9dbd45a-e340-4b6d-8a44-842110a728ea"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8911),
+                            Id = new Guid("5c08b0d7-7ada-4e74-9a0b-40a6beeecb87"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1304),
                             Email = "user6@user.com",
                             Gender = 0,
                             Name = "Péter",
@@ -1563,8 +1600,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a8a384ba-d547-4da5-8a36-38237c1ff968"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8914),
+                            Id = new Guid("1893a9d1-a4d4-4a63-96bf-fdbe599ac893"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1307),
                             Email = "user7@user.com",
                             Gender = 1,
                             Name = "Felícia",
@@ -1577,8 +1614,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("cc3da156-9749-45a2-a96e-cbf991b773d5"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8916),
+                            Id = new Guid("c8484dfc-1488-4eb9-8390-2aaacf72646c"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1310),
                             Email = "user8@user.com",
                             Gender = 0,
                             Name = "Name 8",
@@ -1591,8 +1628,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c53689c4-6e14-49fc-bae3-763809134015"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8919),
+                            Id = new Guid("dd5030eb-95d5-4a13-b0be-f159d2b09277"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1312),
                             Email = "user9@user.com",
                             Gender = 0,
                             Name = "Name 9",
@@ -1605,8 +1642,8 @@ namespace VolleyballAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ec53ced4-af8e-4774-ab00-a5b78de3967c"),
-                            Birthday = new DateTime(2025, 4, 3, 10, 28, 37, 862, DateTimeKind.Local).AddTicks(8922),
+                            Id = new Guid("12c050a0-c322-4b74-803e-3471ea335e4e"),
+                            Birthday = new DateTime(2025, 4, 23, 14, 39, 17, 379, DateTimeKind.Local).AddTicks(1315),
                             Email = "user10@user.com",
                             Gender = 0,
                             Name = "Name 10",

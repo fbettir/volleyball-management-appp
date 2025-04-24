@@ -10,6 +10,7 @@ namespace VolleyballAPI.Dtos
         public string Description { get; set; }
         public TeamHeaderDto Team { get; set; }
         public PriceType PriceType { get; set; }
+        public string PictureLink { get; set; } = null!;
         public List<UserHeaderDto> Players { get; set; }
         public List<UserHeaderDto> UserHasAsFavourite { get; set; }
     }

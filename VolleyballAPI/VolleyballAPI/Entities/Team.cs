@@ -13,6 +13,7 @@ namespace VolleyballAPI.Entities
     [MaxLength(100), MinLength(5)]
     public string Name { get; set; }
     public string Description { get; set; }
+    public string PictureLink { get; set; }
 
     public virtual User Owner { get; set; } 
     public virtual Location Location { get; set; }

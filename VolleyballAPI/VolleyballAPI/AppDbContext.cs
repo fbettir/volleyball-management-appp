@@ -10,28 +10,6 @@ namespace VolleyballAPI
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<User>()
-            //    .Property(e => e.Posts)
-            //    .HasConversion(
-            //        v => string.Join(",", v.Select(e => e.ToString())),
-            //        v => v.Split(",", StringSplitOptions.RemoveEmptyEntries)
-            //              .Select(e => Enum.Parse<Post>(e))
-            //              .ToList()
-            //    );
-            //modelBuilder.Entity<User>()
-            //    .Property(e => e.Roles)
-            //    .HasConversion(
-            //        v => string.Join(",", v.Select(e => e.ToString())),
-            //        v => v.Split(",", StringSplitOptions.RemoveEmptyEntries)
-            //              .Select(e => Enum.Parse<Role>(e))
-            //              .ToList()
-            //    );
-
-            //modelBuilder.Entity<Order>()
-            //      .HasMany(o => o.ProductOrders)
-            //      .WithOne(po => po.Order)
-            //      .OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<FavouriteTeam>()
                 .HasOne(ft => ft.User)
                 .WithMany(u => u.FavouriteTeams)
@@ -791,7 +769,8 @@ namespace VolleyballAPI
                     Name = "Team 1",
                     Description = "Description Team 1",
                     LocationId = locationId1,
-                    OwnerId = userId1
+                    OwnerId = userId1,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_101126_adrian.jpg"
                 },
                 new Team
                 {
@@ -799,7 +778,8 @@ namespace VolleyballAPI
                     Name = "Team 2",
                     Description = "Description Team 2",
                     LocationId = locationId2,
-                    OwnerId = userId2
+                    OwnerId = userId2,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_210101_kendras.jpg"
                 },
                 new Team
                 {
@@ -807,7 +787,8 @@ namespace VolleyballAPI
                     Name = "Team 3",
                     Description = "Description Team 3",
                     LocationId = locationId3,
-                    OwnerId = userId3
+                    OwnerId = userId3,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_111756_adrian.jpg"
                 },
                 new Team
                 {
@@ -815,7 +796,8 @@ namespace VolleyballAPI
                     Name = "Team 4",
                     Description = "Description Team 4",
                     LocationId = locationId4,
-                    OwnerId = userId4
+                    OwnerId = userId4,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_104600_adrian.jpg"
                 },
                 new Team
                 {
@@ -823,7 +805,8 @@ namespace VolleyballAPI
                     Name = "Team 5",
                     Description = "Description Team 5",
                     LocationId = locationId5,
-                    OwnerId = userId3
+                    OwnerId = userId3,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_104618_david.jpg"
                 },
                 new Team
                 {
@@ -831,7 +814,8 @@ namespace VolleyballAPI
                     Name = "Team 6",
                     Description = "Description Team 6",
                     LocationId = locationId6,
-                    OwnerId = userId6
+                    OwnerId = userId6,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_104459_david.jpg"
                 },
                 new Team
                 {
@@ -839,7 +823,8 @@ namespace VolleyballAPI
                     Name = "Team 7",
                     Description = "Description Team 7",
                     LocationId = locationId7,
-                    OwnerId = userId7
+                    OwnerId = userId7,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_111742_david.jpg"
                 },
                 new Team
                 {
@@ -847,7 +832,8 @@ namespace VolleyballAPI
                     Name = "Team 8",
                     Description = "Description Team 8",
                     LocationId = locationId8,
-                    OwnerId = userId8
+                    OwnerId = userId8,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_190545_opeter.jpg"
                 },                
                 new Team
                 {
@@ -855,7 +841,8 @@ namespace VolleyballAPI
                     Name = "Team 9",
                     Description = "Description Team 9",
                     LocationId = locationId9,
-                    OwnerId = userId9
+                    OwnerId = userId9,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_190507_opeter.jpg"
                 },
                 new Team
                 {
@@ -863,7 +850,8 @@ namespace VolleyballAPI
                     Name = "Team 10",
                     Description = "Description Team 10",
                     LocationId = locationId4,
-                    OwnerId = userId1
+                    OwnerId = userId1,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_165442_opeter.jpg"
                 },
                 new Team
                 {
@@ -871,7 +859,8 @@ namespace VolleyballAPI
                     Name = "Team 11",
                     Description = "Description Team 11",
                     LocationId = locationId3,
-                    OwnerId = userId1
+                    OwnerId = userId1,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2023/20231014_muegyetemi_roplabda/2048/20231014_134530_opeter.jpg"
                 },
                 new Team
                 {
@@ -879,7 +868,8 @@ namespace VolleyballAPI
                     Name = "Team 12",
                     Description = "Description Team 12",
                     LocationId = locationId4,
-                    OwnerId = userId3
+                    OwnerId = userId3,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2023/20231014_muegyetemi_roplabda/2048/20231014_203137_opeter.jpg"
                 }
             );
             modelBuilder.Entity<TeamCoach>().HasData(
@@ -999,7 +989,8 @@ namespace VolleyballAPI
                     Organizer = "Organizer 1",
                     RegistrationPolicy = "Registration Policy 1",
                     TeamPolicy = "Team Policy 1",
-                    Categories = Level.Experienced | Level.Starter
+                    Categories = Level.Experienced | Level.Starter,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_211740_barczy.jpg"
                 },
                 new Tournament
                 {
@@ -1013,7 +1004,8 @@ namespace VolleyballAPI
                     Organizer = "Organizer 2",
                     RegistrationPolicy = "Registration Policy 2",
                     TeamPolicy = "Team Policy 2",
-                    Categories = Level.Experienced 
+                    Categories = Level.Experienced,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2024/20241123_muegyetemi_roplabdatorna_november/2048/20241123_142046_kendras.jpg"
                 },
                 new Tournament
                 {
@@ -1027,7 +1019,8 @@ namespace VolleyballAPI
                     Organizer = "Organizer 3",
                     RegistrationPolicy = "Registration Policy 3",
                     TeamPolicy = "Team Policy 3",
-                    Categories = Level.Starter
+                    Categories = Level.Starter,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_145814_kendras.jpg"
                 }
             );
             modelBuilder.Entity<TournamentCompetitor>().HasData(
@@ -1100,7 +1093,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training1",
                     TeamId = teamId1,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_152608_kendras.jpg"
                 },
                 new Training
                 {
@@ -1109,7 +1103,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training2",
                     TeamId = teamId1,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_182542_kendras.jpg"
                 },
                 new Training
                 {
@@ -1118,7 +1113,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training3",
                     TeamId = teamId2,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_192702_kendras.jpg"
                 },
                 new Training
                 {
@@ -1127,7 +1123,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training4",
                     TeamId = teamId3,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_114846_adrian.jpg"
                 },
                 new Training
                 {
@@ -1136,7 +1133,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training5",
                     TeamId = teamId3,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_121150_adrian.jpg"
                 },
                 new Training
                 {
@@ -1145,7 +1143,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training6",
                     TeamId = teamId2,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_130940_adrian.jpg"
                 },
                 new Training
                 {
@@ -1154,7 +1153,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training7",
                     TeamId = teamId3,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_162113_adrian.jpg"
                 },
                 new Training
                 {
@@ -1163,7 +1163,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training8",
                     TeamId = teamId2,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_182355_gery.jpg"
                 },
                 new Training
                 {
@@ -1172,7 +1173,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training9",
                     TeamId = teamId4,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_215753_gyongyi.jpg"
                 },
                 new Training
                 {
@@ -1181,7 +1183,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training10",
                     TeamId = teamId4,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass
+                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_183319_kendras.jpg"
                 }
             );
 

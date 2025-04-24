@@ -1,24 +1,33 @@
 <div
-  class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-4 w-64 flex flex-col justify-between"
+  class="bg-white rounded-2xl shadow-md hover:shadow-2xl transition w-full max-w-[18rem] sm:max-w-[20rem] flex flex-col justify-between overflow-hidden"
 >
-  <div class="flex justify-end">
-    <button class="text-white bg-[var(--primary)] rounded-full p-1">
-      <mat-icon fontIcon="star_border" class="text-white text-lg"></mat-icon>
+  <!-- Image -->
+  <div class="relative h-40 sm:h-32">
+    <img
+      [src]="tournament.pictureLink"
+      (error)="imageFallback($event)"
+      alt="Event image"
+      class="w-full h-full object-cover"
+    />
+    <button
+      class="absolute top-3 right-3 text-white bg-[var(--primary)] rounded-full w-8 h-8 flex items-center justify-center shadow-md"
+    >
+      <mat-icon fontIcon="star_border" class="text-white text-base"></mat-icon>
     </button>
   </div>
 
-  <div class="flex justify-center py-6">
-    <div class="w-20 h-20 bg-gray-200 rounded-md"></div>
-  </div>
-
-  <div class="text-start">
-    <h3 class="text-[var(--primary)] font-semibold text-sm">
+  <!-- Content -->
+  <div class="px-4 pt-4 pb-2 text-start">
+    <h3 class="text-lg font-semibold text-[var(--primary)] leading-tight line-clamp-2">
       {{ tournament.name || 'Unnamed Tournament' }}
     </h3>
-    <p class="text-xs text-gray-600">{{ tournament.description }}</p>
+    <p class="text-sm text-gray-600 mt-1 line-clamp-3">
+      {{ tournament.description }}
+    </p>
   </div>
 
-  <div class="mt-4">
+  <!-- CTA -->
+  <div class="pb-4 px-4 flex justify-end">
     <a
       [routerLink]="['/tournament', tournament.id]"
       class="bg-[var(--primary)] text-white text-xs font-medium px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition inline-block"
@@ -26,4 +35,4 @@
       Read more
     </a>
   </div>
-</div> 
+</div>

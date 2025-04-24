@@ -13,11 +13,19 @@ import { Training } from 'src/app/models/training';
 export class TrainingCardComponent {
   @Input() training!: Training;
 
+  ngOnInit() {
+    console.log('Training ', this.training);
+  }
+
   get day(): string {
     return new Date(this.training.date).getDate().toString().padStart(2, '0');
   }
 
   get month(): string {
     return new Date(this.training.date).toLocaleString('default', { month: 'short' }).toUpperCase();
+  }
+  
+  imageFallback(event: Event) {
+    (event.target as HTMLImageElement).src = 'assets/default-team.jpg';
   }
 }
