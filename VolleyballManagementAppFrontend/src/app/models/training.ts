@@ -1,4 +1,3 @@
-import { PlayerDetailsWithName } from './player-details-with-name';
 import { PriceType } from './priceType';
 import { Team } from './team';
 import { User } from './user';
@@ -14,4 +13,5 @@ export interface Training {
   team: Team;
   priceType: PriceType;
   pictureLink: string;
+  acceptableTickets: PriceType[];
 }

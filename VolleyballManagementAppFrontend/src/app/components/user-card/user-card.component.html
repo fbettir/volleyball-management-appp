@@ -1,0 +1,40 @@
+<div
+  class="bg-white rounded-2xl shadow-md hover:shadow-2xl transition w-full max-w-[18rem] sm:max-w-[20rem] flex flex-col justify-between overflow-hidden"
+>
+  <!-- Image -->
+  <div class="relative h-32 sm:h-40">
+    <img
+      [src]="user.pictureLink"
+      (error)="imageFallback($event)"
+      alt="User image"
+      class="w-full h-full object-cover"
+    />
+    <button
+      class="absolute top-3 right-3 text-white bg-[var(--primary)] rounded-full w-8 h-8 flex items-center justify-center shadow-md"
+    >
+      <mat-icon fontIcon="star_border" class="text-white text-base"></mat-icon>
+    </button>
+  </div>
+
+  <!-- User Info -->
+  <div class="px-4 pt-4 pb-2 text-start">
+    <h3
+      class="text-lg font-semibold text-[var(--primary)] leading-tight line-clamp-2"
+    >
+      {{ user.name || 'Unnamed User' }}
+    </h3>
+    <p class="text-sm text-gray-600 mt-1 line-clamp-3">
+      {{ user.email || 'No email available' }}
+    </p>
+  </div>
+
+  <!-- Button -->
+  <div class="pb-4 px-4 flex justify-end">
+    <a
+      [routerLink]="['/user', user.id]"
+      class="bg-[var(--primary)] shadow-md text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-[var(--text-dark)] transition inline-block"
+    >
+      View profile
+    </a>
+  </div>
+</div>
