@@ -16,6 +16,7 @@ namespace VolleyballAPI.Entities
     public DateTime Birthday { get; set; }
     public string Phone { get; set; }
     public int PlayerNumber { get; set; }
+    public string PictureLink { get; set; }
     public Role Roles { get; set; }
     public PriceType PriceType { get; set; }
     public Gender Gender { get; set; }

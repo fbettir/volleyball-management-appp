@@ -10,6 +10,7 @@ namespace VolleyballAPI.Dtos
         public DateTime Birthday { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }
+        public string PictureLink { get; set; } 
         public int PlayerNumber { get; set; }
         public Role Roles { get; set; }
         public PriceType PriceType { get; set; }
