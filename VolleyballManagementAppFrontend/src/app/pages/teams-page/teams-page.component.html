@@ -2,7 +2,7 @@
   <img
     src="assets/team.jpg"
     alt="Teams background"
-    class="w-full h-full object-cover object-top "
+    class="w-full h-full object-cover object-top"
   />
 
   <div
@@ -13,20 +13,21 @@
       <div class="w-full flex justify-center">
         <div class="w-full max-w-screen-xl">
           <app-team-search-bar
-          class="w-full"
-          (searchChanged)="onSearchChanged($event)">
-        </app-team-search-bar>
+            class="w-full"
+            (searchChanged)="onSearchChanged($event)"
+          >
+          </app-team-search-bar>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="max-w-screen-xl mx-auto px-4 py-4 ">
+<div class="max-w-screen-xl mx-auto px-4 py-4">
   <div
     class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 justify-items-center"
   >
     <app-team-card
-      *ngFor="let t of teams"
+      *ngFor="let t of filteredTeams"
       [team]="t"
       class="w-[260px]"
     ></app-team-card>

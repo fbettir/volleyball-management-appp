@@ -31,7 +31,6 @@ export class AddTournamentComponent {
     const tournament: Partial<Tournament> = {
       name: name!,
       date: date!,
-      location: location!,
       description: description!,
       pictureLink: picture!,
     };
