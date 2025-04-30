@@ -9,14 +9,17 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./team-search-bar.component.scss']
 })
 export class TeamSearchBarComponent {
-  // Add @Output or search logic later if needed
+
   searchText: string = '';
   selectedFilter: string = 'name';
 
-  @Output() searchChanged = new EventEmitter<string>();
-
+  @Output() searchChanged = new EventEmitter<{ text: string; filter: string }>();
+  
   onSearchChange() {
-    this.searchChanged.emit(this.searchText.trim().toLowerCase());
+    this.searchChanged.emit({
+      text: this.searchText.trim().toLowerCase(),
+      filter: this.selectedFilter
+    });
   }
 }
- 
+  

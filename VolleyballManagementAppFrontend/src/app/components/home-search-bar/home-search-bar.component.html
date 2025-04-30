@@ -1,1 +1,20 @@
-<p>home-search-bar works!</p>
+<div class="bg-white shadow-md rounded-xl flex w-full max-w-3xl overflow-hidden">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (ngModelChange)="onSearchChange()"
+      placeholder="Search Teams, Events or Trainings"
+      class="flex-1 px-4 py-3 text-sm focus:outline-none"
+    />
+  
+    <div class="w-[1px] bg-[var(--primary)]"></div>
+  
+    <select
+      [(ngModel)]="selectedFilter"
+      class="px-4 py-3 text-sm focus:outline-none"
+    >
+      <option value="name">Team</option>
+      <option value="event">Event</option>
+      <option value="training">Training</option>
+    </select>
+  </div> 

@@ -8,26 +8,62 @@
   <div
     class="absolute inset-0 bg-black bg-opacity-10 flex justify-center items-end pb-8"
   >
-    <div class="w-full max-w-screen-xl text-start mx-auto px-48 ">
+    <div class="w-full max-w-screen-xl text-start mx-auto px-48">
       <h1 class="text-4xl md:text-6xl text-white font-bold mb-6">
         Come play volleyball!
       </h1>
       <div class="w-full flex justify-center">
         <div class="w-full max-w-screen-xl">
-          <app-team-search-bar class="w-full"></app-team-search-bar>
+          <app-home-search-bar
+            class="w-full"
+            (searchChanged)="onSearchChanged($event)"
+          >
+          </app-home-search-bar>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="max-w-screen-xl mx-auto px-6 py-6">
-  <div
-    class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
-  >
-    <app-team-card
-      *ngFor="let t of teams"
-      [team]="t"
-      class="w-[260px]"
-    ></app-team-card>
+  <div *ngIf="filteredEvents.length > 0" class="space-y-4 mb-16">
+    <h2 class="px-48 text-3xl font-bold text-[var(--primary)]">Events</h2>
+    <div
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+    >
+      <app-event-card
+        *ngFor="let e of filteredEvents"
+        [tournament]="e"
+        class="w-[260px]"
+      ></app-event-card>
+    </div>
+  </div>
+  
+  <div *ngIf="filteredTeams.length > 0" class="space-y-4 mb-16">
+    <h2 class="px-48 text-3xl font-bold text-[var(--primary)]">Teams</h2>
+    <div
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+    >
+      <app-team-card
+        *ngFor="let t of filteredTeams"
+        [team]="t"
+        class="w-[260px]"
+      ></app-team-card>
+    </div>
+  </div>
+
+  <div *ngIf="filteredTrainings.length > 0" class="space-y-4 mb-16">
+    <h2 class="px-48 text-3xl font-bold text-[var(--primary)]">Trainings</h2>
+    <div
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+    >
+      <app-training-card
+        *ngFor="let t of filteredTrainings"
+        [training]="t"
+        class="w-[260px]"
+      ></app-training-card>
+    </div>
   </div>
 </div>
+
+

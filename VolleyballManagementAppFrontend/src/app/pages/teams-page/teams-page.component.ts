@@ -24,9 +24,25 @@ export class TeamsPageComponent {
     });
   }
 
-  onSearchChanged(searchText: string) {
-    this.filteredTeams = this.teams.filter(team =>
-      team.name.toLowerCase().includes(searchText)
-    );
+  onSearchChanged(search: { text: string; filter: string }) {
+    const { text, filter } = search;
+  
+    this.filteredTeams = this.teams.filter(team => {
+      if (!text) return true;
+  
+      if (filter === 'name') {
+        return team.name.toLowerCase().includes(text);
+      }
+  
+      if (filter === 'coach') {
+        return team.coaches.some(coach =>
+          (coach.name )
+            .toLowerCase()
+            .includes(text)
+        );
+      }
+  
+      return false;
+    });
   }
 }

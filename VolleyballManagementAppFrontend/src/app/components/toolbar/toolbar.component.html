@@ -42,13 +42,16 @@
   </nav>
 
   <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-    <div class="flex items-center">
-      <a
-      routerLink="/profile"
-      class="text-[var(--primary)] hover:text-[var(--text-dark)] px-2  flex items-center justify-center rounded-full transition"
-    >
-      <mat-icon fontIcon="account_circle" class="text-2xl leading-none"></mat-icon>
-    </a>
+    <div class="flex items-center gap-2 h-full">
+      <button
+        [routerLink]="'/profile'"
+        class="text-[var(--primary)] hover:text-[var(--text-dark)] flex items-center justify-center transition rounded-full"
+      >
+        <mat-icon
+          fontIcon="account_circle"
+          class="text-2xl leading-none"
+        ></mat-icon>
+      </button>
       <button
         (click)="logout()"
         class="bg-white text-[var(--primary)] px-4 py-1.5 text-sm rounded-full border border-[var(--primary)] shadow-lg hover:bg-[var(--primary)] hover:text-white transition whitespace-nowrap"
@@ -57,8 +60,6 @@
       </button>
     </div>
   </ng-container>
-  
-  
 
   <ng-template #loggedOut>
     <!-- Login Button -->
