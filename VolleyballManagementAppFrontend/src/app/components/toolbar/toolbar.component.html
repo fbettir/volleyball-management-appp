@@ -42,14 +42,23 @@
   </nav>
 
   <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-    <!-- Logout Button -->
-    <button
-      (click)="logout()"
-      class="bg-white text-[var(--primary)] px-3 py-1.5 text-sm rounded-full border border-[var(--primary)] shadow-lg m-2 hover:bg-[var(--primary)] hover:text-white transition"
+    <div class="flex items-center">
+      <a
+      routerLink="/profile"
+      class="text-[var(--primary)] hover:text-[var(--text-dark)] px-2  flex items-center justify-center rounded-full transition"
     >
-      Logout
-    </button>
+      <mat-icon fontIcon="account_circle" class="text-2xl leading-none"></mat-icon>
+    </a>
+      <button
+        (click)="logout()"
+        class="bg-white text-[var(--primary)] px-4 py-1.5 text-sm rounded-full border border-[var(--primary)] shadow-lg hover:bg-[var(--primary)] hover:text-white transition whitespace-nowrap"
+      >
+        Logout
+      </button>
+    </div>
   </ng-container>
+  
+  
 
   <ng-template #loggedOut>
     <!-- Login Button -->
