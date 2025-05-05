@@ -1,143 +1,58 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Gender } from 'src/app/models/gender';
-import { Post } from 'src/app/models/post';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, inject, OnInit } from '@angular/core';
 import { Team } from 'src/app/models/team';
 import { ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/services/team.service';
-import { MatDialog } from '@angular/material/dialog';
-import { UpdateDialogComponent } from 'src/app/components/update-dialog/update-dialog.component';
-import { Training } from 'src/app/models/training';
-import { TrainingsDialogComponent } from 'src/app/components/trainings-dialog/trainings-dialog.component';
-import { PlayerDetails } from 'src/app/models/player-details';
 import { User } from 'src/app/models/user';
-import { UserService } from 'src/app/services/user.service';
-import { PlayerDetailsWithName } from 'src/app/models/player-details-with-name';
-import { TicketPass } from 'src/app/models/ticket-pass';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { UserCardComponent } from 'src/app/components/user-card/user-card.component';
+import { TrainingCardComponent } from 'src/app/components/training-card/training-card.component';
+import { Training } from 'src/app/models/training';
+import { Tournament } from 'src/app/models/tournament';
+import { EventCardComponent } from 'src/app/components/event-card/event-card.component';
+import { Match } from 'src/app/models/match';
+import { MatchCardComponent } from 'src/app/components/match-card/match-card.component';
 
 @Component({
   selector: 'app-team-page',
+  standalone: true,
+  imports: [CommonModule, MatIconModule, UserCardComponent, MatchCardComponent, EventCardComponent, TrainingCardComponent],
   templateUrl: './team-page.component.html',
-  styleUrls: ['./team-page.component.scss'],
 })
 export class TeamPageComponent implements OnInit {
-  team?: Team = undefined;
-  teamId : string = "";
-  members: PlayerDetails[] = [];
-  membersWithName: PlayerDetailsWithName[] = [];
-  users: User[] = [];
-  trainings: Training[] = [];
-  dataSourcePlayers = new MatTableDataSource<PlayerDetailsWithName>([]);
-  dataSourceTrainings = new MatTableDataSource<Training>([]);
+  private route = inject(ActivatedRoute);
+  private teamService = inject(TeamService);
 
-  displayedColumns: string[] = ['position', 'name', 'number', 'ticket', 'post',  'tools'];
-  displayedColumnsTrainings: string[] = ['position', 'date', 'location', 'description', 'tools'];
+  team: Team | null = null;
 
-  TicketPass = TicketPass;
-  Gender = Gender;
-  Post = Post;
+  get players(): User[] {
+    return this.team?.players || [];
+  }
 
-  constructor(
-    private route: ActivatedRoute,
-    private teamService: TeamService,
-    private userService: UserService, 
-    private dialog: MatDialog,
-  ) {}
+  get trainings(): Training[] {
+    return this.team?.trainings || [];
+  }
+
+  get coaches(): User[] {
+    return this.team?.coaches || [];
+  }
+
+  get tournaments(): Tournament[] {
+    return this.team?.tournaments || [];
+  }
+
+  get matches(): Match[] {
+    return this.team?.matches || [];
+  }
 
   ngOnInit(): void {
-    
-  }
-  // ngOnInit() {
-  //   this.teamId = this.route.snapshot.params['teamId'];
-  //   this.dataSourcePlayers.data = [];
-  //   this.dataSourceTrainings.data = [];
-
-  //   this.teamService.getTeamById(this.teamId).subscribe(team => {
-  //     this.team = team;
-  //     if (team !== undefined) {
-  //       this.teamService.getTeamPlayersByTeamId(this.teamId).subscribe(teamPlayers => {
-  //         this.members = teamPlayers;          
-  //         this.teamService.getTeamTrainingsByTeamId(this.teamId).subscribe(trainings =>{
-  //           trainings.forEach( t => {
-  //             const training: Training = {
-  //               id: t.id,
-  //               participants: this.membersWithName,
-  //               location: t.location,
-  //               date: t.date,
-  //               description: t.description
-  //             }
-  //             this.trainings.push(training);
-  //           })
-  //           this.dataSourceTrainings.data = this.trainings;
-  //         })
-  //         if(this.members !== undefined){
-  //         this.members.forEach( m => {
-  //           this.userService.getUserById(m.userId).subscribe( user => {
-  //             this.users.push(user);
-  //             const player: PlayerDetailsWithName = {
-  //               id: m.id,
-  //               name: user.name,
-  //               birthday: m.birthday,
-  //               phone: m.phone,
-  //               playerNumber: m.playerNumber,
-  //               ticketPass: m.ticketPass,
-  //               gender: m.gender as Gender,
-  //               posts: m.posts as Post[],                  
-  //             }
-  //             this.membersWithName.push(player);
-  //             this.dataSourcePlayers.data = this.membersWithName;
-  //           })
-  //         });
-  //         }
-  //       })
-  //     }
-
-  //   //this.dataSourceTrainings.data = trainings; //TODO: new endpoint from teamService
-  //   });
-    
-
-  // }
-
-  deleteUserFromTeam(index: number){
-    this.dataSourcePlayers.data.splice(index, 1);
-    this.dataSourcePlayers.data = [...this.dataSourcePlayers.data];
-  };
-
-  deleteTrainingFromTeam(index: number){
-    this.dataSourceTrainings.data.splice(index, 1);
-    this.dataSourceTrainings.data = [...this.dataSourceTrainings.data];
-  }
-
-  openDialog(index: number, whatToOpen: string): void {
-    var dialogRef = null;
-    if(whatToOpen == 'trainings'){
-      dialogRef = this.dialog.open(TrainingsDialogComponent, {
-        data: this.dataSourceTrainings.data[index]
-      });
-    } else {
-      dialogRef = this.dialog.open(UpdateDialogComponent, {
-        data: this.dataSourcePlayers.data[index]
+    const teamId = this.route.snapshot.params['teamId'];
+    if (teamId) {
+      this.teamService.getTeamById(teamId).subscribe({
+        next: (team) => (this.team = team),
+        error: (err) => console.error('Failed to load team', err),
       });
     }
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if(!result) this.dataSourcePlayers.data = [...this.dataSourcePlayers.data];
-      this.dataSourcePlayers.data.splice(index, 1, result);
-      this.dataSourcePlayers.data = [...this.dataSourcePlayers.data];
-    });
-  }
-
-
-  openDialogTraining(index: number): void {
-    const dialogRef = this.dialog.open(TrainingsDialogComponent, {
-      data: this.dataSourceTrainings.data[index]
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(!result) this.dataSourceTrainings.data = [...this.dataSourceTrainings.data];
-      this.dataSourceTrainings.data.splice(index, 1, result);
-      this.dataSourceTrainings.data = [...this.dataSourceTrainings.data];
-    });
   }
 
 }

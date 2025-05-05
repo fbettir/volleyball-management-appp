@@ -27,7 +27,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { TeamPageComponent } from './pages/team-page/team-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EnumIntToDescriptionPipe } from './shared/enum-to-description.pipe';
@@ -47,7 +46,6 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 import { EventPageComponent } from './pages/event-page/event-page.component';
-import { EventsPageComponent } from './pages/events-page/events-page.component';
 import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 @NgModule({
@@ -61,7 +59,6 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     EventPageComponent,
     GalleryPageComponent,
     ProfilePageComponent,
-    TeamPageComponent,
     EnumIntToDescriptionPipe,
     UpdateDialogComponent,
     TrainingsDialogComponent,

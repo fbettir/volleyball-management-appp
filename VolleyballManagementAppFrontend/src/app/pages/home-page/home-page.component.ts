@@ -6,7 +6,6 @@ import { Team } from 'src/app/models/team';
 import { Tournament } from 'src/app/models/tournament';
 import { TeamService } from 'src/app/services/team.service';
 import { TournamentService } from 'src/app/services/tournament.service';
-import { TeamSearchBarComponent } from 'src/app/components/team-search-bar/team-search-bar.component';
 import { HomeSearchBarComponent } from 'src/app/components/home-search-bar/home-search-bar.component';
 import { TrainingService } from 'src/app/services/training.service';
 import { Training } from 'src/app/models/training';
@@ -26,6 +25,7 @@ export class HomePageComponent {
   filteredEvents: Tournament[] = [];
   trainings: Training[] = [];
   filteredTrainings: Training[] = [];
+  
 
   constructor(tournamentService: TournamentService, teamService: TeamService, trainingService: TrainingService) {
     tournamentService.getAllTournaments().subscribe(t => {

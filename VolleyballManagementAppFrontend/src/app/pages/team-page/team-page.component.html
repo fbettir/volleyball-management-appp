@@ -1,131 +1,112 @@
-<div class="team-page-content">
-  <div class="picture">
-    <h1>
-      Team: {{ team?.name }}
-      <p>{{ team?.description }}</p>
-    </h1>
-    <img mat-card-image src="{{ team?.pictureLink }}" />
-  </div>
-  <div class="section-members">
-    <h2>Members:</h2>
-    <div class="row">
-      <div class="table-members">
-        <table mat-table [dataSource]="dataSourcePlayers">
-          <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef>No.</th>
-            <td mat-cell *matCellDef="let player; let i = index">{{ i }}</td>
-          </ng-container>
-          <ng-container matColumnDef="post">
-            <th mat-header-cell *matHeaderCellDef>Post</th>
-            <td mat-cell *matCellDef="let player">
-              {{ player.posts | multipleListEnumToDescription: Post }}
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let player">{{ player.name }}</td>
-          </ng-container>
-          <ng-container matColumnDef="number">
-            <th mat-header-cell *matHeaderCellDef>Number</th>
-            <td mat-cell *matCellDef="let player">{{ player.playerNumber }}</td>
-          </ng-container>
-          <ng-container matColumnDef="ticket">
-            <th mat-header-cell *matHeaderCellDef>Ticket/Pass</th>
-            <td mat-cell *matCellDef="let player">
-              {{ player.ticketPass | enumIntToDescription: TicketPass }}
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="tools">
-            <th mat-header-cell *matHeaderCellDef>Tools</th>
-            <td mat-cell *matCellDef="let player; let i = index">
-              <button
-                mat-mini-fab
-                class="delete"
-                (click)="deleteUserFromTeam(i)"
-              >
-                <mat-icon>delete</mat-icon>
-              </button>
-              <button
-                mat-mini-fab
-                class="edit"
-                (click)="openDialog(i, 'members')"
-              >
-                <mat-icon>edit</mat-icon>
-              </button>
-            </td>
-          </ng-container>
+<div class="relative w-full h-64 md:h-80 lg:h-[28rem] pt-0">
+  <img
+    [src]="team?.pictureLink || 'assets/szandi.jpg'"
+    alt="Teams background"
+    class="w-full h-full object-cover object-top"
+  />
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-      </div>
-      <button class="add-button" mat-raised-button>
-        Add member to {{ team?.name }}
-      </button>
+  <div
+    class="absolute inset-0 bg-black bg-opacity-10 flex justify-center items-end pb-8"
+  >
+    <div class="w-full max-w-screen-xl text-start mx-auto px-48">
+      <h1 class="text-4xl md:text-6xl text-white font-bold mb-6">
+        {{ team?.name || "Teamname" }}
+      </h1>
     </div>
   </div>
+</div>
 
-  <div class="section-trainings">
-    <h2>Trainings:</h2>
-    <div class="row">
-      <div class="table-trainings">
-      <table
-        mat-table
-        [dataSource]="dataSourceTrainings"
-        class="mat-elevation-z8"
-      >
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef>No.</th>
-          <td mat-cell *matCellDef="let training; let i = index">
-            {{ i + 1 }}
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef>Date</th>
-          <td mat-cell *matCellDef="let training">
-            {{ training.date | date: "short" }}
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="location">
-          <th mat-header-cell *matHeaderCellDef>Location</th>
-          <td mat-cell *matCellDef="let training">{{ training.location }}</td>
-        </ng-container>
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>Description</th>
-          <td mat-cell *matCellDef="let training">
-            {{ training.description }}
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="tools">
-          <th mat-header-cell *matHeaderCellDef>Tools</th>
-          <td mat-cell *matCellDef="let player; let i = index">
-            <button
-              mat-mini-fab
-              class="delete"
-              (click)="deleteTrainingFromTeam(i)"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
-            <button
-              mat-mini-fab
-              class="edit"
-              (click)="openDialog(i, 'trainings')"
-            >
-              <mat-icon>edit</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumnsTrainings"></tr>
-        <tr
-          mat-row
-          *matRowDef="let row; columns: displayedColumnsTrainings"
-        ></tr>
-      </table>
+<div class="max-w-screen-xl mx-auto px-48 py-10">
+  <div class="space-y-4 mb-16">
+    <div class="flex items-center mb-6 pb-2">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Description:</h2>
     </div>
-      <button class="add-button" mat-raised-button>
-        Add training to {{ team?.name }}
+    <div class="pb-8">
+      {{ team?.description }}
+    </div>
+
+    <div class="flex items-center justify-between pb-2 mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Members</h2>
+      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
+        Add Member
       </button>
+    </div>
+
+    <div
+      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+    >
+      <app-user-card
+        *ngFor="let u of players"
+        [user]="u"
+        class="w-[260px]"
+      ></app-user-card>
+    </div>
+
+    <div class="flex items-center justify-between pb-2 mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Trainings</h2>
+      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
+        Add Training
+      </button>
+    </div>
+    <div
+      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+    >
+      <app-training-card
+        *ngFor="let t of trainings"
+        [training]="t"
+        class="w-[260px]"
+      ></app-training-card>
+    </div>
+
+    <div class="flex items-center justify-between pb-2 mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Coaches</h2>
+      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
+        Add Coach
+      </button>
+    </div>
+
+    <div
+      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+    >
+      <app-user-card
+        *ngFor="let u of coaches"
+        [user]="u"
+        class="w-[260px]"
+      ></app-user-card>
+    </div>
+
+    <div class="flex items-center justify-between pb-2 mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Tournaments</h2>
+      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
+        Add Tournament
+      </button>
+    </div>
+
+    <div
+      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+    >
+      <app-event-card
+        *ngFor="let t of tournaments"
+        [tournament]="t"
+        class="w-[260px]"
+      ></app-event-card>
+    </div>
+
+    <div class="flex items-center justify-between pb-2 mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Matches</h2>
+      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
+        Add Match
+      </button>
+    </div>
+
+    <div
+      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+    >
+      <app-match-card
+        *ngFor="let m of matches"
+        [match]="m"
+        class="w-[260px]"
+      ></app-match-card>
     </div>
   </div>
 </div>
