@@ -22,6 +22,8 @@ export class EventPageComponent {
   month: string | null;
   year: string | null;
   matches: Match[] | [];
+  points1: number[] | [];
+  points2: number[] | [];
   schedule: { time: string; matches: (Match | null)[] }[] = [];
 
 
@@ -37,6 +39,7 @@ export class EventPageComponent {
       }).toUpperCase();
       this.year = new Date(this.event.date).getFullYear().toString();
       this.matches = this.event.matches;
+
       console.log(this.matches);
       this.sortSchedule();
       console.log('schedule', this.schedule);

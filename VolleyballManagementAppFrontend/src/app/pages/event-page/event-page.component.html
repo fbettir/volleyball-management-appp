@@ -53,7 +53,7 @@
     </div>
 
     <div
-      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
     >
       <app-team-card
         *ngFor="let t of event?.teams"
@@ -85,7 +85,7 @@
                 <td class="align-top p-2 text-sm min-w-[16rem]">
                   <div *ngIf="match; else emptyCell">
                     <div class="flex items-center justify-between bg-white shadow-lg hover:shadow-xl transition rounded-full px-4 py-2">
-                      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow mr-2">
+                      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center  mr-2">
                         <ng-container *ngIf="match.points[0] > 0 || match.points[1] > 0; else leftIcon">
                           <span class="font-bold text-sm text-[var(--primary)]">{{ match.points[0] }}</span>
                         </ng-container>
@@ -108,7 +108,7 @@
                       </div>
                       
                       <!-- Right side -->
-                      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow ml-2">
+                      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center ml-2">
                         <ng-container *ngIf="match.points[0] > 0 || match.points[1] > 0; else rightIcon">
                           <span class="font-bold text-sm text-[var(--primary)]">{{ match.points[1] }}</span>
                         </ng-container>
@@ -127,6 +127,8 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div>    
+
+
   </div>
 </div>
