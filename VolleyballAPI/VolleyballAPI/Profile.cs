@@ -17,7 +17,13 @@ namespace VolleyballAPI
 
             CreateMap<Training, TrainingHeaderDto>().ReverseMap();
 
-            CreateMap<Match, MatchHeaderDto>().ReverseMap();
+            CreateMap<Match, MatchHeaderDto>()
+                .ForMember(dto => dto.Teams, opt => opt.MapFrom(m => m.Teams.Select(mt => mt.Team)))
+                .ReverseMap();
+
+            CreateMap<Team, TeamForTournamentsMatchesDTO>().ReverseMap();
+
+            CreateMap<MatchTeam, TeamForTournamentsMatchesDTO>().ReverseMap();
 
             CreateMap<User, UserDetailsDto>()
                 .ForMember(dto => dto.JoinedTeams, opt => opt.MapFrom(u => u.JoinedTeams.Select(tp => tp.Team)))
