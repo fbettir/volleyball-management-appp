@@ -11,7 +11,8 @@ namespace VolleyballAPI.Entities
         public Guid RefereeId { get; set; }
         public Guid? TournamentId { get; set; } 
         public DateTime Date { get; set; }
-        public DateTime StartTime { get; set; } 
+        public DateTime StartTime { get; set; }
+        public List<int> Points { get; set; } 
         public virtual Team Referee { get; set; }
         public virtual Location Location { get; set; }
         public virtual Tournament Tournament { get; set; }

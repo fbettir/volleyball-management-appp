@@ -206,7 +206,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 13, 55, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId6
+                    RefereeId = teamId6,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -215,7 +216,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 14, 15, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId7
+                    RefereeId = teamId7,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -224,7 +226,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 14, 40, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId8
+                    RefereeId = teamId8,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -233,7 +236,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 15, 0, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId1
+                    RefereeId = teamId1,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -242,7 +246,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 15, 25, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId4
+                    RefereeId = teamId4,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -251,7 +256,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 15, 50, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId8
+                    RefereeId = teamId8,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -260,7 +266,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 16, 15, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId2
+                    RefereeId = teamId2,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId8,
@@ -268,7 +275,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 16, 40, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId6
+                    RefereeId = teamId6,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -277,7 +285,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 17, 05, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId2
+                    RefereeId = teamId2,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -286,7 +295,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 17, 30, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId3
+                    RefereeId = teamId3,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -295,7 +305,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 17, 55, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId6
+                    RefereeId = teamId6,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId12,
@@ -303,7 +314,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 18, 20, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId5
+                    RefereeId = teamId5,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId13,
@@ -311,7 +323,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 18, 45, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId7
+                    RefereeId = teamId7,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId14,
@@ -319,7 +332,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 19, 10, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId3
+                    RefereeId = teamId3,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId15,
@@ -327,7 +341,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 13, 55, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId2
+                    RefereeId = teamId2,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -336,7 +351,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 14, 15, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId4
+                    RefereeId = teamId4,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -345,7 +361,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 14, 40, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId5
+                    RefereeId = teamId5,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -354,7 +371,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 15, 0, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId7
+                    RefereeId = teamId7,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -363,7 +381,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 15, 25, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId2
+                    RefereeId = teamId2,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -372,7 +391,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 15, 50, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId1
+                    RefereeId = teamId1,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -381,7 +401,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 16, 15, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId4
+                    RefereeId = teamId4,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId22,
@@ -389,7 +410,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 16, 40, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId3
+                    RefereeId = teamId3,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -398,7 +420,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 17, 05, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId8
+                    RefereeId = teamId8,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -407,7 +430,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 17, 30, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId5
+                    RefereeId = teamId5,
+                    Points = new List<int> { 0, 0 }
                 },
                 new Match
                 {
@@ -416,7 +440,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 17, 55, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId7
+                    RefereeId = teamId7,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId26,
@@ -424,7 +449,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 18, 20, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId6
+                    RefereeId = teamId6,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId27,
@@ -432,7 +458,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 18, 45, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId1
+                    RefereeId = teamId1,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId28,
@@ -440,7 +467,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 19, 10, 0),
                     TournamentId = tournamentId1,
-                    RefereeId = teamId4
+                    RefereeId = teamId4,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId29,
@@ -448,7 +476,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 9, 0, 0),
                     TournamentId = tournamentId2,
-                    RefereeId = teamId1
+                    RefereeId = teamId1,
+                    Points = new List<int> { 0, 0 }
                 }, new Match
                 {
                     Id = matchId30,
@@ -456,7 +485,8 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     StartTime = new DateTime(2024, 4, 3, 9, 0, 0),
                     TournamentId = tournamentId3,
-                    RefereeId = teamId1
+                    RefereeId = teamId1,
+                    Points = new List<int> { 0, 0 }
                 }
             );
             modelBuilder.Entity<MatchTeam>().HasData(
