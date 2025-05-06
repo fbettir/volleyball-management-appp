@@ -11,4 +11,5 @@ export interface Match {
     referee: User;
     tournament: Tournament;
     teams: Team[];
+    points: number[];
 }

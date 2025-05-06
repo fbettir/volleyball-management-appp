@@ -1,18 +1,132 @@
-
 <div class="relative w-full h-64 md:h-80 lg:h-[28rem] pt-0">
-    <img
-      [src]="event?.pictureLink || 'assets/szandi.jpg'"
-      alt="Event background"
-      class="w-full h-full object-cover object-center"
-    />
-  
+  <img
+    [src]="event?.pictureLink || 'assets/szandi.jpg'"
+    alt="Event background"
+    class="w-full h-full object-cover object-center"
+  />
+
+  <div
+    class="absolute inset-0 bg-black bg-opacity-10 flex justify-center items-end pb-8"
+  >
+    <div class="w-full max-w-screen-xl text-start mx-auto px-48">
+      <h1 class="text-4xl md:text-6xl text-white font-bold mb-6 text-shadow-lg">
+        {{ event?.name || "EventName" }}
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-screen-xl mx-auto px-48 py-10">
+  <div class="space-y-4 mb-16">
+    <div class="flex items-center mb-6 pb-2">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Description:</h2>
+    </div>
+    <div class="pb-8">
+      {{ event?.description }}
+    </div>
+
+    <div class="flex items-center justify-between pb-2 mb-6">
+      <div class="flex items-center mb-6 pb-2">
+        <h2 class="text-3xl font-bold text-[var(--primary)]">Location:</h2>
+      </div>
+      <div class="pb-8">
+        {{ event?.location?.name }}
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between pb-2 mb-6">
+      <div class="flex items-center mb-6 pb-2">
+        <h2 class="text-3xl font-bold text-[var(--primary)]">Date:</h2>
+      </div>
+      <div class="pb-8">
+        {{ year }} {{ month }} {{ day }}
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between pb-2 mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Teams</h2>
+      <button
+        class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+      >
+        Apply
+      </button>
+    </div>
+
     <div
-      class="absolute inset-0 bg-black bg-opacity-10 flex justify-center items-end pb-8"
+      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
     >
-      <div class="w-full max-w-screen-xl text-start mx-auto px-48">
-        <h1 class="text-4xl md:text-6xl text-white font-bold mb-6 text-shadow-lg">
-            {{ event?.name || 'EventName' }}
-          </h1>
+      <app-team-card
+        *ngFor="let t of event?.teams"
+        [team]="t"
+        class="w-[260px]"
+      >
+      </app-team-card>
+    </div>
+
+    <div class="max-w-screen-xl mx-auto py-10">
+      <h2 class="text-3xl font-bold text-[var(--primary)] mb-6">Schedule</h2>
+    
+      <div class="overflow-auto">
+        <table class="w-full border-separate border-spacing-y-4">
+          <thead>
+            <tr class="text-center align-middle  text-[var(--primary)] text-sm uppercase">
+              <th class="p-2">Time</th>
+              <th class="p-2">Court 1</th>
+              <th class="p-2">Court 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let slot of schedule">
+              <td class="p-4 text-sm font-semibold text-center align-middle text-[var(--primary)]">
+                {{ slot.time }}
+              </td>
+            
+              <ng-container *ngFor="let match of slot.matches">
+                <td class="align-top p-2 text-sm min-w-[16rem]">
+                  <div *ngIf="match; else emptyCell">
+                    <div class="flex items-center justify-between bg-white shadow-lg hover:shadow-xl transition rounded-full px-4 py-2">
+                      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow mr-2">
+                        <ng-container *ngIf="match.points[0] > 0 || match.points[1] > 0; else leftIcon">
+                          <span class="font-bold text-sm text-[var(--primary)]">{{ match.points[0] }}</span>
+                        </ng-container>
+                        <ng-template #leftIcon>
+                          <mat-icon fontIcon="sports_volleyball" class="text-xl text-[var(--primary)]"></mat-icon>
+                        </ng-template>
+                      </div>
+                      
+                      <!-- Team A -->
+                      <div class="text-[var(--primary)] font-semibold text-sm text-center w-1/4 truncate">
+                        {{ match.teams[0].name || 'Team A' }}
+                      </div>
+                      
+                      <!-- VS -->
+                      <div class="text-sm font-bold text-gray-500 text-center w-1/4">VS</div>
+                      
+                      <!-- Team B -->
+                      <div class="text-[var(--primary)] font-semibold text-sm text-center w-1/4 truncate">
+                        {{ match.teams[1].name || 'Team B' }}
+                      </div>
+                      
+                      <!-- Right side -->
+                      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow ml-2">
+                        <ng-container *ngIf="match.points[0] > 0 || match.points[1] > 0; else rightIcon">
+                          <span class="font-bold text-sm text-[var(--primary)]">{{ match.points[1] }}</span>
+                        </ng-container>
+                        <ng-template #rightIcon>
+                          <mat-icon fontIcon="sports_volleyball" class="text-xl text-[var(--primary)]"></mat-icon>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <ng-template #emptyCell>
+                    <div class="text-center text-gray-400 italic">–</div>
+                  </ng-template>
+                </td>
+              </ng-container>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</div>

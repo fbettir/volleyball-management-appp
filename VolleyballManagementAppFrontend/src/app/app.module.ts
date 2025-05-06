@@ -56,7 +56,6 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     FooterComponent,
     AboutUsPageComponent,
     AdminPageComponent,
-    EventPageComponent,
     GalleryPageComponent,
     ProfilePageComponent,
     EnumIntToDescriptionPipe,
