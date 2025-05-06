@@ -13,10 +13,6 @@ import { Training } from 'src/app/models/training';
 export class TrainingCardComponent {
   @Input() training!: Training;
 
-  ngOnInit() {
-    console.log('Training ', this.training);
-  }
-
   get day(): string {
     return new Date(this.training.date).getDate().toString().padStart(2, '0');
   }

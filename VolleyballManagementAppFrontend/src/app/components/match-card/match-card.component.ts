@@ -13,7 +13,15 @@ import { CommonModule } from '@angular/common';
 export class MatchCardComponent {
   @Input() match!: Match;
 
+  ngOnInit(): void {
+    console.log("match");
+    console.log(this.match);
+
+  }
+
   get day(): string {
+    //console.log("match: " + this.match);
+
     return new Date(this.match.date).getDate().toString().padStart(2, '0');
   }
 

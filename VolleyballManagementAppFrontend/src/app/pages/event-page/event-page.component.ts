@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tournament } from 'src/app/models/tournament';
 import { TournamentService } from 'src/app/services/tournament.service';
@@ -9,19 +9,17 @@ import { TournamentService } from 'src/app/services/tournament.service';
   styleUrls: ['./event-page.component.scss'],
 })
 export class EventPageComponent {
-  tournamentId: string = "";
-  tournament?: Tournament = undefined;
+  private route = inject(ActivatedRoute);
 
-  constructor(
-    private route: ActivatedRoute,
-    private tournamentService: TournamentService,
-  ) {}
+  event: Tournament | null = null;
 
-  ngOnInit() {
-    this.tournamentId = this.route.snapshot.params['tournamentId'];
-    this.tournamentService.getTournamentById(this.tournamentId).subscribe(t => {
-      this.tournament = t;
+  constructor(tournamentService: TournamentService) {
+    const eventId = this.route.snapshot.params['eventId'];
+
+    tournamentService.getTournamentById(eventId).subscribe((t) => {
+      this.event = t;
+      console.log("event loaded", this.event);
     });
   }
+
 }
- 

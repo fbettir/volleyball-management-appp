@@ -1,55 +1,28 @@
 <div
-  class="bg-white rounded-2xl shadow-md hover:shadow-2xl transition w-full max-w-[18rem] sm:max-w-[20rem] overflow-hidden flex flex-col justify-between relative"
+  class="bg-white rounded-2xl shadow-md hover:shadow-2xl transition w-full max-w-[18rem] sm:max-w-[20rem] flex flex-col justify-between overflow-hidden"
 >
-  <!-- Date Badge -->
-  <div
-    class="absolute top-3 left-3 bg-white text-[var(--primary)] text-center rounded-lg px-2 py-1 text-xs font-bold shadow-sm leading-tight"
-  >
-    <div>{{ month }}</div>
-    <div class="text-sm font-semibold">{{ day }}</div>
-  </div>
 
-  <!-- Image -->
-  <div class="relative h-40 sm:h-44 bg-gray-100">
-    <img
-      [src]="picture || 'assets/default-team.jpg'"
-      (error)="imageFallback($event)"
-      alt="Match image"
-      class="w-full h-full object-cover"
-    />
     <button
       class="absolute top-3 right-3 text-white bg-[var(--primary)] rounded-full w-8 h-8 flex items-center justify-center shadow-md"
     >
       <mat-icon fontIcon="star_border" class="text-white text-base"></mat-icon>
     </button>
-  </div>
 
-  <!-- Content -->
   <div class="px-4 pt-4 pb-2 text-start">
-    <h3 class="text-[var(--primary)] font-semibold text-base leading-tight">
-      {{ matchTitle }}
+    <h3
+      class="text-lg font-semibold text-[var(--primary)] leading-tight line-clamp-2"
+    >
+      {{ match.teams[0].name || 'Unnamed Team' }}
     </h3>
-
-    <!-- Venue -->
-    <p class="text-sm mt-1">
-      <span class="font-semibold">Venue: </span>
-      <span>
-        {{ match.location?.name || 'Unknown Location' }}
-      </span>
-    </p>
-
-    <!-- Referee -->
-    <p class="text-sm mt-1">
-      <span class="font-semibold">Referee:</span>
-      {{ match.referee?.name || 'N/A' }}
+    <p class="text-sm text-gray-600 mt-1 line-clamp-3">
+      {{  match.teams[0].name  }}
     </p>
   </div>
 
-  <!-- Read More -->
   <div class="pb-4 px-4 flex justify-end">
     <a
-      [routerLink]="['/match', match.id]"
-      class="bg-[var(--primary)] text-white text-xs font-medium px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition inline-block"
+      [routerLink]="['/team', match.id]"
+      class="bg-[var(--primary)] shadow-md text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-[var(--text-dark)] transition inline-block"
     >
       Read more
     </a>

@@ -36,7 +36,7 @@
       class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
     >
       <app-user-card
-        *ngFor="let u of players"
+        *ngFor="let u of team?.players"
         [user]="u"
         class="w-[260px]"
       ></app-user-card>
@@ -52,7 +52,7 @@
       class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
     >
       <app-training-card
-        *ngFor="let t of trainings"
+        *ngFor="let t of team?.trainings"
         [training]="t"
         class="w-[260px]"
       ></app-training-card>
@@ -69,7 +69,7 @@
       class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
     >
       <app-user-card
-        *ngFor="let u of coaches"
+        *ngFor="let u of team?.coaches"
         [user]="u"
         class="w-[260px]"
       ></app-user-card>
@@ -86,7 +86,7 @@
       class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
     >
       <app-event-card
-        *ngFor="let t of tournaments"
+        *ngFor="let t of team?.tournaments"
         [tournament]="t"
         class="w-[260px]"
       ></app-event-card>
@@ -98,15 +98,15 @@
         Add Match
       </button>
     </div>
-
+<!-- 
     <div
       class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
     >
       <app-match-card
-        *ngFor="let m of matches"
+        *ngFor="let m of team?.matches"
         [match]="m"
         class="w-[260px]"
       ></app-match-card>
-    </div>
+    </div> -->
   </div>
 </div>
