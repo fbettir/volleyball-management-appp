@@ -12,7 +12,11 @@
       <h1 class="text-4xl md:text-6xl text-white font-bold mb-6 text-shadow-lg">Events</h1>
       <div class="w-full flex justify-center">
         <div class="w-full max-w-screen-xl">
-          <app-team-search-bar class="w-full"></app-team-search-bar>
+          <app-event-search-bar
+            class="w-full"
+            (searchChanged)="onSearchChanged($event)"
+          >
+          </app-event-search-bar>
         </div>
       </div>
     </div>

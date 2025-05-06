@@ -20,7 +20,7 @@ export class TeamsPageComponent {
     teamService.getAllTeams().subscribe((t) => {
       console.log('Loaded teams:', t);
       this.teams = t;
-      this.filteredTeams = t;
+      this.filteredTeams = t; 
     });
   }
 
