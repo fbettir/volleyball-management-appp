@@ -1,4 +1,5 @@
 import { Location } from "./location";
+import { MatchState } from "./matchState";
 import { Team } from "./team";
 import { Tournament } from "./tournament";
 import { User } from "./user";
@@ -12,4 +13,5 @@ export interface Match {
     tournament: Tournament;
     teams: Team[];
     points: number[];
+    matchState: MatchState;
 }

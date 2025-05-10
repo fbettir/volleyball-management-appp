@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
+import { MatchCardComponent } from 'src/app/components/match-card/match-card.component';
 import { TeamCardComponent } from 'src/app/components/team-card/team-card.component';
 import { Match } from 'src/app/models/match';
 import { Tournament } from 'src/app/models/tournament';
@@ -10,7 +10,7 @@ import { TournamentService } from 'src/app/services/tournament.service';
 @Component({
   selector: 'app-tournament-page',
   standalone: true,
-  imports: [CommonModule, TeamCardComponent, MatIcon],
+  imports: [CommonModule, TeamCardComponent, MatchCardComponent],
   templateUrl: './event-page.component.html',
   styleUrls: ['./event-page.component.scss'],
 })

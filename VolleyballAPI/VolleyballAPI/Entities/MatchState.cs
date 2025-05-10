@@ -1,5 +1,9 @@
-﻿namespace VolleyballAPI.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace VolleyballAPI.Entities
 {
+    [Flags]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum MatchState
     {
         Scheduled = 0,

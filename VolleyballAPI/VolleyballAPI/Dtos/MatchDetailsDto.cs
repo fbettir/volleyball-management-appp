@@ -11,6 +11,8 @@ namespace VolleyballAPI.Dtos
         public List<int> Points { get; set; } 
         public DateTime Date {  get; set; }
         public DateTime StartTime { get; set; }
+        public MatchState MatchState { get; set; }
+
         public List<TeamHeaderDto> Teams { get; set; }
     }
 }

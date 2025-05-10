@@ -25,12 +25,10 @@
   </div>
 </div>
 
-<div class="max-w-screen-xl mx-auto px-48 py-6">
+<div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8 py-6">
   <div *ngIf="filteredEvents.length > 0" class="space-y-4 mb-16">
-    <h2 class="text-3xl font-bold text-[var(--primary)] ">Events</h2>
-    <div
-      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
-    >
+    <h2 class="px-40 text-3xl font-bold text-[var(--primary)]">Events</h2>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
       <app-event-card
         *ngFor="let e of filteredEvents"
         [tournament]="e"
@@ -38,11 +36,12 @@
       ></app-event-card>
     </div>
   </div>
+
   
   <div *ngIf="filteredTeams.length > 0" class="space-y-4 mb-16">
-    <h2 class="text-3xl font-bold text-[var(--primary)]">Teams</h2>
+    <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Teams</h2>
     <div
-      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
     >
       <app-team-card
         *ngFor="let t of filteredTeams"
@@ -53,9 +52,9 @@
   </div>
 
   <div *ngIf="filteredTrainings.length > 0" class="space-y-4 mb-16">
-    <h2 class="text-3xl font-bold text-[var(--primary)]">Trainings</h2>
+    <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Trainings</h2>
     <div
-      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
     >
       <app-training-card
         *ngFor="let t of filteredTrainings"

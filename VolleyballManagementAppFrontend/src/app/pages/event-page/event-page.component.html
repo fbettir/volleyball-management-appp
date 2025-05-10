@@ -16,15 +16,16 @@
   </div>
 </div>
 
-<div class="max-w-screen-xl mx-auto px-48 py-10">
-  <div class="space-y-4 mb-16">
-    <div class="flex items-center mb-6 pb-2">
-      <h2 class="text-3xl font-bold text-[var(--primary)]">Description:</h2>
+<div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8 py-6">
+  <div class="space-y-4 mb-16 px-4 sm:px-6 lg:px-40">
+    <div class="mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)] mb-2">
+        Description:
+      </h2>
+      <p class="text-base leading-relaxed">
+        {{ event?.description }}
+      </p>
     </div>
-    <div class="pb-8">
-      {{ event?.description }}
-    </div>
-
     <div class="flex items-center justify-between pb-2 mb-6">
       <div class="flex items-center mb-6 pb-2">
         <h2 class="text-3xl font-bold text-[var(--primary)]">Location:</h2>
@@ -33,14 +34,11 @@
         {{ event?.location?.name }}
       </div>
     </div>
-
     <div class="flex items-center justify-between pb-2 mb-6">
       <div class="flex items-center mb-6 pb-2">
         <h2 class="text-3xl font-bold text-[var(--primary)]">Date:</h2>
       </div>
-      <div class="pb-8">
-        {{ year }} {{ month }} {{ day }}
-      </div>
+      <div class="pb-8">{{ year }} {{ month }} {{ day }}</div>
     </div>
 
     <div class="flex items-center justify-between pb-2 mb-6">
@@ -51,85 +49,47 @@
         Apply
       </button>
     </div>
+  </div>
 
-    <div
-      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center overflow-hidden"
-    >
-      <app-team-card
-        *ngFor="let t of event?.teams"
-        [team]="t"
-        class="w-[260px]"
-      >
-      </app-team-card>
+  <div
+    class="max-w-4xl mx-auto pb-8 gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center overflow-hidden"
+  >
+    <app-team-card *ngFor="let t of event?.teams" [team]="t" class="w-[260px]">
+    </app-team-card>
+  </div>
+
+  <div class="max-w-screen-xl mx-auto  py-6 sm:px-6 lg:px-40">
+    <h2 class="text-3xl font-bold text-[var(--primary)] mb-4">Schedule</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-center mb-4 font-semibold text-[var(--primary)] text-sm">
+    <div *ngFor="let c of [].constructor(courts); let i = index">
+      Court {{ i + 1 }}
     </div>
+  </div>
+    <!-- Time slots -->
+    <div class="space-y-8">
+      <div
+        *ngFor="let slot of schedule; let i = index"
+        [ngClass]="i % 2 === 0 ? 'bg-gray-50' : 'bg-white'"
+        class="rounded-xl p-4"
+      >
+        <h3 class="text-[var(--primary)] text-lg font-semibold mb-2 px-2">
+          {{ slot.time }}
+        </h3>
 
-    <div class="max-w-screen-xl mx-auto py-10">
-      <h2 class="text-3xl font-bold text-[var(--primary)] mb-6">Schedule</h2>
-    
-      <div class="">
-        <table class="w-full border-separate border-spacing-y-4">
-          <thead>
-            <tr class="text-center align-middle  text-[var(--primary)] text-sm uppercase">
-              <th class="p-2">Time</th>
-              <th class="p-2">Court 1</th>
-              <th class="p-2">Court 2</th>
-              <th class="p-2">Court 3</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let slot of schedule">
-              <td class="p-4 text-sm font-semibold text-center align-middle text-[var(--primary)]">
-                {{ slot.time }}
-              </td>
-            
-              <ng-container *ngFor="let match of slot.matches">
-                <td class="align-top p-2 text-sm min-w-[16rem]">
-                  <div *ngIf="match; else emptyCell">
-                    <div class="flex items-center justify-between bg-white shadow-lg hover:shadow-xl transition rounded-full px-4 py-2">
-                      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center  mr-2">
-                        <ng-container *ngIf="match.points[0] > 0 || match.points[1] > 0; else leftIcon">
-                          <span class="font-bold text-sm text-[var(--primary)]">{{ match.points[0] }}</span>
-                        </ng-container>
-                        <ng-template #leftIcon>
-                          <mat-icon fontIcon="sports_volleyball" class="text-xl text-[var(--primary)]"></mat-icon>
-                        </ng-template>
-                      </div>
-                      
-                      <!-- Team A -->
-                      <div class="text-[var(--primary)] font-semibold text-xs text-center w-1/4 truncate">
-                        {{ match.teams?.[0]?.name || 'Team A' }}
-                      </div>
-                      
-                      <!-- VS -->
-                      <div class="text-sm font-bold text-gray-500 text-center w-1/4">VS</div>
-                      
-                      <!-- Team B -->
-                      <div class="text-[var(--primary)] font-semibold text-xs text-center w-1/4 truncate">
-                        {{ match.teams?.[1]?.name || 'Team B' }}
-                      </div>
-                      
-                      <!-- Right side -->
-                      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center ml-2">
-                        <ng-container *ngIf="match.points[0] > 0 || match.points[1] > 0; else rightIcon">
-                          <span class="font-bold text-sm text-[var(--primary)]">{{ match.points[1] }}</span>
-                        </ng-container>
-                        <ng-template #rightIcon>
-                          <mat-icon fontIcon="sports_volleyball" class="text-xl text-[var(--primary)]"></mat-icon>
-                        </ng-template>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <ng-template #emptyCell>
-                    <div class="text-center text-gray-400 italic">–</div>
-                  </ng-template>
-                </td>
-              </ng-container>
-          </tbody>
-        </table>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-stretch px-2"
+        >
+          <ng-container *ngFor="let match of slot.matches; let i = index">
+            <div class=" flex flex-col items-center">
+
+              <app-match-card
+                [match]="match"
+                class=""
+              ></app-match-card>
+            </div>
+          </ng-container>
+        </div>
       </div>
-    </div>    
-
-
+    </div>
   </div>
 </div>

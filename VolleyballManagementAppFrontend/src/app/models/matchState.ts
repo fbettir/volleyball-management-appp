@@ -1,5 +1,5 @@
 export enum MatchState {
-  Scheduled = 0,
-  Ongoing = 1,
-  Finished = 2,
+  Scheduled = 'Scheduled',
+  Ongoing = 'Ongoing',
+  Finished = 'Finished'
 }
