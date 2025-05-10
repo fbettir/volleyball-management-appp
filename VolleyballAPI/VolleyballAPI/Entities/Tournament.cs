@@ -16,10 +16,13 @@ namespace VolleyballAPI.Entities
     public string Organizer { get; set; }
     public string RegistrationPolicy { get; set; }
     public string TeamPolicy { get; set; }
+    public int Courts{ get; set; }
+    public List<int> MaxTeamsPerLevel{ get; set; }
     public string Description { get; set; }
     public string PictureLink { get; set; }
     public Level Categories { get; set; }
     public PriceType PriceType { get; set; }
+    public TournamentType TournamentType{ get; set; }
 
 
     public virtual Location Location { get; set; }

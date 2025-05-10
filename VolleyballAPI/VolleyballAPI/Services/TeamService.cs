@@ -27,10 +27,10 @@ namespace VolleyballAPI.Services
                 ?? throw new EntityNotFoundException("Team not found");
         }
 
-        public async Task<IEnumerable<TeamDetailsDto>> GetTeamsAsync()
+        public async Task<IEnumerable<TeamHeaderDto>> GetTeamsAsync()
         {
             var teams = await _context.Teams
-                .ProjectTo<TeamDetailsDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<TeamHeaderDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
 
             return teams;

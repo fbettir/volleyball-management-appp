@@ -21,5 +21,7 @@ export interface Tournament {
   matches: Match[];
   userHasAsFavourite: User[];
   location: Location;
+  courts: number;
+  maxTeamsPerLevel: number[];
 }
  

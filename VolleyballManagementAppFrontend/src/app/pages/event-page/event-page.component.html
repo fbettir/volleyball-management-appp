@@ -53,7 +53,7 @@
     </div>
 
     <div
-      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center overflow-hidden"
     >
       <app-team-card
         *ngFor="let t of event?.teams"
@@ -66,13 +66,14 @@
     <div class="max-w-screen-xl mx-auto py-10">
       <h2 class="text-3xl font-bold text-[var(--primary)] mb-6">Schedule</h2>
     
-      <div class="overflow-auto">
+      <div class="">
         <table class="w-full border-separate border-spacing-y-4">
           <thead>
             <tr class="text-center align-middle  text-[var(--primary)] text-sm uppercase">
               <th class="p-2">Time</th>
               <th class="p-2">Court 1</th>
               <th class="p-2">Court 2</th>
+              <th class="p-2">Court 3</th>
             </tr>
           </thead>
           <tbody>
@@ -95,16 +96,16 @@
                       </div>
                       
                       <!-- Team A -->
-                      <div class="text-[var(--primary)] font-semibold text-sm text-center w-1/4 truncate">
-                        {{ match.teams[0].name || 'Team A' }}
+                      <div class="text-[var(--primary)] font-semibold text-xs text-center w-1/4 truncate">
+                        {{ match.teams?.[0]?.name || 'Team A' }}
                       </div>
                       
                       <!-- VS -->
                       <div class="text-sm font-bold text-gray-500 text-center w-1/4">VS</div>
                       
                       <!-- Team B -->
-                      <div class="text-[var(--primary)] font-semibold text-sm text-center w-1/4 truncate">
-                        {{ match.teams[1].name || 'Team B' }}
+                      <div class="text-[var(--primary)] font-semibold text-xs text-center w-1/4 truncate">
+                        {{ match.teams?.[1]?.name || 'Team B' }}
                       </div>
                       
                       <!-- Right side -->

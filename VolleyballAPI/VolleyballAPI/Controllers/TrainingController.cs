@@ -35,7 +35,7 @@ namespace VolleyballAPI.Controllers
 
         [MapToApiVersion("1.0")]
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<TrainingDetailsDto>>> Get()
+        public async Task<ActionResult<IEnumerable<TrainingHeaderDto>>> Get()
         {
             try
             {

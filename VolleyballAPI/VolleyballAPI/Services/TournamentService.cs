@@ -29,10 +29,10 @@ namespace VolleyballAPI.Services
         }
 
 
-        public async Task<IEnumerable<TournamentDetailsDto>> GetTournamentsAsync()
+        public async Task<IEnumerable<TournamentHeaderDto>> GetTournamentsAsync()
         {
             var tournaments = await _context.Tournaments
-                .ProjectTo<TournamentDetailsDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<TournamentHeaderDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
             return tournaments;
         }

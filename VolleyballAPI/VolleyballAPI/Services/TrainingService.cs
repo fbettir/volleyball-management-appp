@@ -27,10 +27,10 @@ namespace VolleyballAPI.Services
                 ?? throw new EntityNotFoundException("Training not found");
         }
 
-        public async Task<IEnumerable<TrainingDetailsDto>> GetTrainingsAsync()
+        public async Task<IEnumerable<TrainingHeaderDto>> GetTrainingsAsync()
         {
             var trainings = await _context.Trainings
-                .ProjectTo<TrainingDetailsDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<TrainingHeaderDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
 
             return trainings;

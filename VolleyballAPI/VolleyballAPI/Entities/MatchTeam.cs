@@ -7,6 +7,8 @@ namespace VolleyballAPI.Entities
     {
         public Guid MatchId { get; set; }
         public Guid TeamId { get; set; }
+
+        public TournamentType? TournamentType { get; set; }
         public virtual Match Match { get; set; }
         public virtual Team Team { get; set; }
     }

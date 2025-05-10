@@ -5,7 +5,7 @@ namespace VolleyballAPI.Interfaces
     public interface ITeamService
     {
         public Task<TeamDetailsDto> GetTeamAsync(Guid teamId);
-        public Task<IEnumerable<TeamDetailsDto>> GetTeamsAsync();
+        public Task<IEnumerable<TeamHeaderDto>> GetTeamsAsync();
         public Task<TeamDetailsDto> InsertTeamAsync(TeamDetailsDto newTeam);
         public Task UpdateTeamAsync(TeamDetailsDto updatedTeam, Guid teamId);
         public Task DeleteTeamAsync(Guid teamId);

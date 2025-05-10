@@ -35,7 +35,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpGet()]
         //[Authorize]
-        public async Task<ActionResult<IEnumerable<TeamDetailsDto>>> Get()
+        public async Task<ActionResult<IEnumerable<TeamHeaderDto>>> Get()
         {
             try
             {

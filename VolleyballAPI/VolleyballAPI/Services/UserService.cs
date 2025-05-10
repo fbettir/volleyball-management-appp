@@ -36,10 +36,10 @@ namespace VolleyballAPI.Services
                 ?? throw new EntityNotFoundException("User not found");
         }
 
-        public async Task<IEnumerable<UserDetailsDto>> GetUsersAsync()
+        public async Task<IEnumerable<UserHeaderDto>> GetUsersAsync()
         {
             var users = await _context.Users
-                .ProjectTo<UserDetailsDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<UserHeaderDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
 
             return users;

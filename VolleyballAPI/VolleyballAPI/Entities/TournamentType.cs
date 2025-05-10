@@ -1,0 +1,9 @@
+﻿namespace VolleyballAPI.Entities
+{
+    public enum TournamentType
+    {
+        Fana8Kor = 0,
+        MuerA10B7 = 1,
+        MuerA9B7= 2,
+    }
+}

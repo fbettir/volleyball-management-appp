@@ -14,6 +14,9 @@ namespace VolleyballAPI.Dtos
         public string TeamPolicy { get; set; }
         public string Description { get; set; }
         public string PictureLink { get; set; } = null!;
+
+        public int Courts { get; set; }
+        public List<int> MaxTeamsPerLevel { get; set; }
         public Level Categories { get; set; }
         public PriceType PriceType { get; set; }
         public List<MatchHeaderDto> Matches { get; set; }
