@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -17,8 +17,9 @@ import { TournamentService } from 'src/app/services/tournament.service';
 import { PriceType } from 'src/app/models/priceType';
 import { Level } from 'src/app/models/level';
 import { TournamentType } from 'src/app/models/tournamentType';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
+import { Tournament } from 'src/app/models/tournament';
 
 @Component({
   selector: 'app-tournament-form',
@@ -35,6 +36,7 @@ import { MatIcon } from '@angular/material/icon';
     MatIcon,
     MatDialogModule,
     MatFormFieldModule
+
   ],
   templateUrl: './tournament-form.component.html',
   styleUrls: ['./tournament-form.component.scss'],
@@ -58,6 +60,10 @@ export class TournamentFormComponent implements OnInit {
     private fb: FormBuilder,
     private tournamentService: TournamentService,
     private router: Router,
+
+        public dialogRef: MatDialogRef<TournamentFormComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: Tournament,
+      
   ) {}
 
   ngOnInit(): void {

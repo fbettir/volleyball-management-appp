@@ -45,6 +45,15 @@ export class AdminPageComponent {
   searchText = '';
   selectedFilter = 'name';
 
+
+  askIfLiked(): void {
+  this.dialog.open(TournamentFormComponent, {
+    width: '300px',
+    panelClass: 'like-dialog',
+  });
+
+}
+
 onCreateTournament(): void {
   console.log('Opening dialog...');
   const dialogRef = this.dialog.open(TournamentFormComponent, {

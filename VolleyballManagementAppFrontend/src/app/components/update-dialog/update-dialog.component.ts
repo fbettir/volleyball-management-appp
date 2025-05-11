@@ -3,12 +3,9 @@ import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Gender } from 'src/app/models/gender';
-import { PlayerDetails } from 'src/app/models/player-details';
 import { PlayerDetailsWithName } from 'src/app/models/player-details-with-name';
 import { Post } from 'src/app/models/post';
-import { Role } from 'src/app/models/role';
 import { TicketPass } from 'src/app/models/ticket-pass';
-import { User } from 'src/app/models/user';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
