@@ -60,5 +60,9 @@ export class JwtDecoderService {
   
     return ['basic_user'];
   }
-
+  
+  async isAdmin(): Promise<boolean> {
+    const roles = await this.getUserRoles();
+    return roles.includes('admin');
+  }
 }

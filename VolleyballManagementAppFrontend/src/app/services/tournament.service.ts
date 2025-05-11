@@ -5,35 +5,38 @@ import { Tournament } from '../models/tournament';
 import { BasePortalOutlet } from '@angular/cdk/portal';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TournamentService {
   private baseURL: string = 'https://localhost:44359/api/Tournament';
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getTournamentById(tournamentId: string): Observable<Tournament> {
     return this.httpClient.get<Tournament>(`${this.baseURL}/${tournamentId}`);
   }
 
-  getAllTournaments(): Observable<Tournament[]> { 
+  getAllTournaments(): Observable<Tournament[]> {
     return this.httpClient.get<Tournament[]>(this.baseURL);
   }
 
-  registerTeamToTournament(tournamentId: string, teamId: string) : Observable<void>{
-    return this.httpClient.post<void>(`${this.baseURL}/${tournamentId}/teams`,{teamId});
+  registerTeamToTournament(
+    tournamentId: string,
+    teamId: string,
+  ): Observable<void> {
+    return this.httpClient.post<void>(`${this.baseURL}/${tournamentId}/teams`, {
+      teamId,
+    });
   }
 
-  insertTournament(tournament: Tournament): void {
-    this.httpClient.post(this.baseURL, tournament).subscribe(
-      console.log
-    );
+  insertTournament(tournament: Tournament): Observable<Tournament> {
+    return this.httpClient.post<Tournament>(this.baseURL, tournament);
   }
 
   deleteTournamentById(tournamentId: string): void {
     this.httpClient.delete(`${this.baseURL}/${tournamentId}`);
   }
 
-  modifyTournamentById(tournament: Tournament): void{
+  modifyTournamentById(tournament: Tournament): void {
     this.httpClient.put(`${this.baseURL}/${tournament.id}`, tournament);
   }
 }

@@ -1,6 +1,141 @@
-<div >
-    <app-add-player-details/>
-    <app-add-team/>
-    <app-add-tournament/>
-    <app-add-user/>
+<!-- HERO HEADER -->
+<div
+  class="relative w-full h-64 sm:h-72 md:h-80 lg:h-[28rem] pt-0 overflow-hidden"
+>
+  <img
+    [src]="'assets/szervezok.jpg'"
+    alt="Admin Background"
+    class="w-full h-full object-cover object-top"
+  />
+
+  <div
+    class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end"
+  >
+    <div
+      class="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-48 text-white"
+    >
+      <!-- Title -->
+      <h1
+        class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-shadow-lg mb-3 sm:mb-6"
+      >
+        Admin Page
+      </h1>
+
+      <!-- Chips -->
+      <div
+        class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center gap-4 pb-4"
+      >
+        <app-tab-chip
+          label="Events"
+          icon="sports_volleyball"
+          [active]="selectedTab === 'tournaments'"
+          (select)="selectedTab = 'tournaments'"
+        ></app-tab-chip>
+
+        <app-tab-chip
+          label="Users"
+          icon="groups"
+          [active]="selectedTab === 'users'"
+          (select)="selectedTab = 'users'"
+        ></app-tab-chip>
+
+        <app-tab-chip
+          label="Settings"
+          icon="settings"
+          [active]="selectedTab === 'settings'"
+          (select)="selectedTab = 'settings'"
+        ></app-tab-chip>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tournament Management Tab -->
+<div
+  *ngIf="selectedTab === 'tournaments'"
+  class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8"
+>
+  <div class="px-4 sm:px-6 lg:px-40 mb-12">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Events</h2>
+      <button
+        class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+        (click)="onCreateTournament()"
+      >
+        + New Tournament
+      </button>
+    </div>
+
+
+
+    <app-event-search-bar
+      (searchChanged)="onSearchChanged($event)"
+      class="w-full sm:w-1/2 mb-6"
+    ></app-event-search-bar>
+
+    <table
+      mat-table
+      [dataSource]="filteredTournaments"
+      class="w-full mat-elevation-z2 rounded-xl overflow-hidden"
+    >
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let tournament">{{ tournament.name }}</td>
+      </ng-container>
+
+      <!-- Date -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let tournament">
+          {{ tournament.date | date }}
+        </td>
+      </ng-container>
+
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let tournament">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="viewTournament(tournament)"
+          >
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="accent"
+            (click)="editTournament(tournament)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="deleteTournament(tournament)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    </table>
+  </div>
+</div>
+
+<div
+  *ngIf="selectedTab === 'users'"
+  class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8 text-center text-gray-500"
+>
+  <h2 class="text-xl font-semibold">User Management (Coming Soon)</h2>
+</div>
+
+<div
+  *ngIf="selectedTab === 'settings'"
+  class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8 text-center text-gray-500"
+>
+  <h2 class="text-xl font-semibold">Admin Settings (Coming Soon)</h2>
 </div>

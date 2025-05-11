@@ -33,7 +33,6 @@ import { EnumIntToDescriptionPipe } from './shared/enum-to-description.pipe';
 import { UpdateDialogComponent } from './components/update-dialog/update-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TrainingsDialogComponent } from './components/trainings-dialog/trainings-dialog.component';
-import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AddTeamComponent } from './components/add-team/add-team.component';
 import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
 import { AddPlayerDetailsComponent } from './components/add-player-details/add-player-details.component';
@@ -45,7 +44,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
-import { EventPageComponent } from './pages/event-page/event-page.component';
 import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 @NgModule({
@@ -55,7 +53,6 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     TableComponent,
     FooterComponent,
     AboutUsPageComponent,
-    AdminPageComponent,
     GalleryPageComponent,
     ProfilePageComponent,
     EnumIntToDescriptionPipe,

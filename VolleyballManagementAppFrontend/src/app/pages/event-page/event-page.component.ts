@@ -16,7 +16,7 @@ import { TournamentService } from 'src/app/services/tournament.service';
   templateUrl: './event-page.component.html',
   styleUrls: ['./event-page.component.scss'],
 })
-export class EventPageComponent {
+export class EventPageComponent { 
   private route = inject(ActivatedRoute);
 
   event: Tournament | null = null;
@@ -24,8 +24,8 @@ export class EventPageComponent {
   month: string | null;
   year: string | null;
   matches: Match[] | [];
-  points1: number[] | [];
-  points2: number[] | [];
+  points1: number;
+  points2: number;
   schedule: { time: string; matches: (Match | null)[] }[] = [];
   courts: number | 2;
   selectedTab: string | null = null;

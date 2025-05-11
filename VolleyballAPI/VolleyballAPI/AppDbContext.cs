@@ -608,15 +608,17 @@ namespace VolleyballAPI
                 new MatchTeam { MatchId = matchId254, TeamId = teamId11 }, new MatchTeam { MatchId = matchId254, TeamId = teamId12 },
                 new MatchTeam { MatchId = matchId255, TeamId = teamId7 }, new MatchTeam { MatchId = matchId255, TeamId = teamId6 },
                 new MatchTeam { MatchId = matchId256, TeamId = teamId3 }, new MatchTeam { MatchId = matchId256, TeamId = teamId9 },
+
+
                 new MatchTeam { MatchId = matchId257, TeamId = teamId16 }, new MatchTeam { MatchId = matchId257, TeamId = teamId14 },
-                new MatchTeam { MatchId = matchId258, TeamId = teamId17 }, new MatchTeam { MatchId = matchId257, TeamId = teamId2 },
-                new MatchTeam { MatchId = matchId259, TeamId = teamId4 }, new MatchTeam { MatchId = matchId257, TeamId = teamId8 },
-                new MatchTeam { MatchId = matchId260, TeamId = teamId10 }, new MatchTeam { MatchId = matchId257, TeamId = teamId13 },
-                new MatchTeam { MatchId = matchId261, TeamId = teamId7 }, new MatchTeam { MatchId = matchId257, TeamId = teamId1 },
-                new MatchTeam { MatchId = matchId262, TeamId = teamId6 }, new MatchTeam { MatchId = matchId257, TeamId = teamId9 },
-                new MatchTeam { MatchId = matchId263, TeamId = teamId12 }, new MatchTeam { MatchId = matchId257, TeamId = teamId15 },
-                new MatchTeam { MatchId = matchId264, TeamId = teamId17 }, new MatchTeam { MatchId = matchId257, TeamId = teamId5 },
-                new MatchTeam { MatchId = matchId265, TeamId = teamId2 }, new MatchTeam { MatchId = matchId257, TeamId = teamId3 }
+                new MatchTeam { MatchId = matchId258, TeamId = teamId17 }, new MatchTeam { MatchId = matchId258, TeamId = teamId2 },
+                new MatchTeam { MatchId = matchId259, TeamId = teamId4 }, new MatchTeam { MatchId = matchId259, TeamId = teamId8 },
+                new MatchTeam { MatchId = matchId260, TeamId = teamId10 }, new MatchTeam { MatchId = matchId260, TeamId = teamId13 },
+                new MatchTeam { MatchId = matchId261, TeamId = teamId7 }, new MatchTeam { MatchId = matchId261, TeamId = teamId1 },
+                new MatchTeam { MatchId = matchId262, TeamId = teamId6 }, new MatchTeam { MatchId = matchId262, TeamId = teamId9 },
+                new MatchTeam { MatchId = matchId263, TeamId = teamId12 }, new MatchTeam { MatchId = matchId263, TeamId = teamId15 },
+                new MatchTeam { MatchId = matchId264, TeamId = teamId17 }, new MatchTeam { MatchId = matchId264, TeamId = teamId5 },
+                new MatchTeam { MatchId = matchId265, TeamId = teamId2 }, new MatchTeam { MatchId = matchId265, TeamId = teamId3 }
             );
 
             modelBuilder.Entity<Team>().HasData(
@@ -697,7 +699,7 @@ namespace VolleyballAPI
                     Id = tournamentId2,
                     Name = "Műegyetemi röplabda torna A9 B7 ",
                     Date = new DateTime(2025, 5, 18),
-                    LocationId = locationId3,
+                    LocationId = locationId2,
                     Description = "Szeretettel várunk titeket a MűEgyetemi Röplabda Tornánk következő eseményén. A torna sorozat havonta 1 alkalommal kerül megrendezésre az őszi félévben.\r\nA torna célja a MűEgyetemi és általánosságban a röplabda sport népszerűsítése, minél szélesebb körben.\r\nHa szeretnétek részt venni egy kiváló hangulatú, egésznapos röplabda élményben, akkor itt a helyetek!\r\nAmire számíthattok:\r\n- Minden tornán az első 4 csapatot (kategóriánként) díjazzuk külnféle ajándékokkal!\r\n- Minden kategória első 3 helyezett egyedi érmet, az első helyezett csapat pedig egyedi kupát is kap.\r\n- A tornán minden kategóriában a csapatok szavazatai alapján megválasztjuk a legjobb ütő, mezőny és feladó játékost, akik különdíjban részesülnek.\r\n- A torna hangulatának megalapozásához az egész csarnokot behangosítjuk.\r\n- A tornán a mérkőzések eredményeit online követheted majd.",
                     PriceType = PriceType.TournamentTicket,
                     EntryDeadline = new DateTime(2025, 4, 18),
@@ -716,7 +718,7 @@ namespace VolleyballAPI
                     Id = tournamentId3,
                     Name = "Műegyetemi röplabda torna A10 B7 ",
                     Date = new DateTime(2025, 4, 26),
-                    LocationId = locationId4,
+                    LocationId = locationId2,
                     Description = "Szeretettel várunk titeket a MűEgyetemi Röplabda Tornánk következő eseményén. A torna sorozat havonta 1 alkalommal kerül megrendezésre az őszi félévben.\r\nA torna célja a MűEgyetemi és általánosságban a röplabda sport népszerűsítése, minél szélesebb körben.\r\nHa szeretnétek részt venni egy kiváló hangulatú, egésznapos röplabda élményben, akkor itt a helyetek!\r\nAmire számíthattok:\r\n- Minden tornán az első 4 csapatot (kategóriánként) díjazzuk külnféle ajándékokkal!\r\n- Minden kategória első 3 helyezett egyedi érmet, az első helyezett csapat pedig egyedi kupát is kap.\r\n- A tornán minden kategóriában a csapatok szavazatai alapján megválasztjuk a legjobb ütő, mezőny és feladó játékost, akik különdíjban részesülnek.\r\n- A torna hangulatának megalapozásához az egész csarnokot behangosítjuk.\r\n- A tornán a mérkőzések eredményeit online követheted majd.",
                     PriceType = PriceType.TournamentTicket,
                     EntryDeadline = new DateTime(2025, 3, 26),

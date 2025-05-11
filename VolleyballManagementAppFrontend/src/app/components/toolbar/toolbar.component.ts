@@ -5,6 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 
 import { map, shareReplay } from 'rxjs/operators';
+import { JwtDecoderService } from 'src/app/services/jwt-decoder.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -13,14 +14,17 @@ import { map, shareReplay } from 'rxjs/operators';
 
 })
 export class ToolbarComponent {
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay(),
-    );
 
-  constructor(private breakpointObserver: BreakpointObserver, @Inject(DOCUMENT) public document: Document, public auth: AuthService) {
+
+  isAdmin = false;
+
+ngOnInit(): void {
+  this.jwtDecoder.isAdmin().then(isAdmin => {
+    this.isAdmin = isAdmin;
+  });
+}
+
+  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService, private jwtDecoder: JwtDecoderService) {
 
   }
 

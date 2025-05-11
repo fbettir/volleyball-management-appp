@@ -15,10 +15,9 @@ export class MatchCardComponent {
 
   MatchState = MatchState;
 
-
   get refereeName(): string | null {
-  return this.match?.referee?.name ?? null;
-}
+    return this.match?.referee?.name ?? null;
+  }
 
   startMatch() {
     if (this.match) {
@@ -35,13 +34,23 @@ export class MatchCardComponent {
     }
   }
 
-endMatch() {
-  if (
-    this.match &&
-    (this.match.points[0] !== 0 || this.match.points[1] !== 0)
-  ) {
-    this.match.matchState = MatchState.Finished;
+  endMatch() {
+    if (
+      this.match && this.isSetOver(this.match.points[0], this.match.points[1])
+    ) {
+      this.match.matchState = MatchState.Finished;
+    }
   }
 
-}
+  isSetOver(
+    homePoints: number,
+    awayPoints: number,
+    isFinalSet: boolean = false,
+  ): boolean {
+    const target = isFinalSet ? 15 : 25;
+    const maxPoints = Math.max(homePoints, awayPoints);
+    const pointDifference = Math.abs(homePoints - awayPoints);
+
+    return maxPoints >= target && pointDifference >= 2;
+  }
 }

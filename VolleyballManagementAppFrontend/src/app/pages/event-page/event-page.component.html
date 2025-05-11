@@ -21,7 +21,7 @@
         class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center gap-4 sm:gap-4 pb-4"
       >
         <app-tab-chip
-          label="About"
+          label="About" 
           icon="sports_volleyball"
           [active]="selectedTab === 'info'"
           (select)="selectedTab = 'info'"
@@ -59,69 +59,84 @@
   *ngIf="!selectedTab || selectedTab === 'info'"
   class="max-w-screen-xl mx-auto sm:px-6 lg:px-8 py-10"
 >
-<!-- Description -->
-<div class="px-4 sm:px-6 lg:px-40 mb-12">
-  <h2 class="text-4xl font-extrabold text-[var(--primary)] mb-4">
-    Tournament Overview
-  </h2>
-  <p class="text-lg leading-relaxed text-gray-700 bg-white/50 rounded-xl p-4 shadow">
-    {{ event?.description }}
-  </p>
-</div>
-
-<!-- Detail Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 px-4 sm:px-6 lg:px-40">
-  <div
-    *ngFor="let item of [
-      { icon: 'event', title: 'Date', value: (event?.date | date: 'longDate') },
-      { icon: 'hourglass_bottom', title: 'Entry Deadline', value: (event?.entryDeadline | date: 'longDate') },
-      { icon: 'place', title: 'Location', value: event?.location?.name },
-      { icon: 'account_circle', title: 'Organizer', value: event?.organizer },
-      { icon: 'rule', title: 'Registration Policy', value: event?.registrationPolicy },
-      { icon: 'group', title: 'Team Policy', value: event?.teamPolicy },
-      { icon: 'view_column', title: 'Courts', value: event?.courts },
-      { icon: 'price_change', title: 'Price Type', value: event?.priceType },
-      { icon: 'emoji_events', title: 'Tournament Type', value: event?.tournamentType }
-    ]"
-    class="flex items-start bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-100 shadow-lg hover:shadow-xl transition"
-  >
-    <div class="w-12 h-12 bg-[var(--white)] bg-opacity-10 flex items-center justify-center rounded-xl mr-4">
-      <mat-icon [fontIcon]="item.icon" class="text-[var(--primary)] text-xl"></mat-icon>
-    </div>
-    <div class="flex flex-col">
-      <span class="text-sm text-gray-500 uppercase tracking-wide font-medium">
-        {{ item.title }}
-      </span>
-      <span class="text-base font-semibold text-gray-800 mt-1 break-words">
-        {{ item.value || '-' }}
-      </span>
-    </div>
+  <!-- Description -->
+  <div class="px-4 sm:px-6 lg:px-40 mb-12">
+    <h2 class="text-4xl font-extrabold text-[var(--primary)] mb-4">
+      Tournament Overview
+    </h2>
+    <p
+      class="text-lg leading-relaxed text-gray-700 bg-white/50 rounded-xl p-4 shadow"
+    >
+      {{ event?.description }}
+    </p>
   </div>
 
-  <!-- Combined Categories + Max Teams -->
+  <!-- Detail Cards -->
   <div
-    *ngIf="event?.categories && event?.maxTeamsPerLevel"
-    class="col-span-full bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-100 shadow-lg hover:shadow-xl transition"
+    class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 px-4 sm:px-6 lg:px-40"
   >
-    <div class="flex items-start mb-4">
-      <div class="w-12 h-12 bg-[var(--white)] bg-opacity-10 flex items-center justify-center rounded-xl mr-4">
-        <mat-icon fontIcon="star_rate" class="text-[var(--primary)] text-xl"></mat-icon>
+    <div
+      *ngFor="
+        let item of [
+          {
+            icon: 'event',
+            title: 'Date',
+            value: (event?.date | date: 'longDate')
+          },
+          {
+            icon: 'hourglass_bottom',
+            title: 'Entry Deadline',
+            value: (event?.entryDeadline | date: 'longDate')
+          },
+          { icon: 'place', title: 'Location', value: event?.location?.name },
+          {
+            icon: 'account_circle',
+            title: 'Organizer',
+            value: event?.organizer
+          },
+          {
+            icon: 'rule',
+            title: 'Registration Policy',
+            value: event?.registrationPolicy
+          },
+          { icon: 'group', title: 'Team Policy', value: event?.teamPolicy },
+          { icon: 'view_column', title: 'Courts', value: event?.courts },
+          { icon: 'star_rate', title: 'Categories', value: event?.categories },
+          {
+            icon: 'price_change',
+            title: 'Price Type',
+            value: event?.priceType
+          },
+          {
+            icon: 'emoji_events',
+            title: 'Tournament Type',
+            value: event?.tournamentType
+          },
+          {
+            icon: 'list_alt',
+            title: 'Max Teams/Level',
+            value: event?.maxTeamsPerLevel?.join(', ')
+          }
+        ]
+      "
+      class="flex items-start bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-100 shadow-lg hover:shadow-xl transition"
+    >
+      <div
+        class="w-12 h-12 bg-[var(--white)] bg-opacity-10 flex items-center justify-center rounded-xl mr-4"
+      >
+        <mat-icon
+          [fontIcon]="item.icon"
+          class="text-[var(--primary)] text-xl"
+        ></mat-icon>
       </div>
-      <div class="flex flex-col w-full">
-        <span class="text-sm text-gray-500 uppercase tracking-wide font-medium">
-          Categories & Max Teams
-        </span>
-        <div class="mt-2 space-y-1">
-          <div
-            *ngFor="let cat of event?.categories; let i = index"
-            class="text-base text-gray-700"
-          >
-            • {{ cat }}:
-            <span class="font-semibold">
-              {{ maxTeamsPerLevel[i] || '-' }} teams
-            </span>
-          </div>
-        </div>
+      <div class="flex flex-col">
+        <span
+          class="text-sm text-gray-500 uppercase tracking-wide font-medium"
+          >{{ item.title }}</span
+        >
+        <span class="text-base font-semibold text-gray-800 mt-1 break-words">{{
+          item.value || "-"
+        }}</span>
       </div>
     </div>
   </div>
@@ -159,7 +174,9 @@
   *ngIf="!selectedTab || selectedTab === 'schedule'"
   class="max-w-screen-xl mx-auto py-6 sm:px-6 lg:px-40"
 >
-  <h2 class="text-3xl font-bold text-[var(--primary)] mb-4">Schedule</h2>
+
+<div class="max-w-screen-xl mx-auto py-10">
+  <h2 class="text-3xl font-bold text-[var(--primary)] mb-6">Schedule</h2>
 
   <!-- Court headers -->
   <div
