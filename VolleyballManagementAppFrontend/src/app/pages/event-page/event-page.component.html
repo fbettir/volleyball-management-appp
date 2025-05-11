@@ -1,46 +1,139 @@
-<div class="relative w-full h-64 md:h-80 lg:h-[28rem] pt-0">
+<!-- HERO HEADER -->
+<div class="relative w-full h-64 sm:h-72 md:h-80 lg:h-[28rem] pt-0 overflow-hidden">
   <img
     [src]="event?.pictureLink || 'assets/szandi.jpg'"
     alt="Event background"
     class="w-full h-full object-cover object-center"
   />
 
-  <div
-    class="absolute inset-0 bg-black bg-opacity-10 flex justify-center items-end pb-8"
-  >
-    <div class="w-full max-w-screen-xl text-start mx-auto px-48">
-      <h1 class="text-4xl md:text-6xl text-white font-bold mb-6 text-shadow-lg">
-        {{ event?.name || "EventName" }}
+  <div class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end">
+    <div class="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-48 text-white">
+      
+      <!-- Title -->
+      <h1
+        class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-shadow-lg mb-3 sm:mb-6"
+      >
+        {{ event?.name || 'EventName' }}
       </h1>
+
+      <!-- Tab Chips -->
+      <div
+        class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center gap-4 sm:gap-4 pb-4"
+      >
+        <app-tab-chip
+          label="About"
+          icon="sports_volleyball"
+          [active]="selectedTab === 'info'"
+          (select)="selectedTab = 'info'"
+        ></app-tab-chip>
+
+        <app-tab-chip
+          label="Teams"
+          icon="groups"
+          [active]="selectedTab === 'teams'"
+          (select)="selectedTab = 'teams'"
+        ></app-tab-chip>
+
+        <app-tab-chip
+          label="Schedule"
+          icon="event"
+          [active]="selectedTab === 'schedule'"
+          (select)="selectedTab = 'schedule'"
+        ></app-tab-chip>
+
+        <app-tab-chip
+          *ngIf="isOwner"
+          label="Settings"
+          icon="settings"
+          [active]="selectedTab === 'settings'"
+          (select)="selectedTab = 'settings'"
+        ></app-tab-chip>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8 py-6">
-  <div class="space-y-4 mb-16 px-4 sm:px-6 lg:px-40">
-    <div class="mb-6">
-      <h2 class="text-3xl font-bold text-[var(--primary)] mb-2">
-        Description:
-      </h2>
-      <p class="text-base leading-relaxed">
-        {{ event?.description }}
-      </p>
-    </div>
-    <div class="flex items-center justify-between pb-2 mb-6">
-      <div class="flex items-center mb-6 pb-2">
-        <h2 class="text-3xl font-bold text-[var(--primary)]">Location:</h2>
-      </div>
-      <div class="pb-8">
-        {{ event?.location?.name }}
-      </div>
-    </div>
-    <div class="flex items-center justify-between pb-2 mb-6">
-      <div class="flex items-center mb-6 pb-2">
-        <h2 class="text-3xl font-bold text-[var(--primary)]">Date:</h2>
-      </div>
-      <div class="pb-8">{{ year }} {{ month }} {{ day }}</div>
-    </div>
 
+<!-- INFO SECTION -->
+<div
+  *ngIf="!selectedTab || selectedTab === 'info'"
+  class="max-w-screen-xl mx-auto sm:px-6 lg:px-8 py-10"
+>
+<!-- Description -->
+<div class="px-4 sm:px-6 lg:px-40 mb-12">
+  <h2 class="text-4xl font-extrabold text-[var(--primary)] mb-4">
+    Tournament Overview
+  </h2>
+  <p class="text-lg leading-relaxed text-gray-700 bg-white/50 rounded-xl p-4 shadow">
+    {{ event?.description }}
+  </p>
+</div>
+
+<!-- Detail Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 px-4 sm:px-6 lg:px-40">
+  <div
+    *ngFor="let item of [
+      { icon: 'event', title: 'Date', value: (event?.date | date: 'longDate') },
+      { icon: 'hourglass_bottom', title: 'Entry Deadline', value: (event?.entryDeadline | date: 'longDate') },
+      { icon: 'place', title: 'Location', value: event?.location?.name },
+      { icon: 'account_circle', title: 'Organizer', value: event?.organizer },
+      { icon: 'rule', title: 'Registration Policy', value: event?.registrationPolicy },
+      { icon: 'group', title: 'Team Policy', value: event?.teamPolicy },
+      { icon: 'view_column', title: 'Courts', value: event?.courts },
+      { icon: 'price_change', title: 'Price Type', value: event?.priceType },
+      { icon: 'emoji_events', title: 'Tournament Type', value: event?.tournamentType }
+    ]"
+    class="flex items-start bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-100 shadow-lg hover:shadow-xl transition"
+  >
+    <div class="w-12 h-12 bg-[var(--white)] bg-opacity-10 flex items-center justify-center rounded-xl mr-4">
+      <mat-icon [fontIcon]="item.icon" class="text-[var(--primary)] text-xl"></mat-icon>
+    </div>
+    <div class="flex flex-col">
+      <span class="text-sm text-gray-500 uppercase tracking-wide font-medium">
+        {{ item.title }}
+      </span>
+      <span class="text-base font-semibold text-gray-800 mt-1 break-words">
+        {{ item.value || '-' }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Combined Categories + Max Teams -->
+  <div
+    *ngIf="event?.categories && event?.maxTeamsPerLevel"
+    class="col-span-full bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-100 shadow-lg hover:shadow-xl transition"
+  >
+    <div class="flex items-start mb-4">
+      <div class="w-12 h-12 bg-[var(--white)] bg-opacity-10 flex items-center justify-center rounded-xl mr-4">
+        <mat-icon fontIcon="star_rate" class="text-[var(--primary)] text-xl"></mat-icon>
+      </div>
+      <div class="flex flex-col w-full">
+        <span class="text-sm text-gray-500 uppercase tracking-wide font-medium">
+          Categories & Max Teams
+        </span>
+        <div class="mt-2 space-y-1">
+          <div
+            *ngFor="let cat of event?.categories; let i = index"
+            class="text-base text-gray-700"
+          >
+            • {{ cat }}:
+            <span class="font-semibold">
+              {{ maxTeamsPerLevel[i] || '-' }} teams
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- TEAMS SECTION -->
+<div
+  *ngIf="!selectedTab || selectedTab === 'teams'"
+  class="max-w-screen-xl mx-auto sm:px-6 lg:px-8 py-6"
+>
+  <div class="space-y-4 mb-16 px-4 sm:px-6 lg:px-40">
     <div class="flex items-center justify-between pb-2 mb-6">
       <h2 class="text-3xl font-bold text-[var(--primary)]">Teams</h2>
       <button
@@ -49,46 +142,64 @@
         Apply
       </button>
     </div>
-  </div>
-
-  <div
-    class="max-w-4xl mx-auto pb-8 gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center overflow-hidden"
-  >
-    <app-team-card *ngFor="let t of event?.teams" [team]="t" class="w-[260px]">
-    </app-team-card>
-  </div>
-
-  <div class="max-w-screen-xl mx-auto  py-6 sm:px-6 lg:px-40">
-    <h2 class="text-3xl font-bold text-[var(--primary)] mb-4">Schedule</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-center mb-4 font-semibold text-[var(--primary)] text-sm">
-    <div *ngFor="let c of [].constructor(courts); let i = index">
-      Court {{ i + 1 }}
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+    >
+      <app-team-card
+        *ngFor="let t of event?.teams"
+        [team]="t"
+        class="w-[260px]"
+      ></app-team-card>
     </div>
   </div>
-    <!-- Time slots -->
-    <div class="space-y-8">
+</div>
+
+<!-- SCHEDULE SECTION -->
+<div
+  *ngIf="!selectedTab || selectedTab === 'schedule'"
+  class="max-w-screen-xl mx-auto py-6 sm:px-6 lg:px-40"
+>
+  <h2 class="text-3xl font-bold text-[var(--primary)] mb-4">Schedule</h2>
+
+  <!-- Court headers -->
+  <div
+    class="grid gap-4 px-2 justify-items-center"
+    [ngClass]="{
+      'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2': courts === 2,
+      'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': courts === 3
+    }"
+  >
+    <h3
+      *ngFor="let c of [].constructor(courts); let i = index"
+      class="text-base sm:text-lg font-semibold text-[var(--primary)] text-center pb-6"
+    >
+      Court {{ i + 1 }}
+    </h3>
+  </div>
+
+  <!-- Time slots -->
+  <div class="space-y-8">
+    <div
+      *ngFor="let slot of schedule; let i = index"
+      [ngClass]="i % 2 === 0 ? 'bg-gray-50' : 'bg-white'"
+      class="rounded-xl p-4"
+    >
+      <h3 class="text-[var(--primary)] text-lg font-semibold mb-2 px-2">
+        {{ slot.time }}
+      </h3>
+
       <div
-        *ngFor="let slot of schedule; let i = index"
-        [ngClass]="i % 2 === 0 ? 'bg-gray-50' : 'bg-white'"
-        class="rounded-xl p-4"
+        class="grid gap-4 justify-items-stretch px-2"
+        [ngClass]="{
+          'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2': courts === 2,
+          'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': courts === 3
+        }"
       >
-        <h3 class="text-[var(--primary)] text-lg font-semibold mb-2 px-2">
-          {{ slot.time }}
-        </h3>
-
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-stretch px-2"
-        >
-          <ng-container *ngFor="let match of slot.matches; let i = index">
-            <div class=" flex flex-col items-center">
-
-              <app-match-card
-                [match]="match"
-                class=""
-              ></app-match-card>
-            </div>
-          </ng-container>
-        </div>
+        <ng-container *ngFor="let match of slot.matches">
+          <div class="flex flex-col items-center">
+            <app-match-card [match]="match"></app-match-card>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>

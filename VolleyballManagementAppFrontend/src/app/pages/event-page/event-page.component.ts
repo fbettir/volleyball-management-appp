@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
 import { MatchCardComponent } from 'src/app/components/match-card/match-card.component';
+import { TabChipComponent } from 'src/app/components/tab-chip/tab-chip.component';
 import { TeamCardComponent } from 'src/app/components/team-card/team-card.component';
 import { Match } from 'src/app/models/match';
 import { Tournament } from 'src/app/models/tournament';
@@ -10,7 +12,7 @@ import { TournamentService } from 'src/app/services/tournament.service';
 @Component({
   selector: 'app-tournament-page',
   standalone: true,
-  imports: [CommonModule, TeamCardComponent, MatchCardComponent],
+  imports: [CommonModule, TeamCardComponent, MatchCardComponent, TabChipComponent, MatIcon],
   templateUrl: './event-page.component.html',
   styleUrls: ['./event-page.component.scss'],
 })
@@ -26,6 +28,9 @@ export class EventPageComponent {
   points2: number[] | [];
   schedule: { time: string; matches: (Match | null)[] }[] = [];
   courts: number | 2;
+  selectedTab: string | null = null;
+  isOwner = true;
+  maxTeamsPerLevel: number[] |[];
 
   constructor(tournamentService: TournamentService) {
     const eventId = this.route.snapshot.params['eventId'];
@@ -48,6 +53,7 @@ export class EventPageComponent {
       console.log(this.matches);
       this.sortSchedule();
       console.log('schedule', this.schedule);
+      this.maxTeamsPerLevel = this.event.maxTeamsPerLevel;
     });
   }
 

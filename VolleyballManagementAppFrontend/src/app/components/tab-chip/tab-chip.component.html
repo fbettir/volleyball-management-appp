@@ -1,0 +1,10 @@
+<button
+  (click)="handleClick()"
+  [ngClass]="active
+    ? 'bg-white text-[var(--primary)]'
+    : 'bg-white bg-opacity-80 text-gray-700 hover:bg-opacity-100'"
+  class="w-20 h-20 sm:w-[100px] sm:h-[100px] rounded-2xl shadow-lg flex flex-col items-center justify-center transition"
+>
+  <mat-icon [fontIcon]="icon" class="text-lg sm:text-2xl mb-1"></mat-icon>
+  <span class="text-[10px] sm:text-xs font-semibold">{{ label }}</span>
+</button>

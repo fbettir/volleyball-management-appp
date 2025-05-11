@@ -3,6 +3,7 @@ import { Location } from './location';
 import { Match } from './match';
 import { PriceType } from './priceType';
 import { Team } from './team';
+import { TournamentType } from './tournamentType';
 import { User } from './user';
 
 export interface Tournament {
@@ -23,5 +24,6 @@ export interface Tournament {
   location: Location;
   courts: number;
   maxTeamsPerLevel: number[];
+  tournamentType: TournamentType;
 }
  
