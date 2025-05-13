@@ -43,10 +43,17 @@
   </mat-form-field>
 
   <!-- Location (Dropdown or autocomplete depending on your setup) -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Location ID</mat-label>
-    <input matInput formControlName="locationId" required />
-  </mat-form-field>
+<mat-form-field appearance="fill" class="w-full">
+  <mat-label>Location</mat-label>
+  <mat-select formControlName="locationId">
+    <mat-option *ngFor="let loc of locations" [value]="loc.id">
+      {{ loc.name }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="form.get('locationId')?.hasError('required')">
+    Location is required
+  </mat-error>
+</mat-form-field>
 
   <!-- Organizer -->
   <mat-form-field appearance="outline" class="w-full">
@@ -97,40 +104,34 @@
   </mat-form-field>
 
   <!-- Categories -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Categories</mat-label>
-    <mat-select formControlName="categories">
-      <mat-option
-        *ngFor="let category of categoryOptions"
-        [value]="category.value"
-      >
-        {{ category.label }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Categories</mat-label>
+  <mat-select formControlName="categories">
+    <mat-option *ngFor="let level of levelOptions" [value]="level">
+      {{ level }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
   <!-- Price Type -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Price Type</mat-label>
-    <mat-select formControlName="priceType">
-      <mat-option *ngFor="let type of priceTypeOptions" [value]="type.value">
-        {{ type.label }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Price Type</mat-label>
+  <mat-select formControlName="priceType">
+    <mat-option *ngFor="let pt of priceTypeOptions" [value]="pt">
+      {{ pt }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
   <!-- Tournament Type -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Tournament Type</mat-label>
-    <mat-select formControlName="tournamentType">
-      <mat-option
-        *ngFor="let type of tournamentTypeOptions"
-        [value]="type.value"
-      >
-        {{ type.label }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Tournament Type</mat-label>
+  <mat-select formControlName="tournamentType">
+    <mat-option *ngFor="let type of tournamentTypeOptions" [value]="type">
+      {{ type }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
     <div class="flex justify-end">
       <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">

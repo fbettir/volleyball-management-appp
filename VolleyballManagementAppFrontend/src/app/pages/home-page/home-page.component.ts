@@ -10,13 +10,14 @@ import { HomeSearchBarComponent } from 'src/app/components/home-search-bar/home-
 import { TrainingService } from 'src/app/services/training.service';
 import { Training } from 'src/app/models/training';
 import { TrainingCardComponent } from 'src/app/components/training-card/training-card.component';
+import { TabChipComponent } from 'src/app/components/tab-chip/tab-chip.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
-  imports: [TeamCardComponent, CommonModule, HomeSearchBarComponent, TrainingCardComponent, EventCardComponent]
+  imports: [TeamCardComponent, CommonModule, HomeSearchBarComponent, TrainingCardComponent, EventCardComponent, TabChipComponent]
 })
 export class HomePageComponent {
   teams: Team[] = [];
@@ -25,7 +26,9 @@ export class HomePageComponent {
   filteredEvents: Tournament[] = [];
   trainings: Training[] = [];
   filteredTrainings: Training[] = [];
-  
+  activeSection: string = 'events';
+
+
 
   constructor(tournamentService: TournamentService, teamService: TeamService, trainingService: TrainingService) {
     tournamentService.getAllTournaments().subscribe(t => {
@@ -78,5 +81,14 @@ export class HomePageComponent {
         break;
     }
   }
+
+  scrollToSection(sectionId: string) {
+  this.activeSection = sectionId;
+
+  const el = document.getElementById(sectionId);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 
 }

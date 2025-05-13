@@ -1,3 +1,7 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,15 +9,14 @@
 html, body {
   height: 100%;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  background-color: white; 
 }
 
 :root {
   --primary: #7D1A1A;        
   --text-primary: #000000;
   --text-secondary: #7D1A1A;
-  --gold: #BD973A;             
-  --bg-beige: #F3E5C6;          
   --text-dark: #444C45;      
   --white: #ffffff;     
 }
@@ -23,10 +26,8 @@ button {
   border-radius: 0.375rem; 
 }
 
-body {
-  height: 100%;
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background-color: white; 
+@layer utilities {
+  .text-shadow-lg {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  }
 }
-

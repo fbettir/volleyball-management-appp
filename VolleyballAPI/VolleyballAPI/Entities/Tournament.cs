@@ -23,8 +23,6 @@ namespace VolleyballAPI.Entities
     public Level Categories { get; set; }
     public PriceType PriceType { get; set; }
     public TournamentType TournamentType{ get; set; }
-
-
     public virtual Location Location { get; set; }
     public virtual ICollection<TournamentCompetitor> Teams { get; set; }
     public virtual ICollection<Match> Matches { get; set; }

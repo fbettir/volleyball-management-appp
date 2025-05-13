@@ -4,7 +4,7 @@ import { TeamCardComponent } from 'src/app/components/team-card/team-card.compon
 import { Team } from 'src/app/models/team';
 import { TeamService } from 'src/app/services/team.service';
 import { TeamSearchBarComponent } from 'src/app/components/team-search-bar/team-search-bar.component';
-
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-teams-page',
   standalone: true,
@@ -16,13 +16,14 @@ export class TeamsPageComponent {
   teams: Team[] = [];
   filteredTeams: Team[] = [];
 
-  constructor(teamService: TeamService) {
+  constructor(teamService: TeamService, private dialog: MatDialog) {
     teamService.getAllTeams().subscribe((t) => {
       console.log('Loaded teams:', t);
       this.teams = t;
       this.filteredTeams = t; 
     });
   }
+
 
   onSearchChanged(search: { text: string; filter: string }) {
     const { text, filter } = search;

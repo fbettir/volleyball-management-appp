@@ -2,7 +2,7 @@
 
 namespace VolleyballAPI.Dtos
 {
-    public class TournamentDetailsDto
+    public class RegisterTournamentDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -19,9 +19,5 @@ namespace VolleyballAPI.Dtos
         public List<int> MaxTeamsPerLevel { get; set; }
         public Level Categories { get; set; }
         public PriceType PriceType { get; set; }
-        public List<MatchHeaderDto> Matches { get; set; }
-        public List<TeamHeaderDto> Teams { get; set; }
-        public List<UserHeaderDto> UserHasAsFavourite { get; set; }
-
     }
 }

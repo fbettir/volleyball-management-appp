@@ -1,10 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 
-import { map, shareReplay } from 'rxjs/operators';
 import { JwtDecoderService } from 'src/app/services/jwt-decoder.service';
 
 @Component({

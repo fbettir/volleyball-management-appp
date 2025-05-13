@@ -71,6 +71,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    BrowserAnimationsModule,
     MatSlideToggleModule,
     LayoutModule,
     FormsModule,

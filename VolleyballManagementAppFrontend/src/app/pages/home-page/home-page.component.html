@@ -6,63 +6,88 @@
   />
 
   <div
-    class="absolute inset-0 bg-black bg-opacity-10 flex justify-center items-end pb-8"
+    class="absolute inset-0 bg-black bg-opacity-10 flex justify-center items-end pb-6"
   >
     <div class="w-full max-w-screen-xl text-start mx-auto px-48">
       <h1 class="text-4xl md:text-6xl text-white font-bold mb-6 text-shadow-lg">
         Come play volleyball!
       </h1>
-      <div class="w-full flex justify-center">
+      <div class="w-full flex justify-center mb-6">
         <div class="w-full max-w-screen-xl">
-          <app-home-search-bar 
+          <app-home-search-bar
             class="w-full"
             (searchChanged)="onSearchChanged($event)"
           >
           </app-home-search-bar>
         </div>
       </div>
+      <div
+        class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center gap-4 "
+      >
+        <app-tab-chip
+          label="Events"
+          icon="event"
+          [active]="activeSection === 'events'"
+          (select)="scrollToSection('events')"
+        />
+        <app-tab-chip
+          label="Teams"
+          icon="groups"
+          [active]="activeSection === 'teams'"
+          (select)="scrollToSection('teams')"
+        />
+        <app-tab-chip
+          label="Trainings"
+          icon="fitness_center"
+          [active]="activeSection === 'trainings'"
+          (select)="scrollToSection('trainings')"
+        />
+      </div>
     </div>
   </div>
 </div>
 
 <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8 py-6">
-  <div *ngIf="filteredEvents.length > 0" class="space-y-4 mb-16">
+  <div id="events" *ngIf="filteredEvents.length > 0" class="space-y-4 mb-16">
     <h2 class="px-40 text-3xl font-bold text-[var(--primary)]">Events</h2>
-    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+    <div
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+    >
       <app-event-card
         *ngFor="let e of filteredEvents"
         [tournament]="e"
         class="w-[260px]"
       ></app-event-card>
     </div>
-  </div>
 
-  
-  <div *ngIf="filteredTeams.length > 0" class="space-y-4 mb-16">
-    <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Teams</h2>
-    <div
-      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
-    >
-      <app-team-card
-        *ngFor="let t of filteredTeams"
-        [team]="t"
-        class="w-[260px]"
-      ></app-team-card>
+    <div id="teams" *ngIf="filteredTeams.length > 0" class="space-y-4 mb-16">
+      <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Teams</h2>
+      <div
+        class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+      >
+        <app-team-card
+          *ngFor="let t of filteredTeams"
+          [team]="t"
+          class="w-[260px]"
+        ></app-team-card>
+      </div>
     </div>
-  </div>
 
-  <div *ngIf="filteredTrainings.length > 0" class="space-y-4 mb-16">
-    <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Trainings</h2>
     <div
-      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+      id="trainings"
+      *ngIf="filteredTrainings.length > 0"
+      class="space-y-4 mb-16"
     >
-      <app-training-card
-        *ngFor="let t of filteredTrainings"
-        [training]="t"
-        class="w-[260px]"
-      ></app-training-card>
+      <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Trainings</h2>
+      <div
+        class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+      >
+        <app-training-card
+          *ngFor="let t of filteredTrainings"
+          [training]="t"
+          class="w-[260px]"
+        ></app-training-card>
+      </div>
     </div>
   </div>
 </div>
-
-

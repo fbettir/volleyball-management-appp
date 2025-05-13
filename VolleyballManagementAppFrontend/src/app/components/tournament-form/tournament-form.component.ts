@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -17,9 +17,10 @@ import { TournamentService } from 'src/app/services/tournament.service';
 import { PriceType } from 'src/app/models/priceType';
 import { Level } from 'src/app/models/level';
 import { TournamentType } from 'src/app/models/tournamentType';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
-import { Tournament } from 'src/app/models/tournament';
+import { LocationService } from 'src/app/services/location.service';
+import { Location } from 'src/app/models/location';
 
 @Component({
   selector: 'app-tournament-form',
@@ -35,79 +36,70 @@ import { Tournament } from 'src/app/models/tournament';
     MatButtonModule,
     MatIcon,
     MatDialogModule,
-    MatFormFieldModule
-
+    MatFormFieldModule,
   ],
   templateUrl: './tournament-form.component.html',
   styleUrls: ['./tournament-form.component.scss'],
 })
 export class TournamentFormComponent implements OnInit {
   form!: FormGroup;
+  locations: Location[] = [];
 
-  priceTypeOptions = Object.entries(PriceType)
-    .filter(([key, value]) => typeof value === 'number')
-    .map(([key, value]) => ({ label: key, value }));
-
-  categoryOptions = Object.entries(Level)
-    .filter(([key, value]) => typeof value === 'number')
-    .map(([key, value]) => ({ label: key, value }));
-
-  tournamentTypeOptions = Object.entries(TournamentType)
-    .filter(([key, value]) => typeof value === 'number')
-    .map(([key, value]) => ({ label: key, value }));
+  priceTypeOptions = Object.values(PriceType);
+  tournamentTypeOptions = Object.values(TournamentType);
+  levelOptions = Object.values(Level);
 
   constructor(
     private fb: FormBuilder,
     private tournamentService: TournamentService,
+    private locationService: LocationService,
     private router: Router,
-
-        public dialogRef: MatDialogRef<TournamentFormComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: Tournament,
-      
   ) {}
 
   ngOnInit(): void {
-      console.log('FORM LOADED FROM:', window.location.href);
-
+    this.locationService.getAllLocations().subscribe({
+      next: (locations) => (this.locations = locations),
+      error: (err) => console.error('Failed to load locations', err),
+    });
     this.form = this.fb.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(100),
-        ],
-      ],
-      date: ['', Validators.required],
-      entryDeadline: ['', Validators.required],
-      locationId: ['', Validators.required],
+      name: ['', Validators.required],
+      date: [null, Validators.required],
+      entryDeadline: [null, Validators.required],
+      locationId: [null, Validators.required],
       organizer: [''],
       registrationPolicy: [''],
       teamPolicy: [''],
-      courts: [1, Validators.required],
-      maxTeamsPerLevel: [[], Validators.required],
       description: [''],
       pictureLink: [''],
-      categories: ['', Validators.required],
-      priceType: ['', Validators.required],
-      tournamentType: ['', Validators.required],
+      priceType: [null, Validators.required],
+      tournamentType: [null, Validators.required],
+      categories: [[], Validators.required],
+      maxTeamsPerLevel: [''],
+      courts: [''],
     });
   }
 
   onSubmit() {
     if (this.form.invalid) return;
 
-    const formValue = this.form.value;
+    const rawValue = this.form.value;
+
     const payload = {
-      ...formValue,
-      maxTeamsPerLevel: formValue.maxTeamsPerLevel
-        .split(',')
-        .map((v: string) => +v.trim()),
+      ...rawValue,
+      categories: Array.isArray(rawValue.categories)
+        ? rawValue.categories.join(',')
+        : rawValue.categories,
     };
 
+    console.log('Submitting tournament:', payload);
+
     this.tournamentService.insertTournament(payload).subscribe({
-      next: () => this.router.navigate(['/admin']),
-      error: (err) => console.error('Error creating tournament:', err),
+      next: () => {
+        this.router.navigate(['/admin']);
+      },
+      error: (err) => {
+        console.error('Error creating tournament:', err);
+      },
     });
   }
 }
