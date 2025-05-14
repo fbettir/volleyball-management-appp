@@ -1,4 +1,5 @@
-﻿using VolleyballAPI.Dtos;
+﻿using VolleyballAPI.Dtos.TeamDtos;
+using VolleyballAPI.Dtos.TournamentDtos;
 
 namespace VolleyballAPI.Interfaces
 {
@@ -6,11 +7,12 @@ namespace VolleyballAPI.Interfaces
     {
         public Task<TournamentDetailsDto> GetTournamentAsync(Guid tournamentId);
         public Task<IEnumerable<TournamentHeaderDto>> GetTournamentsAsync();
-        public Task<RegisterTournamentDto> InsertTournamentAsync(RegisterTournamentDto newTournament);
-        public Task UpdateTournamentAsync(RegisterTournamentDto updatedTournament, Guid tournamentId);
+        public Task<EditTournamentDto> InsertTournamentAsync(EditTournamentDto newTournament);
+        public Task UpdateTournamentAsync(EditTournamentDto updatedTournament, Guid tournamentId);
         public Task DeleteTournamentAsync(Guid tournamentId);
-        public Task RegisterTeamAsync(Guid id, Guid teamId);
-        public Task<IEnumerable<TeamDetailsDto>> GetTeamsAsync(Guid tournamentId);
+        public Task RegisterTournamentCompetitorAsync(Guid tournamentId, TeamDto teamDto);
+        public Task DeleteTournamentCompetitorAsync(Guid tournamentId, TeamDto teamDto);
+        public Task SetTournamentMatchesAsync(Guid tournamentId);
 
     }
 }

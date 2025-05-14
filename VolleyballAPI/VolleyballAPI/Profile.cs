@@ -1,4 +1,9 @@
-﻿using VolleyballAPI.Dtos;
+﻿using VolleyballAPI.Dtos.LocationDtos;
+using VolleyballAPI.Dtos.MatchDtos;
+using VolleyballAPI.Dtos.TeamDtos;
+using VolleyballAPI.Dtos.TournamentDtos;
+using VolleyballAPI.Dtos.TrainingDtos;
+using VolleyballAPI.Dtos.UserDtos;
 using VolleyballAPI.Entities;
 
 namespace VolleyballAPI
@@ -15,18 +20,24 @@ namespace VolleyballAPI
 
             CreateMap<TournamentHeaderDto, Tournament>().ReverseMap();
 
-            CreateMap<RegisterTournamentDto, Tournament>().ReverseMap();
-            CreateMap<RegisterTournamentDto, TournamentDetailsDto>().ReverseMap();
+            CreateMap<EditTournamentDto, Tournament>().ReverseMap();
+            CreateMap<EditTournamentDto, TournamentDetailsDto>().ReverseMap();
+
+            CreateMap<EditTeamDto, Team>().ReverseMap();
+            CreateMap<TeamDto, Team>().ReverseMap();
+            CreateMap<EditTeamDto, TeamDetailsDto>().ReverseMap();
+
+            CreateMap<EditTrainingDto, Training>().ReverseMap();
+            CreateMap<EditTrainingDto, TrainingDetailsDto>().ReverseMap();
+
+            CreateMap<EditUserDto, User>().ReverseMap();
+            CreateMap<EditUserDto, UserDetailsDto>().ReverseMap();
 
             CreateMap<Training, TrainingHeaderDto>().ReverseMap();
 
             CreateMap<Match, MatchHeaderDto>()
                 .ForMember(dto => dto.Teams, opt => opt.MapFrom(m => m.Teams.Select(mt => mt.Team)))
                 .ReverseMap();
-
-            CreateMap<Team, TeamForTournamentsMatchesDTO>().ReverseMap();
-
-            CreateMap<MatchTeam, TeamForTournamentsMatchesDTO>().ReverseMap();
 
             CreateMap<User, UserDetailsDto>()
                 .ForMember(dto => dto.JoinedTeams, opt => opt.MapFrom(u => u.JoinedTeams.Select(tp => tp.Team)))

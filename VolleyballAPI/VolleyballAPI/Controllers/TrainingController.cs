@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VolleyballAPI.Dtos;
+using VolleyballAPI.Dtos.TrainingDtos;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
 using VolleyballAPI.Services;
@@ -51,7 +51,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<TrainingDetailsDto>> Post([FromBody] TrainingDetailsDto training)
+        public async Task<ActionResult<EditTrainingDto>> Post([FromBody] EditTrainingDto training)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> Put(Guid id, [FromBody] TrainingDetailsDto value)
+        public async Task<ActionResult> Put(Guid id, [FromBody] EditTrainingDto value)
         {
             try
             {

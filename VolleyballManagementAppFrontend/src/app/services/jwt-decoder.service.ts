@@ -36,17 +36,15 @@ export class JwtDecoderService {
   }
 
   async getUserRoles(): Promise<string[]> {
-    console.log("haloo");
     try {
       const tokenClaims = await firstValueFrom(this.auth.idTokenClaims$);
       this.token = tokenClaims?.__raw || null;
-      // console.log(this.token);
-      // console.log("Token claims:", tokenClaims);
-      // console.log("Raw token:", this.token);
+      console.log("user: ");
+      console.log(this.auth);
+
   
       if (this.token) {
         const decodedToken = this.decodeToken(this.token);
-        // console.log("Decoded token:", decodedToken);
         
         const roles = decodedToken.role;
         console.log("Roles:", roles);

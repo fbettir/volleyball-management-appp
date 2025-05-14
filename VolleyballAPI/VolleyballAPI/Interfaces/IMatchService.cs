@@ -1,4 +1,5 @@
-﻿using VolleyballAPI.Dtos;
+﻿using VolleyballAPI.Dtos.MatchDtos;
+using VolleyballAPI.Dtos.TeamDtos;
 
 namespace VolleyballAPI.Interfaces
 {

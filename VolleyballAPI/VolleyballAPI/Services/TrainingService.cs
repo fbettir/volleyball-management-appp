@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using VolleyballAPI.Dtos;
+using VolleyballAPI.Dtos.TrainingDtos;
 using VolleyballAPI.Entities;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
@@ -36,15 +36,17 @@ namespace VolleyballAPI.Services
             return trainings;
         }
 
-        public async Task<TrainingDetailsDto> InsertTrainingAsync(TrainingDetailsDto newTraining)
+        public async Task<EditTrainingDto> InsertTrainingAsync(EditTrainingDto newTraining)
         {
             var efTraining = _mapper.Map<Training>(newTraining);
             _context.Trainings.Add(efTraining);
             await _context.SaveChangesAsync();
-            return await GetTrainingAsync(efTraining.Id);
+
+            var fullDetails = await GetTrainingAsync(efTraining.Id);
+            return _mapper.Map<EditTrainingDto>(fullDetails);
         }
 
-        public async Task UpdateTrainingAsync(TrainingDetailsDto updatedTraining, Guid trainingId)
+        public async Task UpdateTrainingAsync(EditTrainingDto updatedTraining, Guid trainingId)
         {
             var efTraining = _mapper.Map<Training>(updatedTraining);
             efTraining.Id = trainingId;

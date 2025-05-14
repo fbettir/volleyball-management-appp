@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VolleyballAPI.Dtos;
 using VolleyballAPI.Interfaces;
 using VolleyballAPI.Exceptions;
+using VolleyballAPI.Dtos.TournamentDtos;
+using VolleyballAPI.Dtos.TeamDtos;
+using VolleyballAPI.Dtos.UserDtos;
+using VolleyballAPI.Services;
 
 namespace VolleyballAPI.Controllers
 {
@@ -52,7 +55,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<RegisterTournamentDto>> CreateTournament([FromBody] RegisterTournamentDto tournament)
+        public async Task<ActionResult<EditTournamentDto>> CreateTournament([FromBody] EditTournamentDto tournament)
         {
             try
             {
@@ -68,7 +71,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> UpdateTournament(Guid id, [FromBody] RegisterTournamentDto value)
+        public async Task<ActionResult> UpdateTournament(Guid id, [FromBody] EditTournamentDto value)
         {
             try
             {
@@ -98,13 +101,13 @@ namespace VolleyballAPI.Controllers
         }
 
         [MapToApiVersion("1.0")]
-        [HttpPost("{id}/teams")]
+        [HttpPost("{id}/tournamentCompetitors")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult> RegisterTeam(Guid id, [FromBody] RegisterTeamDto team)
+        public async Task<ActionResult> RegisterTournamentCompetitor(Guid id, [FromBody] TeamDto team)
         {
             try
             {
-                await _tournamentsService.RegisterTeamAsync(id, team.TeamId);
+                await _tournamentsService.RegisterTournamentCompetitorAsync(id, team);
                 return Ok();
             }
             catch (EntityNotFoundException ex)
@@ -113,20 +116,37 @@ namespace VolleyballAPI.Controllers
             }
         }
 
+
         [MapToApiVersion("1.0")]
-        [HttpGet("{id}/teams")]
+        [HttpDelete("{id}/tournamentCompetitors")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<IEnumerable<TeamDetailsDto>>> GetTeams(Guid id)
+        public async Task<ActionResult> DeleteTournamentCompetitor(Guid id, [FromBody] TeamDto teamDto)
         {
             try
             {
-                var teams = await _tournamentsService.GetTeamsAsync(id);
-                return Ok(teams);
+                await _tournamentsService.DeleteTournamentCompetitorAsync(id, teamDto);
+                return Ok();
             }
             catch (EntityNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }
         }
+
+        //[MapToApiVersion("1.0")]
+        //[HttpPut("{id}/schedule")]
+        //[ProducesResponseType(StatusCodes.Status204NoContent)]
+        //public async Task<ActionResult> SetTournamentMatches(Guid id)
+        //{
+        //    try
+        //    {
+        //        await _tournamentsService.SetTournamentMatchesAsync(id);
+        //        return Ok();
+        //    }
+        //    catch (EntityNotFoundException ex)
+        //    {
+        //        return NotFound(ex.Message);
+        //    }
+        //}
     }
 }

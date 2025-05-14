@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VolleyballAPI.Dtos;
+using VolleyballAPI.Dtos.MatchDtos;
+using VolleyballAPI.Dtos.TeamDtos;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
 using VolleyballAPI.Services;

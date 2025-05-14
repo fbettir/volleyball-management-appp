@@ -1,4 +1,4 @@
-﻿using VolleyballAPI.Dtos;
+﻿using VolleyballAPI.Dtos.TrainingDtos;
 
 namespace VolleyballAPI.Interfaces
 {
@@ -6,8 +6,8 @@ namespace VolleyballAPI.Interfaces
     {
         public Task<TrainingDetailsDto> GetTrainingAsync(Guid trainingId);
         public Task<IEnumerable<TrainingHeaderDto>> GetTrainingsAsync();
-        public Task<TrainingDetailsDto> InsertTrainingAsync(TrainingDetailsDto newTraining);
-        public Task UpdateTrainingAsync(TrainingDetailsDto updatedTraining, Guid trainingId);
+        public Task<EditTrainingDto> InsertTrainingAsync(EditTrainingDto newTraining);
+        public Task UpdateTrainingAsync(EditTrainingDto updatedTraining, Guid trainingId);
         public Task DeleteTrainingAsync(Guid trainingId);
     }
 }

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { TeamCardComponent } from 'src/app/components/team-card/team-card.component';
+import { TeamCardComponent } from 'src/app/components/cards/team-card/team-card.component';
 import { Team } from 'src/app/models/team';
 import { TeamService } from 'src/app/services/team.service';
-import { TeamSearchBarComponent } from 'src/app/components/team-search-bar/team-search-bar.component';
+import { TeamSearchBarComponent } from 'src/app/components/search/team-search-bar/team-search-bar.component';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-teams-page',

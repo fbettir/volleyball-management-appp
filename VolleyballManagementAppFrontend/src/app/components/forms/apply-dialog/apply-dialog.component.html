@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Apply with a Team</h2>
+<mat-dialog-content class="space-y-4">
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Select a team</mat-label>
+    <mat-select [(value)]="selectedTeamId">
+      <mat-option *ngFor="let team of availableTeams" [value]="team.id">
+        {{ team.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!selectedTeamId" (click)="onApply()">Apply</button>
+</mat-dialog-actions>

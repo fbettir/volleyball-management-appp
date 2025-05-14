@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VolleyballAPI.Dtos;
+using VolleyballAPI.Dtos.TeamDtos;
+using VolleyballAPI.Dtos.TrainingDtos;
+using VolleyballAPI.Dtos.UserDtos;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
 
@@ -51,7 +53,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<TeamDetailsDto>> Post([FromBody] TeamDetailsDto team)
+        public async Task<ActionResult<EditTeamDto>> Post([FromBody] EditTeamDto team)
         {
             try
             {
@@ -67,7 +69,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> Put(Guid id, [FromBody] TeamDetailsDto value)
+        public async Task<ActionResult> Put(Guid id, [FromBody] EditTeamDto value)
         {
             try
             {
@@ -97,28 +99,13 @@ namespace VolleyballAPI.Controllers
         }
 
         [MapToApiVersion("1.0")]
-        [HttpGet("{id}/players")]
-        public async Task<ActionResult<IEnumerable<UserDetailsDto>>> GetPlayers(Guid id)
-        {
-            try
-            {
-                var teamPlayers = (await _teamsService.GetTeamPlayersAsync(id)).ToList();
-                return Ok(teamPlayers);
-            }
-            catch (EntityNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-        }
-
-        [MapToApiVersion("1.0")]
         [HttpPost("{id}/players")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult> RegisterTeamPlayer(Guid id, [FromBody] UserDetailsDto playerDetailsDto)
+        public async Task<ActionResult> RegisterTeamPlayer(Guid id, [FromBody] UserDto userDto)
         {
             try
             {
-                await _teamsService.RegisterTeamPlayerAsync(id, playerDetailsDto);
+                await _teamsService.RegisterTeamPlayerAsync(id, userDto);
                 return Ok();
             }
             catch (EntityNotFoundException ex)
@@ -127,15 +114,15 @@ namespace VolleyballAPI.Controllers
             }
         }
 
-
         [MapToApiVersion("1.0")]
-        [HttpGet("{id}/trainings")]
-        public async Task<ActionResult<IEnumerable<TrainingDetailsDto>>> GetTrainingsAsync(Guid id)
+        [HttpDelete("{id}/players")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeleteTeamPlayer(Guid id, [FromBody] UserDto userDto)
         {
             try
             {
-                var trainings = (await _teamsService.GetTrainingsAsync(id)).ToList();
-                return Ok(trainings);
+                await _teamsService.DeleteTeamPlayerAsync(id, userDto);
+                return Ok();
             }
             catch (EntityNotFoundException ex)
             {
@@ -143,5 +130,36 @@ namespace VolleyballAPI.Controllers
             }
         }
 
+        [MapToApiVersion("1.0")]
+        [HttpPost("{id}/coaches")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult> RegisterTeamCoach(Guid id, [FromBody] UserDto userDto)
+        {
+            try
+            {
+                await _teamsService.RegisterTeamCoachAsync(id, userDto);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [MapToApiVersion("1.0")]
+        [HttpDelete("{id}/coaches")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeleteTeamCoach(Guid id, [FromBody] UserDto userDto)
+        {
+            try
+            {
+                await _teamsService.DeleteTeamCoachAsync(id, userDto);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

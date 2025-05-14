@@ -4,11 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/services/team.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { UserCardComponent } from 'src/app/components/user-card/user-card.component';
-import { TrainingCardComponent } from 'src/app/components/training-card/training-card.component';
-import { EventCardComponent } from 'src/app/components/event-card/event-card.component';
+import { UserCardComponent } from 'src/app/components/cards/user-card/user-card.component';
+import { TrainingCardComponent } from 'src/app/components/cards/training-card/training-card.component';
+import { EventCardComponent } from 'src/app/components/cards/event-card/event-card.component';
 import { Match } from 'src/app/models/match';
-import { MatchCardComponent } from 'src/app/components/match-card/match-card.component';
+import { MatchCardComponent } from 'src/app/components/cards/match-card/match-card.component';
 
 @Component({
   selector: 'app-team-page',

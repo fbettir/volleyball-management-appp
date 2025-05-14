@@ -1,4 +1,4 @@
-﻿using VolleyballAPI.Dtos;
+﻿using VolleyballAPI.Dtos.LocationDtos;
 
 namespace VolleyballAPI.Interfaces
 {

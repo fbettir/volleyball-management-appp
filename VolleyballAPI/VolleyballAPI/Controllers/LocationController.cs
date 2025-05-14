@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VolleyballAPI.Dtos;
+using VolleyballAPI.Dtos.LocationDtos;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
 

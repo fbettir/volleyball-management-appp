@@ -1,19 +1,24 @@
 <!-- HERO HEADER -->
-<div class="relative w-full h-64 sm:h-72 md:h-80 lg:h-[28rem] pt-0 overflow-hidden">
+<div
+  class="relative w-full h-64 sm:h-72 md:h-80 lg:h-[28rem] pt-0 overflow-hidden"
+>
   <img
     [src]="event?.pictureLink || 'assets/szandi.jpg'"
     alt="Event background"
     class="w-full h-full object-cover object-center"
   />
 
-  <div class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end">
-    <div class="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-48 text-white">
-      
+  <div
+    class="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-end"
+  >
+    <div
+      class="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-48 text-white"
+    >
       <!-- Title -->
       <h1
         class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-shadow-lg mb-3 sm:mb-6"
       >
-        {{ event?.name || 'EventName' }}
+        {{ event?.name || "EventName" }}
       </h1>
 
       <!-- Tab Chips -->
@@ -21,7 +26,7 @@
         class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center gap-4 sm:gap-4 pb-4"
       >
         <app-tab-chip
-          label="About" 
+          label="About"
           icon="sports_volleyball"
           [active]="selectedTab === 'info'"
           (select)="selectedTab = 'info'"
@@ -52,7 +57,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- INFO SECTION -->
 <div
@@ -142,7 +146,6 @@
   </div>
 </div>
 
-
 <!-- TEAMS SECTION -->
 <div
   *ngIf="!selectedTab || selectedTab === 'teams'"
@@ -153,6 +156,7 @@
       <h2 class="text-3xl font-bold text-[var(--primary)]">Teams</h2>
       <button
         class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+        (click)="onApplyClick()"
       >
         Apply
       </button>
@@ -174,49 +178,49 @@
   *ngIf="!selectedTab || selectedTab === 'schedule'"
   class="max-w-screen-xl mx-auto py-6 sm:px-6 lg:px-40"
 >
+  <div class="max-w-screen-xl mx-auto py-10">
+    <h2 class="text-3xl font-bold text-[var(--primary)] mb-6">Schedule</h2>
 
-<div class="max-w-screen-xl mx-auto py-10">
-  <h2 class="text-3xl font-bold text-[var(--primary)] mb-6">Schedule</h2>
-
-  <!-- Court headers -->
-  <div
-    class="grid gap-4 px-2 justify-items-center"
-    [ngClass]="{
-      'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2': courts === 2,
-      'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': courts === 3
-    }"
-  >
-    <h3
-      *ngFor="let c of [].constructor(courts); let i = index"
-      class="text-base sm:text-lg font-semibold text-[var(--primary)] text-center pb-6"
-    >
-      Court {{ i + 1 }}
-    </h3>
-  </div>
-
-  <!-- Time slots -->
-  <div class="space-y-8">
+    <!-- Court headers -->
     <div
-      *ngFor="let slot of schedule; let i = index"
-      [ngClass]="i % 2 === 0 ? 'bg-gray-50' : 'bg-white'"
-      class="rounded-xl p-4"
+      class="grid gap-4 px-2 justify-items-center"
+      [ngClass]="{
+        'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2': courts === 2,
+        'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': courts === 3
+      }"
     >
-      <h3 class="text-[var(--primary)] text-lg font-semibold mb-2 px-2">
-        {{ slot.time }}
-      </h3>
-
-      <div
-        class="grid gap-4 justify-items-stretch px-2"
-        [ngClass]="{
-          'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2': courts === 2,
-          'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': courts === 3
-        }"
+      <h3
+        *ngFor="let c of [].constructor(courts); let i = index"
+        class="text-base sm:text-lg font-semibold text-[var(--primary)] text-center pb-6"
       >
-        <ng-container *ngFor="let match of slot.matches">
-          <div class="flex flex-col items-center">
-            <app-match-card [match]="match"></app-match-card>
-          </div>
-        </ng-container>
+        Court {{ i + 1 }}
+      </h3>
+    </div>
+
+    <!-- Time slots -->
+    <div class="space-y-8">
+      <div
+        *ngFor="let slot of schedule; let i = index"
+        [ngClass]="i % 2 === 0 ? 'bg-gray-50' : 'bg-white'"
+        class="rounded-xl p-4"
+      >
+        <h3 class="text-[var(--primary)] text-lg font-semibold mb-2 px-2">
+          {{ slot.time }}
+        </h3>
+
+        <div
+          class="grid gap-4 justify-items-stretch px-2"
+          [ngClass]="{
+            'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2': courts === 2,
+            'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': courts === 3
+          }"
+        >
+          <ng-container *ngFor="let match of slot.matches">
+            <div class="flex flex-col items-center">
+              <app-match-card [match]="match"></app-match-card>
+            </div>
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>

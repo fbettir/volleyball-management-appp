@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using VolleyballAPI.Dtos;
+using VolleyballAPI.Dtos.LocationDtos;
 using VolleyballAPI.Entities;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;

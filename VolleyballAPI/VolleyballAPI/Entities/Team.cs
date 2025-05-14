@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using VolleyballAPI.JoinTableTypes;
 
 namespace VolleyballAPI.Entities
 {
-  public class Team
+    public class Team
   {
     [Required]
     [Key]

@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { EventCardComponent } from 'src/app/components/event-card/event-card.component';
-import { TeamCardComponent } from 'src/app/components/team-card/team-card.component';
+import { EventCardComponent } from 'src/app/components/cards/event-card/event-card.component';
+import { TeamCardComponent } from 'src/app/components/cards/team-card/team-card.component';
 import { Team } from 'src/app/models/team';
 import { Tournament } from 'src/app/models/tournament';
 import { TeamService } from 'src/app/services/team.service';
 import { TournamentService } from 'src/app/services/tournament.service';
-import { HomeSearchBarComponent } from 'src/app/components/home-search-bar/home-search-bar.component';
+import { HomeSearchBarComponent } from 'src/app/components/search/home-search-bar/home-search-bar.component';
 import { TrainingService } from 'src/app/services/training.service';
 import { Training } from 'src/app/models/training';
-import { TrainingCardComponent } from 'src/app/components/training-card/training-card.component';
-import { TabChipComponent } from 'src/app/components/tab-chip/tab-chip.component';
+import { TrainingCardComponent } from 'src/app/components/cards/training-card/training-card.component';
+import { TabChipComponent } from 'src/app/components/shared/tab-chip/tab-chip.component';
 
 @Component({
   selector: 'app-home-page',

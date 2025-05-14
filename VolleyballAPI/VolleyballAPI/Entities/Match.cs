@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using VolleyballAPI.Enums;
+using VolleyballAPI.JoinTableTypes;
 
 namespace VolleyballAPI.Entities
 {
@@ -13,6 +15,8 @@ namespace VolleyballAPI.Entities
         public DateTime Date { get; set; }
         public DateTime StartTime { get; set; }
         public MatchState MatchState{ get; set; }
+        public TournamentType? TournamentType { get; set; }
+
         public List<int> Points { get; set; } 
         public virtual Team Referee { get; set; }
         public virtual Location Location { get; set; }
