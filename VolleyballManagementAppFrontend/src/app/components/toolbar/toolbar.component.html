@@ -1,17 +1,17 @@
 <mat-toolbar
-  class="bg-white shadow-sm border-b border-[var(--primary)] px-6 py-4 flex justify-between items-center"
+  class="bg-white shadow-sm border-b border-[var(--primary)]  py-4 flex justify-between items-center"
 >
   <!-- Logo -->
   <span class="text-xl font-bold text-[var(--primary)] whitespace-nowrap">
     MUER
   </span>
 
-  <nav class="hidden md:flex space-x-6 text-[var(--text-dark)] relative">
+  <nav class="hidden md:flex text-[var(--text-dark)] relative h-full">
     <a
       routerLink="/home"
       routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
       [routerLinkActiveOptions]="{ exact: true }"
-      class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+      class="flex items-center relative px-4 hover:text-[var(--primary)] transition"
     >
       Home
     </a>
@@ -19,7 +19,7 @@
     <a
       routerLink="/teams"
       routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-      class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+      class="flex items-center relative px-4 hover:text-[var(--primary)] transition"
     >
       Teams
     </a>
@@ -27,7 +27,7 @@
     <a
       routerLink="/events"
       routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-      class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+      class="flex items-center relative px-4 hover:text-[var(--primary)] transition"
     >
       Events
     </a>
@@ -35,7 +35,7 @@
     <a
       routerLink="/trainings"
       routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-      class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+      class="flex items-center relative px-4 hover:text-[var(--primary)] transition"
     >
       Trainings
     </a>
@@ -44,7 +44,7 @@
     *ngIf="isAdmin"
     routerLink="/admin"
     routerLinkActive="font-bold after:content-[''] after:absolute after:-bottom-[1px] after:left-0 after:h-[4px] after:w-full after:bg-[var(--primary)]"
-    class="relative py-3 px-2 hover:text-[var(--primary)] transition"
+      class="flex items-center relative px-4 hover:text-[var(--primary)] transition"
   >
     Admin
   </a>

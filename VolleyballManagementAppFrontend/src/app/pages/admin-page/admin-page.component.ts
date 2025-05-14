@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
+import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { EventSearchBarComponent } from 'src/app/components/event-search-bar/event-search-bar.component';
 import { TabChipComponent } from 'src/app/components/tab-chip/tab-chip.component';
 import { TournamentFormComponent } from 'src/app/components/tournament-form/tournament-form.component';
@@ -26,46 +28,38 @@ import { TournamentService } from 'src/app/services/tournament.service';
     MatTableModule,
     TabChipComponent,
     EventSearchBarComponent,
+    RouterModule,
   ],
 })
 export class AdminPageComponent {
   tournaments: Tournament[] = [];
   filteredTournaments: Tournament[] = [];
-
   columns = ['name', 'date', 'actions'];
-
+  searchText = '';
+  selectedFilter = 'name';
   selectedTab: string = 'tournaments';
   showTournamentForm = false;
+  tournamentForEdit: Tournament;
 
   constructor(
     private tournamentService: TournamentService,
     private dialog: MatDialog,
   ) {}
 
-  searchText = '';
-  selectedFilter = 'name';
 
 
-  askIfLiked(): void {
-  this.dialog.open(TournamentFormComponent, {
-    width: '300px',
-    panelClass: 'like-dialog',
-  });
+  onCreateTournament(): void {
+    const dialogRef = this.dialog.open(TournamentFormComponent, {
+      width: '800px',
+      maxWidth: '95vw',
+      panelClass: 'tournament-dialog',
+    });
 
-}
-
-onCreateTournament(): void {
-  console.log('Opening dialog...');
-  const dialogRef = this.dialog.open(TournamentFormComponent, {
-    width: '800px',
-    maxWidth: '95vw',
-    panelClass: 'tournament-dialog'
-  });
-
-  dialogRef.afterClosed().subscribe(() => {
-    console.log('Dialog closed');
-  });
-}
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('Dialog closed');
+      this.loadTournaments();
+    });
+  }
 
   onSearchChanged(event: { text: string; filter: string }) {
     this.searchText = event.text;
@@ -97,15 +91,45 @@ onCreateTournament(): void {
     });
   }
 
-  viewTournament(tournament: Tournament) {
-    // Navigate or open dialog
+  editTournament(tournament: any): void {
+    this.tournamentService.getTournamentById(tournament.id).subscribe((tournaments) => {
+      this.tournamentForEdit = tournaments;
+      this.filterTournaments();
+    });
+    const dialogRef = this.dialog.open(TournamentFormComponent, {
+      width: '800px',
+      maxWidth: '95vw',
+      panelClass: 'tournament-dialog',
+      data: this.tournamentForEdit,
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('Dialog closed');
+      this.loadTournaments();
+    });
   }
 
-  editTournament(tournament: Tournament) {
-    // Navigate to form
-  }
+  onDeleteTournament(tournament: Tournament): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      maxWidth: '95vw',
+      panelClass: 'tournament-dialog',
+      data: {
+        title: 'Delete Tournament',
+        message: `Are you sure you want to delete "${tournament.name}"? This action cannot be undone.`,
+      },
+    });
 
-  deleteTournament(tournament: Tournament) {
-    // Confirm & call service
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.tournamentService.deleteTournamentById(tournament.id).subscribe({
+          next: () => {
+            console.log('Tournament deleted'), 
+            this.loadTournaments();
+          },
+          error: (err) => console.error('Error deleting tournament', err),
+        });
+      }
+    });
   }
 }

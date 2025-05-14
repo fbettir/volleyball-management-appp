@@ -8,7 +8,7 @@ namespace VolleyballAPI.Dtos
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public DateTime EntryDeadline { get; set; }
-        public LocationDto Location { get; set; }
+        public Guid LocationId { get; set; }
         public string Organizer { get; set; }
         public string RegistrationPolicy { get; set; }
         public string TeamPolicy { get; set; }

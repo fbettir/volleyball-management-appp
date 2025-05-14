@@ -37,15 +37,18 @@ namespace VolleyballAPI.Services
             return tournaments;
         }
 
-        public async Task<TournamentDetailsDto> InsertTournamentAsync(TournamentDetailsDto newTournament)
+        public async Task<RegisterTournamentDto> InsertTournamentAsync(RegisterTournamentDto newTournament)
         {
             var efTournament = _mapper.Map<Tournament>(newTournament);
             _context.Tournaments.Add(efTournament);
             await _context.SaveChangesAsync();
-            return await GetTournamentAsync(efTournament.Id);
+
+            var fullDetails = await GetTournamentAsync(efTournament.Id);
+            return _mapper.Map<RegisterTournamentDto>(fullDetails);
         }
 
-        public async Task UpdateTournamentAsync(TournamentDetailsDto updatedTournament, Guid tournamentId)
+
+        public async Task UpdateTournamentAsync(RegisterTournamentDto updatedTournament, Guid tournamentId)
         {
             var tournament = _context.Tournaments.FirstOrDefault(t => t.Id == tournamentId);
             if(tournament == null)
@@ -54,6 +57,8 @@ namespace VolleyballAPI.Services
             }
             var efTournament = _mapper.Map(updatedTournament, tournament);
             _context.Update(efTournament);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteTournamentAsync(Guid tournamentId)
@@ -103,6 +108,8 @@ namespace VolleyballAPI.Services
                 return teams;
             }
         }
+
+
     }
 }
 

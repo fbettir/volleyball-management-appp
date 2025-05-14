@@ -15,6 +15,9 @@ namespace VolleyballAPI
 
             CreateMap<TournamentHeaderDto, Tournament>().ReverseMap();
 
+            CreateMap<RegisterTournamentDto, Tournament>().ReverseMap();
+            CreateMap<RegisterTournamentDto, TournamentDetailsDto>().ReverseMap();
+
             CreateMap<Training, TrainingHeaderDto>().ReverseMap();
 
             CreateMap<Match, MatchHeaderDto>()

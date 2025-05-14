@@ -21,6 +21,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { LocationService } from 'src/app/services/location.service';
 import { Location } from 'src/app/models/location';
+import { v4 as uuidv4 } from 'uuid';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-tournament-form',
@@ -53,7 +56,8 @@ export class TournamentFormComponent implements OnInit {
     private fb: FormBuilder,
     private tournamentService: TournamentService,
     private locationService: LocationService,
-    private router: Router,
+    private dialogRef: MatDialogRef<TournamentFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +65,7 @@ export class TournamentFormComponent implements OnInit {
       next: (locations) => (this.locations = locations),
       error: (err) => console.error('Failed to load locations', err),
     });
+
     this.form = this.fb.group({
       name: ['', Validators.required],
       date: [null, Validators.required],
@@ -71,12 +76,20 @@ export class TournamentFormComponent implements OnInit {
       teamPolicy: [''],
       description: [''],
       pictureLink: [''],
-      priceType: [null, Validators.required],
+      priceType: [[], Validators.required],
       tournamentType: [null, Validators.required],
       categories: [[], Validators.required],
       maxTeamsPerLevel: [''],
       courts: [''],
     });
+    if (this.data) {
+      this.form.patchValue({
+        ...this.data,
+        categories: this.data.categories?.split(',') || [],
+        priceType: this.data.priceType?.split(',') || [],
+        maxTeamsPerLevel: this.data.maxTeamsPerLevel?.join(', ') || '',
+      });
+    }
   }
 
   onSubmit() {
@@ -86,20 +99,24 @@ export class TournamentFormComponent implements OnInit {
 
     const payload = {
       ...rawValue,
-      categories: Array.isArray(rawValue.categories)
-        ? rawValue.categories.join(',')
-        : rawValue.categories,
+      id: this.data?.id ?? uuidv4(),
+      categories: rawValue.categories.join(','),
+      priceType: rawValue.priceType.join(','),
+      maxTeamsPerLevel: rawValue.maxTeamsPerLevel
+        .split(',')
+        .map((val: string) => parseInt(val.trim(), 10)),
     };
 
-    console.log('Submitting tournament:', payload);
-
-    this.tournamentService.insertTournament(payload).subscribe({
-      next: () => {
-        this.router.navigate(['/admin']);
-      },
-      error: (err) => {
-        console.error('Error creating tournament:', err);
-      },
-    });
+    if (this.data) {
+      this.tournamentService.modifyTournamentById(payload).subscribe({
+        next: () => this.dialogRef.close(),
+        error: (err) => console.error('Error updating tournament:', err),
+      });
+    } else {
+      this.tournamentService.insertTournament(payload).subscribe({
+        next: () => this.dialogRef.close(),
+        error: (err) => console.error('Error creating tournament:', err),
+      });
+    }
   }
 }

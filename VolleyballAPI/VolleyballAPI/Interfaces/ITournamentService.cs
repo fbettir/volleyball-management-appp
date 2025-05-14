@@ -6,8 +6,8 @@ namespace VolleyballAPI.Interfaces
     {
         public Task<TournamentDetailsDto> GetTournamentAsync(Guid tournamentId);
         public Task<IEnumerable<TournamentHeaderDto>> GetTournamentsAsync();
-        public Task<TournamentDetailsDto> InsertTournamentAsync(TournamentDetailsDto newTournament);
-        public Task UpdateTournamentAsync(TournamentDetailsDto updatedTournament, Guid tournamentId);
+        public Task<RegisterTournamentDto> InsertTournamentAsync(RegisterTournamentDto newTournament);
+        public Task UpdateTournamentAsync(RegisterTournamentDto updatedTournament, Guid tournamentId);
         public Task DeleteTournamentAsync(Guid tournamentId);
         public Task RegisterTeamAsync(Guid id, Guid teamId);
         public Task<IEnumerable<TeamDetailsDto>> GetTeamsAsync(Guid tournamentId);

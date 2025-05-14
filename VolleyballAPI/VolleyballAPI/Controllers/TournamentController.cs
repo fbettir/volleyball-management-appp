@@ -52,7 +52,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<TournamentDetailsDto>> CreateTournament([FromBody] TournamentDetailsDto tournament)
+        public async Task<ActionResult<RegisterTournamentDto>> CreateTournament([FromBody] RegisterTournamentDto tournament)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace VolleyballAPI.Controllers
         [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> UpdateTournament(Guid id, [FromBody] TournamentDetailsDto value)
+        public async Task<ActionResult> UpdateTournament(Guid id, [FromBody] RegisterTournamentDto value)
         {
             try
             {

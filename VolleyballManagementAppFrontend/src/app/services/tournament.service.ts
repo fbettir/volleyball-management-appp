@@ -32,11 +32,14 @@ export class TournamentService {
     return this.httpClient.post<Tournament>(this.baseURL, tournament);
   }
 
-  deleteTournamentById(tournamentId: string): void {
-    this.httpClient.delete(`${this.baseURL}/${tournamentId}`);
+  deleteTournamentById(tournamentId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.baseURL}/${tournamentId}`);
   }
-
-  modifyTournamentById(tournament: Tournament): void {
-    this.httpClient.put(`${this.baseURL}/${tournament.id}`, tournament);
+  
+  modifyTournamentById(tournament: Tournament): Observable<void> {
+    return this.httpClient.put<void>(
+      `${this.baseURL}/${tournament.id}`,
+      tournament,
+    );
   }
 }

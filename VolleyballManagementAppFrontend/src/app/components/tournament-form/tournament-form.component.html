@@ -1,141 +1,133 @@
 <div class="p-6 sm:p-8 bg-white rounded-xl max-h-[90vh] overflow-y-auto">
   <div class="flex justify-between items-center mb-6">
-    <h2 class="text-2xl font-bold text-[var(--primary)]">New Tournament</h2>
+    <h2 class="text-2xl font-bold text-[var(--primary)]">
+      {{ data ? "Edit Tournament" : "New Tournament" }}
+    </h2>
     <button mat-icon-button mat-dialog-close>
       <mat-icon>close</mat-icon>
     </button>
   </div>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6">
-  <!-- Name -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Tournament Name</mat-label>
-    <input matInput formControlName="name" required />
-  </mat-form-field>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid gap-y-4">
+    <!-- Name -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Tournament Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
 
-  <!-- Date -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Date</mat-label>
-    <input
-      matInput
-      [matDatepicker]="datePicker"
-      formControlName="date"
-      required
-    />
-    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-    <mat-datepicker #datePicker></mat-datepicker>
-  </mat-form-field>
+    <!-- Date -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datePicker"
+        formControlName="date"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="datePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
 
-  <!-- Entry Deadline -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Entry Deadline</mat-label>
-    <input
-      matInput
-      [matDatepicker]="deadlinePicker"
-      formControlName="entryDeadline"
-      required
-    />
-    <mat-datepicker-toggle
-      matSuffix
-      [for]="deadlinePicker"
-    ></mat-datepicker-toggle>
-    <mat-datepicker #deadlinePicker></mat-datepicker>
-  </mat-form-field>
+    <!-- Entry Deadline -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Entry Deadline</mat-label>
+      <input
+        matInput
+        [matDatepicker]="deadlinePicker"
+        formControlName="entryDeadline"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="deadlinePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #deadlinePicker></mat-datepicker>
+    </mat-form-field>
 
-  <!-- Location (Dropdown or autocomplete depending on your setup) -->
-<mat-form-field appearance="fill" class="w-full">
-  <mat-label>Location</mat-label>
-  <mat-select formControlName="locationId">
-    <mat-option *ngFor="let loc of locations" [value]="loc.id">
-      {{ loc.name }}
-    </mat-option>
-  </mat-select>
-  <mat-error *ngIf="form.get('locationId')?.hasError('required')">
-    Location is required
-  </mat-error>
-</mat-form-field>
+    <!-- Location -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Location</mat-label>
+      <mat-select formControlName="locationId" required>
+        <mat-option *ngFor="let loc of locations" [value]="loc.id">{{
+          loc.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Organizer -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Organizer</mat-label>
-    <input matInput formControlName="organizer" />
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Organizer</mat-label>
+      <input matInput formControlName="organizer" />
+    </mat-form-field>
 
-  <!-- Registration Policy -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Registration Policy</mat-label>
-    <textarea matInput formControlName="registrationPolicy"></textarea>
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Registration Policy</mat-label>
+      <textarea matInput formControlName="registrationPolicy"></textarea>
+    </mat-form-field>
 
-  <!-- Team Policy -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Team Policy</mat-label>
-    <textarea matInput formControlName="teamPolicy"></textarea>
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Team Policy</mat-label>
+      <textarea matInput formControlName="teamPolicy"></textarea>
+    </mat-form-field>
 
-  <!-- Courts -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Number of Courts</mat-label>
-    <input matInput type="number" formControlName="courts" required />
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Number of Courts</mat-label>
+      <input matInput type="number" formControlName="courts" />
+    </mat-form-field>
 
-  <!-- Max Teams Per Level -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Max Teams Per Level</mat-label>
-    <input
-      matInput
-      type="text"
-      formControlName="maxTeamsPerLevel"
-      placeholder="e.g. 4, 6, 8"
-    />
-    <mat-hint>Comma-separated list (will be split into array)</mat-hint>
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Max Teams Per Level</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="maxTeamsPerLevel"
+        placeholder="e.g. 4, 6, 8"
+      />
+      <mat-hint>Comma-separated values</mat-hint>
+    </mat-form-field>
 
-  <!-- Description -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Description</mat-label>
-    <textarea matInput formControlName="description"></textarea>
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
 
-  <!-- Picture Link -->
-  <mat-form-field appearance="outline" class="w-full">
-    <mat-label>Picture Link</mat-label>
-    <input matInput type="url" formControlName="pictureLink" />
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Picture Link</mat-label>
+      <input matInput type="url" formControlName="pictureLink" />
+    </mat-form-field>
 
-  <!-- Categories -->
-<mat-form-field appearance="fill">
-  <mat-label>Categories</mat-label>
-  <mat-select formControlName="categories">
-    <mat-option *ngFor="let level of levelOptions" [value]="level">
-      {{ level }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Categories</mat-label>
+      <mat-select formControlName="categories" multiple>
+        <mat-option *ngFor="let level of levelOptions" [value]="level">
+          {{ level }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Price Type -->
-<mat-form-field appearance="fill">
-  <mat-label>Price Type</mat-label>
-  <mat-select formControlName="priceType">
-    <mat-option *ngFor="let pt of priceTypeOptions" [value]="pt">
-      {{ pt }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Price Type</mat-label>
+      <mat-select formControlName="priceType" multiple>
+        <mat-option *ngFor="let pt of priceTypeOptions" [value]="pt">
+          {{ pt }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Tournament Type -->
-<mat-form-field appearance="fill">
-  <mat-label>Tournament Type</mat-label>
-  <mat-select formControlName="tournamentType">
-    <mat-option *ngFor="let type of tournamentTypeOptions" [value]="type">
-      {{ type }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+    <mat-form-field appearance="fill" class="w-full text-[var(--primary)]">
+      <mat-label>Tournament Type</mat-label>
+      <mat-select formControlName="tournamentType">
+        <mat-option *ngFor="let type of tournamentTypeOptions" [value]="type">{{
+          type
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <div class="flex justify-end">
-      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-        Create
+    <div class="flex justify-end pt-2">
+      <button mat-raised-button type="submit" [disabled]="form.invalid">
+        {{ data ? "Edit Tournament" : "Create Tournament" }}
       </button>
     </div>
   </form>
