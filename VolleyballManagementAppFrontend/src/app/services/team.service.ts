@@ -25,21 +25,19 @@ export class TeamService {
     return this.httpClient.get<PlayerDetails[]>(`${this.baseURL}/${teamId}/players`);
   }
 
-  insertTeam(team: Team): void {
-    this.httpClient.post(this.baseURL, team).subscribe(t => {
-      console.log(t);
-    });
+  insertTeam(team: Team): Observable<void> {
+    return this.httpClient.post<void>(this.baseURL, team);
   }
 
   getTeamTrainingsByTeamId(trainingId: string) {
     return this.httpClient.get<Training[]>(`${this.baseURL}/${trainingId}/trainings`);
   }
 
-  deleteTeamById(teamId: string): void {
-    this.httpClient.delete(`${this.baseURL}/${teamId}`);
+  deleteTeamById(teamId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.baseURL}/${teamId}`);
   }
 
-  modifyTeamById(team: Team): void{
-    this.httpClient.put(`${this.baseURL}/${team.id}`, team);
+  modifyTeamById(team: Team): Observable<void> {
+    return this.httpClient.put<void>(`${this.baseURL}/${team.id}`, team);
   }
 }

@@ -33,6 +33,13 @@
         ></app-tab-chip>
 
         <app-tab-chip
+          label="Teams"
+          icon="groups_2"
+          [active]="selectedTab === 'teams'"
+          (select)="selectedTab = 'teams'"
+        ></app-tab-chip>
+
+        <app-tab-chip
           label="Users"
           icon="groups"
           [active]="selectedTab === 'users'"
@@ -67,7 +74,7 @@
     </div>
 
     <app-event-search-bar
-      (searchChanged)="onSearchChanged($event)"
+      (searchChanged)="onTournamentSearchChanged($event)"
       class="w-full sm:w-1/2"
     ></app-event-search-bar>
 
@@ -126,6 +133,63 @@
     </table>
   </div>
 </div>
+
+<!-- Teams Management Tab -->
+<div
+  *ngIf="selectedTab === 'teams'"
+  class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8"
+>
+  <div class="px-4 sm:px-6 lg:px-40 mb-12">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Teams</h2>
+      <button
+        class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+        (click)="onCreateTeam()"
+      >
+        + New Team
+      </button>
+    </div>
+
+    <app-event-search-bar
+      (searchChanged)="onTeamSearchChanged($event)"
+      class="w-full sm:w-1/2"
+    ></app-event-search-bar>
+
+    <table mat-table [dataSource]="filteredTeams" class="w-full rounded-xl mt-4">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let team">{{ team.name }}</td>
+      </ng-container>
+
+      <!-- City Column -->
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef>City</th>
+        <td mat-cell *matCellDef="let team">{{ team.city }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let team">
+          <button mat-icon-button color="primary" [routerLink]="['/team', team.id]">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="editTeam(team)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="onDeleteTeam(team)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="teamColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: teamColumns"></tr>
+    </table>
+  </div>
+</div>
+
 
 <div
   *ngIf="selectedTab === 'users'"

@@ -14,26 +14,22 @@ namespace VolleyballAPI
         {
             CreateMap<Location, LocationDto>().ReverseMap();
             
-            CreateMap<User, UserHeaderDto>().ReverseMap();
-
-            CreateMap<Team, TeamHeaderDto>().ReverseMap();
-
             CreateMap<TournamentHeaderDto, Tournament>().ReverseMap();
-
             CreateMap<EditTournamentDto, Tournament>().ReverseMap();
             CreateMap<EditTournamentDto, TournamentDetailsDto>().ReverseMap();
 
+            CreateMap<Team, TeamHeaderDto>().ReverseMap();
             CreateMap<EditTeamDto, Team>().ReverseMap();
-            CreateMap<TeamDto, Team>().ReverseMap();
             CreateMap<EditTeamDto, TeamDetailsDto>().ReverseMap();
 
+            CreateMap<Training, TrainingHeaderDto>().ReverseMap();
             CreateMap<EditTrainingDto, Training>().ReverseMap();
             CreateMap<EditTrainingDto, TrainingDetailsDto>().ReverseMap();
 
+            CreateMap<User, UserHeaderDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
             CreateMap<EditUserDto, User>().ReverseMap();
             CreateMap<EditUserDto, UserDetailsDto>().ReverseMap();
-
-            CreateMap<Training, TrainingHeaderDto>().ReverseMap();
 
             CreateMap<Match, MatchHeaderDto>()
                 .ForMember(dto => dto.Teams, opt => opt.MapFrom(m => m.Teams.Select(mt => mt.Team)))

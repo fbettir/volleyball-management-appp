@@ -9,7 +9,7 @@ namespace VolleyballAPI.Dtos.TeamDtos
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string PictureLink { get; set; } = null!;
-        public LocationDto Location { get; set; }
-        public UserDto Owner {  get; set; } 
+        public Guid LocationId { get; set; }
+        public Guid OwnerId {  get; set; } 
     }
 }

@@ -13,6 +13,9 @@ import { TabChipComponent } from 'src/app/components/shared/tab-chip/tab-chip.co
 import { TournamentFormComponent } from 'src/app/components/forms/tournament-form/tournament-form.component';
 import { Tournament } from 'src/app/models/tournament';
 import { TournamentService } from 'src/app/services/tournament.service';
+import { Team } from 'src/app/models/team';
+import { TeamService } from 'src/app/services/team.service';
+import { TeamFormComponent } from 'src/app/components/forms/team-form/team-form.component';
 
 @Component({
   standalone: true,
@@ -29,42 +32,68 @@ import { TournamentService } from 'src/app/services/tournament.service';
     TabChipComponent,
     EventSearchBarComponent,
     RouterModule,
+    TournamentFormComponent,
+    TeamFormComponent,
   ],
 })
 export class AdminPageComponent {
-  tournaments: Tournament[] = [];
-  filteredTournaments: Tournament[] = [];
   columns = ['name', 'date', 'actions'];
   searchText = '';
   selectedFilter = 'name';
   selectedTab: string = 'tournaments';
   showTournamentForm = false;
+
+  tournaments: Tournament[] = [];
+  filteredTournaments: Tournament[] = [];
   tournamentForEdit: Tournament;
+
+  teams: Team[] = [];
+  filteredTeams: Team[] = [];
+  teamColumns = ['name', 'city', 'actions'];
+  teamSearchText = '';
+  teamFilter = 'name';
 
   constructor(
     private tournamentService: TournamentService,
+    private teamService: TeamService,
     private dialog: MatDialog,
   ) {}
 
+  ngOnInit(): void {
+    this.loadTournaments();
+    this.loadTeams();
+  }
 
-
-  onCreateTournament(): void {
-    const dialogRef = this.dialog.open(TournamentFormComponent, {
-      width: '800px',
-      maxWidth: '95vw',
-      panelClass: 'tournament-dialog',
-    });
-
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('Dialog closed');
-      this.loadTournaments();
+  loadTournaments() {
+    this.tournamentService.getAllTournaments().subscribe((tournaments) => {
+      this.tournaments = tournaments;
+      this.filterTournaments();
     });
   }
 
-  onSearchChanged(event: { text: string; filter: string }) {
+  loadTeams() {
+    this.teamService.getAllTeams().subscribe((teams) => {
+      this.teams = teams;
+      this.filterTeams();
+    });
+  }
+
+  onTeamSearchChanged(event: { text: string; filter: string }) {
+    this.teamSearchText = event.text.toLowerCase();
+    this.teamFilter = event.filter;
+    this.filterTeams();
+  }
+
+  onTournamentSearchChanged(event: { text: string; filter: string }) {
     this.searchText = event.text;
     this.selectedFilter = event.filter;
     this.filterTournaments();
+  }
+
+  filterTeams() {
+    this.filteredTeams = this.teams.filter((team) => {
+      return team.name.toLowerCase().includes(this.teamSearchText);
+    });
   }
 
   filterTournaments() {
@@ -80,22 +109,47 @@ export class AdminPageComponent {
     });
   }
 
-  ngOnInit(): void {
-    this.loadTournaments();
+  onCreateTeam(): void {
+    const dialogRef = this.dialog.open(TeamFormComponent, {
+      width: '800px',
+      maxWidth: '95vw',
+      panelClass: 'team-dialog',
+    });
+
+    dialogRef.afterClosed().subscribe(() => this.loadTeams());
   }
 
-  loadTournaments() {
-    this.tournamentService.getAllTournaments().subscribe((tournaments) => {
-      this.tournaments = tournaments;
-      this.filterTournaments();
+  onCreateTournament(): void {
+    const dialogRef = this.dialog.open(TournamentFormComponent, {
+      width: '800px',
+      maxWidth: '95vw',
+      panelClass: 'tournament-dialog',
     });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('Dialog closed');
+      this.loadTournaments();
+    });
+  }
+
+  editTeam(team: Team): void {
+    const dialogRef = this.dialog.open(TeamFormComponent, {
+      width: '800px',
+      maxWidth: '95vw',
+      panelClass: 'team-dialog',
+      data: team,
+    });
+
+    dialogRef.afterClosed().subscribe(() => this.loadTeams());
   }
 
   editTournament(tournament: any): void {
-    this.tournamentService.getTournamentById(tournament.id).subscribe((tournaments) => {
-      this.tournamentForEdit = tournaments;
-      this.filterTournaments();
-    });
+    this.tournamentService
+      .getTournamentById(tournament.id)
+      .subscribe((tournaments) => {
+        this.tournamentForEdit = tournaments;
+        this.filterTournaments();
+      });
     const dialogRef = this.dialog.open(TournamentFormComponent, {
       width: '800px',
       maxWidth: '95vw',
@@ -124,10 +178,30 @@ export class AdminPageComponent {
       if (result) {
         this.tournamentService.deleteTournamentById(tournament.id).subscribe({
           next: () => {
-            console.log('Tournament deleted'), 
-            this.loadTournaments();
+            console.log('Tournament deleted'), this.loadTournaments();
           },
           error: (err) => console.error('Error deleting tournament', err),
+        });
+      }
+    });
+  }
+
+  onDeleteTeam(team: Team): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      maxWidth: '95vw',
+      panelClass: 'team-dialog',
+      data: {
+        title: 'Delete Team',
+        message: `Are you sure you want to delete "${team.name}"? This action cannot be undone.`,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.teamService.deleteTeamById(team.id).subscribe({
+          next: () => this.loadTeams(),
+          error: (err) => console.error('Error deleting team', err),
         });
       }
     });

@@ -1,12 +1,113 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { v4 as uuidv4 } from 'uuid';
 
+import { LocationService } from 'src/app/services/location.service';
+import { TeamService } from 'src/app/services/team.service';
+import { Location } from 'src/app/models/location';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
+import { Team } from 'src/app/models/team';
 @Component({
   selector: 'app-team-form',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatIcon,
+  ],
   templateUrl: './team-form.component.html',
-  styleUrl: './team-form.component.scss'
+  styleUrls: ['./team-form.component.scss'],
 })
-export class TeamFormComponent {
+export class TeamFormComponent implements OnInit {
+  form!: FormGroup;
+  locations: Location[] = [];
+  users: User[] = [];
 
+  constructor(
+    private fb: FormBuilder,
+    private locationService: LocationService,
+    private teamService: TeamService,
+    private dialogRef: MatDialogRef<TeamFormComponent>,
+    private userService: UserService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {}
+
+  ngOnInit(): void {
+    this.locationService.getAllLocations().subscribe({
+      next: (locs) => (this.locations = locs),
+      error: (err) => console.error('Failed to load locations', err),
+    });
+    this.userService.getAllUsers().subscribe({
+      next: (users) => (this.users = users),
+      error: (err) => console.error('Failed to load users', err),
+    });
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      description: [''],
+      pictureLink: [''],
+      locationId: [null, Validators.required],
+      ownerId: [null, Validators.required],
+    });
+
+    if (this.data) {
+      this.form.patchValue({
+        ...this.data,
+        locationId: this.data.location?.id || null,
+        ownerId: this.data.owner?.userId || null,
+      });
+    }
+  }
+
+  onSubmit() {
+    if (this.form.invalid) return;
+
+    const rawValue = this.form.value;
+
+    const payload = {
+      ...rawValue,
+      id: this.data?.id ?? uuidv4(),
+      players: [],
+      coaches: [],
+      matches: [],
+      trainings: [],
+      tournaments: [],
+    };
+
+    console.log("payload :");
+    console.log(payload);
+
+    if (this.data) {
+      this.teamService.modifyTeamById(payload).subscribe({
+        next: () => this.dialogRef.close(),
+        error: (err) => console.error('Error updating team:', err),
+      });
+    } else {
+      this.teamService.insertTeam(payload).subscribe({
+        next: () => this.dialogRef.close(),
+        error: (err) => console.error('Error creating team:', err),
+      });
+    }
+  }
 }

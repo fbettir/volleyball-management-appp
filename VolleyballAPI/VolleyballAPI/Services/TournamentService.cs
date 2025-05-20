@@ -44,12 +44,10 @@ namespace VolleyballAPI.Services
             if (tournamentIdExists)
                 throw new InvalidOperationException("Tournament with this ID already exists");
 
-            // 1. Create tournament
             var efTournament = _mapper.Map<Tournament>(newTournament);
             _context.Tournaments.Add(efTournament);
             await _context.SaveChangesAsync();
 
-            // 2. Get original match IDs and entities
             var matchIds = await _context.Matches
                 .Where(m => m.TournamentType == newTournament.TournamentType)
                 .Select(m => m.Id)
@@ -64,8 +62,7 @@ namespace VolleyballAPI.Services
                 .Where(mt => matchIds.Contains(mt.MatchId))
                 .ToListAsync();
 
-            // 3. Duplicate matches and build ID map
-            var matchIdMap = new Dictionary<Guid, Guid>(); // old -> new ID
+            var matchIdMap = new Dictionary<Guid, Guid>(); 
 
             var duplicatedMatches = originalMatches.Select(m =>
             {
@@ -81,14 +78,13 @@ namespace VolleyballAPI.Services
                     TournamentId = efTournament.Id,
                     StartTime = m.StartTime,
                     MatchState = m.MatchState,
-                    TournamentType = null, // explicitly cleared
+                    TournamentType = null, 
                     Points = m.Points,
                 };
             }).ToList();
 
             _context.Matches.AddRange(duplicatedMatches);
 
-            // 4. Duplicate match teams with remapped match IDs
             var duplicatedMatchTeams = originalMatchTeams.Select(mt => new MatchTeam
             {
                 MatchId = matchIdMap[mt.MatchId],
@@ -97,7 +93,6 @@ namespace VolleyballAPI.Services
 
             _context.MatchTeams.AddRange(duplicatedMatchTeams);
 
-            // 5. Assign matches to tournament
             efTournament.Matches = duplicatedMatches;
             await _context.SaveChangesAsync();
 

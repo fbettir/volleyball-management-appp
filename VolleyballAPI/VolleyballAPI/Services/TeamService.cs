@@ -46,7 +46,6 @@ namespace VolleyballAPI.Services
             if (teamId)
                 throw new InvalidOperationException("Team with this ID already exists");
             
-
             var efTeam = _mapper.Map<Team>(newTeam);
             _context.Teams.Add(efTeam);
             await _context.SaveChangesAsync();
@@ -112,7 +111,6 @@ namespace VolleyballAPI.Services
             _context.TeamPlayers.Add(teamPlayer);
 
             await _context.SaveChangesAsync();
-            
         }
 
         public async Task DeleteTeamPlayerAsync(Guid teamId, UserDto userDto)
