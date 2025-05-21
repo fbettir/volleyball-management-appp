@@ -32,14 +32,12 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
-import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     FooterComponent,
     AboutUsPageComponent,
-    GalleryPageComponent,
     LogoutComponent
   ],
   imports: [

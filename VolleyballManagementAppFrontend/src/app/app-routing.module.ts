@@ -13,6 +13,7 @@ import { GalleryPageComponent } from './pages/gallery-page/gallery-page.componen
 import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 import { TrainingsPageComponent } from './pages/trainings-page/trainings-page.component';
 import { TrainingPageComponent } from './pages/training-page/training-page.component';
+import { TermsOfUsePageComponent } from './pages/terms-of-use-page/terms-of-use-page.component';
 
 const routes: Routes = [
   { 
@@ -84,6 +85,12 @@ const routes: Routes = [
   {
     path: 'trainings', 
     component: TrainingsPageComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: ['basic_user']}
+  },
+    {
+    path: 'terms-of-use', 
+    component: TermsOfUsePageComponent,
     canActivate: [RoleGuard],
     data: { expectedRoles: ['basic_user']}
   },

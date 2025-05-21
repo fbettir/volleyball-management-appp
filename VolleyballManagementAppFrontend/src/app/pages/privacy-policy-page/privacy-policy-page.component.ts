@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-privacy-policy-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './privacy-policy-page.component.html',
-  styleUrl: './privacy-policy-page.component.scss'
+  styleUrls: ['./privacy-policy-page.component.scss']
 })
-export class PrivacyPolicyPageComponent {
-
-}
+export class PrivacyPolicyPageComponent {}
