@@ -33,7 +33,6 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +40,6 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     FooterComponent,
     AboutUsPageComponent,
     GalleryPageComponent,
-    ProfilePageComponent,
     LogoutComponent
   ],
   imports: [
