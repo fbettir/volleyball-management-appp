@@ -17,7 +17,14 @@ import { TabChipComponent } from 'src/app/components/shared/tab-chip/tab-chip.co
   standalone: true,
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
-  imports: [TeamCardComponent, CommonModule, HomeSearchBarComponent, TrainingCardComponent, EventCardComponent, TabChipComponent]
+  imports: [
+    TeamCardComponent,
+    CommonModule,
+    HomeSearchBarComponent,
+    TrainingCardComponent,
+    EventCardComponent,
+    TabChipComponent,
+  ],
 })
 export class HomePageComponent {
   teams: Team[] = [];
@@ -28,21 +35,23 @@ export class HomePageComponent {
   filteredTrainings: Training[] = [];
   activeSection: string = 'events';
 
-
-
-  constructor(tournamentService: TournamentService, teamService: TeamService, trainingService: TrainingService) {
-    tournamentService.getAllTournaments().subscribe(t => {
+  constructor(
+    tournamentService: TournamentService,
+    teamService: TeamService,
+    trainingService: TrainingService,
+  ) {
+    tournamentService.getAllTournaments().subscribe((t) => {
       this.events = t;
       this.filteredEvents = t;
     });
-    teamService.getAllTeams().subscribe( t => {
+    teamService.getAllTeams().subscribe((t) => {
       this.teams = t;
       this.filteredTeams = t;
     });
-    trainingService.getAllTrainings().subscribe(t => {
+    trainingService.getAllTrainings().subscribe((t) => {
       this.trainings = t;
       this.filteredTrainings = t;
-    })
+    });
   }
 
   onSearchChanged(search: { text: string; filter: string }) {
@@ -63,32 +72,31 @@ export class HomePageComponent {
 
     switch (filter) {
       case 'name': // Team
-        this.filteredTeams = this.teams.filter(team =>
-          team.name.toLowerCase().includes(text)
+        this.filteredTeams = this.teams.filter((team) =>
+          team.name.toLowerCase().includes(text),
         );
         break;
 
       case 'event':
-        this.filteredEvents = this.events.filter(event =>
-          event.name.toLowerCase().includes(text)
+        this.filteredEvents = this.events.filter((event) =>
+          event.name.toLowerCase().includes(text),
         );
         break;
 
       case 'training':
-        this.filteredTrainings = this.trainings.filter(training =>
-          training.team.name.toLowerCase().includes(text)
+        this.filteredTrainings = this.trainings.filter((training) =>
+          training.team.name.toLowerCase().includes(text),
         );
         break;
     }
   }
 
   scrollToSection(sectionId: string) {
-  this.activeSection = sectionId;
+    this.activeSection = sectionId;
 
-  const el = document.getElementById(sectionId);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
-}
-
 }

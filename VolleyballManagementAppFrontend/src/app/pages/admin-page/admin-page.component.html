@@ -57,80 +57,132 @@
   </div>
 </div>
 
-<!-- Tournament Management Tab -->
 <div
   *ngIf="selectedTab === 'tournaments'"
   class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8"
 >
   <div class="px-4 sm:px-6 lg:px-40 mb-12">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Events</h2>
-      <button
-        class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
-        (click)="onCreateTournament()"
-      >
-        + New Tournament
-      </button>
+    <div class="mb-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Events</h2>
+        <button
+          class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+          (click)="onCreateTournament()"
+        >
+          + New Tournament
+        </button>
+      </div>
+
+      <app-event-search-bar
+        (searchChanged)="onTournamentSearchChanged($event)"
+        class="w-full sm:w-1/2"
+      ></app-event-search-bar>
     </div>
+    <mat-accordion class="space-y-4 mt-16">
+<mat-expansion-panel
+  *ngFor="let tournament of filteredTournaments"
+  class="rounded-xl shadow-md hover:shadow-lg border border-gray-200"
+  (opened)="loadTournamentTeams(tournament)"
+>
+        <mat-expansion-panel-header
+          class="bg-gradient-to-br from-white to-gray-50 py-4 px-6"
+        >
+          <div class="flex items-center justify-between w-full">
+            <!-- Left: Name & Date -->
+            <div class="flex flex-row space-x-4 py-2 items-center align-center">
+              <div
+                class="text-lg sm:text-xl font-semibold text-[var(--primary)]"
+              >
+                {{ tournament.name }}
+              </div>
+              <div class="text-sm text-gray-500">
+                {{ tournament.date | date: "longDate" }}
+              </div>
+            </div>
 
-    <app-event-search-bar
-      (searchChanged)="onTournamentSearchChanged($event)"
-      class="w-full sm:w-1/2"
-    ></app-event-search-bar>
+            <!-- Right: Action buttons -->
+            <div class="flex items-center">
+              <button
+                mat-icon-button
+                color="primary"
+                class="pr-2"
+                [routerLink]="['/event', tournament.id]"
+              >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="editTournament(tournament)"
+                matTooltip="Edit Tournament"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="onDeleteTournament(tournament)"
+                matTooltip="Delete Tournament"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
 
-    <table
-      mat-table
-      [dataSource]="filteredTournaments"
-      class="w-full rounded-xl mt-4"
-    >
-      <!-- Name -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let tournament">{{ tournament.name }}</td>
-      </ng-container>
+        <!-- Joined Teams -->
+        <div class="p-6 pt-0">
+          <div *ngIf="tournament.teams?.length; else noTeams">
+            <h3 class="text-lg font-medium text-gray-800 mb-3">Joined Teams</h3>
+            <ul class="space-y-2 mb-6">
+              <li
+                *ngFor="let team of tournament.teams"
+                class="flex justify-between items-center bg-white rounded-xl border border-gray-200 px-4 py-2 shadow-sm hover:shadow transition"
+              >
+                <span class="font-medium text-gray-700">{{ team.name }}</span>
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="onRemoveTeamFromTournament(tournament.id, team)"
+                  aria-label="Remove team"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <ng-template #noTeams>
+            <p class="text-sm text-gray-400 mb-6 italic">
+              No teams registered.
+            </p>
+          </ng-template>
 
-      <!-- Date -->
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef>Date</th>
-        <td mat-cell *matCellDef="let tournament">
-          {{ tournament.date | date }}
-        </td>
-      </ng-container>
-
-      <!-- Actions -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef class="gap-4">Actions</th>
-        <td mat-cell *matCellDef="let tournament">
-          <button
-            mat-icon-button
-            color="primary"
-            class="pr-2"
-            [routerLink]="['/event', tournament.id]"
+          <!-- Add Team -->
+          <div
+            class="flex flex-col sm:flex-row items-start sm:items-center gap-4"
           >
-            <mat-icon>visibility</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            color="accent"
-            class="pr-2"
-            (click)="editTournament(tournament)"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            color="warn"
-            class="pr-2"
-            (click)="onDeleteTournament(tournament)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+            <mat-form-field appearance="fill" class="w-full sm:w-64">
+              <mat-label>Select team</mat-label>
+              <mat-select [(value)]="selectedTeam[tournament.id]">
+                <mat-option *ngFor="let team of teams" [value]="team.id">
+                  {{ team.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-      <tr mat-header-row *matHeaderRowDef="columns"></tr>
-      <tr mat-row *matRowDef="let row; columns: columns"></tr>
-    </table>
+            <button
+              mat-raised-button
+              color="primary"
+              class="px-6 py-2 rounded-full"
+              (click)="onAddTeamToTournament(tournament.id)"
+              [disabled]="!selectedTeam[tournament.id]"
+            >
+              Add Team
+            </button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </div>
 
@@ -155,7 +207,11 @@
       class="w-full sm:w-1/2"
     ></app-event-search-bar>
 
-    <table mat-table [dataSource]="filteredTeams" class="w-full rounded-xl mt-4">
+    <table
+      mat-table
+      [dataSource]="filteredTeams"
+      class="w-full rounded-xl mt-4"
+    >
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -172,7 +228,11 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let team">
-          <button mat-icon-button color="primary" [routerLink]="['/team', team.id]">
+          <button
+            mat-icon-button
+            color="primary"
+            [routerLink]="['/team', team.id]"
+          >
             <mat-icon>visibility</mat-icon>
           </button>
           <button mat-icon-button color="accent" (click)="editTeam(team)">
@@ -189,7 +249,6 @@
     </table>
   </div>
 </div>
-
 
 <div
   *ngIf="selectedTab === 'users'"

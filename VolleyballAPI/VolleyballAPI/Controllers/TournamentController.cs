@@ -118,13 +118,13 @@ namespace VolleyballAPI.Controllers
 
 
         [MapToApiVersion("1.0")]
-        [HttpDelete("{id}/tournamentCompetitors")]
+        [HttpDelete("{id}/tournamentCompetitors/{teamId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DeleteTournamentCompetitor(Guid id, [FromBody] TeamDto teamDto)
+        public async Task<ActionResult> DeleteTournamentCompetitor(Guid id, Guid teamId)
         {
             try
             {
-                await _tournamentsService.DeleteTournamentCompetitorAsync(id, teamDto);
+                await _tournamentsService.DeleteTournamentCompetitorAsync(id, teamId);
                 return Ok();
             }
             catch (EntityNotFoundException ex)

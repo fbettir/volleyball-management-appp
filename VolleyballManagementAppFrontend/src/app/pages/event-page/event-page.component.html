@@ -46,13 +46,6 @@
           (select)="selectedTab = 'schedule'"
         ></app-tab-chip>
 
-        <app-tab-chip
-          *ngIf="isOwner"
-          label="Settings"
-          icon="settings"
-          [active]="selectedTab === 'settings'"
-          (select)="selectedTab = 'settings'"
-        ></app-tab-chip>
       </div>
     </div>
   </div>

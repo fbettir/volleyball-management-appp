@@ -12,6 +12,7 @@ namespace VolleyballAPI.Dtos.TrainingDtos
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public TeamHeaderDto Team { get; set; }
+        public UserHeaderDto Coach { get; set; }
         public PriceType PriceType { get; set; }
         public string PictureLink { get; set; } = null!;
         public List<UserHeaderDto> Players { get; set; }

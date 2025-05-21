@@ -22,7 +22,7 @@
         </div>
       </div>
       <div
-        class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center gap-4 "
+        class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center gap-4"
       >
         <app-tab-chip
           label="Events"
@@ -59,35 +59,35 @@
         class="w-[260px]"
       ></app-event-card>
     </div>
+  </div>
 
-    <div id="teams" *ngIf="filteredTeams.length > 0" class="space-y-4 mb-16">
-      <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Teams</h2>
-      <div
-        class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
-      >
-        <app-team-card
-          *ngFor="let t of filteredTeams"
-          [team]="t"
-          class="w-[260px]"
-        ></app-team-card>
-      </div>
-    </div>
-
+  <div id="teams" *ngIf="filteredTeams.length > 0" class="space-y-4 mb-16">
+    <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Teams</h2>
     <div
-      id="trainings"
-      *ngIf="filteredTrainings.length > 0"
-      class="space-y-4 mb-16"
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
     >
-      <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Trainings</h2>
-      <div
-        class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
-      >
-        <app-training-card
-          *ngFor="let t of filteredTrainings"
-          [training]="t"
-          class="w-[260px]"
-        ></app-training-card>
-      </div>
+      <app-team-card
+        *ngFor="let t of filteredTeams"
+        [team]="t"
+        class="w-[260px]"
+      ></app-team-card>
+    </div>
+  </div>
+
+  <div
+    id="trainings"
+    *ngIf="filteredTrainings.length > 0"
+    class="space-y-4 mb-16"
+  >
+    <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Trainings</h2>
+    <div
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+    >
+      <app-training-card
+        *ngFor="let t of filteredTrainings"
+        [training]="t"
+        class="w-[260px]"
+      ></app-training-card>
     </div>
   </div>
 </div>

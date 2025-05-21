@@ -11,6 +11,7 @@ export interface Training {
   date: Date;
   description: string;
   team: Team;
+  coach: User;
   priceType: PriceType;
   pictureLink: string;
   acceptableTickets: PriceType[];

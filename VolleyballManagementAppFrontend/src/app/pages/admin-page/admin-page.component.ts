@@ -16,6 +16,9 @@ import { TournamentService } from 'src/app/services/tournament.service';
 import { Team } from 'src/app/models/team';
 import { TeamService } from 'src/app/services/team.service';
 import { TeamFormComponent } from 'src/app/components/forms/team-form/team-form.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   standalone: true,
@@ -25,15 +28,16 @@ import { TeamFormComponent } from 'src/app/components/forms/team-form/team-form.
   imports: [
     CommonModule,
     FormsModule,
-    MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
     MatTableModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatIconModule,
     TabChipComponent,
     EventSearchBarComponent,
     RouterModule,
-    TournamentFormComponent,
-    TeamFormComponent,
+    MatExpansionModule,
   ],
 })
 export class AdminPageComponent {
@@ -46,6 +50,7 @@ export class AdminPageComponent {
   tournaments: Tournament[] = [];
   filteredTournaments: Tournament[] = [];
   tournamentForEdit: Tournament;
+  selectedTeam: { [tournamentId: string]: string } = {};
 
   teams: Team[] = [];
   filteredTeams: Team[] = [];
@@ -69,6 +74,14 @@ export class AdminPageComponent {
       this.tournaments = tournaments;
       this.filterTournaments();
     });
+  }
+
+  loadTournamentTeams(tournament: Tournament): void {
+    this.tournamentService
+      .getTournamentById(tournament.id)
+      .subscribe((loaded) => {
+        tournament.teams = loaded.teams;
+      });
   }
 
   loadTeams() {
@@ -205,5 +218,34 @@ export class AdminPageComponent {
         });
       }
     });
+  }
+
+  onAddTeamToTournament(tournamentId: string): void {
+    const teamId = this.selectedTeam[tournamentId];
+    if (!teamId) return;
+
+    this.tournamentService
+      .registerTournamentCompetitor(tournamentId, teamId)
+      .subscribe(() => {
+        this.selectedTeam[tournamentId] = '';
+
+        const tournament = this.filteredTournaments.find(
+          (t) => t.id === tournamentId,
+        );
+        if (tournament) {
+          this.loadTournamentTeams(tournament);
+        }
+      });
+  }
+
+  onRemoveTeamFromTournament(tournamentId: string, team: Team): void {
+    this.tournamentService
+      .removeTeamFromTournament(tournamentId, team.id)
+      .subscribe(() => {
+        const tournament = this.filteredTournaments.find(
+          (t) => t.id === tournamentId,
+        );
+        if (tournament) this.loadTournamentTeams(tournament);
+      });
   }
 }

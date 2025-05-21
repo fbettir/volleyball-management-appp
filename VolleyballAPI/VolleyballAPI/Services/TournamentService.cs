@@ -144,15 +144,15 @@ namespace VolleyballAPI.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteTournamentCompetitorAsync(Guid tournamentId, TeamDto teamDto)
+        public async Task DeleteTournamentCompetitorAsync(Guid tournamentId, Guid teamId)
         {
             var tournament = _context.Tournaments.FirstOrDefault(t => t.Id == tournamentId);
             if (tournament == null)
                 throw new EntityNotFoundException("TournamentCompetitor not found");
 
 
-            var tournamentCompetitor = await _context.TournamentCompetitors.FirstOrDefaultAsync(tc =>
-                tc.TournamentId == tournamentId && tc.TeamId == teamDto.TeamId);
+            var tournamentCompetitor = await _context.TournamentCompetitors
+                .FirstOrDefaultAsync(tc => tc.TournamentId == tournamentId && tc.TeamId == teamId);
 
             if (tournamentCompetitor == null)
                 throw new EntityNotFoundException("TournamentCompetitor not found");

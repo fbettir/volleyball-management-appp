@@ -48,6 +48,12 @@ namespace VolleyballAPI
                 .HasForeignKey(m => m.RefereeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Training>()
+                .HasOne(t => t.Coach)
+                .WithMany()
+                .HasForeignKey(t => t.CoachId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             var teamId1 = Guid.NewGuid();
             var teamId2 = Guid.NewGuid();
@@ -789,6 +795,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId1,
                     LocationId = locationId1,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training1",
                     TeamId = teamId1,
@@ -799,6 +806,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId2,
                     LocationId = locationId2,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training2",
                     TeamId = teamId1,
@@ -809,6 +817,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId3,
                     LocationId = locationId3,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training3",
                     TeamId = teamId2,
@@ -819,6 +828,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId4,
                     LocationId = locationId3,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training4",
                     TeamId = teamId3,
@@ -829,6 +839,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId5,
                     LocationId = locationId5,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training5",
                     TeamId = teamId3,
@@ -839,6 +850,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId6,
                     LocationId = locationId6,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training6",
                     TeamId = teamId2,
@@ -849,6 +861,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId7,
                     LocationId = locationId7,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training7",
                     TeamId = teamId3,
@@ -859,6 +872,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId8,
                     LocationId = locationId8,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training8",
                     TeamId = teamId2,
@@ -869,6 +883,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId9,
                     LocationId = locationId9,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training9",
                     TeamId = teamId4,
@@ -879,6 +894,7 @@ namespace VolleyballAPI
                 {
                     Id = trainingId01,
                     LocationId = locationId10,
+                    CoachId = userId1,
                     Date = DateTime.Now,
                     Description = "Training10",
                     TeamId = teamId4,
