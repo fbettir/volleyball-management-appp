@@ -26,8 +26,8 @@ export class UserService {
       );
   }
 
-  getUserById(teamId: string): Observable<User> {
-    return this.httpClient.get<User>(`${this.baseURL}/${teamId}`);
+  getUserById(userId: string): Observable<User> {
+    return this.httpClient.get<User>(`${this.baseURL}/${userId}`);
   }
 
   getAllUsers(): Observable<User[]> {

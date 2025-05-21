@@ -24,6 +24,11 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { UserSearchBarComponent } from 'src/app/components/search/user-search-bar/user-search-bar.component';
 import { UserFormComponent } from 'src/app/components/forms/user-form/user-form.component';
+import { TrainingSearchBarComponent } from 'src/app/components/search/training-search-bar/training-search-bar.component';
+import { EventsManagementComponent } from "../../components/admin/events-management/events-management.component";
+import { TeamsManagementComponent } from 'src/app/components/admin/teams-management/teams-management.component';
+import { UsersManagementComponent } from 'src/app/components/admin/users-management/users-management.component';
+import { TrainingsManagementComponent } from 'src/app/components/admin/trainings-management/trainings-management.component';
 
 @Component({
   standalone: true,
@@ -41,10 +46,15 @@ import { UserFormComponent } from 'src/app/components/forms/user-form/user-form.
     MatIconModule,
     TabChipComponent,
     EventSearchBarComponent,
+    TrainingSearchBarComponent,
     UserSearchBarComponent,
     RouterModule,
     MatExpansionModule,
-  ],
+    EventsManagementComponent,
+    TeamsManagementComponent,
+    UsersManagementComponent,
+    TrainingsManagementComponent,
+],
 })
 export class AdminPageComponent {
   columns = ['name', 'date', 'actions'];
@@ -366,6 +376,27 @@ export class AdminPageComponent {
     this.teamService.getTeamById(team.id).subscribe((loaded) => {
       team.players = loaded.players;
       team.coaches = loaded.coaches;
+    });
+  }
+
+  loadUserDetails(user: User) {
+    this.userService.getUserById(user.id).subscribe((loaded) => {
+      user.birthday = loaded.birthday;
+      user.email = loaded.email;
+      user.phone = loaded.phone;
+      user.roles = loaded.roles;
+      user.favouriteTeams = loaded.favouriteTeams;
+      user.favouriteTrainings = loaded.favouriteTrainings;
+      user.favouriteTournaments = loaded.favouriteTournaments;
+      user.playerNumber = loaded.playerNumber;
+      user.priceType = loaded.priceType;
+      user.gender = loaded.gender;
+      user.ownedTeams = loaded.ownedTeams;
+      user.joinedTeams = loaded.joinedTeams;
+      user.coachedTeams = loaded.coachedTeams;
+      user.trainings = loaded.trainings;
+      user.posts = loaded.posts;
+      user.pictureLink = loaded.pictureLink;
     });
   }
 
