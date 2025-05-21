@@ -6,5 +6,7 @@ export enum PriceType {
   TournamentTicket = 'TournamentTicket',
   StudentTournamentTicket = 'StudentTournamentTicket',
   SeasonPass = 'SeasonPass',
-  StudentSeasonPass = 'StudentSeasonPass'
+  StudentSeasonPass = 'StudentSeasonPass',
+  None = 'None',
+  Free = 'Free',
 }

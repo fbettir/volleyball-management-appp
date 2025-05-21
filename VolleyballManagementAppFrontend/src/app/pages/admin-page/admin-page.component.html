@@ -79,11 +79,11 @@
       ></app-event-search-bar>
     </div>
     <mat-accordion class="space-y-4 mt-16">
-<mat-expansion-panel
-  *ngFor="let tournament of filteredTournaments"
-  class="rounded-xl shadow-md hover:shadow-lg border border-gray-200"
-  (opened)="loadTournamentTeams(tournament)"
->
+      <mat-expansion-panel
+        *ngFor="let tournament of filteredTournaments"
+        class="rounded-xl shadow-md hover:shadow-lg border border-gray-200"
+        (opened)="loadTournamentTeams(tournament)"
+      >
         <mat-expansion-panel-header
           class="bg-gradient-to-br from-white to-gray-50 py-4 px-6"
         >
@@ -186,80 +186,221 @@
   </div>
 </div>
 
-<!-- Teams Management Tab -->
 <div
   *ngIf="selectedTab === 'teams'"
   class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8"
 >
   <div class="px-4 sm:px-6 lg:px-40 mb-12">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Teams</h2>
-      <button
-        class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
-        (click)="onCreateTeam()"
-      >
-        + New Team
-      </button>
+    <div class="mb-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Teams</h2>
+        <button
+          class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+          (click)="onCreateTeam()"
+        >
+          + New Team
+        </button>
+      </div>
+
+      <app-event-search-bar
+        (searchChanged)="onTeamSearchChanged($event)"
+        class="w-full sm:w-1/2"
+      ></app-event-search-bar>
     </div>
 
-    <app-event-search-bar
-      (searchChanged)="onTeamSearchChanged($event)"
-      class="w-full sm:w-1/2"
-    ></app-event-search-bar>
+    <mat-accordion class="space-y-4 mt-8">
+      <mat-expansion-panel
+        *ngFor="let team of filteredTeams"
+        class="rounded-xl shadow-md hover:shadow-lg border border-gray-200"
+        (opened)="loadTeamDetails(team)"
+      >
+        <mat-expansion-panel-header
+          class="bg-gradient-to-br from-white to-gray-50 py-4 px-6"
+        >
+          <div class="flex items-center justify-between w-full">
+            <div class="text-lg sm:text-xl font-semibold text-[var(--primary)]">
+              {{ team.name }}
+            </div>
 
-    <table
-      mat-table
-      [dataSource]="filteredTeams"
-      class="w-full rounded-xl mt-4"
-    >
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let team">{{ team.name }}</td>
-      </ng-container>
+            <div class="flex items-center">
+              <button
+                mat-icon-button
+                color="primary"
+                [routerLink]="['/team', team.id]"
+              >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="editTeam(team)"
+                matTooltip="Edit Team"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="onDeleteTeam(team)"
+                matTooltip="Delete Team"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
 
-      <!-- City Column -->
-      <ng-container matColumnDef="city">
-        <th mat-header-cell *matHeaderCellDef>City</th>
-        <td mat-cell *matCellDef="let team">{{ team.city }}</td>
-      </ng-container>
+        <!-- PLAYERS -->
+        <div class="p-6 pt-0">
+          <h3 class="text-lg font-medium text-gray-800 mb-2">Players</h3>
+          <ul class="space-y-2 mb-4">
+            <li
+              *ngFor="let player of team.players"
+              class="flex justify-between items-center bg-white rounded-xl border border-gray-200 px-4 py-2 shadow-sm hover:shadow"
+            >
+              <span>{{ player.name }}</span>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="removePlayerFromTeam(team.id, player)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+          </ul>
 
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let team">
-          <button
-            mat-icon-button
-            color="primary"
-            [routerLink]="['/team', team.id]"
+          <div
+            class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6"
           >
-            <mat-icon>visibility</mat-icon>
-          </button>
-          <button mat-icon-button color="accent" (click)="editTeam(team)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="onDeleteTeam(team)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+            <mat-form-field appearance="fill" class="w-full sm:w-64">
+              <mat-label>Select player</mat-label>
+              <mat-select [(value)]="selectedPlayer[team.id]">
+                <mat-option *ngFor="let user of users" [value]="user.id">
+                  {{ user.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-      <tr mat-header-row *matHeaderRowDef="teamColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: teamColumns"></tr>
-    </table>
+            <button
+              mat-raised-button
+              color="primary"
+              class="px-6 py-2 rounded-full"
+              (click)="addPlayerToTeam(team.id)"
+              [disabled]="!selectedPlayer[team.id]"
+            >
+              Add Player
+            </button>
+          </div>
+
+          <!-- COACHES -->
+          <h3 class="text-lg font-medium text-gray-800 mb-2">Coaches</h3>
+          <ul class="space-y-2 mb-4">
+            <li
+              *ngFor="let coach of team.coaches"
+              class="flex justify-between items-center bg-white rounded-xl border border-gray-200 px-4 py-2 shadow-sm hover:shadow"
+            >
+              <span>{{ coach.name }}</span>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="removeCoachFromTeam(team.id, coach)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+          </ul>
+
+          <div
+            class="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          >
+            <mat-form-field appearance="fill" class="w-full sm:w-64">
+              <mat-label>Select coach</mat-label>
+              <mat-select [(value)]="selectedCoach[team.id]">
+                <mat-option *ngFor="let user of users" [value]="user.id">
+                  {{ user.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button
+              mat-raised-button
+              color="primary"
+              class="px-6 py-2 rounded-full"
+              (click)="addCoachToTeam(team.id)"
+              [disabled]="!selectedCoach[team.id]"
+            >
+              Add Coach
+            </button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </div>
 
 <div
   *ngIf="selectedTab === 'users'"
-  class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8 text-center text-gray-500"
+  class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8"
 >
-  <h2 class="text-xl font-semibold">User Management (Coming Soon)</h2>
-</div>
+  <div class="px-4 sm:px-6 lg:px-40 mb-12">
+    <div class="mb-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Users</h2>
+        <button
+          class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+          (click)="onCreateUser()"
+        >
+          + New User
+        </button>
+      </div>
 
-<div
-  *ngIf="selectedTab === 'settings'"
-  class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8 text-center text-gray-500"
->
-  <h2 class="text-xl font-semibold">Admin Settings (Coming Soon)</h2>
+      <app-user-search-bar
+        (searchChanged)="onUserSearchChanged($event)"
+        class="w-full sm:w-1/2"
+      ></app-user-search-bar>
+    </div>
+
+    <mat-accordion class="space-y-4 mt-8">
+      <mat-expansion-panel
+        *ngFor="let user of filteredUsers"
+        class="rounded-xl shadow-md hover:shadow-lg border border-gray-200"
+      >
+        <mat-expansion-panel-header
+          class="bg-gradient-to-br from-white to-gray-50 py-4 px-6"
+        >
+          <div class="flex items-center justify-between w-full">
+            <div class="text-lg sm:text-xl font-semibold text-[var(--primary)]">
+              {{ user.name }}
+            </div>
+
+            <div class="flex items-center">
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="editUser(user)"
+                matTooltip="Edit User"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="onDeleteUser(user)"
+                matTooltip="Delete User"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="p-6 pt-0 text-sm text-gray-700">
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Phone:</strong> {{ user.phone }}</p>
+          <p><strong>Birthday:</strong> {{ user.birthday | date }}</p>
+          <p><strong>Roles:</strong> {{ user.roles }}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 export enum Role {
-  Administrator = 'administrator',
-  Coach = 'coach',
-  BasicUser = 'user',
-  Referee = 'referee'
+  Administrator = 'Administrator',
+  Coach = 'Coach',
+  BasicUser = 'BasicUser',
+  Referee = 'Referee'
 }

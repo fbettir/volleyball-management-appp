@@ -36,18 +36,16 @@ export class UserService {
       .pipe(map((users) => this.sortUsersByName(users)));
   }
 
-  insertUser(user: User): void {
-    this.httpClient.post(this.baseURL, user).subscribe((t) => {
-      console.log(t);
-    });
+  insertUser(user: User): Observable<void> {
+    return this.httpClient.post<void>(this.baseURL, user);
   }
 
-  deleteUserById(userId: string): void {
-    this.httpClient.delete(`${this.baseURL}/${userId}`);
+  deleteUserById(userId: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.baseURL}/${userId}`);
   }
 
-  modifyUserById(user: User): void {
-    this.httpClient.put(`${this.baseURL}/${user.id}`, user);
+  modifyUserById(user: User): Observable<void> {
+    return this.httpClient.put<void>(`${this.baseURL}/${user.id}`, user);
   }
 
   registerFavouriteTeam(userId: string, team: Team): Observable<void> {

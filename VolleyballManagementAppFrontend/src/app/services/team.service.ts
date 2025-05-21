@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Training } from '../models/training';
 import { map } from 'rxjs/operators';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -45,35 +43,33 @@ export class TeamService {
     return this.httpClient.put<void>(`${this.baseURL}/${team.id}`, team);
   }
 
-  addPlayerToTeam(teamId: string, user: User): Observable<void> {
+  addPlayerToTeam(teamId: string, userId: string): Observable<void> {
     return this.httpClient.post<void>(`${this.baseURL}/${teamId}/players`, {
-      userId: user.id,
+      userId,
     });
   }
 
-  removePlayerFromTeam(teamId: string, user: User): Observable<void> {
-    return this.httpClient.request<void>(
-      'delete',
-      `${this.baseURL}/${teamId}/players`,
-      {
-        body: { userId: user.id },
-      },
+  removePlayerFromTeam(teamId: string, userId: string): Observable<void> {
+    return this.httpClient.delete<void>(
+      `${this.baseURL}/${teamId}/players/${userId}`,
     );
   }
 
-  addCoachToTeam(teamId: string, user: User): Observable<void> {
-    return this.httpClient.post<void>(`${this.baseURL}/${teamId}/coaches`, {
-      userId: user.id,
-    });
-  }
-
-  removeCoachFromTeam(teamId: string, user: User): Observable<void> {
-    return this.httpClient.request<void>(
-      'delete',
+    addCoachToTeam(
+    teamId: string,
+    userId: string,
+  ): Observable<void> {
+    return this.httpClient.post<void>(
       `${this.baseURL}/${teamId}/coaches`,
-      {
-        body: { userId: user.id },
-      },
+      { userId },
+    );
+  }
+    removeCoachFromTeam(
+    teamId: string,
+    userId: string,
+  ): Observable<void> {
+    return this.httpClient.delete<void>(
+      `${this.baseURL}/${teamId}/coaches/${userId}`,
     );
   }
 }

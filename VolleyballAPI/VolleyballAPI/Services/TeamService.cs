@@ -113,14 +113,14 @@ namespace VolleyballAPI.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteTeamPlayerAsync(Guid teamId, UserDto userDto)
+        public async Task DeleteTeamPlayerAsync(Guid teamId, Guid userId)
         {
             var teamExists = await _context.Teams.AnyAsync(t => t.Id == teamId);
             if (!teamExists)
                 throw new EntityNotFoundException("Team not found");
 
             var teamPlayer = await _context.TeamPlayers.FirstOrDefaultAsync(tp =>
-                tp.TeamId == teamId && tp.UserId == userDto.UserId);
+                tp.TeamId == teamId && tp.UserId == userId);
 
             if (teamPlayer == null)
                 throw new EntityNotFoundException("TeamPlayer not found");
@@ -148,14 +148,14 @@ namespace VolleyballAPI.Services
             }
         }
 
-        public async Task DeleteTeamCoachAsync(Guid teamId, UserDto userDto)
+        public async Task DeleteTeamCoachAsync(Guid teamId, Guid userId)
         {
             var teamExists = await _context.Teams.AnyAsync(t => t.Id == teamId);
             if (!teamExists)
                 throw new EntityNotFoundException("Team not found");
 
             var teamCoach = await _context.TeamCoaches.FirstOrDefaultAsync(tc =>
-                tc.TeamId == teamId && tc.UserId == userDto.UserId);
+                tc.TeamId == teamId && tc.UserId == userId);
 
             if (teamCoach == null)
                 throw new EntityNotFoundException("TeamCoach not found");

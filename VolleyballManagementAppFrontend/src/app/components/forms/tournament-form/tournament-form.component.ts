@@ -70,7 +70,7 @@ export class TournamentFormComponent implements OnInit {
       name: ['', Validators.required],
       date: [null, Validators.required],
       entryDeadline: [null, Validators.required],
-      locationId: [null, Validators.required],
+      locationId: [[], Validators.required],
       organizer: [''],
       registrationPolicy: [''],
       teamPolicy: [''],

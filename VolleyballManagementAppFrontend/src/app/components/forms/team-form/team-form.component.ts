@@ -23,7 +23,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { Location } from 'src/app/models/location';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
-import { Team } from 'src/app/models/team';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-team-form',
   standalone: true,
@@ -55,6 +55,7 @@ export class TeamFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
     this.locationService.getAllLocations().subscribe({
       next: (locs) => (this.locations = locs),
       error: (err) => console.error('Failed to load locations', err),
@@ -67,15 +68,15 @@ export class TeamFormComponent implements OnInit {
       name: ['', Validators.required],
       description: [''],
       pictureLink: [''],
-      locationId: [null, Validators.required],
-      ownerId: [null, Validators.required],
+      locationId: [[], Validators.required],
+      ownerId: [[], Validators.required],
     });
 
     if (this.data) {
       this.form.patchValue({
         ...this.data,
         locationId: this.data.location?.id || null,
-        ownerId: this.data.owner?.userId || null,
+        ownerId: this.data.owner?.id || null,
       });
     }
   }

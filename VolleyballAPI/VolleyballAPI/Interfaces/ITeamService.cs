@@ -12,8 +12,8 @@ namespace VolleyballAPI.Interfaces
         public Task UpdateTeamAsync(EditTeamDto updatedTeam, Guid teamId);
         public Task DeleteTeamAsync(Guid teamId);
         public Task RegisterTeamPlayerAsync(Guid teamId, UserDto playerDetailsDto);
-        public Task DeleteTeamPlayerAsync(Guid teamId, UserDto playerDetailsDto);
+        public Task DeleteTeamPlayerAsync(Guid teamId, Guid userId);
         public Task RegisterTeamCoachAsync(Guid teamId, UserDto playerDetailsDto);
-        public Task DeleteTeamCoachAsync(Guid teamId, UserDto playerDetailsDto);
+        public Task DeleteTeamCoachAsync(Guid teamId, Guid userIdo);
     }
 }

@@ -2,6 +2,7 @@ import { Match } from "./match";
 import { Tournament } from "./tournament";
 import { Training } from "./training";
 import { User } from "./user";
+import { Location } from './location';
 
 export interface Team {
   id: string;

@@ -72,7 +72,7 @@
     <div
       *ngFor="
         let info of [
-          { icon: 'place', title: 'Location', value: team?.location },
+          { icon: 'place', title: 'Location', value: team?.location?.name },
           { icon: 'account_circle', title: 'Owner', value: team?.owner?.name },
           { icon: 'group', title: 'Players', value: team?.players?.length },
           { icon: 'school', title: 'Coaches', value: team?.coaches?.length }

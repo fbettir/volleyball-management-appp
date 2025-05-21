@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VolleyballAPI.Dtos.TeamDtos;
-using VolleyballAPI.Dtos.TrainingDtos;
 using VolleyballAPI.Dtos.UserDtos;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
@@ -115,13 +114,13 @@ namespace VolleyballAPI.Controllers
         }
 
         [MapToApiVersion("1.0")]
-        [HttpDelete("{id}/players")]
+        [HttpDelete("{id}/players/{userId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DeleteTeamPlayer(Guid id, [FromBody] UserDto userDto)
+        public async Task<ActionResult> DeleteTeamPlayer(Guid id, Guid userId)
         {
             try
             {
-                await _teamsService.DeleteTeamPlayerAsync(id, userDto);
+                await _teamsService.DeleteTeamPlayerAsync(id, userId);
                 return Ok();
             }
             catch (EntityNotFoundException ex)
@@ -147,13 +146,13 @@ namespace VolleyballAPI.Controllers
         }
 
         [MapToApiVersion("1.0")]
-        [HttpDelete("{id}/coaches")]
+        [HttpDelete("{id}/coaches/{userId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DeleteTeamCoach(Guid id, [FromBody] UserDto userDto)
+        public async Task<ActionResult> DeleteTeamCoach(Guid id, Guid userId)
         {
             try
             {
-                await _teamsService.DeleteTeamCoachAsync(id, userDto);
+                await _teamsService.DeleteTeamCoachAsync(id, userId);
                 return Ok();
             }
             catch (EntityNotFoundException ex)

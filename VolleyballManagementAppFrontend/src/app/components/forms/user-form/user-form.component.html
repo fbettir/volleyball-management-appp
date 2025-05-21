@@ -1,1 +1,86 @@
-<p>user-form works!</p>
+<div class="p-6 sm:p-8 bg-white rounded-xl max-h-[90vh] overflow-y-auto">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-[var(--primary)]">
+      {{ data ? 'Edit User' : 'New User' }}
+    </h2>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid gap-y-4">
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Birthday</mat-label>
+      <input matInput [matDatepicker]="birthdayPicker" formControlName="birthday" required="" />
+      <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>
+      <mat-datepicker #birthdayPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Player Number</mat-label>
+      <input matInput type="number" formControlName="playerNumber" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Picture Link</mat-label>
+      <input matInput formControlName="pictureLink" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option *ngFor="let g of genderOptions" [value]="g">{{ g }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="roles" multiple>
+        <mat-option *ngFor="let r of roleOptions" [value]="r">{{ r }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Price Type</mat-label>
+      <mat-select formControlName="priceType" multiple>
+        <mat-option *ngFor="let pt of priceTypeOptions" [value]="pt">
+          {{ pt }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Post</mat-label>
+      <mat-select formControlName="posts" multiple>
+        <mat-option *ngFor="let post of postOptions" [value]="post">{{ post }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="flex justify-end pt-2">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        {{ data ? 'Edit User' : 'Create User' }}
+      </button>
+    </div>
+  </form>
+</div>

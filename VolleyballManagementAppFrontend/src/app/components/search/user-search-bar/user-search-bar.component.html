@@ -1,0 +1,19 @@
+<div class="bg-white shadow-md rounded-xl flex w-full overflow-hidden">
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    (ngModelChange)="onSearchChange()"
+    placeholder="Search Users"
+    class="flex-1 px-4 py-3 text-sm focus:outline-none"
+  />
+
+  <div class="w-[1px] bg-[var(--primary)]"></div>
+
+  <select
+    [(ngModel)]="selectedFilter"
+    class="px-4 py-3 text-sm focus:outline-none"
+  >
+    <option value="name">Name</option>
+    <option value="post">Post</option>
+  </select>
+</div> 
