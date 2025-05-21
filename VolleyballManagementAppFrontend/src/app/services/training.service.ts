@@ -26,8 +26,8 @@ export class TrainingService {
     return this.httpClient.post<Training>(this.baseURL, training);
   }
 
-  updateTraining(trainingId: string, training: Training): Observable<void> {
-    return this.httpClient.put<void>(`${this.baseURL}/${trainingId}`, training);
+  modifyTrainingById(training: Training): Observable<void> {
+    return this.httpClient.put<void>(`${this.baseURL}/${training.id}`, training);
   }
 
   deleteTraining(trainingId: string): Observable<void> {

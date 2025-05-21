@@ -1,1 +1,59 @@
-<p>training-form works!</p>
+<div class="p-6 sm:p-8 bg-white rounded-xl max-h-[90vh] overflow-y-auto">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-[var(--primary)]">
+      {{ data ? 'Edit Training' : 'New Training' }}
+    </h2>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid gap-y-4">
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="datePicker" formControlName="date" required />
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Location</mat-label>
+      <mat-select formControlName="locationId" required>
+        <mat-option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Team ID</mat-label>
+      <input matInput formControlName="teamId" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Coach ID</mat-label>
+      <input matInput formControlName="coachId" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Price Type</mat-label>
+      <mat-select formControlName="priceType" required>
+        <mat-option *ngFor="let pt of priceTypeOptions" [value]="pt">{{ pt }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Picture Link</mat-label>
+      <input matInput formControlName="pictureLink" type="url" />
+    </mat-form-field>
+
+    <div class="flex justify-end pt-2">
+      <button mat-raised-button type="submit" [disabled]="form.invalid">
+        {{ data ? 'Update Training' : 'Create Training' }}
+      </button>
+    </div>
+  </form>
+</div>

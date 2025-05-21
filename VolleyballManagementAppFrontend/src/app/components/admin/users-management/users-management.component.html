@@ -1,1 +1,99 @@
-<p>users-management works!</p>
+<div class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8">
+  <div class="px-4 sm:px-6 lg:px-40 mb-12">
+    <div class="mb-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Users</h2>
+        <button
+          class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+          (click)="onCreateUser()"
+        >
+          + New User
+        </button>
+      </div>
+
+      <app-user-search-bar
+        (searchChanged)="onUserSearchChanged($event)"
+        class="w-full sm:w-1/2"
+      ></app-user-search-bar>
+    </div>
+
+    <mat-accordion class="space-y-4 mt-8">
+      <mat-expansion-panel
+        *ngFor="let user of filteredUsers"
+        class="rounded-xl shadow-md hover:shadow-lg border border-gray-200"
+        (opened)="loadUserDetails(user)"
+      >
+        <mat-expansion-panel-header class="bg-gradient-to-br from-white to-gray-50 py-4 px-6">
+          <div class="flex items-center justify-between w-full">
+            <div class="text-lg sm:text-xl font-semibold text-[var(--primary)]">
+              {{ user.name }}
+            </div>
+
+            <div class="flex items-center">
+              <button mat-icon-button color="accent" (click)="editUser(user)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="onDeleteUser(user)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="p-6 pt-0 text-sm text-gray-700">
+          <div class="flex flex-col items-center sm:flex-row gap-6">
+            <img
+              *ngIf="user.pictureLink"
+              [src]="user.pictureLink"
+              alt="Profile Picture"
+              class="w-28 h-28 rounded-full object-cover border border-gray-300 shadow"
+            />
+
+            <div class="w-full sm:w-auto">
+              <table class="text-left text-sm w-full sm:min-w-[18rem]">
+                <tbody>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Name:</td>
+                    <td>{{ user.name }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Email:</td>
+                    <td>{{ user.email }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Phone:</td>
+                    <td>{{ user.phone }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Birthday:</td>
+                    <td>{{ user.birthday | date }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Player number:</td>
+                    <td>{{ user.playerNumber }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Price Type:</td>
+                    <td>{{ user.priceType }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Posts:</td>
+                    <td>{{ user.posts }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Gender:</td>
+                    <td>{{ user.gender }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Roles:</td>
+                    <td>{{ user.roles }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

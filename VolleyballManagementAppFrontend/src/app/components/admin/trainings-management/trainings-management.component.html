@@ -1,1 +1,51 @@
-<p>trainings-management works!</p>
+<div class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8">
+  <div class="px-4 sm:px-6 lg:px-40 mb-12">
+    <div class="mb-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Trainings</h2>
+        <button
+          class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+          (click)="onCreateTraining()"
+        >
+          + New Training
+        </button>
+      </div>
+
+      <app-training-search-bar
+        (searchChanged)="onSearchChanged($event)"
+        class="w-full sm:w-1/2"
+      ></app-training-search-bar>
+    </div>
+
+    <mat-accordion class="space-y-4 mt-8">
+      <mat-expansion-panel
+        *ngFor="let training of filteredTrainings"
+        class="rounded-xl border border-gray-200 shadow-sm hover:shadow"
+      >
+        <mat-expansion-panel-header class="py-4 px-6 bg-white">
+          <div class="flex justify-between w-full">
+            <div>
+              <div class="text-lg font-semibold text-[var(--primary)]">
+                {{ training.team.name }} Training
+              </div>
+              <div class="text-sm text-gray-600">
+                {{ training.date | date: 'longDate' }} · {{ training.location.name }}
+              </div>
+            </div>
+
+            <button mat-icon-button color="accent" (click)="onEditTraining(training)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="p-4 text-sm text-gray-800">
+          <p><strong>Coach:</strong> {{ training.coach.name }}</p>
+          <p><strong>Price Type:</strong> {{ training.priceType }}</p>
+          <p><strong>Description:</strong> {{ training.description }}</p>
+          <p *ngIf="training.pictureLink"><strong>Image:</strong> <a [href]="training.pictureLink" target="_blank" class="text-blue-600 underline">Open</a></p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
