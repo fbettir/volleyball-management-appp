@@ -1,70 +1,109 @@
+<!-- HERO HEADER -->
 <div class="relative w-full h-64 md:h-80 lg:h-[28rem] pt-0">
   <img
     [src]="team?.pictureLink || 'assets/szandi.jpg'"
-    alt="Teams background"
+    alt="Team background"
     class="w-full h-full object-cover object-top"
   />
-
   <div
-    class="absolute inset-0 bg-black bg-opacity-10 flex justify-center items-end pb-8"
+    class="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-end"
   >
-    <div class="w-full max-w-screen-xl text-start mx-auto px-48">
-      <h1 class="text-4xl md:text-6xl text-white font-bold mb-6">
+    <div
+      class="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-48 text-white"
+    >
+      <h1 class="text-4xl md:text-6xl font-bold text-shadow-lg mb-3">
         {{ team?.name || "Teamname" }}
       </h1>
+      <div
+        class="flex flex-wrap sm:flex-nowrap justify-center sm:justify-start items-center gap-4 pb-4"
+      >
+        <app-tab-chip
+          label="About"
+          icon="sports_volleyball"
+          [active]="selectedTab === 'info'"
+          (select)="selectedTab = 'info'"
+        ></app-tab-chip>
+        <app-tab-chip
+          label="Members"
+          icon="group"
+          [active]="selectedTab === 'members'"
+          (select)="selectedTab = 'members'"
+        ></app-tab-chip>
+        <app-tab-chip
+          label="Trainings"
+          icon="fitness_center"
+          [active]="selectedTab === 'trainings'"
+          (select)="selectedTab = 'trainings'"
+        ></app-tab-chip>
+        <app-tab-chip
+          label="Tournaments"
+          icon="emoji_events"
+          [active]="selectedTab === 'tournaments'"
+          (select)="selectedTab = 'tournaments'"
+        ></app-tab-chip>
+        <app-tab-chip
+          label="Matches"
+          icon="sports"
+          [active]="selectedTab === 'matches'"
+          (select)="selectedTab = 'matches'"
+        ></app-tab-chip>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="max-w-screen-xl mx-auto px-48 py-10">
+<!-- INFO SECTION -->
+<div
+  *ngIf="!selectedTab || selectedTab === 'info'"
+  class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-40 py-10"
+>
+  <!-- Description -->
+  <div class="mb-6">
+    <h2 class="text-3xl font-extrabold text-[var(--primary)] mb-4">Overview</h2>
+    <p
+      class="text-lg leading-relaxed text-gray-700 bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-100 shadow-lg hover:shadow-xl transition"
+    >
+      {{ team?.description || "No description available." }}
+    </p>
+  </div>
+
+  <!-- Detail Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 mb-16">
+    <div
+      *ngFor="
+        let info of [
+          { icon: 'place', title: 'Location', value: team?.location },
+          { icon: 'account_circle', title: 'Owner', value: team?.owner?.name },
+          { icon: 'group', title: 'Players', value: team?.players?.length },
+          { icon: 'school', title: 'Coaches', value: team?.coaches?.length }
+        ]
+      "
+      class="flex items-start bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-100 shadow-lg hover:shadow-xl transition"
+    >
+      <div
+        class="w-12 h-12 bg-[var(--white)] bg-opacity-10 flex items-center justify-center rounded-xl mr-4"
+      >
+        <mat-icon
+          [fontIcon]="info.icon"
+          class="text-[var(--primary)] text-xl"
+        ></mat-icon>
+      </div>
+      <div class="flex flex-col">
+        <span
+          class="text-sm text-gray-500 uppercase tracking-wide font-medium"
+          >{{ info.title }}</span
+        >
+        <span class="text-base font-semibold text-gray-800 mt-1 break-words">{{
+          info.value || "-"
+        }}</span>
+      </div>
+    </div>
+  </div>
+
   <div class="space-y-4 mb-16">
-    <div class="flex items-center mb-6 pb-2">
-      <h2 class="text-3xl font-bold text-[var(--primary)]">Description:</h2>
-    </div>
-    <div class="pb-8">
-      {{ team?.description }}
-    </div>
-
-    <div class="flex items-center justify-between pb-2 mb-6">
-      <h2 class="text-3xl font-bold text-[var(--primary)]">Members</h2>
-      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
-        Add Member
-      </button>
-    </div>
-
-    <div
-      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
-    >
-      <app-user-card
-        *ngFor="let u of team?.players"
-        [user]="u"
-        class="w-[260px]"
-      ></app-user-card>
-    </div>
-
-    <div class="flex items-center justify-between pb-2 mb-6">
-      <h2 class="text-3xl font-bold text-[var(--primary)]">Trainings</h2>
-      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
-        Add Training
-      </button>
-    </div>
-    <div
-      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
-    >
-      <app-training-card
-        *ngFor="let t of team?.trainings"
-        [training]="t"
-        class="w-[260px]"
-      ></app-training-card>
-    </div>
-
-    <div class="flex items-center justify-between pb-2 mb-6">
+    <div class="pb-2 mb-6">
       <h2 class="text-3xl font-bold text-[var(--primary)]">Coaches</h2>
-      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
-        Add Coach
-      </button>
     </div>
-
     <div
       class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
     >
@@ -74,39 +113,87 @@
         class="w-[260px]"
       ></app-user-card>
     </div>
+  </div>
+</div>
 
-    <div class="flex items-center justify-between pb-2 mb-6">
-      <h2 class="text-3xl font-bold text-[var(--primary)]">Tournaments</h2>
-      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
-        Add Tournament
-      </button>
-    </div>
-
-    <div
-      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+<div
+  *ngIf="selectedTab === 'members'"
+  class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-40 py-10"
+>
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-3xl font-bold text-[var(--primary)]">Members</h2>
+    <button
+      class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
     >
-      <app-event-card
-        *ngFor="let t of team?.tournaments"
-        [tournament]="t"
-        class="w-[260px]"
-      ></app-event-card>
-    </div>
+      Add Member
+    </button>
+  </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center"
+  >
+    <app-user-card
+      *ngFor="let u of team?.players"
+      [user]="u"
+      class="w-[260px]"
+    ></app-user-card>
+  </div>
+</div>
 
-    <div class="flex items-center justify-between pb-2 mb-6">
-      <h2 class="text-3xl font-bold text-[var(--primary)]">Matches</h2>
-      <button class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition">
-        Add Match
-      </button>
-    </div>
-<!-- 
-    <div
-      class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+<div
+  *ngIf="selectedTab === 'trainings'"
+  class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-40 py-10"
+>
+  <div class="flex items-center justify-between pb-2 mb-6">
+    <h2 class="text-3xl font-bold text-[var(--primary)]">Trainings</h2>
+    <button
+      class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
     >
-      <app-match-card
-        *ngFor="let m of team?.matches"
-        [match]="m"
-        class="w-[260px]"
-      ></app-match-card>
-    </div> -->
+      Add Training
+    </button>
+  </div>
+  <div
+    class="max-w-4xl mx-auto pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center"
+  >
+    <app-training-card
+      *ngFor="let t of team?.trainings"
+      [training]="t"
+      class="w-[260px]"
+    ></app-training-card>
+  </div>
+</div>
+
+<div
+  *ngIf="selectedTab === 'tournaments'"
+  class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-40 py-10"
+>
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-3xl font-bold text-[var(--primary)]">Tournaments</h2>
+  </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center"
+  >
+    <app-event-card
+      *ngFor="let t of team?.tournaments"
+      [tournament]="t"
+      class="w-[260px]"
+    ></app-event-card>
+  </div>
+</div>
+
+<div
+  *ngIf="selectedTab === 'matches'"
+  class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-40 py-10"
+>
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-3xl font-bold text-[var(--primary)]">Matches</h2>
+  </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center"
+  >
+    <app-match-card
+      *ngFor="let m of team?.matches"
+      [match]="m"
+      class="w-[260px]"
+    ></app-match-card>
   </div>
 </div>

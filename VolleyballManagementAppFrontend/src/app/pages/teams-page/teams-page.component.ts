@@ -24,7 +24,7 @@ export class TeamsPageComponent {
     });
   }
 
-
+ 
   onSearchChanged(search: { text: string; filter: string }) {
     const { text, filter } = search;
   

@@ -1,1 +1,111 @@
-<p>training-page works!</p>
+<!-- HERO HEADER -->
+<div class="relative w-full h-64 md:h-80 lg:h-[28rem] pt-0">
+  <img
+    [src]="training?.pictureLink || 'assets/szandi.jpg'"
+    alt="Training background"
+    class="w-full h-full object-cover object-top"
+  />
+  <div
+    class="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-end"
+  >
+    <div
+      class="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-48 text-white"
+    >
+      <h1 class="text-4xl md:text-6xl font-bold text-shadow-lg mb-3">
+        Training Session
+      </h1>
+      <div
+        class="flex flex-wrap justify-center sm:justify-start items-center gap-4 pb-4"
+      >
+        <app-tab-chip
+          label="About"
+          icon="sports_volleyball"
+          [active]="selectedTab === 'overview'"
+          (select)="selectedTab = 'overview'"
+        ></app-tab-chip>
+        <app-tab-chip
+          label="Participants"
+          icon="group"
+          [active]="selectedTab === 'participants'"
+          (select)="selectedTab = 'participants'"
+        ></app-tab-chip>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW TAB -->
+<div
+  *ngIf="!selectedTab || selectedTab === 'overview'"
+  class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-40 py-10"
+>
+  <div class="mb-6">
+    <h2 class="text-3xl font-extrabold text-[var(--primary)] mb-4">
+      Overview
+    </h2>
+    <p
+      class="text-lg leading-relaxed text-gray-700 bg-white/50 rounded-xl p-4 shadow"
+    >
+      {{ training?.description || "No description available." }}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
+    <div
+      *ngFor="
+        let info of [
+          {
+            icon: 'event',
+            title: 'Date',
+            value: (training?.date | date: 'longDate')
+          },
+          { icon: 'place', title: 'Location', value: training?.location?.name },
+          {
+            icon: 'confirmation_number',
+            title: 'Acceptable Tickets',
+            value: training?.acceptableTickets
+          },
+          { icon: 'groups', title: 'Team', value: training?.team?.name },
+        ]
+      "
+      class="flex items-start bg-gradient-to-br from-white to-gray-50 rounded-2xl p-5 border border-gray-100 shadow-lg hover:shadow-xl transition"
+    >
+      <div
+        class="w-12 h-12 bg-[var(--white)] bg-opacity-10 flex items-center justify-center rounded-xl mr-4"
+      >
+        <mat-icon
+          [fontIcon]="info.icon"
+          class="text-[var(--primary)] text-xl"
+        ></mat-icon>
+      </div>
+      <div class="flex flex-col">
+        <span
+          class="text-sm text-gray-500 uppercase tracking-wide font-medium"
+          >{{ info.title }}</span
+        >
+        <span class="text-base font-semibold text-gray-800 mt-1 break-words">{{
+          info.value || "-"
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTICIPANTS TAB -->
+<div
+  *ngIf="selectedTab === 'participants'"
+  class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-40 py-10"
+>
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-3xl font-bold text-[var(--primary)]">Participants</h2>
+  </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center"
+  >
+    <app-user-card
+      *ngFor="let u of training?.players"
+      [user]="u"
+      class="w-[260px]"
+    ></app-user-card>
+  </div>
+</div>
