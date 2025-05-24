@@ -8,11 +8,11 @@ namespace VolleyballAPI.Dtos.TrainingDtos
     public class EditTrainingDto
     {
         public Guid Id { get; set; }
-        public LocationDto Location { get; set; }
+        public Guid LocationId { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
-        public TeamHeaderDto Team { get; set; }
-        public UserHeaderDto Coach { get; set; }
+        public Guid TeamId { get; set; }
+        public Guid CoachId { get; set; }
         public PriceType PriceType { get; set; }
         public string PictureLink { get; set; } = null!;
     }

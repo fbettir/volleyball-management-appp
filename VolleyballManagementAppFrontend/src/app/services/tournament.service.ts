@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Tournament } from '../models/tournament';
 import { map } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -16,11 +15,11 @@ export class TournamentService {
     return this.httpClient.get<Tournament>(`${this.baseURL}/${tournamentId}`);
   }
 
-getAllTournaments(): Observable<Tournament[]> {
-  return this.httpClient.get<Tournament[]>(this.baseURL).pipe(
-    map((tournaments) => this.sortTournamentsByName(tournaments))
-  );
-}
+  getAllTournaments(): Observable<Tournament[]> {
+    return this.httpClient
+      .get<Tournament[]>(this.baseURL)
+      .pipe(map((tournaments) => this.sortTournamentsByName(tournaments)));
+  }
 
   insertTournament(tournament: Tournament): Observable<Tournament> {
     return this.httpClient.post<Tournament>(this.baseURL, tournament);
@@ -57,10 +56,12 @@ getAllTournaments(): Observable<Tournament[]> {
   }
 
   private sortTournamentsByName(tournaments: Tournament[]): Tournament[] {
-  return tournaments.slice().sort((a, b) =>
-    a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
-  );
-}
+    return tournaments
+      .slice()
+      .sort((a, b) =>
+        a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }),
+      );
+  }
 
   // scheduleMatches(tournamentId: string): Observable<void> {
   //   return this.httpClient.put<void>(

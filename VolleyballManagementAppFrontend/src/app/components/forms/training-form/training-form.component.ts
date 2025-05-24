@@ -6,7 +6,11 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -20,6 +24,10 @@ import { Location } from 'src/app/models/location';
 import { PriceType } from 'src/app/models/priceType';
 import { v4 as uuidv4 } from 'uuid';
 import { MatIcon } from '@angular/material/icon';
+import { User } from 'src/app/models/user';
+import { Team } from 'src/app/models/team';
+import { TeamService } from 'src/app/services/team.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-training-form',
@@ -43,19 +51,33 @@ export class TrainingFormComponent implements OnInit {
   form!: FormGroup;
   locations: Location[] = [];
   priceTypeOptions = Object.values(PriceType);
+  teams: Team[] = [];
+  coaches: User[] = [];
 
   constructor(
     private fb: FormBuilder,
     private locationService: LocationService,
     private trainingService: TrainingService,
+    private teamService: TeamService,
+    private userService: UserService,
     private dialogRef: MatDialogRef<TrainingFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {
     this.locationService.getAllLocations().subscribe({
       next: (locations) => (this.locations = locations),
       error: (err) => console.error('Failed to load locations', err),
+    });
+
+    this.teamService.getAllTeams().subscribe({
+      next: (teams) => (this.teams = teams),
+      error: (err) => console.error('Failed to load teams', err),
+    });
+
+    this.userService.getAllCoaches().subscribe({
+      next: (coaches) => (this.coaches = coaches),
+      error: (err) => console.error('Failed to load coaches', err),
     });
 
     this.form = this.fb.group({
@@ -82,20 +104,27 @@ export class TrainingFormComponent implements OnInit {
     if (this.form.invalid) return;
 
     const raw = this.form.value;
+
     const payload = {
       ...raw,
       id: this.data?.id ?? uuidv4(),
+      players: this.data?.players ?? [],
+      userHasAsFavourite: this.data?.userHasAsFavourite ?? [],
     };
+
+    console.log('location:', payload.location);
+    console.log('team:', payload.team);
+    console.log('coach:', payload.coach);
 
     if (this.data) {
       this.trainingService.modifyTrainingById(payload).subscribe({
         next: () => this.dialogRef.close(),
-        error: (err) => console.error('Error updating tournament:', err),
+        error: (err) => console.error('Error updating training:', err),
       });
     } else {
       this.trainingService.insertTraining(payload).subscribe({
         next: () => this.dialogRef.close(),
-        error: (err) => console.error('Error creating tournament:', err),
+        error: (err) => console.error('Error creating training:', err),
       });
     }
   }

@@ -12,7 +12,6 @@ export interface Training {
   description: string;
   team: Team;
   coach: User;
-  priceType: PriceType;
   pictureLink: string;
-  acceptableTickets: PriceType[];
+  priceType: PriceType[];
 }

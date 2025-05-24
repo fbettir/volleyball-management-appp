@@ -9,6 +9,7 @@ namespace VolleyballAPI.Interfaces
     {
         public Task<UserDetailsDto> GetUserDetailsAsync(Guid userId);
         public Task<IEnumerable<UserHeaderDto>> GetUsersAsync();
+        public Task<IEnumerable<UserHeaderDto>> GetCoachesAsync();
         public Task<EditUserDto> InsertUserAsync(EditUserDto newUser);
         public Task UpdateUserAsync(EditUserDto updatedUser, Guid userId);
         public Task DeleteUserAsync(Guid userId);

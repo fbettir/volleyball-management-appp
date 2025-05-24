@@ -36,6 +36,12 @@ export class UserService {
       .pipe(map((users) => this.sortUsersByName(users)));
   }
 
+  getAllCoaches(): Observable<User[]> {
+  return this.httpClient
+    .get<User[]>(`${this.baseURL}/coaches`)
+    .pipe(map((users) => this.sortUsersByName(users)));
+}
+
   insertUser(user: User): Observable<void> {
     return this.httpClient.post<void>(this.baseURL, user);
   }

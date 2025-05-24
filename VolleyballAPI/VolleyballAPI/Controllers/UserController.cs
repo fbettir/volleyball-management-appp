@@ -51,6 +51,21 @@ namespace VolleyballAPI.Controllers
         }
 
         [MapToApiVersion("1.0")]
+        [HttpGet("coaches")]
+        public async Task<ActionResult<IEnumerable<UserHeaderDto>>> GetCoaches()
+        {
+            try
+            {
+                var coachesList = (await _userService.GetCoachesAsync()).ToList();
+                return Ok(coachesList);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [MapToApiVersion("1.0")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<EditUserDto>> Post([FromBody] EditUserDto user)

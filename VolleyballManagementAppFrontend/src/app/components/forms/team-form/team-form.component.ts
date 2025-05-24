@@ -89,15 +89,13 @@ export class TeamFormComponent implements OnInit {
     const payload = {
       ...rawValue,
       id: this.data?.id ?? uuidv4(),
-      players: [],
-      coaches: [],
-      matches: [],
-      trainings: [],
-      tournaments: [],
+      players: this.data?.players ?? [],
+      coaches: this.data?.coaches ?? [],
+      matches: this.data?.matches ?? [],
+      trainings: this.data?.training ?? [],
+      tournaments: this.data?.players ?? [],
+      userHasAsFavourite: this.data?.userHasAsFavourite ?? [],
     };
-
-    console.log("payload :");
-    console.log(payload);
 
     if (this.data) {
       this.teamService.modifyTeamById(payload).subscribe({

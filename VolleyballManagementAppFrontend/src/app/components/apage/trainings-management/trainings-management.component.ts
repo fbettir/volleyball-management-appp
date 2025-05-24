@@ -41,6 +41,12 @@ export class TrainingsManagementComponent implements OnInit {
     });
   }
 
+  loadTrainingDetails(training: Training): void {
+    this.trainingService.getTrainingById(training.id).subscribe((loaded) => {
+        Object.assign(training, loaded);
+    } );
+  }
+
   onSearchChanged(event: { text: string }): void {
     this.searchText = event.text.toLowerCase();
     this.filteredTrainings = this.trainings.filter((t) =>

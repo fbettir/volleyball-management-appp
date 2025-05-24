@@ -799,7 +799,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training1",
                     TeamId = teamId1,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_152608_kendras.jpg"
                 },
                 new Training
@@ -810,7 +810,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training2",
                     TeamId = teamId1,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_182542_kendras.jpg"
                 },
                 new Training
@@ -821,7 +821,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training3",
                     TeamId = teamId2,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_192702_kendras.jpg"
                 },
                 new Training
@@ -832,7 +832,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training4",
                     TeamId = teamId3,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_114846_adrian.jpg"
                 },
                 new Training
@@ -843,7 +843,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training5",
                     TeamId = teamId3,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_121150_adrian.jpg"
                 },
                 new Training
@@ -854,7 +854,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training6",
                     TeamId = teamId2,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_130940_adrian.jpg"
                 },
                 new Training
@@ -865,7 +865,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training7",
                     TeamId = teamId3,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_162113_adrian.jpg"
                 },
                 new Training
@@ -876,7 +876,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training8",
                     TeamId = teamId2,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_182355_gery.jpg"
                 },
                 new Training
@@ -887,7 +887,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training9",
                     TeamId = teamId4,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2025/20250329_muegyetemi_roplabda/2048/20250329_215753_gyongyi.jpg"
                 },
                 new Training
@@ -898,7 +898,7 @@ namespace VolleyballAPI
                     Date = DateTime.Now,
                     Description = "Training10",
                     TeamId = teamId4,
-                    AcceptableTickets = PriceType.Ticket | PriceType.Pass,
+                    PriceType = PriceType.Ticket | PriceType.Pass,
                     PictureLink = "https://spot.sch.bme.hu/photos/2024/20240921_muegyetemi_roplabda/2048/20240921_183319_kendras.jpg"
                 }
             );

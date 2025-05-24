@@ -9,6 +9,7 @@ using VolleyballAPI.JoinTableTypes;
 using VolleyballAPI.Dtos.TeamDtos;
 using VolleyballAPI.Dtos.TrainingDtos;
 using VolleyballAPI.Dtos.TournamentDtos;
+using VolleyballAPI.Enums;
 
 
 namespace VolleyballAPI.Services
@@ -35,6 +36,16 @@ namespace VolleyballAPI.Services
         public async Task<IEnumerable<UserHeaderDto>> GetUsersAsync()
         {
             var users = await _context.Users
+                .ProjectTo<UserHeaderDto>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            return users;
+        }
+
+        public async Task<IEnumerable<UserHeaderDto>> GetCoachesAsync()
+        {
+            var users = await _context.Users
+                .Where(u => (u.Roles & Role.Coach) == Role.Coach)
                 .ProjectTo<UserHeaderDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
 

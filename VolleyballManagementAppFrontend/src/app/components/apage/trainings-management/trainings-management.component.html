@@ -21,7 +21,8 @@
       <mat-expansion-panel
         *ngFor="let training of filteredTrainings"
         class="rounded-xl border border-gray-200 shadow-sm hover:shadow"
-      >
+        (opened)="loadTrainingDetails(training)"
+        >
         <mat-expansion-panel-header class="py-4 px-6 bg-white">
           <div class="flex justify-between w-full">
             <div>
