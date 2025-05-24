@@ -48,7 +48,7 @@
 
         <app-tab-chip
           label="Trainings"
-          icon="dumbell"
+          icon="fitness_center"
           [active]="selectedTab === 'training'"
           (select)="selectedTab = 'training'"
         ></app-tab-chip>
@@ -57,11 +57,14 @@
   </div>
 </div>
 
-
-<app-events-management *ngIf="selectedTab === 'tournaments'"></app-events-management>
-<app-teams-management *ngIf="selectedTab === 'teams'"></app-teams-management> 
+<app-events-management
+  *ngIf="selectedTab === 'tournaments'"
+></app-events-management>
+<app-teams-management *ngIf="selectedTab === 'teams'"></app-teams-management>
 <app-users-management *ngIf="selectedTab === 'users'"></app-users-management>
-<app-trainings-management *ngIf="selectedTab === 'training'"></app-trainings-management>
+<app-trainings-management
+  *ngIf="selectedTab === 'training'"
+></app-trainings-management>
 <!-- <div
   *ngIf="selectedTab === 'tournaments'"
   class="max-w-screen-xl mx-auto py-10 px-4 lg:px-8"

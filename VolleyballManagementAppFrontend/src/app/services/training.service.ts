@@ -12,6 +12,16 @@ export class TrainingService {
 
   constructor(private httpClient: HttpClient) {}
 
+  
+  private sortTrainingsByTeamName(trainings: Training[]): Training[] {
+    return trainings.slice().sort(
+      (a, b) =>
+        a.team?.name.localeCompare(b.team?.name, 'en', {
+          sensitivity: 'base',
+        }),
+    );
+  }
+  
   getTrainingById(trainingId: string): Observable<Training> {
     return this.httpClient.get<Training>(`${this.baseURL}/${trainingId}`);
   }
@@ -34,12 +44,17 @@ export class TrainingService {
     return this.httpClient.delete<void>(`${this.baseURL}/${trainingId}`);
   }
 
-  private sortTrainingsByTeamName(trainings: Training[]): Training[] {
-    return trainings.slice().sort(
-      (a, b) =>
-        a.team?.name.localeCompare(b.team?.name, 'en', {
-          sensitivity: 'base',
-        }),
-    );
-  }
+
+  registerTrainingParticipant(trainingId: string, userId: string): Observable<void> {
+  return this.httpClient.post<void>(
+    `${this.baseURL}/${trainingId}/participants`,
+    { userId } // the backend expects this shape
+  );
+}
+
+removeTrainingParticipant(trainingId: string, userId: string): Observable<void> {
+  return this.httpClient.delete<void>(
+    `${this.baseURL}/${trainingId}/participants/${userId}`
+  );
+}
 }

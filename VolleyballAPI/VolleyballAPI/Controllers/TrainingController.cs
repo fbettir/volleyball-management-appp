@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VolleyballAPI.Dtos.TrainingDtos;
+using VolleyballAPI.Dtos.UserDtos;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
 using VolleyballAPI.Services;
@@ -95,5 +96,38 @@ namespace VolleyballAPI.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [MapToApiVersion("1.0")]
+        [HttpPost("{id}/participants")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult> RegisterTrainingParticipant(Guid id, [FromBody] UserDto dto)
+        {
+            try
+            {
+                await _trainingService.RegisterTrainingParticipantAsync(id, dto);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [MapToApiVersion("1.0")]
+        [HttpDelete("{id}/participants/{userId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeleteTrainingParticipant(Guid id, Guid userId)
+        {
+            try
+            {
+                await _trainingService.DeleteTrainingParticipantAsync(id, userId);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
     }
 }

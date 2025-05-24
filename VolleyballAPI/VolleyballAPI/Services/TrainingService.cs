@@ -2,9 +2,11 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using VolleyballAPI.Dtos.TrainingDtos;
+using VolleyballAPI.Dtos.UserDtos;
 using VolleyballAPI.Entities;
 using VolleyballAPI.Exceptions;
 using VolleyballAPI.Interfaces;
+using VolleyballAPI.JoinTableTypes;
 
 namespace VolleyballAPI.Services
 {
@@ -80,6 +82,44 @@ namespace VolleyballAPI.Services
                     throw;
             }
         }
+
+        public async Task RegisterTrainingParticipantAsync(Guid trainingId, UserDto dto)
+        {
+            var training = await _context.Trainings.FindAsync(trainingId);
+            if (training == null)
+                throw new EntityNotFoundException("Training not found");
+
+            var user = await _context.Users.FindAsync(dto.UserId);
+            if (user == null)
+                throw new EntityNotFoundException("User not found");
+
+            var alreadyJoined = await _context.TrainingParticipants
+                .AnyAsync(tp => tp.TrainingId == trainingId && tp.UserId == dto.UserId);
+            if (alreadyJoined)
+                return;
+
+            var participant = new TrainingParticipant
+            {
+                TrainingId = trainingId,
+                UserId = dto.UserId
+            };
+
+            _context.TrainingParticipants.Add(participant);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteTrainingParticipantAsync(Guid trainingId, Guid userId)
+        {
+            var participant = await _context.TrainingParticipants
+                .FirstOrDefaultAsync(tp => tp.TrainingId == trainingId && tp.UserId == userId);
+
+            if (participant == null)
+                throw new EntityNotFoundException("Participant not found");
+
+            _context.TrainingParticipants.Remove(participant);
+            await _context.SaveChangesAsync();
+        }
+
     }
 
 }

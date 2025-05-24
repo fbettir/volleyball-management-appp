@@ -2,7 +2,9 @@
   <div class="px-4 sm:px-6 lg:px-40 mb-12">
     <div class="mb-6">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-3xl font-bold text-[var(--primary)]">Manage Trainings</h2>
+        <h2 class="text-3xl font-bold text-[var(--primary)]">
+          Manage Trainings
+        </h2>
         <button
           class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
           (click)="onCreateTraining()"
@@ -22,29 +24,118 @@
         *ngFor="let training of filteredTrainings"
         class="rounded-xl border border-gray-200 shadow-sm hover:shadow"
         (opened)="loadTrainingDetails(training)"
-        >
+      >
         <mat-expansion-panel-header class="py-4 px-6 bg-white">
-          <div class="flex justify-between w-full">
-            <div>
+          <div class="flex items-center justify-between w-full">
+            <div class="flex flex-row space-x-4 py-2 items-center">
               <div class="text-lg font-semibold text-[var(--primary)]">
                 {{ training.team.name }} Training
               </div>
               <div class="text-sm text-gray-600">
-                {{ training.date | date: 'longDate' }} · {{ training.location.name }}
+                {{ training.date | date: "longDate" }} ·
               </div>
             </div>
-
-            <button mat-icon-button color="accent" (click)="onEditTraining(training)">
-              <mat-icon>edit</mat-icon>
-            </button>
+            <div class="flex items-center">
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="onEditTraining(training)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="onDeleteTraining(training)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
         </mat-expansion-panel-header>
 
-        <div class="p-4 text-sm text-gray-800">
-          <p><strong>Coach:</strong> {{ training.coach.name }}</p>
-          <p><strong>Price Type:</strong> {{ training.priceType }}</p>
-          <p><strong>Description:</strong> {{ training.description }}</p>
-          <p *ngIf="training.pictureLink"><strong>Image:</strong> <a [href]="training.pictureLink" target="_blank" class="text-blue-600 underline">Open</a></p>
+        <div class="p-6 pt-0 text-sm text-gray-700">
+          <div class="flex flex-col items-center sm:flex-row gap-6">
+            <img
+              *ngIf="training.pictureLink"
+              [src]="training.pictureLink"
+              alt="Profile Picture"
+              class="w-28 h-28 rounded-full object-cover border border-gray-300 shadow"
+            />
+
+            <div class="w-full sm:w-auto">
+              <table class="text-left text-sm w-full sm:min-w-[18rem]">
+                <tbody>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Coach:</td>
+                    <td>{{ training.coach.name | date }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Description:</td>
+                    <td>{{ training.description }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Location:</td>
+                    <td>{{ training.location.name }}</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-gray-600 pr-4">Team:</td>
+                    <td>{{ training.team.name }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <div *ngIf="training.players?.length; else noParticipants">
+            <h3 class="text-lg font-medium text-gray-800 mb-3">Participants</h3>
+            <ul class="space-y-2 mb-6">
+              <li
+                *ngFor="let user of training.players"
+                class="flex justify-between items-center bg-white rounded-xl border border-gray-200 px-4 py-2 shadow-sm hover:shadow transition"
+              >
+                <span class="font-medium text-gray-700">{{ user.name }}</span>
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="onRemovePlayerFromTraining(training.id, user)"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <ng-template #noParticipants>
+            <p class="text-sm text-gray-400 mb-6 italic">
+              No participants yet.
+            </p>
+          </ng-template>
+
+          <div
+            class="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          >
+            <mat-form-field appearance="fill" class="w-full sm:w-64">
+              <mat-label>Select User</mat-label>
+              <mat-select [(value)]="selectedUser[training.id]">
+                <mat-option *ngFor="let user of users" [value]="user.id">
+                  {{ user.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button
+              mat-raised-button
+              color="primary"
+              class="px-6 py-2 rounded-full"
+              (click)="onAddPlayerToTraining(training.id)"
+              [disabled]="!selectedUser[training.id]"
+            >
+              Add User
+            </button>
+          </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
