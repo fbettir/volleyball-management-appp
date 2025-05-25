@@ -8,7 +8,6 @@
         string id
         string name
         string email
-        string password
     }
     PLAYER_DETAILS {
         string id

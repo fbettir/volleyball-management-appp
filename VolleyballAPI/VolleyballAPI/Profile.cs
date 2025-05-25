@@ -35,6 +35,11 @@ namespace VolleyballAPI
                 .ForMember(dto => dto.Teams, opt => opt.MapFrom(m => m.Teams.Select(mt => mt.Team)))
                 .ReverseMap();
 
+            CreateMap<User, Auth0UserDto>()
+                .ForMember(dto => dto.Auth0Id, opt => opt.MapFrom(u => u.Auth0Id))
+                .ForMember(dto => dto.Email, opt => opt.MapFrom(u => u.Email))
+                .ForMember(dto => dto.Name, opt => opt.MapFrom(u => u.Name));
+
             CreateMap<User, UserDetailsDto>()
                 .ForMember(dto => dto.JoinedTeams, opt => opt.MapFrom(u => u.JoinedTeams.Select(tp => tp.Team)))
                 .ForMember(dto => dto.CoachedTeams, opt => opt.MapFrom(u => u.CoachedTeams.Select(tc => tc.Team)))

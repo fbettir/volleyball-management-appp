@@ -30,6 +30,10 @@ export class UserService {
     return this.httpClient.get<User>(`${this.baseURL}/${userId}`);
   }
 
+  getUserByAuth0Id(auth0Id: string): Observable<User> {
+  return this.httpClient.get<User>(`${this.baseURL}/auth0/${auth0Id}`);
+}
+
   getAllUsers(): Observable<User[]> {
     return this.httpClient
       .get<User[]>(this.baseURL)

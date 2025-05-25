@@ -11,10 +11,13 @@ namespace VolleyballAPI.Entities
     public Guid Id { get; set; }
 
     [Required]
+    [MaxLength(100)]
+    public string Auth0Id { get; set; } 
+
+    [Required]
     [MaxLength(100), MinLength(5)]
     public string Name { get; set; }
     public string? Email { get; set; }
-    public string Password { get; set; }
     public DateTime Birthday { get; set; }
     public string Phone { get; set; }
     public int PlayerNumber { get; set; }

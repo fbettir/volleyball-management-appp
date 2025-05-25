@@ -19,7 +19,8 @@ export class AppComponent {
 
   // token: any;
 
-  constructor(public auth: AuthService){
+  constructor(  private jwtDecoderService: JwtDecoderService
+){
     // this.decodedToken = this.jwtDecoderService.decodeToken(this.id_token)
     // console.log(this.decodedToken);
     // this.roles = this.decodedToken.role;
@@ -28,7 +29,9 @@ export class AppComponent {
     // console.log(this.roles);
   }
 
-
+ngOnInit(): void {
+  this.jwtDecoderService.loadLoggedInUser();
+}
   
 
 

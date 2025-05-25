@@ -32,7 +32,46 @@ namespace VolleyballAPI.Services
                 .SingleOrDefaultAsync(r => r.Id == userId)
                 ?? throw new EntityNotFoundException("User not found");
         }
-        
+
+        public async Task<UserDetailsDto> GetOrCreateByAuth0Async(Auth0UserDto dto)
+        {
+            var existing = await _context.Users
+                .FirstOrDefaultAsync(u => u.Auth0Id == dto.Auth0Id);
+
+            if (existing != null)
+                return _mapper.Map<UserDetailsDto>(existing);
+
+            var newUser = new User
+            {
+                Auth0Id = dto.Auth0Id,
+                Email = dto.Email,
+                Name = dto.Name ?? "New User",
+                PictureLink = dto.PictureLink ?? "",
+                Birthday = DateTime.Now,
+                Phone = "",
+                PlayerNumber = 0,
+                Gender = Gender.Man, 
+                Roles = Role.BasicUser,
+                PriceType = PriceType.None
+            };
+
+            _context.Users.Add(newUser);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<UserDetailsDto>(newUser);
+        }
+        public async Task<UserDetailsDto> GetByAuth0IdAsync(string auth0Id)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Auth0Id == auth0Id);
+
+            if (user == null)
+                throw new EntityNotFoundException("User not found with given Auth0 ID");
+
+            return _mapper.Map<UserDetailsDto>(user);
+        }
+
+
         public async Task<IEnumerable<UserHeaderDto>> GetUsersAsync()
         {
             var users = await _context.Users

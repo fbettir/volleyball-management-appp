@@ -8,9 +8,9 @@ import { Training } from './training';
 
 export interface User {
   id: string;
+  auth0Id: string;
   name: string;
   email: string;
-  password: string;
   pictureLink: string;
   birthday: Date;
   phone: string;

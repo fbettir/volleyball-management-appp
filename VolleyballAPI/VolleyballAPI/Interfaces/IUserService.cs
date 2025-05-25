@@ -8,6 +8,9 @@ namespace VolleyballAPI.Interfaces
     public interface IUserService
     {
         public Task<UserDetailsDto> GetUserDetailsAsync(Guid userId);
+        public Task<UserDetailsDto> GetOrCreateByAuth0Async(Auth0UserDto dto);
+        public Task<UserDetailsDto> GetByAuth0IdAsync(string auth0Id);
+
         public Task<IEnumerable<UserHeaderDto>> GetUsersAsync();
         public Task<IEnumerable<UserHeaderDto>> GetCoachesAsync();
         public Task<EditUserDto> InsertUserAsync(EditUserDto newUser);

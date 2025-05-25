@@ -8,9 +8,10 @@ namespace VolleyballAPI.Dtos.UserDtos
     public class UserDetailsDto
     {
         public Guid Id { get; set; }
+        public string Auth0Id { get; set; }
+
         public string Name { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
         public DateTime Birthday { get; set; }
         public string Phone { get; set; }
         public int PlayerNumber { get; set; }

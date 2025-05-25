@@ -921,8 +921,8 @@ namespace VolleyballAPI
                 {
                     Id = userId1,
                     Name = "Jancsi",
-                    Password = "pass1",
                     Email = "user1@user.com",
+                    Auth0Id = "auth0|mockuser1",
                     Roles = Role.Administrator | Role.Coach,
                     Birthday = DateTime.Now,
                     Phone = "34214124",
@@ -936,8 +936,8 @@ namespace VolleyballAPI
                 {
                     Id = userId2,
                     Name = "Aranka",
-                    Password = "pass2",
                     Email = "user2@user.com",
+                    Auth0Id = "auth0|mockuser2",
                     Roles = Role.Administrator | Role.BasicUser,
                     Birthday = DateTime.Now,
                     Phone = "965463",
@@ -951,8 +951,8 @@ namespace VolleyballAPI
                 {
                     Id = userId3,
                     Name = "Dani",
-                    Password = "pass3",
                     Email = "user3@user.com",
+                    Auth0Id = "auth0|mockuser3",
                     Roles = Role.BasicUser,
                     Birthday = DateTime.Now,
                     PictureLink = "https://spot.sch.bme.hu/photos/2023/20230923_muegyetemi_roplabda/2048/20230923_190507_opeter.jpg",
@@ -966,8 +966,8 @@ namespace VolleyballAPI
                 {
                     Id = userId4,
                     Name = "Kristóf",
-                    Password = "pass4",
                     Email = "user4@user.com",
+                    Auth0Id = "auth0|mockuser4",
                     Roles = Role.BasicUser,
                     Birthday = DateTime.Now,
                     Phone = "83568",
@@ -981,8 +981,8 @@ namespace VolleyballAPI
                 {
                     Id = userId5,
                     Name = "Lajos",
-                    Password = "pass5",
                     Email = "user5@user.com",
+                    Auth0Id = "auth0|mockuser5",
                     Roles = Role.Coach,
                     Birthday = DateTime.Now,
                     Phone = "54337",
@@ -996,8 +996,8 @@ namespace VolleyballAPI
                 {
                     Id = userId6,
                     Name = "Péter",
-                    Password = "pass6",
                     Email = "user6@user.com",
+                    Auth0Id = "auth0|mockuser6",
                     Roles = Role.BasicUser,
                     Birthday = DateTime.Now,
                     Phone = "4221",
@@ -1011,8 +1011,8 @@ namespace VolleyballAPI
                 {
                     Id = userId7,
                     Name = "Felícia",
-                    Password = "pass7",
                     Email = "user7@user.com",
+                    Auth0Id = "auth0|mockuser7",
                     Roles = Role.Coach,
                     Birthday = DateTime.Now,
                     Phone = "32134",
@@ -1026,8 +1026,8 @@ namespace VolleyballAPI
                 {
                     Id = userId8,
                     Name = "Name 8",
-                    Password = "pass8",
                     Email = "user8@user.com",
+                    Auth0Id = "auth0|mockuser8",
                     Roles = Role.Administrator | Role.BasicUser,
                     Birthday = DateTime.Now,
                     Phone = "893935",
@@ -1041,8 +1041,8 @@ namespace VolleyballAPI
                 {
                     Id = userId9,
                     Name = "Name 9",
-                    Password = "pass9",
                     Email = "user9@user.com",
+                    Auth0Id = "auth0|mockuser9",
                     Roles = Role.BasicUser,
                     Birthday = DateTime.Now,
                     Phone = "2716717",
@@ -1056,8 +1056,8 @@ namespace VolleyballAPI
                 {
                     Id = userId10,
                     Name = "Name 10",
-                    Password = "pass10",
                     Email = "user10@user.com",
+                    Auth0Id = "auth0|mockuser10",
                     Roles = Role.BasicUser,
                     Birthday = DateTime.Now,
                     Phone = "13556",

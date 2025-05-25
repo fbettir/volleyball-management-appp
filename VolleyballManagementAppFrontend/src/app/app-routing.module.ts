@@ -18,9 +18,7 @@ import { TermsOfUsePageComponent } from './pages/terms-of-use-page/terms-of-use-
 const routes: Routes = [
   { 
     path: 'about-us', 
-    component: AboutUsPageComponent,
-    canActivate: [RoleGuard],
-    data: { expectedRoles: ['basic_user']}
+    component: AboutUsPageComponent
   },
   { 
     path: 'admin', 
@@ -36,21 +34,15 @@ const routes: Routes = [
   },
   { 
     path: 'events', 
-    component: EventsPageComponent,
-    canActivate: [RoleGuard],
-    data: { expectedRoles: ['basic_user']}
+    component: EventsPageComponent
   },
   { 
     path: 'gallery', 
-    component: GalleryPageComponent,
-    canActivate: [RoleGuard],
-    data: { expectedRoles: ['basic_user']}
+    component: GalleryPageComponent
   },
   { 
     path: 'home', 
-    component: HomePageComponent,
-    canActivate: [RoleGuard],
-    data: { expectedRoles: ['basic_user']}
+    component: HomePageComponent
   },
   { 
     path: 'privacy-policy', 
@@ -90,9 +82,7 @@ const routes: Routes = [
   },
     {
     path: 'terms-of-use', 
-    component: TermsOfUsePageComponent,
-    canActivate: [RoleGuard],
-    data: { expectedRoles: ['basic_user']}
+    component: TermsOfUsePageComponent
   },
   { 
     path: '**', 

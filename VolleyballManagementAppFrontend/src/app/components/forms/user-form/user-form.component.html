@@ -20,11 +20,6 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="w-full">
-      <mat-label>Password</mat-label>
-      <input matInput formControlName="password" type="password" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="w-full">
       <mat-label>Birthday</mat-label>
       <input matInput [matDatepicker]="birthdayPicker" formControlName="birthday" required="" />
       <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>

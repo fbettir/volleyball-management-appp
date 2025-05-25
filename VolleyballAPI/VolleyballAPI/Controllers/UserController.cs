@@ -6,6 +6,8 @@ using VolleyballAPI.Services;
 using VolleyballAPI.Dtos.TeamDtos;
 using VolleyballAPI.Dtos.TrainingDtos;
 using VolleyballAPI.Dtos.TournamentDtos;
+using Microsoft.EntityFrameworkCore;
+using VolleyballAPI.Entities;
 
 namespace VolleyballAPI.Controllers
 {
@@ -20,6 +22,7 @@ namespace VolleyballAPI.Controllers
         {
             _userService = userService;
         }
+
         [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDetailsDto>> Get(Guid id)
@@ -27,6 +30,36 @@ namespace VolleyballAPI.Controllers
             try
             {
                 var user = await _userService.GetUserDetailsAsync(id);
+                return Ok(user);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [MapToApiVersion("1.0")]
+        [HttpPost("sync")]
+        public async Task<ActionResult<UserDetailsDto>> SyncUserFromAuth0([FromBody] Auth0UserDto dto)
+        {
+            try
+            {
+                var user = await _userService.GetOrCreateByAuth0Async(dto);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [MapToApiVersion("1.0")]
+        [HttpGet("auth0/{auth0Id}")]
+        public async Task<ActionResult<UserDetailsDto>> GetByAuth0Id(string auth0Id)
+        {
+            try
+            {
+                var user = await _userService.GetByAuth0IdAsync(auth0Id);
                 return Ok(user);
             }
             catch (EntityNotFoundException ex)
