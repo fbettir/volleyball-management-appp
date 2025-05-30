@@ -20,9 +20,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { LocationService } from 'src/app/services/location.service';
 import { TeamService } from 'src/app/services/team.service';
-import { Location } from 'src/app/models/location';
+import { Location } from 'src/app/models/entities/location';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/entities/user';
 import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-team-form',

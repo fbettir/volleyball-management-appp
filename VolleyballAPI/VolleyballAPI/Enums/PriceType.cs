@@ -12,9 +12,10 @@ namespace VolleyballAPI.Enums
         StudentPass = 8,
         TournamentTicket = 16,
         StudentTournamentTicket = 32,
-        SeasonPass = 64,
-        StudentSeasonPass = 128,
-        None = 256,
+        BMETicket = 64,
+        BMEPass = 128,
+        BMETournamentTicket = 256,
         Free = 512,
+		None = 1024,
     }
 }

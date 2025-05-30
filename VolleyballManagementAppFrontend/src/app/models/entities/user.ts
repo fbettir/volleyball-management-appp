@@ -1,7 +1,7 @@
-import { Gender } from './gender';
-import { Post } from './post';
-import { PriceType } from './priceType';
-import { Role } from './role';
+import { Gender } from '../enums/gender';
+import { Post } from '../enums/post';
+import { PriceType } from '../enums/priceType';
+import { Role } from '../enums/role';
 import { Team } from './team';
 import { Tournament } from './tournament';
 import { Training } from './training';

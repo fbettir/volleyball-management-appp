@@ -16,8 +16,8 @@ import { ConfirmDialogComponent } from 'src/app/components/forms/confirm-dialog/
 
 import { TournamentService } from 'src/app/services/tournament.service';
 import { TeamService } from 'src/app/services/team.service';
-import { Tournament } from 'src/app/models/tournament';
-import { Team } from 'src/app/models/team';
+import { Tournament } from 'src/app/models/entities/tournament';
+import { Team } from 'src/app/models/entities/team';
 
 @Component({
   selector: 'app-events-management',

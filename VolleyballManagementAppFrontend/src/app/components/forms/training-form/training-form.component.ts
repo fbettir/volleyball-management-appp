@@ -20,12 +20,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { LocationService } from 'src/app/services/location.service';
 import { TrainingService } from 'src/app/services/training.service';
-import { Location } from 'src/app/models/location';
-import { PriceType } from 'src/app/models/priceType';
+import { Location } from 'src/app/models/entities/location';
+import { PriceType } from 'src/app/models/enums/priceType';
 import { v4 as uuidv4 } from 'uuid';
 import { MatIcon } from '@angular/material/icon';
-import { User } from 'src/app/models/user';
-import { Team } from 'src/app/models/team';
+import { User } from 'src/app/models/entities/user';
+import { Team } from 'src/app/models/entities/team';
 import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
 

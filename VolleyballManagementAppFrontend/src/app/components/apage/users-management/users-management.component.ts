@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialog } from '@angular/material/dialog';
 
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/entities/user';
 import { UserService } from 'src/app/services/user.service';
 import { UserFormComponent } from 'src/app/components/forms/user-form/user-form.component';
 import { ConfirmDialogComponent } from 'src/app/components/forms/confirm-dialog/confirm-dialog.component';

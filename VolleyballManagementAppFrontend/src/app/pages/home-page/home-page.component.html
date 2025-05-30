@@ -49,6 +49,23 @@
 
 <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8 py-6">
   <div id="events" *ngIf="filteredEvents.length > 0" class="space-y-4 mb-16">
+  <div
+    id="trainings"
+    *ngIf="filteredTrainings.length > 0"
+    class="space-y-4 mb-16"
+  >
+    <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Trainings</h2>
+    <div
+      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+    >
+      <app-training-card
+        *ngFor="let t of filteredTrainings"
+        [training]="t"
+        class="w-[260px]"
+      ></app-training-card>
+    </div>
+  </div>
+
     <h2 class="px-40 text-3xl font-bold text-[var(--primary)]">Events</h2>
     <div
       class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
@@ -74,20 +91,5 @@
     </div>
   </div>
 
-  <div
-    id="trainings"
-    *ngIf="filteredTrainings.length > 0"
-    class="space-y-4 mb-16"
-  >
-    <h2 class="text-3xl font-bold text-[var(--primary)] px-40">Trainings</h2>
-    <div
-      class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
-    >
-      <app-training-card
-        *ngFor="let t of filteredTrainings"
-        [training]="t"
-        class="w-[260px]"
-      ></app-training-card>
-    </div>
-  </div>
+
 </div>

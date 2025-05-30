@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Match } from '../models/match';
-import { Team } from '../models/team';
+import { Team } from '../models/entities/team';
 
 @Injectable({
   providedIn: 'root'

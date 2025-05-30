@@ -5,12 +5,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
 import { TrainingService } from 'src/app/services/training.service';
-import { Training } from 'src/app/models/training';
+import { Training } from 'src/app/models/entities/training';
 import { TrainingSearchBarComponent } from 'src/app/components/search/training-search-bar/training-search-bar.component';
 import { TrainingFormComponent } from 'src/app/components/forms/training-form/training-form.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ConfirmDialogComponent } from '../../forms/confirm-dialog/confirm-dialog.component';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/entities/user';
 import { UserService } from 'src/app/services/user.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';

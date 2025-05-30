@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Tournament } from 'src/app/models/tournament';
+import { Tournament } from 'src/app/models/entities/tournament';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 

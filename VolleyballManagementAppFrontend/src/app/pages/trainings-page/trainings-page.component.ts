@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { TrainingCardComponent } from 'src/app/components/cards/training-card/training-card.component';
 import { TrainingSearchBarComponent } from 'src/app/components/search/training-search-bar/training-search-bar.component';
-import { Training } from 'src/app/models/training';
+import { Training } from 'src/app/models/entities/training';
 import { TrainingService } from 'src/app/services/training.service';
 
 @Component({

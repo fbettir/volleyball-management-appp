@@ -162,13 +162,51 @@ namespace VolleyballAPI.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task SetTournamentMatchesAsync(Guid tournamentId)
+        public async Task SetTournamentMatchesAsync(Guid tournamentId, List<TeamDto> newTeams)
         {
-            var tournament = _context.Tournaments.FirstOrDefault(t => t.Id == tournamentId);
+
+            var tournament = await _context.Tournaments
+                .Include(t => t.Matches)
+                .ThenInclude(m => m.Teams)
+                .FirstOrDefaultAsync(t => t.Id == tournamentId);
+
+
             if (tournament == null)
                 throw new EntityNotFoundException("Tournament not found");
 
+            var matches = tournament.Matches.OrderBy(m => m.StartTime).ToList();
 
+            var allMatchIds = matches.Select(m => m.Id).ToList();
+
+            var matchTeams = await _context.MatchTeams
+                .Where(mt => allMatchIds.Contains(mt.MatchId))
+                .ToListAsync();
+
+            _context.MatchTeams.RemoveRange(matchTeams);
+
+            var newMatchTeams = new List<MatchTeam>();
+
+            for (int i = 0; i < matches.Count; i++)
+            {
+                var match = matches[i];
+                var team1 = newTeams[i * 2].TeamId;
+                var team2 = newTeams[i * 2 + 1].TeamId;
+
+                newMatchTeams.Add(new MatchTeam
+                {
+                    MatchId = match.Id,
+                    TeamId = team1
+                });
+
+                newMatchTeams.Add(new MatchTeam
+                {
+                    MatchId = match.Id,
+                    TeamId = team2
+                });
+            }
+
+            _context.MatchTeams.AddRange(newMatchTeams);
+            await _context.SaveChangesAsync();
         }
     }
 }

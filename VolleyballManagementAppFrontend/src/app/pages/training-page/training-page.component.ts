@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Training } from 'src/app/models/training';
+import { Training } from 'src/app/models/entities/training';
 import { TrainingService } from 'src/app/services/training.service';
 import { TabChipComponent } from 'src/app/components/shared/tab-chip/tab-chip.component';
 import { UserCardComponent } from 'src/app/components/cards/user-card/user-card.component';

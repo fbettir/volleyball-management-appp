@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { Match } from 'src/app/models/match';
-import { MatchState } from 'src/app/models/matchState';
+import { Match } from 'src/app/models/entities/match';
+import { MatchState } from 'src/app/models/enums/matchState';
 
 @Component({
   selector: 'app-match-card',

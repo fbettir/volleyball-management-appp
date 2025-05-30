@@ -20,12 +20,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIcon } from '@angular/material/icon';
 
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/entities/user';
 import { v4 as uuidv4 } from 'uuid';
-import { Gender } from 'src/app/models/gender';
-import { Role } from 'src/app/models/role';
-import { PriceType } from 'src/app/models/priceType';
-import { Post } from 'src/app/models/post';
+import { Gender } from 'src/app/models/enums/gender';
+import { Role } from 'src/app/models/enums/role';
+import { PriceType } from 'src/app/models/enums/priceType';
+import { Post } from 'src/app/models/enums/post';
 
 @Component({
   selector: 'app-user-form',

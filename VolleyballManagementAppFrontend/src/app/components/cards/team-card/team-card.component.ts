@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { Team } from 'src/app/models/team';
+import { Team } from 'src/app/models/entities/team';
 
 
 @Component({

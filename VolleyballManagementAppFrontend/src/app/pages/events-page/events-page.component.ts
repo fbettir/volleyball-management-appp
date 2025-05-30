@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { EventCardComponent } from 'src/app/components/cards/event-card/event-card.component';
 import { EventSearchBarComponent } from 'src/app/components/search/event-search-bar/event-search-bar.component';
-import { Tournament } from 'src/app/models/tournament';
+import { Tournament } from 'src/app/models/entities/tournament';
 import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({

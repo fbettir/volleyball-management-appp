@@ -45,7 +45,6 @@
           [active]="selectedTab === 'schedule'"
           (select)="selectedTab = 'schedule'"
         ></app-tab-chip>
-
       </div>
     </div>
   </div>
@@ -152,6 +151,12 @@
         (click)="onApplyClick()"
       >
         Apply
+      </button>
+      <button
+        class="bg-[var(--primary)] text-white px-4 py-2 rounded-full shadow hover:bg-[var(--text-dark)] transition"
+        (click)="checkAndAssignTeamsIfFull()"
+      >
+        Assign Teams
       </button>
     </div>
     <div

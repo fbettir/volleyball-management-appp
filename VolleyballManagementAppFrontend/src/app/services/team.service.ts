@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Team } from '../models/team';
+import { Team } from '../models/entities/team';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

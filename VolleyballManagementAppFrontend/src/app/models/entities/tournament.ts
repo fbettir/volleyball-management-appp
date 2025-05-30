@@ -1,9 +1,9 @@
-import { Level } from './level';
+import { Level } from '../enums/level';
 import { Location } from './location';
 import { Match } from './match';
-import { PriceType } from './priceType';
+import { PriceType } from '../enums/priceType';
 import { Team } from './team';
-import { TournamentType } from './tournamentType';
+import { TournamentType } from '../enums/tournamentType';
 import { User } from './user';
 
 export interface Tournament {

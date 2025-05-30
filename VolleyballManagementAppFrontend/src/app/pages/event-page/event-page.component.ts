@@ -5,8 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatchCardComponent } from 'src/app/components/cards/match-card/match-card.component';
 import { TabChipComponent } from 'src/app/components/shared/tab-chip/tab-chip.component';
 import { TeamCardComponent } from 'src/app/components/cards/team-card/team-card.component';
-import { Match } from 'src/app/models/match';
-import { Tournament } from 'src/app/models/tournament';
+import { Match } from 'src/app/models/entities/match';
+import { Tournament } from 'src/app/models/entities/tournament';
 import { TournamentService } from 'src/app/services/tournament.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplyDialogComponent } from 'src/app/components/forms/apply-dialog/apply-dialog.component';
@@ -119,6 +119,34 @@ export class EventPageComponent {
         this.schedule.push({ time: displayTime, matches: matchGroup });
       });
   }
+
+  checkAndAssignTeamsIfFull(): void {
+  if (!this.event || !this.event.teams || !this.event.maxTeamsPerLevel) return;
+
+  const maxTeamCount = this.event.maxTeamsPerLevel.reduce(
+    (sum, val) => sum + val,
+    0,
+  );
+
+  if (this.event.teams.length === maxTeamCount) {
+    const teamDtos = this.event.teams.map((team) => ({
+      teamId: team.id,
+    }));
+
+    this.tournamentService
+      .updateTournamentTeams(this.event.id, teamDtos)
+      .subscribe({
+        next: () =>
+          console.log('Match teams assigned automatically.'),
+        error: (err) =>
+          console.error('Failed to assign match teams:', err),
+      });
+  } else {
+    console.log(
+      `Current: ${this.event.teams.length}, required: ${maxTeamCount}. Waiting for more teams...`,
+    );
+  }
+}
 
   onApplyClick(): void {
     const dialogRef = this.dialog.open(ApplyDialogComponent, {

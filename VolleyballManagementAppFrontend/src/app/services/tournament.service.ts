@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Tournament } from '../models/tournament';
+import { Tournament } from '../models/entities/tournament';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -63,10 +63,13 @@ export class TournamentService {
       );
   }
 
-  // scheduleMatches(tournamentId: string): Observable<void> {
-  //   return this.httpClient.put<void>(
-  //     `${this.baseURL}/${tournamentId}/schedule`,
-  //     {}
-  //   );
-  // }
+  updateTournamentTeams(
+    tournamentId: string,
+    teamDtos: { teamId: string }[],
+  ): Observable<void> {
+    return this.httpClient.put<void>(
+      `${this.baseURL}/${tournamentId}/schedule`,
+      teamDtos,
+    );
+  }
 }

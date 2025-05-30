@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { firstValueFrom } from 'rxjs';
-import { User } from '../models/user';
-import { PriceType } from '../models/priceType';
-import { Gender } from '../models/gender';
-import { Post } from '../models/post';
-import { Role } from '../models/role';
+import { User } from '../models/entities/user';
+import { PriceType } from '../models/enums/priceType';
+import { Gender } from '../models/enums/gender';
+import { Post } from '../models/enums/post';
+import { Role } from '../models/enums/role';
 import { UserService } from './user.service';
 import { BehaviorSubject } from 'rxjs';
 

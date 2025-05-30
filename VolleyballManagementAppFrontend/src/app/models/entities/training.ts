@@ -1,7 +1,8 @@
-import { PriceType } from './priceType';
+
+import { PriceType } from '../enums/priceType';
+import { Location } from '../entities/location';
 import { Team } from './team';
 import { User } from './user';
-import { Location } from './location';
 
 export interface Training {
   id: string;

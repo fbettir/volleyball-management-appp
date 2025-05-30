@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { Training } from 'src/app/models/training';
+import { Training } from 'src/app/models/entities/training';
 
 @Component({
   selector: 'app-training-card',

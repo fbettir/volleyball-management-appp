@@ -133,20 +133,20 @@ namespace VolleyballAPI.Controllers
             }
         }
 
-        //[MapToApiVersion("1.0")]
-        //[HttpPut("{id}/schedule")]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //public async Task<ActionResult> SetTournamentMatches(Guid id)
-        //{
-        //    try
-        //    {
-        //        await _tournamentsService.SetTournamentMatchesAsync(id);
-        //        return Ok();
-        //    }
-        //    catch (EntityNotFoundException ex)
-        //    {
-        //        return NotFound(ex.Message);
-        //    }
-        //}
+        [MapToApiVersion("1.0")]
+        [HttpPut("{id}/schedule")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> SetTournamentMatches(Guid id, [FromBody] List<TeamDto> newTeams)
+        {
+            try
+            {
+                await _tournamentsService.SetTournamentMatchesAsync(id, newTeams);
+                return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

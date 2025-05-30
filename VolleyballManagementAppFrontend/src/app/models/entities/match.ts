@@ -1,8 +1,8 @@
-import { Location } from "./location";
-import { MatchState } from "./matchState";
+import { MatchState } from "../enums/matchState";
 import { Team } from "./team";
 import { Tournament } from "./tournament";
 import { User } from "./user";
+
 
 export interface Match {
     id: string;

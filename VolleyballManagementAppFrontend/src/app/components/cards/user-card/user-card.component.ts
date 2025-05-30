@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/entities/user';
 
 @Component({
   selector: 'app-user-card',

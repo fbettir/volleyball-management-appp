@@ -10,8 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { TeamService } from 'src/app/services/team.service';
 import { TournamentService } from 'src/app/services/tournament.service';
 import { OnInit } from '@angular/core';
-import { Team } from 'src/app/models/team';
-import { Tournament } from 'src/app/models/tournament';
+import { Team } from 'src/app/models/entities/team';
+import { Tournament } from 'src/app/models/entities/tournament';
 
 @Component({
   selector: 'app-apply-dialog',

@@ -11,8 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
-import { Team } from 'src/app/models/team';
-import { User } from 'src/app/models/user';
+import { Team } from 'src/app/models/entities/team';
+import { User } from 'src/app/models/entities/user';
 
 import { TeamFormComponent } from 'src/app/components/forms/team-form/team-form.component';
 import { ConfirmDialogComponent } from 'src/app/components/forms/confirm-dialog/confirm-dialog.component';

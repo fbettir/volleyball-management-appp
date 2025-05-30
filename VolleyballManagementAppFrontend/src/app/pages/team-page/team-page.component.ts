@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Team } from 'src/app/models/team';
+import { Team } from 'src/app/models/entities/team';
 import { ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/services/team.service';
 import { CommonModule } from '@angular/common';

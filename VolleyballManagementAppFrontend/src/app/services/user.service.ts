@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
+import { User } from '../models/entities/user';
 import { map } from 'rxjs/operators';
-import { Team } from '../models/team';
-import { Training } from '../models/training';
-import { Tournament } from '../models/tournament';
+import { Team } from '../models/entities/team';
+import { Tournament } from '../models/entities/tournament';
+import { Training } from '../models/entities/training';
 
 @Injectable({
   providedIn: 'root',

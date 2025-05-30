@@ -3,13 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/entities/user';
 import { UserService } from 'src/app/services/user.service';
 import { TabChipComponent } from 'src/app/components/shared/tab-chip/tab-chip.component';
 import { TeamCardComponent } from 'src/app/components/cards/team-card/team-card.component';
 import { EventCardComponent } from 'src/app/components/cards/event-card/event-card.component';
 import { TrainingCardComponent } from 'src/app/components/cards/training-card/training-card.component';
-import { Team } from 'src/app/models/team';
+import { Team } from 'src/app/models/entities/team';
 
 @Component({
   selector: 'app-profile-page',
