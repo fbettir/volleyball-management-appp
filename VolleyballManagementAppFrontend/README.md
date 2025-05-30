@@ -1,82 +1,40 @@
-```mermaid
-    erDiagram
-    ROLE { }
-    GENDER { }
-    POST { }
-    TICKET_PASS { }
-    USER {
-        string id
-        string name
-        string email
-    }
-    PLAYER_DETAILS {
-        string id
-        string userId
-        Date birthday
-        string phone
-        number playerNumber
-    } 
-    TEAM {
-        string id
-        string name
-        string picture
-        string description
-    }
-    TRAINING {
-        string id
-        string location
-        Date date
-        string description
-    }
-    TOURNAMENT {
-        string id
-        Date date
-        string description 
-        string location
-    }
-    USER ||--o| PLAYER_DETAILS : references
-    TEAM }|--|{ PLAYER_DETAILS : has
-    TEAM ||--o{ TRAINING : participates
-    USER }o--|{ ROLE: has
-    PLAYER_DETAILS }o--|| TICKET_PASS: has
-    PLAYER_DETAILS }|--|{ POST: has
-    PLAYER_DETAILS }o--|| GENDER: has
-    TEAM }o--|{ USER : coached_by
-    TRAINING }o--|{ USER : participants
-    TOURNAMENT }o--|{ TEAM : competitors
-```
+MŰER – Műegyetemi Röplabda Rendszer
 
-## Description
---o| nullable field \
---|| not nullable field \
---o{ list \
---|{ list \
-}o--o{ linking table \
-}|--o{ linking table
+Telepítés fejlesztői környezetben
 
-Use-cases:
-- User:
-    - can register 
-    - can add own player details
-    - nice-to-have: 
-        - feedback for training
-        - can request to join a team
-        - respond to training
-        - can create team for tournament
-        - can join tournament team 
-- Coach:
-    - can add team member
-    - can add trainings
-    - nice-to-have: 
-        - can invite team to training
-- Administrator:
-    - can create new team
-    - can create new tournament
-    - can assign coach to team
-    - can promote a user to a coach
-    - temporary
-        - can add team member
-        - can add trainings
-        - can add details for a player
+A rendszer két fő komponensből áll:
 
+- `VolleyballManagementAppFrontend/` – Angular frontend
+- `VolleyballAPI/` – ASP.NET Core backend
 
+Az alábbi lépések alapján helyi környezetben elindítható a teljes alkalmazás.
+
+Követelmények
+
+- Node.js (ajánlott: v18+)
+- .NET 8 SDK
+- Angular CLI:  
+  ```bash
+  npm install -g @angular/cli
+
+Frontend indítása
+
+ - cd VolleyballManagementAppFrontend
+ - npm install
+ - ng serve
+
+Backend indítása
+
+ - cd VolleyballAPI
+
+ Ellenőrizd a appsettings.json fájlban a DefaultConnection beállítást.
+ Ha szükséges, módosítsd a saját adatbázisodhoz.
+
+ Hozd létre az adatbázist:
+ - dotnet ef database update
+
+ Indítsd el az alkalmazást:
+ - dotnet run
+
+ Ezután a rendszer ezen a címen érhető el:
+ https://localhost:44359/app/admin
